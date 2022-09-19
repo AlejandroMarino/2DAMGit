@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/elnano</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="@dam2.mysql.iesquevedo.es" uuid="810c66ca-047c-4737-93b2-16dac7a6c65e">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://dam2.mysql.iesquevedo.es:3335</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
