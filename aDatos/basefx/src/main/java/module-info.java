@@ -8,15 +8,18 @@ module prova {
     requires javafx.graphics;
     requires jakarta.inject;
     requires javafx.fxml;
+    requires javafx.controls;
 
     exports ui.fx;
     exports servicios;
     exports data;
     exports ui.pantallas.principal;
     exports ui.pantallas.login;
+    exports ui.common;
 
 
     opens config;
     opens modelo;
     opens ui.fx;
+    opens ui.pantallas.principal;
 }

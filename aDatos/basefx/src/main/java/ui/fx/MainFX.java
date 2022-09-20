@@ -20,7 +20,7 @@ public class MainFX{
             ResourceBundle r = ResourceBundle.getBundle("/i18n/textos");
 
             fxmlLoader.setResources(r);
-            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/principal.fxml"));
+            Parent fxmlParent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/Principal.fxml"));
 
             stage.setScene(new Scene(fxmlParent));
             stage.setTitle(r.getString("app.title"));

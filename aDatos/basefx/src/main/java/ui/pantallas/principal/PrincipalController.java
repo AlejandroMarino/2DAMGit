@@ -1,14 +1,42 @@
 package ui.pantallas.principal;
 
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Menu;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import lombok.extern.log4j.Log4j2;
+import ui.common.BasePantallaController;
+import ui.common.Pantallas;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PrincipalController {
+@Log4j2
+public class PrincipalController implements Initializable {
+    @FXML
+    private Menu goTo;
+    @FXML
+    private BorderPane root;
+
+    Instance<Object> instance;
+
+    private Alert alert;
+
     public void cambio(ActionEvent actionEvent) {
 
+    }
+
+    @Inject
+    public PrincipalController(Instance<Object> instance) {
+        this.instance = instance;
+        alert = new Alert(Alert.AlertType.NONE);
     }
 
     private Pane cargarPantalla(String ruta) {
@@ -29,5 +57,21 @@ public class PrincipalController {
         return panePantalla;
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        goLogin(null);
+    }
 
+    private void cambioPantalla(Pane pantallaNueva) {
+        root.setCenter(pantallaNueva);
+    }
+
+    private void cargarPantalla(Pantallas pantalla) {
+        cambioPantalla(cargarPantalla(pantalla.getRuta()));
+    }
+
+    public void goLogin(String dni) {
+        cargarPantalla(Pantallas.LOGIN);
+        goTo.setVisible(false);
+    }
 }
