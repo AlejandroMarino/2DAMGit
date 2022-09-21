@@ -3,10 +3,8 @@ package ui.common;
 public enum Pantallas {
 
     PRINCIPAL ("/fxml/Principal.fxml"),
-    LOGIN ("/fxml/Login.fxml");
-    // REGISTER ("/fxml/Register.fxml"),
-    // CLIENTE("/fxml/Cliente.fxml"),
-    // ADMIN ("/fxml/Admin.fxml");
+    LOGIN ("/fxml/Login.fxml"),
+    NEWSPAPER("/fxml/Newspaper.fxml");
 
 
     private String ruta;

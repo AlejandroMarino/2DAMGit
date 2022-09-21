@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import lombok.extern.log4j.Log4j2;
@@ -20,6 +21,8 @@ import java.util.ResourceBundle;
 
 @Log4j2
 public class PrincipalController implements Initializable {
+    @FXML
+    private MenuItem itemLogout;
     @FXML
     private Menu goTo;
     @FXML
@@ -59,7 +62,7 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        goLogin(null);
+        goLogin();
     }
 
     private void cambioPantalla(Pane pantallaNueva) {
@@ -70,8 +73,19 @@ public class PrincipalController implements Initializable {
         cambioPantalla(cargarPantalla(pantalla.getRuta()));
     }
 
-    public void goLogin(String dni) {
+    public void goLogin() {
         cargarPantalla(Pantallas.LOGIN);
         goTo.setVisible(false);
+    }
+
+    public void goNewspaper(){
+        cargarPantalla(Pantallas.NEWSPAPER);
+        goTo.setVisible(true);
+    }
+
+    public void error(String mensaje) {
+        alert.setAlertType(Alert.AlertType.ERROR);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }

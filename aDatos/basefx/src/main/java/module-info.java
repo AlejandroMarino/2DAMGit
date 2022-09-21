@@ -1,4 +1,4 @@
-module prova {
+module basefx {
     requires lombok;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;
@@ -14,6 +14,7 @@ module prova {
     exports servicios;
     exports data;
     exports ui.pantallas.principal;
+    exports ui.pantallas.Newspaper;
     exports ui.pantallas.login;
     exports ui.common;
 
@@ -22,4 +23,5 @@ module prova {
     opens modelo;
     opens ui.fx;
     opens ui.pantallas.principal;
+    opens ui.pantallas.login;
 }
