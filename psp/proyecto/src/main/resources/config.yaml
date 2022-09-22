@@ -1,0 +1,3 @@
+pathClientes: data/clientes.json
+pathProductos: data/productos.json
+

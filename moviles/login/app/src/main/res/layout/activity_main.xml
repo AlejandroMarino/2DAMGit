@@ -14,12 +14,13 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@id/texContra"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texUsu" />
+        app:layout_constraintTop_toBottomOf="@+id/texUsu"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editTexContra"
@@ -28,21 +29,21 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texContra" />
+        app:layout_constraintTop_toBottomOf="@+id/texContra"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/texUsu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Usuario"
+        android:layout_marginTop="100dp"
+        android:text="@string/usuario"
         app:layout_constraintBottom_toTopOf="@id/editextusu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +55,6 @@
         android:text="@string/contrasenia"
         app:layout_constraintBottom_toTopOf="@id/editTexContra"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editextusu" />
 
@@ -62,13 +62,13 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="150dp"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTexContra" />
+        app:layout_constraintTop_toBottomOf="@+id/editTexContra"
+        app:rippleColor="#1192A3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

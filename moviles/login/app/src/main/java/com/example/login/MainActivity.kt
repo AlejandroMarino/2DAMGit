@@ -1,13 +1,10 @@
 package com.example.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 lateinit var usu: EditText
 lateinit var contra: EditText
@@ -23,9 +20,12 @@ class MainActivity : AppCompatActivity() {
         btn = this.findViewById(R.id.button)
 
         btn.setOnClickListener {
-            if (usu.text.toString() == "vini" && contra.text.toString() == "gol"){
+            if (usu.text.toString() == getString(R.string.usuarioValido) && contra.text.toString() == getString(
+                    R.string.contraseniaValida
+                )
+            ) {
                 Toast.makeText(applicationContext, R.string.saludo, Toast.LENGTH_LONG).show()
-            }else {
+            } else {
                 Toast.makeText(applicationContext, R.string.error, Toast.LENGTH_LONG).show()
             }
         }
