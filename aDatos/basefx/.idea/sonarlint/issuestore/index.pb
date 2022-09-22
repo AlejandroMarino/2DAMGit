@@ -9,3 +9,5 @@ U
 %src/main/java/ui/fx/StartupScene.java,4\6\465f398803289da0c7ec1762c3133db33814d32b
 m
 =src/main/java/ui/pantallas/principal/PrincipalController.java,6\8\6854908843d482996cd7f7c9ccd44ffdc547ca45
+V
+&src/main/java/ui/common/Pantallas.java,3\9\396fad0c74cb139778b752b985a5d5b7522d506e
