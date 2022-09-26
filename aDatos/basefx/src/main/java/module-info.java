@@ -9,14 +9,17 @@ module basefx {
     requires jakarta.inject;
     requires javafx.fxml;
     requires javafx.controls;
+    requires io.vavr;
 
     exports ui.fx;
-    exports servicios;
     exports data;
     exports ui.pantallas.principal;
     exports ui.pantallas.Newspaper;
     exports ui.pantallas.login;
     exports ui.common;
+    exports ui.pantallas.addArticles;
+    exports ui.pantallas.delNewspaper;
+    exports ui.pantallas.articles;
 
 
     opens config;

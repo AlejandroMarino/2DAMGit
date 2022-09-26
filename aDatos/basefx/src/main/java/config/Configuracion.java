@@ -1,6 +1,7 @@
 package config;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.Getter;
@@ -12,29 +13,25 @@ import java.io.IOException;
 @Log4j2
 public class Configuracion {
 
-    private Configuracion() {
-    }
+    public Configuracion() {
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        mapper.findAndRegisterModules();
 
-    private static Configuracion configuracion;
+        try {
+            JsonNode node = mapper.readTree(
+                    Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"));
+            this.newspapers = node.get("newspapers").asText();
+            this.articles = node.get("articles").asText();
 
-    public static synchronized Configuracion getInstance() {
-        if (configuracion == null) {
-            ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-            mapper.findAndRegisterModules();
 
-            try {
-                configuracion = mapper.readValue(
-                        Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"),
-                        Configuracion.class);
-
-            } catch (IOException e) {
-                log.error(e.getMessage(), e);
-            }
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
         }
-        return configuracion;
     }
 
-    private String pathClientes;
-    private String pathProductos;
+
+
+    private String newspapers;
+    private String articles;
 
 }

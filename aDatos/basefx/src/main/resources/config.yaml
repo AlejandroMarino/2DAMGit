@@ -1,3 +1,4 @@
-pathClientes: data/clientes.json
-pathProductos: data/productos.json
+newspapers: newspapers.txt
+articles: articles.txt
+
 

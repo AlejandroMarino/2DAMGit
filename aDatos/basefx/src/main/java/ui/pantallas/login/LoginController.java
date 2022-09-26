@@ -1,4 +1,5 @@
 package ui.pantallas.login;
+
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ public class LoginController extends BasePantallaController {
 
     public void initialize() {
         loginViewModel.getState().addListener((observable, oldValue, newValue) -> {
-             if (newValue.getError() != null) {
+            if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
             }
         });
