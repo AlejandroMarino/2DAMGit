@@ -21,6 +21,9 @@ public class NewspaperController extends BasePantallaController {
         newspaperViewModel.getState().addListener((observable, oldValue, newValue) -> {
             if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
+            } else if (newValue.getNewspapers() != null) {
+                listNewspaper.getItems().clear();
+                listNewspaper.getItems().addAll(newValue.getNewspapers());
             }
         });
     }

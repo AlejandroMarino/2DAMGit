@@ -4,7 +4,8 @@ public enum Pantallas {
 
     PRINCIPAL ("/fxml/Principal.fxml"),
     LOGIN ("/fxml/Login.fxml"),
-    NEWSPAPER("/fxml/Newspaper.fxml");
+    NEWSPAPER("/fxml/Newspaper.fxml"),
+    ARTICLE("/fxml/Articles.fxml");
 
 
     private String ruta;

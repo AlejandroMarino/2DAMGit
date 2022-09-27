@@ -22,6 +22,12 @@ import java.util.ResourceBundle;
 @Log4j2
 public class PrincipalController implements Initializable {
     @FXML
+    private MenuItem itemArti;
+    @FXML
+    private MenuItem itemNews;
+    @FXML
+    private Menu items;
+    @FXML
     private MenuItem itemLogout;
     @FXML
     private Menu goTo;
@@ -76,12 +82,25 @@ public class PrincipalController implements Initializable {
     public void goLogin() {
         cargarPantalla(Pantallas.LOGIN);
         goTo.setVisible(false);
+        items.setVisible(true);
     }
 
-    public void goNewspaper(){
+    public void goNewspaper() {
         cargarPantalla(Pantallas.NEWSPAPER);
         goTo.setVisible(true);
+        items.setVisible(true);
+        itemNews.setVisible(false);
+        itemArti.setVisible(true);
     }
+
+    public void goArti() {
+        cargarPantalla(Pantallas.ARTICLE);
+        goTo.setVisible(true);
+        items.setVisible(true);
+        itemNews.setVisible(true);
+        itemArti.setVisible(false);
+    }
+
 
     public void error(String mensaje) {
         alert.setAlertType(Alert.AlertType.ERROR);

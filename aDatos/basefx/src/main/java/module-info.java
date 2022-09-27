@@ -20,6 +20,7 @@ module basefx {
     exports ui.pantallas.addArticles;
     exports ui.pantallas.delNewspaper;
     exports ui.pantallas.articles;
+    exports modelo;
 
 
     opens config;
@@ -27,4 +28,5 @@ module basefx {
     opens ui.fx;
     opens ui.pantallas.principal;
     opens ui.pantallas.login;
+    opens ui.pantallas.Newspaper;
 }

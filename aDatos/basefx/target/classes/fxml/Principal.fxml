@@ -11,13 +11,13 @@
             <menus>
                 <Menu fx:id="goTo" mnemonicParsing="false" text="Go to">
                     <items>
-                        <MenuItem fx:id="itemLogout" mnemonicParsing="false" onAction="#cambio" text="Logout"/>
+                        <MenuItem fx:id="itemLogout" mnemonicParsing="false" onAction="#goLogin" text="Logout"/>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="items">
+                <Menu fx:id="items" mnemonicParsing="false" text="items">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="newspapers"/>
-                        <MenuItem mnemonicParsing="false" text="articles"/>
+                        <MenuItem fx:id="itemNews" mnemonicParsing="false" onAction="#goNewspaper" text="newspapers"/>
+                        <MenuItem fx:id="itemArti" mnemonicParsing="false" onAction="#goArti" text="articles"/>
                     </items>
                 </Menu>
             </menus>

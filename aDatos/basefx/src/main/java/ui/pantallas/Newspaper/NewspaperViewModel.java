@@ -14,6 +14,6 @@ public class NewspaperViewModel {
 
     @Inject
     public NewspaperViewModel() {
-        state = new SimpleObjectProperty<>(new NewspaperState(null));
+        state = new SimpleObjectProperty<>(new NewspaperState(null, null));
     }
 }
