@@ -1,22 +1,20 @@
 package ui.pantallas.inicio;
+
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import lombok.Data;
 import ui.common.BasePantallaController;
-
-import java.util.ResourceBundle;
 
 public class InicioController extends BasePantallaController {
 
     private final InicioViewModel inicioViewModel;
 
     @FXML
-    private ImageView guitarra;
+    private ImageView btnGuitarra;
     @FXML
-    private ImageView logo;
+    private ImageView imgLogo;
 
     @Inject
     public InicioController(InicioViewModel inicioViewModel) {
@@ -25,12 +23,12 @@ public class InicioController extends BasePantallaController {
 
     public void initialize() {
         inicioViewModel.getState().addListener((observable, oldValue, newValue) -> {
-             if (newValue.getError() != null) {
+            if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
             }
         });
-        logo.setImage(new Image(getClass().getResourceAsStream("/images/Animal_Crossing_Logo.png")));
-        guitarra.setImage(new Image(getClass().getResourceAsStream(("/images/guitarrita.png"))));
+        imgLogo.setImage(new Image(getClass().getResourceAsStream("/images/Animal_Crossing_Logo.png")));
+        btnGuitarra.setImage(new Image(getClass().getResourceAsStream(("/images/guitarrita.png"))));
     }
 
     @Override

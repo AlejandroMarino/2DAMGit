@@ -25,4 +25,5 @@ module basefx {
     opens ui.fx;
     opens ui.pantallas.principal;
     opens ui.pantallas.inicio;
+    opens ui.pantallas.allFish;
 }

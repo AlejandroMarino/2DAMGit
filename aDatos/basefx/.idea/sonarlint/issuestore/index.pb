@@ -11,3 +11,19 @@ m
 =src/main/java/ui/pantallas/principal/PrincipalController.java,6\8\6854908843d482996cd7f7c9ccd44ffdc547ca45
 V
 &src/main/java/ui/common/Pantallas.java,3\9\396fad0c74cb139778b752b985a5d5b7522d506e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+w
+G.idea/sonarlint/issuestore/3/9/396fad0c74cb139778b752b985a5d5b7522d506e,0\e\0ea331b02f263fce9136054c48a60e1335e8fca7
+N
+src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+O
+src/main/java/ui/fx/MainFX.java,1\e\1eae5e9e89f5a2a7e8c4d382d4f7848f44f17fb6
+Q
+!src/main/java/ui/fx/DIJavafx.java,3\1\317bc5d31e3599223f36090913735e7c8835cf30
+`
+0src/main/java/ui/pantallas/login/LoginState.java,3\f\3f9d70bbcc32e1f8140fe99632e772f8d5fce1e9
+d
+4src/main/java/ui/pantallas/login/LoginViewModel.java,e\7\e7d8d195a68c5e0e3b34a11a1a18d22d5e312b65
+e
+5src/main/java/ui/pantallas/login/LoginController.java,0\0\00a168197ce395305c37a33f896012577da7634b
