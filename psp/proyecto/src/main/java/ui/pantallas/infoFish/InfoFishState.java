@@ -1,8 +1,8 @@
-package ui.pantallas.Newspaper;
+package ui.pantallas.infoFish;
 
 import lombok.Data;
 
 @Data
-public class NewspaperState {
+public class InfoFishState {
     private final String error;
 }

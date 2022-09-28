@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="basefx" />
+        <module name="proyecto" />
         <module name="prova" />
       </profile>
     </annotationProcessing>

@@ -2,9 +2,10 @@ package ui.common;
 
 public enum Pantallas {
 
-    PRINCIPAL ("/fxml/Principal.fxml"),
-    LOGIN ("/fxml/Login.fxml"),
-    NEWSPAPER("/fxml/Newspaper.fxml");
+    PRINCIPAL("/fxml/Principal.fxml"),
+    INICIO("/fxml/Inicio.fxml"),
+    ALLFISH("/fxml/AllFish.fxml"),
+    INFOFISH("/fxml/InfoFish.fxml");
 
 
     private String ruta;

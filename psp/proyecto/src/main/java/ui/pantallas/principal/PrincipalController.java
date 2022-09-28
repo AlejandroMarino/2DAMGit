@@ -22,7 +22,9 @@ import java.util.ResourceBundle;
 @Log4j2
 public class PrincipalController implements Initializable {
     @FXML
-    private MenuItem itemLogout;
+    private MenuItem itemAllFish;
+    @FXML
+    private MenuItem itemInicio;
     @FXML
     private Menu goTo;
     @FXML
@@ -32,9 +34,6 @@ public class PrincipalController implements Initializable {
 
     private Alert alert;
 
-    public void cambio(ActionEvent actionEvent) {
-
-    }
 
     @Inject
     public PrincipalController(Instance<Object> instance) {
@@ -62,7 +61,7 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        goLogin();
+        goInicio();
     }
 
     private void cambioPantalla(Pane pantallaNueva) {
@@ -73,14 +72,22 @@ public class PrincipalController implements Initializable {
         cambioPantalla(cargarPantalla(pantalla.getRuta()));
     }
 
-    public void goLogin() {
-        cargarPantalla(Pantallas.LOGIN);
+    public void goInicio() {
+        cargarPantalla(Pantallas.INICIO);
         goTo.setVisible(false);
     }
 
-    public void goNewspaper(){
-        cargarPantalla(Pantallas.NEWSPAPER);
+    public void goAllFish(){
+        cargarPantalla(Pantallas.ALLFISH);
         goTo.setVisible(true);
+        itemAllFish.setVisible(false);
+        itemInicio.setVisible(true);
+    }
+    public void goInfoFish(){
+        cargarPantalla(Pantallas.INFOFISH);
+        goTo.setVisible(true);
+        itemAllFish.setVisible(true);
+        itemInicio.setVisible(true);
     }
 
     public void error(String mensaje) {

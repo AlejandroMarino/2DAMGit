@@ -14,14 +14,15 @@ module basefx {
     exports servicios;
     exports data;
     exports ui.pantallas.principal;
-    exports ui.pantallas.Newspaper;
-    exports ui.pantallas.login;
+    exports ui.pantallas.inicio;
     exports ui.common;
+    exports ui.pantallas.allFish;
+    exports ui.pantallas.infoFish;
 
 
     opens config;
     opens modelo;
     opens ui.fx;
     opens ui.pantallas.principal;
-    opens ui.pantallas.login;
+    opens ui.pantallas.inicio;
 }
