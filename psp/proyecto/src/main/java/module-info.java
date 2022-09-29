@@ -9,6 +9,10 @@ module basefx {
     requires jakarta.inject;
     requires javafx.fxml;
     requires javafx.controls;
+    requires retrofit2;
+    requires com.squareup.moshi;
+    requires retrofit2.converter.moshi;
+    requires okhttp3;
 
     exports ui.fx;
     exports servicios;
