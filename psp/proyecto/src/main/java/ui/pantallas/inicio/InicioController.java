@@ -31,11 +31,6 @@ public class InicioController extends BasePantallaController {
         btnGuitarra.setImage(new Image(getClass().getResourceAsStream(("/images/guitarrita.png"))));
     }
 
-    @Override
-    public void principalCargado() {
-
-    }
-
     @FXML
     private void contunue(ActionEvent actionEvent) {
         getPrincipalController().goAllFish();
