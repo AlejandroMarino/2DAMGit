@@ -1,3 +1,2 @@
-pathClientes: data/clientes.json
-pathProductos: data/productos.json
+pathApi: https://acnhapi.com/v1/
 

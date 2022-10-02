@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ui.common.BasePantallaController;
 
+import java.util.Objects;
+
 public class InicioController extends BasePantallaController {
 
     private final InicioViewModel inicioViewModel;
@@ -27,8 +29,9 @@ public class InicioController extends BasePantallaController {
                 getPrincipalController().error(newValue.getError());
             }
         });
-        imgLogo.setImage(new Image(getClass().getResourceAsStream("/images/Animal_Crossing_Logo.png")));
-        btnGuitarra.setImage(new Image(getClass().getResourceAsStream(("/images/guitarrita.png"))));
+        imgLogo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/Animal_Crossing_Logo.png"))));
+        btnGuitarra.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(("/images/guitarrita.png")))));
+
     }
 
     @FXML

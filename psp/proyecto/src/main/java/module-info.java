@@ -13,16 +13,18 @@ module basefx {
     requires com.squareup.moshi;
     requires retrofit2.converter.moshi;
     requires okhttp3;
+    requires io.vavr;
 
     exports ui.fx;
     exports servicios;
-    exports data;
     exports ui.pantallas.principal;
     exports ui.pantallas.inicio;
     exports ui.common;
     exports ui.pantallas.allFish;
     exports ui.pantallas.infoFish;
-
+    exports data.retrofit;
+    exports modelo;
+    exports config;
 
     opens config;
     opens modelo;
@@ -30,4 +32,7 @@ module basefx {
     opens ui.pantallas.principal;
     opens ui.pantallas.inicio;
     opens ui.pantallas.allFish;
+    exports data.impl;
+    exports servicios.serviciosImpl;
+    opens ui.pantallas.infoFish;
 }

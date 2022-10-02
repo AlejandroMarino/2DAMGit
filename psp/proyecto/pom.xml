@@ -38,6 +38,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
@@ -216,6 +217,11 @@
             <artifactId>system-stubs-jupiter</artifactId>
             <version>2.0.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>0.10.4</version>
         </dependency>
 
     </dependencies>

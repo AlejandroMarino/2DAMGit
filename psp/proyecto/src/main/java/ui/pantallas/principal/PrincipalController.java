@@ -2,7 +2,6 @@ package ui.pantallas.principal;
 
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,9 +29,11 @@ public class PrincipalController implements Initializable {
     @FXML
     private BorderPane root;
 
+    private int actualFish;
+
     Instance<Object> instance;
 
-    private Alert alert;
+    private final Alert alert;
 
 
     @Inject
@@ -77,13 +78,15 @@ public class PrincipalController implements Initializable {
         goTo.setVisible(false);
     }
 
-    public void goAllFish(){
+    public void goAllFish() {
         cargarPantalla(Pantallas.ALLFISH);
         goTo.setVisible(true);
         itemAllFish.setVisible(false);
         itemInicio.setVisible(true);
     }
-    public void goInfoFish(){
+
+    public void goInfoFish(int id) {
+        actualFish = id;
         cargarPantalla(Pantallas.INFOFISH);
         goTo.setVisible(true);
         itemAllFish.setVisible(true);
@@ -94,5 +97,9 @@ public class PrincipalController implements Initializable {
         alert.setAlertType(Alert.AlertType.ERROR);
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+
+    public int getActualFish() {
+        return actualFish;
     }
 }

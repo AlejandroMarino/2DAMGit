@@ -9,12 +9,12 @@
    <children>
       <TableView fx:id="tableFish" layoutX="101.0" layoutY="108.0" prefHeight="484.0" prefWidth="346.0">
         <columns>
-          <TableColumn prefWidth="173.0" text="Name" />
-          <TableColumn prefWidth="172.0" text="Location" />
+          <TableColumn fx:id="tCName" prefWidth="186.0" text="Name" />
+          <TableColumn fx:id="tCShadow" prefWidth="159.0" text="Shadow" />
         </columns>
       </TableView>
        <ImageView fx:id="imgFishing" fitHeight="366.0" fitWidth="359.0" layoutX="541.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="519.0" layoutY="452.0" mnemonicParsing="false" text="View Details" />
+      <Button layoutX="519.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnDetails" text="View Details" />
       <Label layoutX="248.0" layoutY="55.0" text="Fish">
          <font>
             <Font size="30.0" />
