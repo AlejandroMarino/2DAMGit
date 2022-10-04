@@ -35,7 +35,7 @@ public class InicioController extends BasePantallaController {
     }
 
     @FXML
-    private void contunue(ActionEvent actionEvent) {
+    private void contunue() {
         getPrincipalController().goAllFish();
     }
 }

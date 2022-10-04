@@ -29,6 +29,9 @@ module basefx {
     opens config;
     opens modelo;
     opens ui.fx;
+    opens ui.pantallas.articles;
+    opens ui.pantallas.filterArticles;
+    opens ui.pantallas.addArticles;
     opens ui.pantallas.principal;
     opens ui.pantallas.login;
     opens ui.pantallas.Newspaper;

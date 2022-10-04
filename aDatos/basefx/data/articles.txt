@@ -6,5 +6,3 @@
 6;El Valencia;ha empatao;1;2
 7;El Villareal;ha ganao;2;2
 8;El Barsa;ha ganao;3;2
-9;El Cadiz;ha ganao;3;3
-10;La Real;ha empatao;6;3

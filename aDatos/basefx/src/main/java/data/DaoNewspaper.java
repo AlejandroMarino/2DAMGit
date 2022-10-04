@@ -23,14 +23,6 @@ public class DaoNewspaper {
         this.config = config;
     }
 
-    //    public int save(List<Newspaper> newspapers) {
-//        return 0;
-//    }
-//
-//    public int update(List<Newspaper> newspapers) {
-//        return 0;
-//    }
-
     public boolean delete(Newspaper n) {
         List<Newspaper> news = getAll().get();
         news.remove(n);
@@ -65,6 +57,7 @@ public class DaoNewspaper {
         try {
             reader = Files.newBufferedReader(p, StandardCharsets.UTF_8);
             reader.lines().forEach(line -> newspapers.add(new Newspaper(line)));
+            reader.close();
             return Either.right(newspapers);
         } catch (IOException e) {
             return Either.left("No newspapers found");

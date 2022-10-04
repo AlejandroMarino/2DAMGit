@@ -22,6 +22,7 @@ public class Configuracion {
                     Configuracion.class.getClassLoader().getResourceAsStream("config.yaml"));
             this.newspapers = node.get("newspapers").asText();
             this.articles = node.get("articles").asText();
+            this.types = node.get("types").asText();
 
 
         } catch (IOException e) {
@@ -33,5 +34,6 @@ public class Configuracion {
 
     private String newspapers;
     private String articles;
+    private String types;
 
 }

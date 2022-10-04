@@ -3,7 +3,6 @@ package data;
 import config.Configuracion;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
-import javafx.scene.shape.HLineTo;
 import modelo.Article;
 import modelo.Type;
 
@@ -28,14 +27,14 @@ public class DaoArticle {
         this.config = config;
     }
 
-    public Either<String,List<Article>> filter(Type type) {
-        if (getAll().isLeft()){
+    public Either<String, List<Article>> filter(Type type) {
+        if (getAll().isLeft()) {
             return Either.left(getAll().getLeft());
         } else {
             List<Article> articles = getAll()
                     .get()
                     .stream()
-                    .filter(article -> article.getType() ==type.getId()).collect(Collectors.toUnmodifiableList());
+                    .filter(article -> article.getType() == type.getId()).collect(Collectors.toUnmodifiableList());
             return Either.right(articles);
         }
     }
@@ -43,29 +42,32 @@ public class DaoArticle {
     public int addArt(Article article) {
         BufferedWriter writer;
         Path p = Paths.get(config.getArticles());
-        if (getAll().isLeft()){
+        if (getAll().isLeft()) {
             return -1;
-        }else{
-            try{
+        } else {
+            try {
                 writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND);
+                writer.newLine();
                 writer.append(article.toString());
+                writer.close();
                 return 0;
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
                 return -1;
             }
         }
     }
 
-    public Either<String,List<Article>> getAll() {
+    public Either<String, List<Article>> getAll() {
         List<Article> articles = new ArrayList<>();
         BufferedReader reader;
         Path p = Paths.get(config.getArticles());
-        try{
+        try {
             reader = Files.newBufferedReader(p, StandardCharsets.UTF_8);
             reader.lines().forEach(line -> articles.add(new Article(line)));
+            reader.close();
             return Either.right(articles);
-        }catch (IOException e){
+        } catch (IOException e) {
             return Either.left("No articles found");
         }
     }
@@ -87,6 +89,10 @@ public class DaoArticle {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean availableId(int id) {
+        return getAll().get().stream().noneMatch(article -> article.getId() == id);
     }
 
 }

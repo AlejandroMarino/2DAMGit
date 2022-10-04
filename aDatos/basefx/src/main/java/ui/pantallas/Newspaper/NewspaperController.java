@@ -2,7 +2,6 @@ package ui.pantallas.Newspaper;
 
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,12 +13,13 @@ public class NewspaperController extends BasePantallaController {
     @FXML
     private TableView<Newspaper> tableNews;
     @FXML
-    private TableColumn<String,Newspaper> tcId;
+    private TableColumn<String, Newspaper> tcId;
     @FXML
-    private TableColumn<String,Newspaper> tcName;
-    @FXML private TableColumn<String,Newspaper> tcPrice;
+    private TableColumn<String, Newspaper> tcName;
     @FXML
-    private TableColumn<String,Newspaper> tcDirector;
+    private TableColumn<String, Newspaper> tcPrice;
+    @FXML
+    private TableColumn<String, Newspaper> tcDirector;
 
 
     private final NewspaperViewModel newspaperViewModel;

@@ -50,8 +50,14 @@ public class ServiciosNewspaper {
         }
     }
 
-    public Newspaper get(int id){
-        return daoNewspaper.get(id).get();
+    public Either<String,Newspaper> get(int id){
+        if (daoNewspaper.get(id).isLeft()){
+            return Either.left(daoNewspaper.get(id).getLeft());
+        }else if (daoNewspaper.get(id).get() == null){
+            return Either.left("Id not found");
+        }else{
+            return Either.right(daoNewspaper.get(id).get());
+        }
     }
 
     public Either<String,List<Newspaper>> getAll(){

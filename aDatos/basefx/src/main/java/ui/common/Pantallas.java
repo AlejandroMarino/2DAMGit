@@ -7,7 +7,7 @@ public enum Pantallas {
     NEWSPAPER("/fxml/Newspaper.fxml"),
     DELNEWSPAPER("/fxml/DelNewspaper.fxml"),
     ARTICLE("/fxml/Articles.fxml"),
-    ADARTICLE("/fxml/AddArticle.fxml"),
+    ADARTICLE("/fxml/AddArticles.fxml"),
     FILTERARTICLE("/fxml/FilterArticles.fxml");
 
 
