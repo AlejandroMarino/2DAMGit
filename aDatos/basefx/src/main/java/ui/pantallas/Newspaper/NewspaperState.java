@@ -9,6 +9,5 @@ import java.util.List;
 public class NewspaperState {
 
     private final List<Newspaper> newspapers;
-
     private final String error;
 }

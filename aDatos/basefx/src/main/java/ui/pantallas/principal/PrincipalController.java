@@ -22,6 +22,12 @@ import java.util.ResourceBundle;
 @Log4j2
 public class PrincipalController implements Initializable {
     @FXML
+    private MenuItem delNewspapers;
+    @FXML
+    private MenuItem addArti;
+    @FXML
+    private MenuItem filterArti;
+    @FXML
     private MenuItem itemArti;
     @FXML
     private MenuItem itemNews;
@@ -91,6 +97,9 @@ public class PrincipalController implements Initializable {
         items.setVisible(true);
         itemNews.setVisible(false);
         itemArti.setVisible(true);
+        delNewspapers.setVisible(true);
+        addArti.setVisible(true);
+        filterArti.setVisible(true);
     }
 
     public void goArti() {
@@ -98,9 +107,44 @@ public class PrincipalController implements Initializable {
         goTo.setVisible(true);
         items.setVisible(true);
         itemNews.setVisible(true);
+        delNewspapers.setVisible(true);
         itemArti.setVisible(false);
+        addArti.setVisible(true);
+        filterArti.setVisible(true);
     }
 
+    public void goDelNewspaper() {
+        cargarPantalla(Pantallas.DELNEWSPAPER);
+        goTo.setVisible(true);
+        items.setVisible(true);
+        itemNews.setVisible(true);
+        delNewspapers.setVisible(false);
+        itemArti.setVisible(true);
+        addArti.setVisible(true);
+        filterArti.setVisible(true);
+    }
+
+    public void goAddArti() {
+        cargarPantalla(Pantallas.ADARTICLE);
+        goTo.setVisible(true);
+        items.setVisible(true);
+        itemNews.setVisible(true);
+        delNewspapers.setVisible(true);
+        itemArti.setVisible(true);
+        addArti.setVisible(false);
+        filterArti.setVisible(true);
+    }
+
+    public void goFilterArti() {
+        cargarPantalla(Pantallas.FILTERARTICLE);
+        goTo.setVisible(true);
+        items.setVisible(true);
+        itemNews.setVisible(true);
+        delNewspapers.setVisible(true);
+        itemArti.setVisible(true);
+        addArti.setVisible(true);
+        filterArti.setVisible(false);
+    }
 
     public void error(String mensaje) {
         alert.setAlertType(Alert.AlertType.ERROR);

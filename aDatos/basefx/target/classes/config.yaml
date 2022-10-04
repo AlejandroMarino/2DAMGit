@@ -1,4 +1,4 @@
-newspapers: newspapers.txt
-articles: articles.txt
+newspapers: data/newspapers.txt
+articles: data/articles.txt
 
 

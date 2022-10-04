@@ -2,9 +2,11 @@ package data;
 
 import config.Configuracion;
 import io.vavr.control.Either;
+import jakarta.inject.Inject;
 import modelo.Newspaper;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -14,19 +16,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoNewspaper {
-    private Configuracion config;
+    private final Configuracion config;
 
-    public int save(List<Newspaper> newspapers) {
-        return 0;
+    @Inject
+    public DaoNewspaper(Configuracion config) {
+        this.config = config;
     }
 
-    public int update(List<Newspaper> newspapers) {
-        return 0;
+    //    public int save(List<Newspaper> newspapers) {
+//        return 0;
+//    }
+//
+//    public int update(List<Newspaper> newspapers) {
+//        return 0;
+//    }
+
+    public boolean delete(Newspaper n) {
+        List<Newspaper> news = getAll().get();
+        news.remove(n);
+        BufferedWriter writer;
+        Path p = Paths.get(config.getNewspapers());
+        try {
+            writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
+            for (Newspaper newspaper : news) {
+                writer.write(newspaper.toString());
+                writer.newLine();
+            }
+            writer.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public int delete(Newspaper n){
-        return 0;
-    }
     public Either<String, Newspaper> get(int id) {
         if (getAll().isLeft()) {
             return Either.left(getAll().getLeft());

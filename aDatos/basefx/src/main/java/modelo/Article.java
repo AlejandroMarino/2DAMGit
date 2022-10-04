@@ -9,6 +9,7 @@ public class Article {
     private int id;
     private String name;
     private String description;
+    private int type;
     private int idNewspaper;
 
 
@@ -17,10 +18,11 @@ public class Article {
         this.id = Integer.parseInt(parts[0]);
         this.name = parts[1];
         this.description = parts[2];
-        this.idNewspaper = Integer.parseInt(parts[3]);
+        this.type = Integer.parseInt(parts[3]);
+        this.idNewspaper = Integer.parseInt(parts[4]);
     }
 
     public String toString(){
-        return id + ";" + name + ";" + description + ";" + idNewspaper;
+        return id + ";" + name + ";" + description + ";" + type + ";" + idNewspaper;
     }
 }

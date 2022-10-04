@@ -21,8 +21,11 @@ module basefx {
     exports ui.pantallas.delNewspaper;
     exports ui.pantallas.articles;
     exports modelo;
+    exports servicios;
+    exports config;
+    exports ui.pantallas.filterArticles;
 
-
+    opens ui.pantallas.delNewspaper;
     opens config;
     opens modelo;
     opens ui.fx;

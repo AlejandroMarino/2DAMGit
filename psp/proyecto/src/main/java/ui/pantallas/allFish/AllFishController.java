@@ -38,6 +38,7 @@ public class AllFishController extends BasePantallaController {
                 getPrincipalController().error(newValue.getError());
             }
             if (newValue.getFishes() != null) {
+                tableFish.getItems().clear();
                 tableFish.getItems().setAll(newValue.getFishes());
             }
 
