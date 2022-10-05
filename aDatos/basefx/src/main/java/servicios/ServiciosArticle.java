@@ -27,19 +27,7 @@ public class ServiciosArticle {
     }
 
     public int addArt(Article art) {
-        if (daoArticle.addArt(art) == 0) {
-            return 0;
-        } else {
-            return -1;
-        }
-    }
-
-    public boolean availableId(int id){
-        if (getAll().isLeft()){
-            return false;
-        } else {
-            return daoArticle.availableId(id);
-        }
+        return daoArticle.addArt(art);
     }
 
     public Either<String,List<Article>> getAll(){

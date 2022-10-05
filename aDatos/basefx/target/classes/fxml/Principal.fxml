@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.principal.PrincipalController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu fx:id="goTo" mnemonicParsing="false" text="Go to">
+                    <items>
+                        <MenuItem fx:id="itemLogout" mnemonicParsing="false" onAction="#goLogin" text="Logout"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="items" mnemonicParsing="false" text="Newspapers">
+                    <items>
+                        <MenuItem fx:id="itemNews" mnemonicParsing="false" onAction="#goNewspaper"
+                                  text="All Newspapers"/>
+                        <MenuItem fx:id="delNewspapers" mnemonicParsing="false" onAction="#goDelNewspaper" text="DelNewspapers"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Article">
+                    <items>
+                        <MenuItem fx:id="itemArti" mnemonicParsing="false" onAction="#goArti" text="All Articles"/>
+                        <MenuItem fx:id="addArti" mnemonicParsing="false" onAction="#goAddArti" text="Add Article"/>
+                        <MenuItem fx:id="filterArti" mnemonicParsing="false" onAction="#goFilterArti" text="Filter Article"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>

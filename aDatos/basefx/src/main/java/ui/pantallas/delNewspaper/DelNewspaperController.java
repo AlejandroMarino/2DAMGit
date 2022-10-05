@@ -51,7 +51,8 @@ public class DelNewspaperController extends BasePantallaController {
     @FXML
     private void delete(ActionEvent actionEvent) {
         if (tableNewspaper.getSelectionModel().getSelectedItem() != null) {
-            delNewspaperViewModel.delete(tableNewspaper.getSelectionModel().getSelectedItem());
+            boolean e = getPrincipalController().confirmacion("Are you sure you want to delete this newspaper?");
+//            delNewspaperViewModel.delete(tableNewspaper.getSelectionModel().getSelectedItem());
         } else {
             getPrincipalController().error("Select a newspaper from the table");
         }

@@ -44,15 +44,16 @@ public class AddArticlesViewModel {
         } else if (svarttype.getTypeById(Integer.parseInt(typeId)).isLeft()) {
             state.setValue(new AddArticlesState(null, null));
             state.setValue(new AddArticlesState(null, svarttype.getTypeById(Integer.parseInt(typeId)).getLeft()));
-        }else if (!svart.availableId(Integer.parseInt(id))){
-            state.setValue(new AddArticlesState(null, null));
-            state.setValue(new AddArticlesState(null, "The Id is not available"));
         }else {
             Article art = new Article(Integer.parseInt(id), name, description,Integer.parseInt(typeId),Integer.parseInt(idNews));
-            if (svart.addArt(art) != 0){
+            int n = svart.addArt(art);
+            if (n == -1){
                 state.setValue(new AddArticlesState(null, null));
                 state.setValue(new AddArticlesState(null, "article not added"));
-            }else{
+            }else if (n == 1) {
+                state.setValue(new AddArticlesState(null, null));
+                state.setValue(new AddArticlesState(null, "The Id is not available"));
+            }else {
                 if (svart.getAll().isLeft()) {
                     state.setValue(new AddArticlesState(null, null));
                     state.setValue(new AddArticlesState(null, svart.getAll().getLeft()));

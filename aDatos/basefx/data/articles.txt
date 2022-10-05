@@ -6,3 +6,5 @@
 6;El Valencia;ha empatao;1;2
 7;El Villareal;ha ganao;2;2
 8;El Barsa;ha ganao;3;2
+9;El Atleti;ha perdio;7;3
+10;El Bilbao;ha ganao;6;3

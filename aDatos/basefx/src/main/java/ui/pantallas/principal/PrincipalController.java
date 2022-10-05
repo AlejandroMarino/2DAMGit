@@ -44,10 +44,6 @@ public class PrincipalController implements Initializable {
 
     private Alert alert;
 
-    public void cambio(ActionEvent actionEvent) {
-
-    }
-
     @Inject
     public PrincipalController(Instance<Object> instance) {
         this.instance = instance;
@@ -88,11 +84,18 @@ public class PrincipalController implements Initializable {
     public void goLogin() {
         cargarPantalla(Pantallas.LOGIN);
         goTo.setVisible(false);
+        itemLogout.setVisible(false);
         items.setVisible(true);
+        itemNews.setVisible(true);
+        itemArti.setVisible(true);
+        delNewspapers.setVisible(true);
+        addArti.setVisible(true);
+        filterArti.setVisible(true);
     }
 
     public void goNewspaper() {
         cargarPantalla(Pantallas.NEWSPAPER);
+        itemLogout.setVisible(true);
         goTo.setVisible(true);
         items.setVisible(true);
         itemNews.setVisible(false);
@@ -104,6 +107,7 @@ public class PrincipalController implements Initializable {
 
     public void goArti() {
         cargarPantalla(Pantallas.ARTICLE);
+        itemLogout.setVisible(true);
         goTo.setVisible(true);
         items.setVisible(true);
         itemNews.setVisible(true);
@@ -115,6 +119,7 @@ public class PrincipalController implements Initializable {
 
     public void goDelNewspaper() {
         cargarPantalla(Pantallas.DELNEWSPAPER);
+        itemLogout.setVisible(true);
         goTo.setVisible(true);
         items.setVisible(true);
         itemNews.setVisible(true);
@@ -126,6 +131,7 @@ public class PrincipalController implements Initializable {
 
     public void goAddArti() {
         cargarPantalla(Pantallas.ADARTICLE);
+        itemLogout.setVisible(true);
         goTo.setVisible(true);
         items.setVisible(true);
         itemNews.setVisible(true);
@@ -137,6 +143,7 @@ public class PrincipalController implements Initializable {
 
     public void goFilterArti() {
         cargarPantalla(Pantallas.FILTERARTICLE);
+        itemLogout.setVisible(true);
         goTo.setVisible(true);
         items.setVisible(true);
         itemNews.setVisible(true);
@@ -150,5 +157,12 @@ public class PrincipalController implements Initializable {
         alert.setAlertType(Alert.AlertType.ERROR);
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+
+    public boolean confirmacion(String mensaje) {
+        alert.setAlertType(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+        return alert.getResult().getText().equals("OK");
     }
 }

@@ -45,15 +45,19 @@ public class DaoArticle {
         if (getAll().isLeft()) {
             return -1;
         } else {
-            try {
-                writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND);
-                writer.newLine();
-                writer.append(article.toString());
-                writer.close();
-                return 0;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return -1;
+            if (availableId(article.getId())) {
+                try {
+                    writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND);
+                    writer.newLine();
+                    writer.append(article.toString());
+                    writer.close();
+                    return 0;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return -1;
+                }
+            } else {
+                return 1;
             }
         }
     }
@@ -80,8 +84,8 @@ public class DaoArticle {
         try {
             writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
             for (Article article : articles) {
-                writer.write(article.toString());
                 writer.newLine();
+                writer.write(article.toString());
             }
             writer.close();
             return true;
@@ -91,7 +95,7 @@ public class DaoArticle {
         }
     }
 
-    public boolean availableId(int id) {
+    private boolean availableId(int id) {
         return getAll().get().stream().noneMatch(article -> article.getId() == id);
     }
 
