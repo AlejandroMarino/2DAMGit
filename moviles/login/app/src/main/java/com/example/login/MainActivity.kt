@@ -6,11 +6,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-lateinit var usu: EditText
-lateinit var contra: EditText
-lateinit var btn: Button
-
 class MainActivity : AppCompatActivity() {
+    private lateinit var usu: EditText
+    private lateinit var contra: EditText
+    private lateinit var btn: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

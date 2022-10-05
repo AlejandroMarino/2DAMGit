@@ -9,5 +9,4 @@ import java.util.List;
 public class DelNewspaperState {
     private final List<Newspaper> newspapers;
     private final String error;
-
 }

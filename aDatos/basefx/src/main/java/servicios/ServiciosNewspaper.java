@@ -32,8 +32,9 @@ public class ServiciosNewspaper {
                     .stream()
                     .filter(article -> article.getIdNewspaper() == n.getId()).collect(Collectors.toList());
             if(serviciosArticle.deleteArts(delArts)) {
-                daoNewspaper.delete(n);
-                return true;
+                return daoNewspaper.delete(n);
+            }else if (delArts.isEmpty()) {
+                return daoNewspaper.delete(n);
             }else{
                 return false;
             }

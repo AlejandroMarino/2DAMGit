@@ -15,13 +15,13 @@ public class DelNewspaperController extends BasePantallaController {
     @FXML
     private TableView<Newspaper> tableNewspaper;
     @FXML
-    private TableColumn<String,Newspaper> tcId;
+    private TableColumn<String, Newspaper> tcId;
     @FXML
-    private TableColumn<String,Newspaper> tcName;
+    private TableColumn<String, Newspaper> tcName;
     @FXML
-    private TableColumn<String,Newspaper> tcPrice;
+    private TableColumn<String, Newspaper> tcPrice;
     @FXML
-    private TableColumn<String,Newspaper> tcDirector;
+    private TableColumn<String, Newspaper> tcDirector;
 
     @Inject
     public DelNewspaperController(DelNewspaperViewModel delNewspaperViewModel) {
@@ -36,7 +36,7 @@ public class DelNewspaperController extends BasePantallaController {
         delNewspaperViewModel.getState().addListener((observable, oldValue, newValue) -> {
             if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
-            }else if (newValue.getNewspapers() != null) {
+            } else if (newValue.getNewspapers() != null) {
                 tableNewspaper.getItems().clear();
                 tableNewspaper.getItems().addAll(newValue.getNewspapers());
             }
@@ -51,8 +51,13 @@ public class DelNewspaperController extends BasePantallaController {
     @FXML
     private void delete(ActionEvent actionEvent) {
         if (tableNewspaper.getSelectionModel().getSelectedItem() != null) {
-            boolean e = getPrincipalController().confirmacion("Are you sure you want to delete this newspaper?");
-//            delNewspaperViewModel.delete(tableNewspaper.getSelectionModel().getSelectedItem());
+            if (delNewspaperViewModel.checkDel(tableNewspaper.getSelectionModel().getSelectedItem())) {
+                delNewspaperViewModel.delete(tableNewspaper.getSelectionModel().getSelectedItem());
+            } else {
+                if (getPrincipalController().confirmacion("Are you sure you want to delete this newspaper?")) {
+                    delNewspaperViewModel.delete(tableNewspaper.getSelectionModel().getSelectedItem());
+                }
+            }
         } else {
             getPrincipalController().error("Select a newspaper from the table");
         }

@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import modelo.Newspaper;
 import servicios.ServiciosArticle;
 import servicios.ServiciosNewspaper;
-import ui.pantallas.Newspaper.NewspaperState;
 
 public class DelNewspaperViewModel {
     private final ObjectProperty<DelNewspaperState> state;
@@ -20,7 +19,7 @@ public class DelNewspaperViewModel {
 
     @Inject
     public DelNewspaperViewModel(ServiciosNewspaper svnp, ServiciosArticle svart) {
-        state = new SimpleObjectProperty<>(new DelNewspaperState(null,null));
+        state = new SimpleObjectProperty<>(new DelNewspaperState(null, null));
         this.svnp = svnp;
         this.svart = svart;
     }
@@ -36,21 +35,16 @@ public class DelNewspaperViewModel {
     }
 
     public void delete(Newspaper n) {
-            if (svnp.delete(n)){
-                state.setValue(new DelNewspaperState(null, null));
-                state.setValue(new DelNewspaperState(svnp.getAll().get(), null));
-            } else {
-                state.setValue(new DelNewspaperState(null, null));
-                state.setValue(new DelNewspaperState(null, "Newspaper not deleted"));
-            }
+        if (svnp.delete(n)) {
+            state.setValue(new DelNewspaperState(null, null));
+            state.setValue(new DelNewspaperState(svnp.getAll().get(), null));
+        } else {
+            state.setValue(new DelNewspaperState(null, null));
+            state.setValue(new DelNewspaperState(null, "Newspaper not deleted"));
+        }
     }
 
-    public void checkDel(Newspaper n){
-        if (svnp.validoDel(n)) {
-            delete(n);
-        }
-        else {
-            //sacar alert
-        }
+    public boolean checkDel(Newspaper n) {
+        return svnp.validoDel(n);
     }
 }

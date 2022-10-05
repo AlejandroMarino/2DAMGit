@@ -163,6 +163,6 @@ public class PrincipalController implements Initializable {
         alert.setAlertType(Alert.AlertType.CONFIRMATION);
         alert.setContentText(mensaje);
         alert.showAndWait();
-        return alert.getResult().getText().equals("OK");
+        return alert.getResult().getText().equals("Aceptar");
     }
 }
