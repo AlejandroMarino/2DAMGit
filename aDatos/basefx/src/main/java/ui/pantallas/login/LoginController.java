@@ -1,14 +1,16 @@
 package ui.pantallas.login;
 
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import ui.common.BasePantallaController;
 
 public class LoginController extends BasePantallaController {
     @FXML
-    private void login(ActionEvent actionEvent) {
-    }
+    private TextField txUser;
+    @FXML
+    private PasswordField txPas;
 
     private final LoginViewModel loginViewModel;
 
@@ -22,16 +24,16 @@ public class LoginController extends BasePantallaController {
             if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
             }
+            if (newValue.isLoginOK()) {
+                getPrincipalController().goNewspaper();
+            }
         });
     }
 
-    @Override
-    public void principalCargado() {
-
-    }
-
     @FXML
-    private void continuar(ActionEvent actionEvent) {
-
+    private void login() {
+        String user = txUser.getText();
+        String pas = txPas.getText();
+        loginViewModel.login(user, pas);
     }
 }

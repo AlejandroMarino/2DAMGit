@@ -1,3 +1,3 @@
 package com.moviles.appf1teams.domain.modelo
 
-data class Team(val name: String, val country: String, val color: String, val performance: Int)
+data class Team(var name: String, var performance: Float, var tyre: Int, var winner: Boolean)

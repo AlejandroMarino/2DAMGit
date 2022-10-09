@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.moviles.appf1teams'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.moviles.appf1teams"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 

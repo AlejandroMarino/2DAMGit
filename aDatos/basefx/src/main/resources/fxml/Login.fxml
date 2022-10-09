@@ -8,9 +8,9 @@
    <children>
       <Label layoutX="218.0" layoutY="306.0" prefHeight="20.0" prefWidth="38.0" text="User:" />
       <TextField fx:id="txUser" layoutX="218.0" layoutY="338.0" />
-      <TextField fx:id="txPas" layoutX="627.0" layoutY="338.0" />
+      <PasswordField fx:id="txPas" layoutX="627.0" layoutY="338.0"/>
       <Label layoutX="627.0" layoutY="308.0" text="Password:" />
-      <Button fx:id="btnLogin" layoutX="477.0" layoutY="486.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Button layoutX="477.0" layoutY="486.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <Label layoutX="384.0" layoutY="147.0" text="Wellcome" textFill="#b8463e">
          <font>
             <Font name="System Bold Italic" size="50.0" />

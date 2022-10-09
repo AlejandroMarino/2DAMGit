@@ -11,17 +11,15 @@ import servicios.ServiciosNewspaper;
 public class DelNewspaperViewModel {
     private final ObjectProperty<DelNewspaperState> state;
     private final ServiciosNewspaper svnp;
-    private final ServiciosArticle svart;
 
     public ReadOnlyObjectProperty<DelNewspaperState> getState() {
         return state;
     }
 
     @Inject
-    public DelNewspaperViewModel(ServiciosNewspaper svnp, ServiciosArticle svart) {
+    public DelNewspaperViewModel(ServiciosNewspaper svnp) {
         state = new SimpleObjectProperty<>(new DelNewspaperState(null, null));
         this.svnp = svnp;
-        this.svart = svart;
     }
 
     public void inicio() {

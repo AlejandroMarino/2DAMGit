@@ -27,18 +27,6 @@ public class DaoArticle {
         this.config = config;
     }
 
-    public Either<String, List<Article>> filter(Type type) {
-        if (getAll().isLeft()) {
-            return Either.left(getAll().getLeft());
-        } else {
-            List<Article> articles = getAll()
-                    .get()
-                    .stream()
-                    .filter(article -> article.getType() == type.getId()).collect(Collectors.toUnmodifiableList());
-            return Either.right(articles);
-        }
-    }
-
     public int addArt(Article article) {
         BufferedWriter writer;
         Path p = Paths.get(config.getArticles());

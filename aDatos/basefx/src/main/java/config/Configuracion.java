@@ -24,13 +24,17 @@ public class Configuracion {
             this.articles = node.get("articles").asText();
             this.types = node.get("types").asText();
 
-
+            JsonNode node2 = mapper.readTree(
+                    Configuracion.class.getClassLoader().getResourceAsStream("user.yaml"));
+            this.user = node2.get("user").asText();
+            this.password = node2.get("password").asText();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
     }
 
-
+    private String user;
+    private String password;
 
     private String newspapers;
     private String articles;

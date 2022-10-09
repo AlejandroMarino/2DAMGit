@@ -51,7 +51,8 @@ public class AddArticlesController extends BasePantallaController {
         addArticlesViewModel.getState().addListener((observable, oldValue, newValue) -> {
             if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
-            }if (newValue.getArticles() != null) {
+            }
+            if (newValue.getArticles() != null) {
                 tableArticle.getItems().clear();
                 tableArticle.getItems().setAll(newValue.getArticles());
             }

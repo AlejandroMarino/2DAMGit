@@ -2,7 +2,6 @@ package ui.pantallas.principal;
 
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +21,10 @@ import java.util.ResourceBundle;
 @Log4j2
 public class PrincipalController implements Initializable {
     @FXML
+    private Menu art;
+    @FXML
+    private Menu news;
+    @FXML
     private MenuItem delNewspapers;
     @FXML
     private MenuItem addArti;
@@ -32,8 +35,6 @@ public class PrincipalController implements Initializable {
     @FXML
     private MenuItem itemNews;
     @FXML
-    private Menu items;
-    @FXML
     private MenuItem itemLogout;
     @FXML
     private Menu goTo;
@@ -42,7 +43,7 @@ public class PrincipalController implements Initializable {
 
     Instance<Object> instance;
 
-    private Alert alert;
+    private final Alert alert;
 
     @Inject
     public PrincipalController(Instance<Object> instance) {
@@ -85,72 +86,75 @@ public class PrincipalController implements Initializable {
         cargarPantalla(Pantallas.LOGIN);
         goTo.setVisible(false);
         itemLogout.setVisible(false);
-        items.setVisible(true);
-        itemNews.setVisible(true);
-        itemArti.setVisible(true);
-        delNewspapers.setVisible(true);
-        addArti.setVisible(true);
-        filterArti.setVisible(true);
+        itemNews.setVisible(false);
+        itemArti.setVisible(false);
+        news.setVisible(false);
+        art.setVisible(false);
     }
 
     public void goNewspaper() {
         cargarPantalla(Pantallas.NEWSPAPER);
         itemLogout.setVisible(true);
         goTo.setVisible(true);
-        items.setVisible(true);
+        news.setVisible(true);
         itemNews.setVisible(false);
         itemArti.setVisible(true);
         delNewspapers.setVisible(true);
         addArti.setVisible(true);
         filterArti.setVisible(true);
+        art.setVisible(true);
     }
 
     public void goArti() {
         cargarPantalla(Pantallas.ARTICLE);
         itemLogout.setVisible(true);
         goTo.setVisible(true);
-        items.setVisible(true);
+        news.setVisible(true);
         itemNews.setVisible(true);
         delNewspapers.setVisible(true);
         itemArti.setVisible(false);
         addArti.setVisible(true);
         filterArti.setVisible(true);
+        art.setVisible(true);
     }
 
     public void goDelNewspaper() {
         cargarPantalla(Pantallas.DELNEWSPAPER);
         itemLogout.setVisible(true);
         goTo.setVisible(true);
-        items.setVisible(true);
+        news.setVisible(true);
         itemNews.setVisible(true);
         delNewspapers.setVisible(false);
         itemArti.setVisible(true);
         addArti.setVisible(true);
         filterArti.setVisible(true);
+        art.setVisible(true);
     }
 
     public void goAddArti() {
         cargarPantalla(Pantallas.ADARTICLE);
         itemLogout.setVisible(true);
         goTo.setVisible(true);
-        items.setVisible(true);
+        news.setVisible(true);
         itemNews.setVisible(true);
         delNewspapers.setVisible(true);
         itemArti.setVisible(true);
         addArti.setVisible(false);
         filterArti.setVisible(true);
+        art.setVisible(true);
     }
 
     public void goFilterArti() {
         cargarPantalla(Pantallas.FILTERARTICLE);
         itemLogout.setVisible(true);
         goTo.setVisible(true);
-        items.setVisible(true);
+        news.setVisible(true);
         itemNews.setVisible(true);
         delNewspapers.setVisible(true);
         itemArti.setVisible(true);
         addArti.setVisible(true);
         filterArti.setVisible(false);
+        art.setVisible(true);
     }
 
     public void error(String mensaje) {

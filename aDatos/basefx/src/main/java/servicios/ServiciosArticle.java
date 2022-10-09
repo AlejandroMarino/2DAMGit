@@ -4,8 +4,10 @@ import data.DaoArticle;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import modelo.Article;
+import modelo.Type;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ServiciosArticle {
     private final DaoArticle daoArticle;
@@ -38,7 +40,16 @@ public class ServiciosArticle {
         if (serviciosArticleType.getType(typeName).isLeft()){
             return Either.left(serviciosArticleType.getType(typeName).getLeft());
         }else {
-            return daoArticle.filter(serviciosArticleType.getType(typeName).get());
+            if (getAll().isLeft()){
+                return Either.left(getAll().getLeft());
+            }else {
+                Type type = serviciosArticleType.getType(typeName).get();
+                List<Article> articles = getAll()
+                        .get()
+                        .stream()
+                        .filter(article -> article.getType() == type.getId()).collect(Collectors.toUnmodifiableList());
+                return Either.right(articles);
+            }
         }
     }
 }
