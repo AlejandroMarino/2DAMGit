@@ -4,9 +4,9 @@ import com.moviles.appf1teams.data.Repository
 
 class Delete {
     operator fun invoke(name: String): Boolean {
-        val team = Repository.getInstance().getTeam(name)
+        val team = Repository.getTeam(name)
         return if (team != null) {
-            Repository.getInstance().deleteTeam(team)
+            Repository.deleteTeam(team)
             true;
         }else{
             false;

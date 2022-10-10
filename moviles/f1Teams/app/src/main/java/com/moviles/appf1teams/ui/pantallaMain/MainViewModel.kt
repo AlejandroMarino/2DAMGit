@@ -28,6 +28,10 @@ class MainViewModel(
 
     private fun allTeams() = getTeams()
 
+    fun cargarTeam(index: Int){
+        _uiState.value = MainState(team = allTeams()[index])
+    }
+
     fun previousTeam(index: Int) : Int {
         val teams = getTeams()
         if (index == 0) {
@@ -37,6 +41,11 @@ class MainViewModel(
             _uiState.value = MainState(team = teams[index - 1])
             return index - 1
         }
+    }
+
+    fun getNameTeam(index: Int) : String {
+        val team = getTeams()[index]
+        return team.name
     }
 
     fun nextTeam(index: Int): Int {

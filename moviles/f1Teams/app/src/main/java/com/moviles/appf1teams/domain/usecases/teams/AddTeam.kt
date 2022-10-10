@@ -5,8 +5,8 @@ import com.moviles.appf1teams.domain.modelo.Team
 
 class AddTeam {
     operator fun invoke(team: Team): Boolean {
-        return if (Repository.getInstance().getTeam(team.name) == null) {
-            Repository.getInstance().addTeam(team)
+        return if (Repository.getTeam(team.name) == null) {
+            Repository.addTeam(team)
             true;
         }else{
             false;

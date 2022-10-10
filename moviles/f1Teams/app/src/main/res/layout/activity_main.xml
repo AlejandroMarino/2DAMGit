@@ -8,7 +8,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textFieldName"
+        android:id="@+id/textField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -21,6 +21,7 @@
         app:startIconDrawable="@drawable/ic_baseline_rename_24">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="TextContrastCheck" />
@@ -35,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@id/slider"
         app:layout_constraintEnd_toStartOf="@id/guidelineRight"
         app:layout_constraintStart_toEndOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/textFieldName" />
+        app:layout_constraintTop_toBottomOf="@id/textField" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider"
@@ -132,7 +133,8 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/transparent_background"
                 app:menu="@menu/bottom_menu"
-                app:labelVisibilityMode="labeled"/>
+                app:labelVisibilityMode="labeled">
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

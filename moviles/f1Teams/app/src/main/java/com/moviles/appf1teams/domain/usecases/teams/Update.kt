@@ -10,8 +10,8 @@ class Update {
         tyre: Int,
         winner: Boolean
     ){
-        val team = Repository.getInstance().getTeam(name)
+        val team = Repository.getTeam(name)
         if(team!=null)
-            Repository.getInstance().updateTeam(team, newName, performance, tyre, winner)
+            Repository.updateTeam(team, newName, performance, tyre, winner)
     }
 }
