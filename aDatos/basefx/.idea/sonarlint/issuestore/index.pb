@@ -1,8 +1,6 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 w
 G.idea/sonarlint/issuestore/3/9/396fad0c74cb139778b752b985a5d5b7522d506e,0\e\0ea331b02f263fce9136054c48a60e1335e8fca7
 F
@@ -37,16 +35,10 @@ m
 =src/main/java/ui/pantallas/Newspaper/NewspaperController.java,e\3\e3fcf230722d858a5f56b8af2199eff29ff125da
 S
 #src/main/java/modelo/Newspaper.java,e\0\e02926b97eeb0b4c444dd2b1d778f86d8835fe7b
-R
-"src/main/java/data/DaoArticle.java,d\9\d9c3a55082a3a6032eb04187cd6dcf6752c59df0
 V
 &src/main/resources/fxml/Newspaper.fxml,5\2\52a440ea4e91ea0fb865555db09443b308efdfc8
 l
 <src/main/java/ui/pantallas/Newspaper/NewspaperViewModel.java,3\c\3c5f2e1e4e1724031c3ed7e545be80f4a92be670
-T
-$src/main/java/data/DaoNewspaper.java,b\d\bdb0d02c7ddf20c68163b9cf7fee48a39017831b
-q
-Asrc/main/java/ui/pantallas/addArticles/AddArticlesController.java,3\1\31e6b2a15675957938ae72aae5b73a94e662b2e2
 s
 Csrc/main/java/ui/pantallas/delNewspaper/DelNewspaperController.java,4\7\4758a6fa04ac69522c641d20044cd526bd30ec66
 n
@@ -59,8 +51,6 @@ f
 6src/main/java/ui/pantallas/articles/ArticlesState.java,3\b\3b53ac23fb64d2027c2a6c96e2cbce726937a13f
 j
 :src/main/java/ui/pantallas/articles/ArticlesViewModel.java,7\f\7fa1ace18d7df1d11dd94c100209c054cfd4b64c
-r
-Bsrc/main/java/ui/pantallas/delNewspaper/DelNewspaperViewModel.java,d\c\dc726cad64f385456d890be4ca8380ec11101996
 k
 ;src/main/java/ui/pantallas/articles/ArticlesController.java,6\3\6339ab8aae868704612de688382a8897b9e8921d
 Y
@@ -75,8 +65,6 @@ N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 [
 +src/main/resources/fxml/FilterArticles.fxml,9\e\9efe398b2b31950fd09a524f5bb9c97ae9206158
-c
-3src/main/java/ui/common/BasePantallaController.java,3\4\34ae09156d6b8050dc208554c41dabdb93fa8119
 v
 Fsrc/main/java/ui/pantallas/filterArticles/FilterArticlesViewModel.java,4\2\4236663985ed38c4f7d2c597b0a0edfc1552f39c
 Q
@@ -91,21 +79,11 @@ O
 src/main/java/ui/fx/MainFX.java,1\e\1eae5e9e89f5a2a7e8c4d382d4f7848f44f17fb6
 U
 %src/main/java/ui/fx/StartupScene.java,4\6\465f398803289da0c7ec1762c3133db33814d32b
-d
-4src/main/java/ui/pantallas/login/LoginViewModel.java,e\7\e7d8d195a68c5e0e3b34a11a1a18d22d5e312b65
 `
 0src/main/java/ui/pantallas/login/LoginState.java,3\f\3f9d70bbcc32e1f8140fe99632e772f8d5fce1e9
 U
 %src/main/resources/META-INF/beans.xml,e\8\e828918b03c044d16fb0afc5e75dea9467bb7645
-m
-=src/main/java/ui/pantallas/principal/PrincipalController.java,6\8\6854908843d482996cd7f7c9ccd44ffdc547ca45
-R
-"src/main/resources/fxml/Login.fxml,2\d\2dd876794b272dae59d4cb87375762326f0a2683
 w
 Gsrc/main/java/ui/pantallas/filterArticles/FilterArticlesController.java,e\9\e9c8bbafe46966e273117a42831fd59b47e881b5
-V
-&src/main/resources/fxml/Principal.fxml,9\b\9baeeeaf4cdd502d8ad969ab4d52c3aa3e7a43b4
 N
 src/main/resources/config.yaml,c\d\cd9788c18fb100ac34d237b8e23bdff9867cadf0
-e
-5src/main/java/ui/pantallas/login/LoginController.java,0\0\00a168197ce395305c37a33f896012577da7634b

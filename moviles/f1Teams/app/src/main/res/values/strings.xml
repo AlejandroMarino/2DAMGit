@@ -9,4 +9,7 @@
     <string name="performance">Performance</string>
     <string name="name">name</string>
     <string name="add">add</string>
+    <string name="attrRequired">All the attributes are required</string>
+    <string name="repeatedName">There is already a team with that name</string>
+    <string name="noTeamWithName">There is no team with that name</string>
 </resources>

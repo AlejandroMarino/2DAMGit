@@ -10,11 +10,12 @@ import com.moviles.appf1teams.domain.usecases.teams.AddTeam
 import com.moviles.appf1teams.domain.usecases.teams.Delete
 import com.moviles.appf1teams.domain.usecases.teams.GetTeams
 import com.moviles.appf1teams.domain.usecases.teams.Update
+import com.moviles.appf1teams.ui.common.Constantes
 import com.moviles.appf1teams.utils.StringProvider
 
 class MainActivity : AppCompatActivity() {
 
-    private var actualIndex: Int = 0
+    private var actualIndex: Int = Constantes.FirstOfList
 
 
     private lateinit var binding: ActivityMainBinding
@@ -41,19 +42,18 @@ class MainActivity : AppCompatActivity() {
             viewModel.uiState.observe(this@MainActivity) { state ->
                 state.error?.let { error ->
                     Toast.makeText(this@MainActivity, error, Toast.LENGTH_SHORT).show()
-                    viewModel.errorMostrado()
                 }
                 if (state.error == null) {
                     textName.setText(state.team.name)
                     slider.value = state.team.performance
                     when (state.team.tyre) {
-                        1 -> {
+                        Constantes.IntSoft -> {
                             toggleButton.check(R.id.buttonS)
                         }
-                        2 -> {
+                        Constantes.IntMedium -> {
                             toggleButton.check(R.id.buttonM)
                         }
-                        3 -> {
+                        Constantes.IntHard -> {
                             toggleButton.check(R.id.buttonH)
                         }
                     }
@@ -62,24 +62,32 @@ class MainActivity : AppCompatActivity() {
             }
 
             floatingActionButton.setOnClickListener {
-                var num = 0
-                when (toggleButton.checkedButtonId) {
-                    R.id.buttonS -> {
-                        num = 1
+                if (textName.text.toString() != Constantes.EmptyText && toggleButton.checkedButtonId != Constantes.NotFound) {
+                    var num = Constantes.Zero
+                    when (toggleButton.checkedButtonId) {
+                        R.id.buttonS -> {
+                            num = Constantes.IntSoft
+                        }
+                        R.id.buttonM -> {
+                            num = Constantes.IntMedium
+                        }
+                        R.id.buttonH -> {
+                            num = Constantes.IntHard
+                        }
                     }
-                    R.id.buttonM -> {
-                        num = 2
-                    }
-                    R.id.buttonH -> {
-                        num = 3
-                    }
+                    viewModel.addTeam(
+                        textName.text.toString(),
+                        slider.value,
+                        num,
+                        switchMaterial.isChecked
+                    )
+                } else {
+                    Toast.makeText(
+                        this@MainActivity,
+                        StringProvider.instance(this@MainActivity).getString(R.string.attrRequired),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                viewModel.addTeam(
-                    textName.text.toString(),
-                    slider.value,
-                    num,
-                    switchMaterial.isChecked
-                )
             }
 
             bottomNavigationView.setOnNavigationItemReselectedListener { item ->
@@ -95,16 +103,17 @@ class MainActivity : AppCompatActivity() {
 
                     }
                     R.id.itemUpdate -> {
-                        var num = 0
+                        if (textName.text.toString() != Constantes.EmptyText && toggleButton.checkedButtonId != Constantes.NotFound) {
+                        var num = Constantes.Zero
                         when (toggleButton.checkedButtonId) {
                             R.id.buttonS -> {
-                                num = 1
+                                num = Constantes.IntSoft
                             }
                             R.id.buttonM -> {
-                                num = 2
+                                num = Constantes.IntMedium
                             }
                             R.id.buttonH -> {
-                                num = 3
+                                num = Constantes.IntHard
                             }
                         }
                         viewModel.updateTeam(
@@ -114,10 +123,17 @@ class MainActivity : AppCompatActivity() {
                             num,
                             switchMaterial.isChecked
                         )
+                        } else {
+                            Toast.makeText(
+                                this@MainActivity,
+                                StringProvider.instance(this@MainActivity).getString(R.string.attrRequired),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                     R.id.itemDelete -> {
-                        viewModel.deleteTeam(viewModel.getNameTeam(actualIndex))
-
+                        val n = viewModel.deleteTeam(actualIndex)
+                        actualIndex = n
                     }
                 }
             }

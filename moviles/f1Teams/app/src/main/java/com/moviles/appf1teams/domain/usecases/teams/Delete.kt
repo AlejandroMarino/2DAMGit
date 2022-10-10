@@ -7,9 +7,9 @@ class Delete {
         val team = Repository.getTeam(name)
         return if (team != null) {
             Repository.deleteTeam(team)
-            true;
+            true
         }else{
-            false;
+            false
         }
     }
 }

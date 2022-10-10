@@ -7,9 +7,9 @@ class AddTeam {
     operator fun invoke(team: Team): Boolean {
         return if (Repository.getTeam(team.name) == null) {
             Repository.addTeam(team)
-            true;
+            true
         }else{
-            false;
+            false
         }
     }
 }
