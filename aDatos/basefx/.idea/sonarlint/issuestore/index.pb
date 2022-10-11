@@ -87,3 +87,21 @@ w
 Gsrc/main/java/ui/pantallas/filterArticles/FilterArticlesController.java,e\9\e9c8bbafe46966e273117a42831fd59b47e881b5
 N
 src/main/resources/config.yaml,c\d\cd9788c18fb100ac34d237b8e23bdff9867cadf0
+d
+4src/main/java/ui/pantallas/login/LoginViewModel.java,e\7\e7d8d195a68c5e0e3b34a11a1a18d22d5e312b65
+m
+=src/main/java/ui/pantallas/principal/PrincipalController.java,6\8\6854908843d482996cd7f7c9ccd44ffdc547ca45
+q
+Asrc/main/java/ui/pantallas/addArticles/AddArticlesController.java,3\1\31e6b2a15675957938ae72aae5b73a94e662b2e2
+c
+3src/main/java/ui/common/BasePantallaController.java,3\4\34ae09156d6b8050dc208554c41dabdb93fa8119
+R
+"src/main/java/data/DaoArticle.java,d\9\d9c3a55082a3a6032eb04187cd6dcf6752c59df0
+T
+$src/main/java/data/DaoNewspaper.java,b\d\bdb0d02c7ddf20c68163b9cf7fee48a39017831b
+r
+Bsrc/main/java/ui/pantallas/delNewspaper/DelNewspaperViewModel.java,d\c\dc726cad64f385456d890be4ca8380ec11101996
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+e
+5src/main/java/ui/pantallas/login/LoginController.java,0\0\00a168197ce395305c37a33f896012577da7634b
