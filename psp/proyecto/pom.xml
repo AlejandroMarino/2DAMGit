@@ -22,8 +22,8 @@
         <jacksonDatformat>2.13.3</jacksonDatformat>
         <jacksonDatatype>2.13.3</jacksonDatatype>
         <jacksonDataBind>2.13.3</jacksonDataBind>
-        <javaFXBase>18</javaFXBase>
-        <javaFXFXML>18</javaFXFXML>
+        <javaFXBase>16</javaFXBase>
+        <javaFXFXML>16</javaFXFXML>
         <weldSECore>4.0.3.Final</weldSECore>
         <fxribbon>1.2.2</fxribbon>
         <materialFX>11.13.3</materialFX>
@@ -38,6 +38,21 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.pdfsam.rxjava3</groupId>
+            <artifactId>rxjavafx</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>adapter-rxjava3</artifactId>
+            <version>2.9.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>

@@ -1,6 +1,4 @@
 
-`
-0app/src/main/res/drawable/ic_baseline_add_24.xml,f\1\f1823586c3bcf535e6f3a00196b394cdbe435019
 g
 7app/src/main/res/drawable/ic_baseline_arrow_left_24.xml,7\9\79cbd23dc4a24d1abefa8b88e7970d733506f01b
 h
@@ -35,17 +33,25 @@ U
 .app/src/main/res/layout-land/activity_main.xml,0\5\05dd6bc7362baacce8086123108d90e5f21798b5
 p
 @app/src/main/java/com/moviles/appf1teams/utils/StringProvider.kt,d\c\dc0517e0b4428667e2ec7e0495b316cbfde7081e
-k
-;app/src/main/java/com/moviles/appf1teams/data/Repository.kt,d\1\d14985017f4bd0840fad3e3e5833da1e4233fcf5
-y
-Iapp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/AddTeam.kt,a\d\adbb02f6835b3bdfc2f64c45bf0cfae008f6b4c2
-x
-Happ/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Delete.kt,3\c\3cc58032cd8b7a57761b9a2cf8278f57532458b1
-z
-Japp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/GetTeams.kt,7\b\7bfd1a43de69063d17467371bc5874b22ceda2a2
-x
-Happ/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Update.kt,f\e\fe72feebb3cc5a2ddd508c967ed64a81f159bdd1
 p
 @app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt,5\d\5d103fc3529f53a0e48e8de2ed1c8f34e3d4e0eb
 n
 >app/src/main/java/com/moviles/appf1teams/domain/modelo/Team.kt,4\d\4d9d01bbd23d0bd8c2fa79ae427b0d93bb0a3032
+k
+;app/src/main/java/com/moviles/appf1teams/data/Repository.kt,d\1\d14985017f4bd0840fad3e3e5833da1e4233fcf5
+z
+Japp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/GetTeams.kt,7\b\7bfd1a43de69063d17467371bc5874b22ceda2a2
+x
+Happ/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Update.kt,f\e\fe72feebb3cc5a2ddd508c967ed64a81f159bdd1
+u
+Eapp/src/main/java/com/moviles/appf1teams/ui/pantallaMain/MainState.kt,5\8\58cd280157972e375b932642be404b73652d5a63
+x
+Happ/src/main/java/com/moviles/appf1teams/ui/pantallaMain/MainActivity.kt,a\f\af789c658970a92b57c7575b201fc1557a772756
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+y
+Iapp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/AddTeam.kt,a\d\adbb02f6835b3bdfc2f64c45bf0cfae008f6b4c2
+x
+Happ/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Delete.kt,3\c\3cc58032cd8b7a57761b9a2cf8278f57532458b1
