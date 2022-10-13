@@ -1,6 +1,7 @@
 package servicios.serviciosImpl;
 
 import data.DaoFish;
+import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import modelo.Fish;
@@ -45,5 +46,9 @@ public class ServiciosFishImpl implements ServiciosFish {
         }
     }
 
+    @Override
+    public Single<Either<String, Fish>> llamadaRetrofitSingle(String name) {
+        return d.llamadaRettrofitSingle(name);
+    }
 
 }

@@ -1,5 +1,6 @@
 package data;
 
+import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
 import modelo.Fish;
 
@@ -12,4 +13,5 @@ public interface DaoFish {
 
     String getImage(Fish fish);
 
+    Single<Either<String, Fish>> llamadaRettrofitSingle(String name);
 }

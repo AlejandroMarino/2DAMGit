@@ -7,6 +7,7 @@ import jakarta.inject.Singleton;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 
 public class ProducesRetrofit {
 
@@ -28,6 +29,7 @@ public class ProducesRetrofit {
         return new Retrofit.Builder()
                 .baseUrl(config.getPathApi())
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .client(clientOK)
                 .build();
     }

@@ -46,10 +46,12 @@ public class DaoFishImpl implements DaoFish {
         return fish.getIcon_uri();
     }
 
+    @Override
     public Single<Either<String, Fish>> llamadaRettrofitSingle(String name) {
 
 
         return api.getFishAsync(name)
+                .map(fish -> Either.right(fish).mapLeft(throwable -> "No se ha podido conectar con la API"))
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn(throwable -> {
                     Either<String, Fish> error = Either.left("Error de comunicacion");
@@ -67,8 +69,6 @@ public class DaoFishImpl implements DaoFish {
                     }
                     return error;
                 });
-
-
     }
 
 }

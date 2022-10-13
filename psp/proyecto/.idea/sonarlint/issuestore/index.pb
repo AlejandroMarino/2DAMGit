@@ -25,35 +25,9 @@ N
 src/main/java/modelo/Name.java,3\a\3a8a4eba5f186f680322be3f48bf88c56030b4e1
 m
 =src/main/java/ui/pantallas/principal/PrincipalController.java,6\8\6854908843d482996cd7f7c9ccd44ffdc547ca45
-Z
-*src/main/java/servicios/ServiciosFish.java,1\f\1f8ee01a3754944e0368fbe916c8e4f98c6c4f5c
-l
-<src/main/java/servicios/serviciosImpl/ServiciosFishImpl.java,0\7\07f0edff21d6b66b72e337aabc0adac2a1d3325a
 W
 'src/main/java/config/Configuracion.java,3\d\3d4ba9367885ebadd3d09e63c531b540ce2bf984
 Q
 !src/main/java/ui/fx/DIJavafx.java,3\1\317bc5d31e3599223f36090913735e7c8835cf30
 [
 +src/main/java/ui/fx/FXMLLoaderProducer.java,c\6\c6a32d5af695e0670f16d1381ae9c48513b90781
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-O
-src/main/java/ui/fx/MainFX.java,1\e\1eae5e9e89f5a2a7e8c4d382d4f7848f44f17fb6
-i
-9src/main/java/ui/pantallas/allFish/AllFishController.java,e\1\e168c275567ff5a70f87d77ce3091fcb14257c13
-k
-;src/main/java/ui/pantallas/infoFish/InfoFishController.java,9\7\9732243f4ab8e4e77809ad1b5d34575aeb9bfdf7
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-a
-1src/main/java/data/retrofit/ProducesRetrofit.java,4\6\46f51ead56b358db3c83844f583a7054fbe5f8bd
-O
-src/main/java/data/DaoFish.java,2\1\214bdbf00f2cec70b35b756fd084588b33688494
-V
-&src/main/java/data/retrofit/ACApi.java,7\e\7e42e9ddf0c23d0e009054f6078ee51dcdd72714
-N
-src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-X
-(src/main/java/data/impl/DaoFishImpl.java,6\3\63d223581be65de161e7fa9348f6fb944c602684
-g
-7src/main/java/ui/pantallas/inicio/InicioController.java,0\7\07beeb973009e45911e9d159cfe1c67afc3bcf92

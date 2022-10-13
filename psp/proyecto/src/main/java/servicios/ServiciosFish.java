@@ -1,5 +1,6 @@
 package servicios;
 
+import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
 import modelo.Fish;
 
@@ -14,4 +15,5 @@ public interface ServiciosFish {
 
     String getImage(Fish fish);
 
+    Single<Either<String, Fish>> llamadaRetrofitSingle(String name);
 }

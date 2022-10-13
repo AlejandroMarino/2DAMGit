@@ -15,6 +15,7 @@ module basefx {
     requires okhttp3;
     requires io.vavr;
     requires io.reactivex.rxjava3;
+    requires retrofit2.adapter.rxjava3;
 
     exports ui.fx;
     exports servicios;
