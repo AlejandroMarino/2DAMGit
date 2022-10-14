@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
 
-            viewModel.cargarTeam(actualIndex)
+//            viewModel.cargarTeam(actualIndex)
 
             viewModel.uiState.observe(this@MainActivity) { state ->
                 state.error?.let { error ->

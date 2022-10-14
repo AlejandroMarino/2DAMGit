@@ -38,17 +38,22 @@ public class ServiciosFishImpl implements ServiciosFish {
     }
 
     @Override
-    public String getImage(Fish fish) {
+    public String getIcon(Fish fish) {
         if (d.getFishes().isLeft()) {
             return "Fish not found";
         }else {
-            return d.getImage(fish);
+            return d.getIcon(fish);
         }
     }
 
     @Override
     public Single<Either<String, Fish>> llamadaRetrofitSingle(String name) {
         return d.llamadaRettrofitSingle(name);
+    }
+
+    @Override
+    public String getImage(Fish fish) {
+        return null;
     }
 
 }

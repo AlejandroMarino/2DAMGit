@@ -11,7 +11,7 @@ public interface DaoFish {
 
     Either<String, Fish> getFish(int id);
 
-    String getImage(Fish fish);
+    String getIcon(Fish fish);
 
     Single<Either<String, Fish>> llamadaRettrofitSingle(String name);
 }

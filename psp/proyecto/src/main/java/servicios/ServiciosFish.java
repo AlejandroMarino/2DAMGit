@@ -13,7 +13,9 @@ public interface ServiciosFish {
 
     Either<String, Integer> getId(Fish fish);
 
-    String getImage(Fish fish);
+    String getIcon(Fish fish);
 
     Single<Either<String, Fish>> llamadaRetrofitSingle(String name);
+
+    String getImage(Fish fish);
 }

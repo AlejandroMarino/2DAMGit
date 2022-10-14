@@ -11,7 +11,7 @@ public class InfoFishController extends BasePantallaController {
 
     private final InfoFishViewModel infoFishViewModel;
     @FXML
-    private ImageView imgFish;
+    private ImageView iconFish;
     @FXML
     private Label labelName;
     @FXML
@@ -48,7 +48,7 @@ public class InfoFishController extends BasePantallaController {
                 labelPrice.setText(String.valueOf(newValue.getFish().getPrice()));
                 labelPriceCJ.setText(String.valueOf(newValue.getFish().getPrice_Cj()));
                 labelCatchPhrase.setText(newValue.getFish().getCatch_Phrase());
-                imgFish.setImage(new Image(infoFishViewModel.getFishImage(newValue.getFish().getId())));
+                iconFish.setImage(new Image(infoFishViewModel.getFishLogo(newValue.getFish().getId())));
             }
         });
     }

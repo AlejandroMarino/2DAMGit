@@ -1,9 +1,11 @@
 package ui.pantallas.infoFish;
 
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.Image;
 import servicios.ServiciosFish;
 
 public class InfoFishViewModel {
@@ -28,13 +30,14 @@ public class InfoFishViewModel {
         }
     }
 
-    public String getFishImage(int id) {
+    public String getFishLogo(int id) {
         if (svf.getFish(id).isLeft()) {
             state.setValue(new InfoFishState(null, svf.getFish(id).getLeft()));
             return null;
         } else {
             state.setValue(new InfoFishState(svf.getFish(id).get(), null));
-            return svf.getImage(svf.getFish(id).get());
+            return svf.getIcon(svf.getFish(id).get());
         }
     }
+
 }

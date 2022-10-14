@@ -6,6 +6,7 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import javafx.scene.image.Image;
 import modelo.Fish;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
@@ -42,7 +43,7 @@ public class DaoFishImpl implements DaoFish {
     }
 
     @Override
-    public String getImage(Fish fish) {
+    public String getIcon(Fish fish) {
         return fish.getIcon_uri();
     }
 

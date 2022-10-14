@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.infoFish.InfoFishController">
    <children>
-      <ImageView fx:id="imgFish" fitHeight="282.0" fitWidth="291.0" layoutX="55.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="iconFish" fitHeight="282.0" fitWidth="291.0" layoutX="55.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="422.0" layoutY="93.0" text="Name:" />
       <Label fx:id="labelName" layoutX="473.0" layoutY="93.0" prefHeight="17.0" prefWidth="125.0" />
       <Label layoutX="423.0" layoutY="121.0" text="Rarity;" />
@@ -32,5 +32,6 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <ImageView fx:id="fishImg" fitHeight="124.0" fitWidth="243.0" layoutX="375.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
