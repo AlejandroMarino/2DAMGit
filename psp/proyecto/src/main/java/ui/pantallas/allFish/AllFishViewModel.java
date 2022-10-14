@@ -1,11 +1,14 @@
 package ui.pantallas.allFish;
 
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import modelo.Fish;
 import servicios.ServiciosFish;
+
+import java.util.List;
 
 public class AllFishViewModel {
     private final ServiciosFish svf;
@@ -31,11 +34,7 @@ public class AllFishViewModel {
         }
     }
 
-    public void inicio() {
-        if (svf.getFishes().isLeft()) {
-            state.setValue(new AllFishState(null, svf.getFishes().getLeft()));
-        } else {
-            state.setValue(new AllFishState(svf.getFishes().get(), null));
-        }
+    public Either<String, List<Fish>> llamadaRetrofitAsyncEnUi() {
+        return svf.getFishes();
     }
 }

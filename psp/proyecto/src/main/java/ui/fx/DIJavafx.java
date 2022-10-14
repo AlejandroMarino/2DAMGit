@@ -6,11 +6,9 @@ import jakarta.enterprise.util.AnnotationLiteral;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class DIJavafx extends Application {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         launch(args);
     }
 

@@ -1,5 +1,6 @@
 package ui.pantallas.inicio;
 
+import common.Constantes;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -28,8 +29,8 @@ public class InicioController extends BasePantallaController {
                 getPrincipalController().error(newValue.getError());
             }
         });
-        imgLogo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/Animal_Crossing_Logo.png"))));
-        btnGuitarra.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(("/images/guitarrita.png")))));
+        imgLogo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(Constantes.IMAGES_ANIMAL_CROSSING_LOGO_PNG))));
+        btnGuitarra.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(Constantes.IMAGES_GUITARRITA_PNG))));
 
     }
 

@@ -1,7 +1,11 @@
 package ui.pantallas.allFish;
 
+import common.Constantes;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -10,6 +14,7 @@ import javafx.scene.image.ImageView;
 import modelo.Fish;
 import ui.common.BasePantallaController;
 
+import java.util.List;
 import java.util.Objects;
 
 public class AllFishController extends BasePantallaController {
@@ -43,12 +48,38 @@ public class AllFishController extends BasePantallaController {
             }
 
         });
-        imgFishing.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/pesca.png"))));
+        imgFishing.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(Constantes.IMAGES_PESCA_PNG))));
     }
 
     @Override
     public void principalCargado() {
-        allFishViewModel.inicio();
+        asyncConTask();
+    }
+
+    private void asyncConTask() {
+
+        getPrincipalController().root.setCursor(Cursor.WAIT);
+        var task = new Task<Either<String, List<Fish>>>() {
+            @Override
+            protected Either<String, List<Fish>> call() {
+                return allFishViewModel.llamadaRetrofitAsyncEnUi();
+            }
+        };
+        task.setOnSucceeded(workerStateEvent -> {
+            getPrincipalController().root.setCursor(Cursor.DEFAULT);
+            var result = task.getValue();
+            result.peek(fishes -> {
+                tableFish.getItems().clear();
+                tableFish.getItems().setAll(fishes);
+
+            }).peekLeft(error -> getPrincipalController().error(error));
+        });
+        task.setOnFailed(workerStateEvent -> {
+            getPrincipalController().error(task.getException().getMessage());
+            getPrincipalController().root.setCursor(Cursor.DEFAULT);
+        });
+
+        new Thread(task).start();
     }
 
     @FXML
@@ -56,7 +87,7 @@ public class AllFishController extends BasePantallaController {
         if (tableFish.getSelectionModel().getSelectedItem() != null) {
             getPrincipalController().goInfoFish(allFishViewModel.getFishId(tableFish.getSelectionModel().getSelectedItem()));
         } else {
-            getPrincipalController().error("Select a fish from the table");
+            getPrincipalController().error(Constantes.SELECT_A_FISH_FROM_THE_TABLE);
         }
     }
 }

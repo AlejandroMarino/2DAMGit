@@ -1,9 +1,6 @@
 module basefx {
     requires lombok;
-    requires com.fasterxml.jackson.databind;
-    requires com.fasterxml.jackson.dataformat.yaml;
     requires org.apache.logging.log4j;
-    requires com.google.gson;
     requires jakarta.cdi;
     requires javafx.graphics;
     requires jakarta.inject;
@@ -15,9 +12,11 @@ module basefx {
     requires okhttp3;
     requires io.vavr;
     requires io.reactivex.rxjava3;
+    requires org.pdfsam.rxjavafx;
     requires retrofit2.adapter.rxjava3;
 
     exports ui.fx;
+    exports common;
     exports servicios;
     exports ui.pantallas.principal;
     exports ui.pantallas.inicio;
@@ -25,8 +24,10 @@ module basefx {
     exports ui.pantallas.allFish;
     exports ui.pantallas.infoFish;
     exports data.retrofit;
+    exports data;
     exports modelo;
     exports config;
+    exports ui.pantallas.imagenFish;
 
     opens config;
     opens modelo;
@@ -34,6 +35,7 @@ module basefx {
     opens ui.pantallas.principal;
     opens ui.pantallas.inicio;
     opens ui.pantallas.allFish;
+    opens ui.pantallas.imagenFish;
     exports data.impl;
     exports servicios.serviciosImpl;
     opens ui.pantallas.infoFish;

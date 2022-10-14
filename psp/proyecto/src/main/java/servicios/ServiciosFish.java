@@ -16,6 +16,4 @@ public interface ServiciosFish {
     String getIcon(Fish fish);
 
     Single<Either<String, Fish>> llamadaRetrofitSingle(String name);
-
-    String getImage(Fish fish);
 }

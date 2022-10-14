@@ -1,10 +1,15 @@
 package ui.pantallas.infoFish;
 
+import common.Constantes;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.pdfsam.rxjavafx.schedulers.JavaFxScheduler;
 import ui.common.BasePantallaController;
 
 public class InfoFishController extends BasePantallaController {
@@ -43,8 +48,8 @@ public class InfoFishController extends BasePantallaController {
                 labelName.setText(newValue.getFish().getName().getName_EUen());
                 labelRarity.setText(newValue.getFish().getAvailability().getRarity());
                 labelLocation.setText(newValue.getFish().getAvailability().getLocation());
-                labelIsAllDay.setText(newValue.getFish().getAvailability().isAllDay() ? "Yes" : "No");
-                labelIsAllYear.setText(newValue.getFish().getAvailability().isAllYear() ? "Yes" : "No");
+                labelIsAllDay.setText(newValue.getFish().getAvailability().isAllDay() ? Constantes.YES : Constantes.NO);
+                labelIsAllYear.setText(newValue.getFish().getAvailability().isAllYear() ? Constantes.YES : Constantes.NO);
                 labelPrice.setText(String.valueOf(newValue.getFish().getPrice()));
                 labelPriceCJ.setText(String.valueOf(newValue.getFish().getPrice_Cj()));
                 labelCatchPhrase.setText(newValue.getFish().getCatch_Phrase());
@@ -55,6 +60,25 @@ public class InfoFishController extends BasePantallaController {
 
     @Override
     public void principalCargado() {
-        infoFishViewModel.inicio(getPrincipalController().getActualFish());
+        asynConSingle();
+    }
+
+    private void asynConSingle() {
+        int id = getPrincipalController().getActualFish();
+        Single.fromCallable(() -> infoFishViewModel.llamadaRetrofitAsyncEnUi(id))
+                .subscribeOn(Schedulers.io())
+                .observeOn(JavaFxScheduler.platform())
+                .doFinally(() -> getPrincipalController().root.setCursor(Cursor.DEFAULT))
+                .subscribe(result ->
+                                result.peek(infoFishViewModel::cambioState)
+                                        .peekLeft(error -> getPrincipalController().error(error)),
+                        throwable -> getPrincipalController().error(throwable.getMessage()));
+        getPrincipalController().root.setCursor(Cursor.WAIT);
+    }
+
+    @FXML
+    private void seeImage() {
+        String name = infoFishViewModel.getFishName(getPrincipalController().getActualFish());
+        getPrincipalController().goImageFish(name);
     }
 }

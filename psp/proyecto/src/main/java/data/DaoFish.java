@@ -13,5 +13,5 @@ public interface DaoFish {
 
     String getIcon(Fish fish);
 
-    Single<Either<String, Fish>> llamadaRettrofitSingle(String name);
+    Single<Either<String, Fish>> llamadaRetrofitSingle(String name);
 }

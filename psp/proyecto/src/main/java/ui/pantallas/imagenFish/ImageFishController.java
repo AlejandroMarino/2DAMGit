@@ -1,7 +1,9 @@
 package ui.pantallas.imagenFish;
 
 import jakarta.inject.Inject;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,19 +24,21 @@ public class ImageFishController extends BasePantallaController {
     private Label labelName;
 
     public void initialize() {
-        imageFishViewModel.getState().addListener((observable, oldValue, newValue) -> {
+        imageFishViewModel.getState().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
             }
             if (newValue.getFish() != null) {
                 labelName.setText(newValue.getFish().getName().getName_EUen());
-                imgFish.setImage(new Image(imageFishViewModel.getFishImage(newValue.getFish().getId())));
+                imgFish.setImage(new Image(newValue.getFish().getImage_uri()));
             }
-        });
+            getPrincipalController().root.setCursor(Cursor.DEFAULT);
+        }));
     }
 
     @Override
     public void principalCargado() {
-        imageFishViewModel.getFish(getPrincipalController().getActualFish());
+        getPrincipalController().root.setCursor(Cursor.WAIT);
+        imageFishViewModel.getFish(getPrincipalController().getActualFishName());
     }
 }

@@ -1,9 +1,7 @@
 package config;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import common.Constantes;
 import jakarta.inject.Singleton;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -17,12 +15,12 @@ import java.util.Properties;
 public class Configuracion {
 
     public Configuracion() {
-        try{
+        try {
             Properties p = new Properties();
-            p.load(getClass().getClassLoader().getResourceAsStream("config.yaml"));
+            p.load(getClass().getClassLoader().getResourceAsStream(Constantes.CONFIG_YAML));
 
-            this.pathApi = p.getProperty("pathApi");
-        }catch (IOException e){
+            this.pathApi = p.getProperty(Constantes.PATH_API);
+        } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
 

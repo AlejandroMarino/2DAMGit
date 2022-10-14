@@ -1,11 +1,11 @@
 package ui.pantallas.infoFish;
 
-import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.image.Image;
+import modelo.Fish;
 import servicios.ServiciosFish;
 
 public class InfoFishViewModel {
@@ -22,11 +22,16 @@ public class InfoFishViewModel {
         state = new SimpleObjectProperty<>(new InfoFishState(null, null));
     }
 
-    public void inicio(int id) {
+    public void cambioState(Fish fish) {
+        state.setValue(new InfoFishState(fish, null));
+    }
+
+    public String getFishName(int id) {
         if (svf.getFish(id).isLeft()) {
             state.setValue(new InfoFishState(null, svf.getFish(id).getLeft()));
+            return null;
         } else {
-            state.setValue(new InfoFishState(svf.getFish(id).get(), null));
+            return svf.getFish(id).get().getFile_name();
         }
     }
 
@@ -40,4 +45,11 @@ public class InfoFishViewModel {
         }
     }
 
+    public Either<String, Fish> llamadaRetrofitAsyncEnUi(int id) {
+        if (svf.getFish(id).isLeft()) {
+            return Either.left(svf.getFish(id).getLeft());
+        } else {
+            return Either.right(svf.getFish(id).get());
+        }
+    }
 }

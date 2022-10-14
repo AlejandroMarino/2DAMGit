@@ -1,22 +1,23 @@
 package modelo;
 
 import com.squareup.moshi.Json;
+import common.Constantes;
 import lombok.Data;
 
 @Data
 public class Fish {
     private int id;
-    @Json(name = "file-name")
+    @Json(name = Constantes.FILE_NAME)
     private String file_name;
     private Name name;
     private Availability availability;
     private String shadow;
     private int price;
-    @Json(name = "price-cj")
+    @Json(name = Constantes.PRICE_CJ)
     private int price_Cj;
-    @Json(name = "catch-phrase")
+    @Json(name = Constantes.CATCH_PHRASE)
     private String catch_Phrase;
-    @Json(name = "museum-phrase")
+    @Json(name = Constantes.MUSEUM_PHRASE)
     private String museum_Phrase;
     private String image_uri;
     private String icon_uri;

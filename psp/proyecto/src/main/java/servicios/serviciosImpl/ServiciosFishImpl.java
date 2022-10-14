@@ -1,5 +1,6 @@
 package servicios.serviciosImpl;
 
+import common.Constantes;
 import data.DaoFish;
 import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
@@ -33,27 +34,21 @@ public class ServiciosFishImpl implements ServiciosFish {
         if (getFishes().isRight()) {
             return Either.right(fish.getId());
         } else {
-            return Either.left("No se ha podido conectar con la API");
+            return Either.left(Constantes.NO_SE_HA_PODIDO_CONECTAR_CON_LA_API);
         }
     }
 
     @Override
     public String getIcon(Fish fish) {
         if (d.getFishes().isLeft()) {
-            return "Fish not found";
-        }else {
+            return Constantes.FISH_NOT_FOUND;
+        } else {
             return d.getIcon(fish);
         }
     }
 
     @Override
     public Single<Either<String, Fish>> llamadaRetrofitSingle(String name) {
-        return d.llamadaRettrofitSingle(name);
+        return d.llamadaRetrofitSingle(name);
     }
-
-    @Override
-    public String getImage(Fish fish) {
-        return null;
-    }
-
 }

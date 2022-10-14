@@ -27,9 +27,11 @@ public class PrincipalController implements Initializable {
     @FXML
     private Menu goTo;
     @FXML
-    private BorderPane root;
+    public BorderPane root;
 
     private int actualFish;
+
+    private String actualFishName;
 
     Instance<Object> instance;
 
@@ -99,7 +101,19 @@ public class PrincipalController implements Initializable {
         alert.showAndWait();
     }
 
+    public void goImageFish(String name) {
+        actualFishName = name;
+        cargarPantalla(Pantallas.IMAGEFISH);
+        goTo.setVisible(true);
+        itemAllFish.setVisible(true);
+        itemInicio.setVisible(true);
+    }
+
     public int getActualFish() {
         return actualFish;
+    }
+
+    public String getActualFishName() {
+        return actualFishName;
     }
 }

@@ -1,9 +1,8 @@
 package data.retrofit;
 
-import javafx.scene.image.Image;
+import io.reactivex.rxjava3.core.Single;
 import modelo.Fish;
 import retrofit2.Call;
-import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 

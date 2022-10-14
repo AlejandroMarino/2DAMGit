@@ -5,7 +5,8 @@ public enum Pantallas {
     PRINCIPAL("/fxml/Principal.fxml"),
     INICIO("/fxml/Inicio.fxml"),
     ALLFISH("/fxml/AllFish.fxml"),
-    INFOFISH("/fxml/InfoFish.fxml");
+    INFOFISH("/fxml/InfoFish.fxml"),
+    IMAGEFISH("/fxml/ImageFish.fxml");
 
 
     private String ruta;
