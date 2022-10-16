@@ -61,8 +61,6 @@ U
 %src/main/resources/fxml/Articles.fxml,a\5\a5f84402144bff1b0e7ecddbf51ab56e25830eb6
 W
 'src/main/java/config/Configuracion.java,3\d\3d4ba9367885ebadd3d09e63c531b540ce2bf984
-N
-src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 [
 +src/main/resources/fxml/FilterArticles.fxml,9\e\9efe398b2b31950fd09a524f5bb9c97ae9206158
 v
@@ -105,3 +103,5 @@ r
 Bsrc/main/java/ui/pantallas/delNewspaper/DelNewspaperViewModel.java,d\c\dc726cad64f385456d890be4ca8380ec11101996
 e
 5src/main/java/ui/pantallas/login/LoginController.java,0\0\00a168197ce395305c37a33f896012577da7634b
+N
+src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7

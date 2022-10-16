@@ -23,14 +23,8 @@ a
 1src/main/java/servicios/ServiciosArticleType.java,4\1\412f0f70f2b6753a6aeab034587142c699eb3f17
 [
 +src/main/java/servicios/ServiciosLogin.java,c\6\c68a7da05fdacaf329ae962420495005e28ecd46
-P
- src/main/java/data/DaoLogin.java,8\3\830fa4c9081ec34a30d6ef0d227f4eed0a3047cd
-V
-&src/main/java/data/DaoArticleType.java,1\0\103b518cf550084e13ee2a1252890768870d2cb4
 h
 8src/main/java/ui/pantallas/Newspaper/NewspaperState.java,2\1\210fdcf11e8f328b2f321eaf17885b291042ea7e
-Q
-!src/main/java/modelo/Article.java,0\3\030018f3151ae9e92dd349f431e488017e08390d
 m
 =src/main/java/ui/pantallas/Newspaper/NewspaperController.java,e\3\e3fcf230722d858a5f56b8af2199eff29ff125da
 S
@@ -59,8 +53,6 @@ X
 (src/main/resources/fxml/AddArticles.fxml,b\f\bf66284e0ff6f32def94eb9453d0ab8bd69daf80
 U
 %src/main/resources/fxml/Articles.fxml,a\5\a5f84402144bff1b0e7ecddbf51ab56e25830eb6
-W
-'src/main/java/config/Configuracion.java,3\d\3d4ba9367885ebadd3d09e63c531b540ce2bf984
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 [
