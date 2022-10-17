@@ -24,20 +24,20 @@ public class FilterArticlesViewModel {
 
 
     public void inicio() {
-        if (svart.getAll().isLeft()){
-            state.setValue(new FilterArticlesState(null, svart.getAll().getLeft()));
-        }else {
-            state.setValue(new FilterArticlesState(svart.getAll().get(), null));
-        }
+//        if (svart.getAll().isLeft()){
+//            state.setValue(new FilterArticlesState(null, svart.getAll().getLeft()));
+//        }else {
+//            state.setValue(new FilterArticlesState(svart.getAll().get(), null));
+//        }
     }
 
     public void filter(String text) {
-        if (svart.filter(text).isLeft()){
-            state.setValue(new FilterArticlesState(null, null));
-            state.setValue(new FilterArticlesState(null, svart.filter(text).getLeft()));
-        }else {
-            state.setValue(new FilterArticlesState(null, null));
-            state.setValue(new FilterArticlesState(svart.filter(text).get(), null));
-        }
+//        if (svart.filter(text).isLeft()){
+//            state.setValue(new FilterArticlesState(null, null));
+//            state.setValue(new FilterArticlesState(null, svart.filter(text).getLeft()));
+//        }else {
+//            state.setValue(new FilterArticlesState(null, null));
+//            state.setValue(new FilterArticlesState(svart.filter(text).get(), null));
+//        }
     }
 }

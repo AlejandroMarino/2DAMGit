@@ -27,65 +27,65 @@ public class DaoArticle {
         this.config = config;
     }
 
-    public int addArt(Article article) {
-        BufferedWriter writer;
-        Path p = Paths.get(config.getArticles());
-        if (getAll().isLeft()) {
-            return -1;
-        } else {
-            if (availableId(article.getId())) {
-                try {
-                    writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND);
-                    writer.newLine();
-                    writer.append(article.toString());
-                    writer.close();
-                    return 0;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return -1;
-                }
-            } else {
-                return 1;
-            }
-        }
-    }
+//    public int addArt(Article article) {
+//        BufferedWriter writer;
+//        Path p = Paths.get(config.getArticles());
+//        if (getAll().isLeft()) {
+//            return -1;
+//        } else {
+//            if (availableId(article.getId())) {
+//                try {
+//                    writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND);
+//                    writer.newLine();
+//                    writer.append(article.toString());
+//                    writer.close();
+//                    return 0;
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                    return -1;
+//                }
+//            } else {
+//                return 1;
+//            }
+//        }
+//    }
 
-    public Either<String, List<Article>> getAll() {
-        List<Article> articles = new ArrayList<>();
-        BufferedReader reader;
-        Path p = Paths.get(config.getArticles());
-        try {
-            reader = Files.newBufferedReader(p, StandardCharsets.UTF_8);
-            reader.lines().forEach(line -> articles.add(new Article(line)));
-            reader.close();
-            return Either.right(articles);
-        } catch (IOException e) {
-            return Either.left("No articles found");
-        }
-    }
+//    public Either<String, List<Article>> getAll() {
+//        List<Article> articles = new ArrayList<>();
+//        BufferedReader reader;
+//        Path p = Paths.get(config.getArticles());
+//        try {
+//            reader = Files.newBufferedReader(p, StandardCharsets.UTF_8);
+//            reader.lines().forEach(line -> articles.add(new Article(line)));
+//            reader.close();
+//            return Either.right(articles);
+//        } catch (IOException e) {
+//            return Either.left("No articles found");
+//        }
+//    }
 
-    public boolean delete(Article a) {
-        List<Article> articles = getAll().get();
-        articles.remove(a);
-        BufferedWriter writer;
-        Path p = Paths.get(config.getArticles());
-        try {
-            writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
-            for (Article article : articles) {
-                writer.newLine();
-                writer.write(article.toString());
-            }
-            writer.close();
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+//    public boolean delete(Article a) {
+//        List<Article> articles = getAll().get();
+//        articles.remove(a);
+//        BufferedWriter writer;
+//        Path p = Paths.get(config.getArticles());
+//        try {
+//            writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
+//            for (Article article : articles) {
+//                writer.newLine();
+//                writer.write(article.toString());
+//            }
+//            writer.close();
+//            return true;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 
-    private boolean availableId(int id) {
-        return getAll().get().stream().noneMatch(article -> article.getId() == id);
-    }
+//    private boolean availableId(int id) {
+//        return getAll().get().stream().noneMatch(article -> article.getId() == id);
+//    }
 
 }
 

@@ -22,12 +22,12 @@ public class NewspaperViewModel {
     }
 
     public void inicio() {
-        if (svnp.getAll().isLeft()) {
-            state.setValue(new NewspaperState(null, null));
-            state.setValue(new NewspaperState(null, svnp.getAll().getLeft()));
-        } else {
-            state.setValue(new NewspaperState(null, null));
-            state.setValue(new NewspaperState(svnp.getAll().get(), null));
-        }
+//        if (svnp.getAll().isLeft()) {
+//            state.setValue(new NewspaperState(null, null));
+//            state.setValue(new NewspaperState(null, svnp.getAll().getLeft()));
+//        } else {
+//            state.setValue(new NewspaperState(null, null));
+//            state.setValue(new NewspaperState(svnp.getAll().get(), null));
+//        }
     }
 }

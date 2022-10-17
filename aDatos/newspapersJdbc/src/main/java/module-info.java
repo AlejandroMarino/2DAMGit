@@ -10,6 +10,7 @@ module basefx {
     requires javafx.fxml;
     requires javafx.controls;
     requires io.vavr;
+    requires java.sql;
 
     exports ui.fx;
     exports data;

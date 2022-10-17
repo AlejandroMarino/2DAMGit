@@ -23,26 +23,26 @@ public class DelNewspaperViewModel {
     }
 
     public void inicio() {
-        if (svnp.getAll().isLeft()) {
-            state.setValue(new DelNewspaperState(null, null));
-            state.setValue(new DelNewspaperState(null, svnp.getAll().getLeft()));
-        } else {
-            state.setValue(new DelNewspaperState(null, null));
-            state.setValue(new DelNewspaperState(svnp.getAll().get(), null));
-        }
+//        if (svnp.getAll().isLeft()) {
+//            state.setValue(new DelNewspaperState(null, null));
+//            state.setValue(new DelNewspaperState(null, svnp.getAll().getLeft()));
+//        } else {
+//            state.setValue(new DelNewspaperState(null, null));
+//            state.setValue(new DelNewspaperState(svnp.getAll().get(), null));
+//        }
     }
 
     public void delete(Newspaper n) {
-        if (svnp.delete(n)) {
-            state.setValue(new DelNewspaperState(null, null));
-            state.setValue(new DelNewspaperState(svnp.getAll().get(), null));
-        } else {
-            state.setValue(new DelNewspaperState(null, null));
-            state.setValue(new DelNewspaperState(null, "Newspaper not deleted"));
-        }
+//        if (svnp.delete(n)) {
+//            state.setValue(new DelNewspaperState(null, null));
+//            state.setValue(new DelNewspaperState(svnp.getAll().get(), null));
+//        } else {
+//            state.setValue(new DelNewspaperState(null, null));
+//            state.setValue(new DelNewspaperState(null, "Newspaper not deleted"));
+//        }
     }
 
-    public boolean checkDel(Newspaper n) {
-        return svnp.validoDel(n);
-    }
+//    public boolean checkDel(Newspaper n) {
+//        return svnp.validoDel(n);
+//    }
 }

@@ -23,10 +23,10 @@ public class ArticlesViewModel {
     }
 
     public void inicio() {
-        if (svart.getAll().isLeft()){
-            state.setValue(new ArticlesState(null, svart.getAll().getLeft()));
-        }else {
-            state.setValue(new ArticlesState(svart.getAll().get(), null));
-        }
+//        if (svart.getAll().isLeft()){
+//            state.setValue(new ArticlesState(null, svart.getAll().getLeft()));
+//        }else {
+//            state.setValue(new ArticlesState(svart.getAll().get(), null));
+//        }
     }
 }
