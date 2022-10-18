@@ -23,10 +23,10 @@ public class Configuracion {
             this.newspapers = node.get("newspapers").asText();
             this.articles = node.get("articles").asText();
             this.types = node.get("types").asText();
-            this.path = node.get("path").asText();
-            this.database = node.get("database").asText();
+            this.path = node.get("path").asText() + node.get("database").asText();
             this.user_name = node.get("user_name").asText();
             this.dB_password = node.get("dB_password").asText();
+            this.driver = node.get("driver").asText();
 
 
             JsonNode node2 = mapper.readTree(
@@ -37,14 +37,13 @@ public class Configuracion {
             log.error(e.getMessage(), e);
         }
     }
+    private String driver;
     private String path;
-    private String database;
     private String user_name;
     private String dB_password;
     private String newspapers;
     private String articles;
     private String types;
-
     private String user;
     private String password;
 

@@ -11,6 +11,9 @@ module basefx {
     requires javafx.controls;
     requires io.vavr;
     requires java.sql;
+    requires com.zaxxer.hikari;
+    requires commons.dbcp2;
+    requires jakarta.annotation;
 
     exports ui.fx;
     exports data;
