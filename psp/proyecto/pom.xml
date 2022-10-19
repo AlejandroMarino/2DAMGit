@@ -57,7 +57,6 @@
             <artifactId>converter-moshi</artifactId>
             <version>${retrofit}</version>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -89,5 +88,4 @@
             <version>${weldSECore}</version>
         </dependency>
     </dependencies>
-
 </project>
