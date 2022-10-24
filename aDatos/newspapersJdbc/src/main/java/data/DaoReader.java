@@ -1,6 +1,7 @@
 package data;
 
-import config.DBConnection;
+
+import config.DBConnectionPool;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import modelo.Reader;
@@ -14,10 +15,10 @@ import java.util.logging.Logger;
 
 public class DaoReader {
 
-    private DBConnection db;
+    private DBConnectionPool db;
 
     @Inject
-    public DaoReader(DBConnection db) {
+    public DaoReader(DBConnectionPool db) {
         this.db = db;
     }
 

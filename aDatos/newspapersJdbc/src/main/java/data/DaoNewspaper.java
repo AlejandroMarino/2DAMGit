@@ -1,25 +1,13 @@
 package data;
 
-import config.Configuracion;
-import io.vavr.control.Either;
+import config.Configuration;
 import jakarta.inject.Inject;
-import modelo.Newspaper;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DaoNewspaper {
-    private final Configuracion config;
+    private final Configuration config;
 
     @Inject
-    public DaoNewspaper(Configuracion config) {
+    public DaoNewspaper(Configuration config) {
         this.config = config;
     }
 

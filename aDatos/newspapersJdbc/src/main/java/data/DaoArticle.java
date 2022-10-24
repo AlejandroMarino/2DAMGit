@@ -1,29 +1,14 @@
 package data;
 
-import config.Configuracion;
-import io.vavr.control.Either;
+import config.Configuration;
 import jakarta.inject.Inject;
-import modelo.Article;
-import modelo.Type;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DaoArticle {
 
-    private final Configuracion config;
+    private final Configuration config;
 
     @Inject
-    public DaoArticle(Configuracion config) {
+    public DaoArticle(Configuration config) {
         this.config = config;
     }
 

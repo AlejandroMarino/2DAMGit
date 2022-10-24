@@ -7,17 +7,17 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    private Configuracion config;
+    private Configuration config;
 
     @Inject
-    public DBConnection(Configuracion config) {
+    public DBConnection(Configuration config) {
         this.config = config;
     }
 
     public Connection getConnection() throws SQLException {
 
         Connection conn = DriverManager
-                .getConnection(config.getPath()+config.getDatabase(), config.getUser_name(), config.getDB_password());
+                .getConnection(config.getPath(), config.getUser_name(), config.getDB_password());
         System.out.println("Connected to DB");
         return conn;
     }

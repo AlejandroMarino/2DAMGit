@@ -1,13 +1,13 @@
 package data;
 
-import config.Configuracion;
+import config.Configuration;
 import jakarta.inject.Inject;
 
 public class DaoLogin {
-    private Configuracion config;
+    private Configuration config;
 
     @Inject
-    public DaoLogin(Configuracion config) {
+    public DaoLogin(Configuration config) {
         this.config = config;
     }
 

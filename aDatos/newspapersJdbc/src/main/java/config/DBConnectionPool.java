@@ -5,7 +5,6 @@ import jakarta.inject.Inject;
 
 import javax.sql.DataSource;
 import jakarta.annotation.PreDestroy;
-import java.lang.module.Configuration;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -26,10 +25,10 @@ public class DBConnectionPool {
 
     private DataSource getHikariPool() {
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl();
-        hikariConfig.setUsername(config.getProperty("user_name"));
-        hikariConfig.setPassword(config.getProperty("password"));
-        hikariConfig.setDriverClassName(config.getProperty("driver"));
+        hikariConfig.setJdbcUrl(config.getPath());
+        hikariConfig.setUsername(config.getUser_name());
+        hikariConfig.setPassword(config.getDB_password());
+        hikariConfig.setDriverClassName(config.getDriver());
         hikariConfig.setMaximumPoolSize(4);
 
         hikariConfig.addDataSourceProperty("cachePrepStmts", true);
@@ -41,9 +40,9 @@ public class DBConnectionPool {
 
     private BasicDataSource getBasicPool() {
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUsername(config.getProperty("user_name"));
-        basicDataSource.setPassword(config.getProperty("password"));
-        basicDataSource.setUrl(config.getProperty("urlDB"));
+        basicDataSource.setUsername(config.getUser_name());
+        basicDataSource.setPassword(config.getPassword());
+        basicDataSource.setUrl(config.getPath());
 
         return basicDataSource;
     }

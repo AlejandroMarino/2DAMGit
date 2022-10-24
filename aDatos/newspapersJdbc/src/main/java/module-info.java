@@ -17,26 +17,26 @@ module basefx {
 
     exports ui.fx;
     exports data;
-    exports ui.pantallas.principal;
-    exports ui.pantallas.Newspaper;
-    exports ui.pantallas.login;
+    exports ui.screens.principal;
+    exports ui.screens.Newspaper;
+    exports ui.screens.login;
     exports ui.common;
-    exports ui.pantallas.addArticles;
-    exports ui.pantallas.delNewspaper;
-    exports ui.pantallas.articles;
+    exports ui.screens.addArticles;
+    exports ui.screens.delNewspaper;
+    exports ui.screens.articles;
     exports modelo;
     exports servicios;
     exports config;
-    exports ui.pantallas.filterArticles;
+    exports ui.screens.filterArticles;
 
-    opens ui.pantallas.delNewspaper;
+    opens ui.screens.delNewspaper;
     opens config;
     opens modelo;
     opens ui.fx;
-    opens ui.pantallas.articles;
-    opens ui.pantallas.filterArticles;
-    opens ui.pantallas.addArticles;
-    opens ui.pantallas.principal;
-    opens ui.pantallas.login;
-    opens ui.pantallas.Newspaper;
+    opens ui.screens.articles;
+    opens ui.screens.filterArticles;
+    opens ui.screens.addArticles;
+    opens ui.screens.principal;
+    opens ui.screens.login;
+    opens ui.screens.Newspaper;
 }
