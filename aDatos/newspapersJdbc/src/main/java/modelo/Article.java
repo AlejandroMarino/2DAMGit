@@ -8,6 +8,6 @@ import lombok.Data;
 public class Article {
     private int id;
     private String name;
-    private Type type;
+    private int type;
     private int idNewspaper;
 }
