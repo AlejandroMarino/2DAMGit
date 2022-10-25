@@ -22,22 +22,23 @@ class MainViewModel(
 
     private val _uiState = MutableLiveData<MainState>()
     val uiState: LiveData<MainState> get() = _uiState
+    private var index = 0
 
 
     private fun allTeams() = getTeams()
 
-    fun cargarTeam(index: Int) {
+    fun loadTeam() {
         _uiState.value = MainState(team = allTeams()[index])
     }
 
-    fun previousTeam(index: Int): Int {
+    fun previousTeam() {
         val teams = getTeams()
-        return if (index == 0) {
+        if (index == 0) {
             _uiState.value = MainState(team = teams[teams.size - 1])
-            teams.size - 1
+            index = teams.size - 1
         } else {
             _uiState.value = MainState(team = teams[index - 1])
-            index - 1
+            index -= 1
         }
     }
 
@@ -46,14 +47,14 @@ class MainViewModel(
         return team.name
     }
 
-    fun nextTeam(index: Int): Int {
+    fun nextTeam(){
         val teams = getTeams()
-        return if (index == teams.size - 1) {
+        if (index == teams.size - 1) {
             _uiState.value = MainState(team = teams[0])
-            0
+            index = 0
         } else {
             _uiState.value = MainState(team = teams[index + 1])
-            index + 1
+            index += 1
         }
     }
 
@@ -70,30 +71,28 @@ class MainViewModel(
         }
     }
 
-    fun deleteTeam(actualIndex: Int) : Int {
-        val name = getNameTeam(actualIndex)
+    fun deleteTeam(){
+        val name = getNameTeam(index)
         if (!delete(name)) {
             _uiState.value = MainState(
                 error = stringProvider.getString(R.string.noTeamWithName),
             )
-            return actualIndex
         } else {
             val teams = getTeams()
-            return if (actualIndex == teams.size) {
+            if (index == teams.size) {
                 _uiState.value = MainState(
-                    team = teams[actualIndex - 1],
+                    team = teams[index - 1],
                 )
-                actualIndex - 1
+                index -= 1
             } else {
                 _uiState.value = MainState(
-                    team = teams[actualIndex],
+                    team = teams[index],
                 )
-                actualIndex
             }
         }
     }
 
-    fun updateTeam(index: Int, newName: String, performance: Float, tyre: Int, winner: Boolean) {
+    fun updateTeam(newName: String, performance: Float, tyre: Int, winner: Boolean) {
         val name = allTeams()[index].name
         update(name, newName, performance, tyre, winner)
     }

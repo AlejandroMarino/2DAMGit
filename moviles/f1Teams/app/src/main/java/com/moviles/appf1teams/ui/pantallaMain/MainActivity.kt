@@ -15,9 +15,6 @@ import com.moviles.appf1teams.utils.StringProvider
 
 class MainActivity : AppCompatActivity() {
 
-    private var actualIndex: Int = Constantes.FirstOfList
-
-
     private lateinit var binding: ActivityMainBinding
 
 
@@ -34,10 +31,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater).apply {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        with(binding) {
             setContentView(root)
 
-//            viewModel.cargarTeam(actualIndex)
+            viewModel.loadTeam()
 
             viewModel.uiState.observe(this@MainActivity) { state ->
                 state.error?.let { error ->
@@ -60,21 +58,16 @@ class MainActivity : AppCompatActivity() {
                     switchMaterial.isChecked = state.team.winner
                 }
             }
+            floatingActionButton()
+            bottomNavView()
+        }
+    }
 
+    private fun floatingActionButton() {
+        with(binding) {
             floatingActionButton.setOnClickListener {
                 if (textName.text.toString() != Constantes.EmptyText && toggleButton.checkedButtonId != Constantes.NotFound) {
-                    var num = Constantes.Zero
-                    when (toggleButton.checkedButtonId) {
-                        R.id.buttonS -> {
-                            num = Constantes.IntSoft
-                        }
-                        R.id.buttonM -> {
-                            num = Constantes.IntMedium
-                        }
-                        R.id.buttonH -> {
-                            num = Constantes.IntHard
-                        }
-                    }
+                    val num = getToggleButton()
                     viewModel.addTeam(
                         textName.text.toString(),
                         slider.value,
@@ -89,55 +82,61 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+        }
+    }
 
+    private fun bottomNavView() {
+        with(binding) {
             bottomNavigationView.setOnNavigationItemReselectedListener { item ->
                 when (item.itemId) {
                     R.id.itemLeft -> {
-                        val newIndex = viewModel.previousTeam(actualIndex)
-                        actualIndex = newIndex
-
+                        viewModel.previousTeam()
                     }
                     R.id.itemRight -> {
-                        val newIndex = viewModel.nextTeam(actualIndex)
-                        actualIndex = newIndex
-
+                        viewModel.nextTeam()
                     }
                     R.id.itemUpdate -> {
                         if (textName.text.toString() != Constantes.EmptyText && toggleButton.checkedButtonId != Constantes.NotFound) {
-                        var num = Constantes.Zero
-                        when (toggleButton.checkedButtonId) {
-                            R.id.buttonS -> {
-                                num = Constantes.IntSoft
-                            }
-                            R.id.buttonM -> {
-                                num = Constantes.IntMedium
-                            }
-                            R.id.buttonH -> {
-                                num = Constantes.IntHard
-                            }
-                        }
-                        viewModel.updateTeam(
-                            actualIndex,
-                            textName.text.toString(),
-                            slider.value,
-                            num,
-                            switchMaterial.isChecked
-                        )
+                            val num = getToggleButton()
+                            viewModel.updateTeam(
+                                textName.text.toString(),
+                                slider.value,
+                                num,
+                                switchMaterial.isChecked
+                            )
                         } else {
                             Toast.makeText(
                                 this@MainActivity,
-                                StringProvider.instance(this@MainActivity).getString(R.string.attrRequired),
+                                StringProvider.instance(this@MainActivity)
+                                    .getString(R.string.attrRequired),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     }
                     R.id.itemDelete -> {
-                        val n = viewModel.deleteTeam(actualIndex)
-                        actualIndex = n
+                        viewModel.deleteTeam()
                     }
                 }
             }
+        }
+    }
 
+    private fun getToggleButton(): Int {
+        with(binding) {
+            when (toggleButton.checkedButtonId) {
+                R.id.buttonS -> {
+                    return Constantes.IntSoft
+                }
+                R.id.buttonM -> {
+                    return Constantes.IntMedium
+                }
+                R.id.buttonH -> {
+                    return Constantes.IntHard
+                }
+                else -> {
+                    return Constantes.Zero
+                }
+            }
         }
     }
 
