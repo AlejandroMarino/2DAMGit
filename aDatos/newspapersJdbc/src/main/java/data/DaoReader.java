@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public class DaoReader {
 
-    private DBConnectionPool db;
+    private final DBConnectionPool db;
 
     @Inject
     public DaoReader(DBConnectionPool db) {
@@ -38,7 +38,7 @@ public class DaoReader {
         return readers;
     }
 
-    public Either<Integer ,List<Reader>> getAll(){
+    public Either<Integer, List<Reader>> getAll() {
         try (Connection con = db.getConnection();
              Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                      ResultSet.CONCUR_READ_ONLY)) {
@@ -52,12 +52,12 @@ public class DaoReader {
         }
     }
 
-    public Either<Integer,Reader> getReader(int id){
+    public Either<Integer, Reader> getReader(int id) {
         try (Connection con = db.getConnection();
-             Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                     ResultSet.CONCUR_READ_ONLY)) {
+             PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM reader WHERE id = ?")) {
+            preparedStatement.setInt(1, id);
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM reader WHERE id = " + id);
+            ResultSet rs = preparedStatement.executeQuery();
             List<Reader> readers = readRS(rs);
             if (readers.isEmpty()) {
                 return Either.left(-1);
@@ -72,11 +72,11 @@ public class DaoReader {
     }
 
     public int delete(int id) {
-        int rowsAffected=0;
+        int rowsAffected = 0;
         try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM reader WHERE id=id")) {
+             PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM reader WHERE id = ?")) {
             preparedStatement.setInt(1, id);
-            rowsAffected= preparedStatement.executeUpdate();
+            rowsAffected = preparedStatement.executeUpdate();
 
         } catch (SQLException sqle) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
@@ -84,19 +84,19 @@ public class DaoReader {
         return rowsAffected;
     }
 
-    public int saveWithAutoIncrementalID (String name, LocalDate birth_d){
-        int rowsAffected=0;
+    public int saveWithAutoIncrementalID(String name, LocalDate birth_d) {
+        int rowsAffected = 0;
         try (Connection con = db.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO reader (name_reader, birth_date) VALUES (?,?)",
                      Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(2, name);
-            preparedStatement.setDate(3, Date.valueOf(birth_d));
+            preparedStatement.setString(1, name);
+            preparedStatement.setDate(2, Date.valueOf(birth_d));
 
-            rowsAffected= preparedStatement.executeUpdate();
+            rowsAffected = preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
-            if(rs.next()) {
+            if (rs.next()) {
                 int auto_id = rs.getInt(1);
-                System.out.println("The id of the new row is "+auto_id);
+                System.out.println("The id of the new row is " + auto_id);
             }
 
         } catch (SQLException e) {
@@ -127,7 +127,7 @@ public class DaoReader {
             } catch (SQLException sqle) {
                 Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
             }
-        }else {
+        } else {
             try (Connection con = db.getConnection();
                  PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=?, birth_date=? WHERE id=?")) {
                 preparedStatement.setString(1, r.getName());
