@@ -33,12 +33,16 @@ class MainViewModel(
 
     fun previousTeam() {
         val teams = getTeams()
-        if (index == 0) {
-            _uiState.value = MainState(team = teams[teams.size - 1])
-            index = teams.size - 1
+        if (teams.isNotEmpty()) {
+            if (index == 0) {
+                _uiState.value = MainState(team = teams[teams.size - 1])
+                index = teams.size - 1
+            } else {
+                _uiState.value = MainState(team = teams[index - 1])
+                index -= 1
+            }
         } else {
-            _uiState.value = MainState(team = teams[index - 1])
-            index -= 1
+            _uiState.value = MainState(error = stringProvider.getString(R.string.noMoreTeams))
         }
     }
 
@@ -47,14 +51,18 @@ class MainViewModel(
         return team.name
     }
 
-    fun nextTeam(){
+    fun nextTeam() {
         val teams = getTeams()
-        if (index == teams.size - 1) {
-            _uiState.value = MainState(team = teams[0])
-            index = 0
+        if (teams.isNotEmpty()) {
+            if (index == teams.size - 1) {
+                _uiState.value = MainState(team = teams[0])
+                index = 0
+            } else {
+                _uiState.value = MainState(team = teams[index + 1])
+                index += 1
+            }
         } else {
-            _uiState.value = MainState(team = teams[index + 1])
-            index += 1
+            _uiState.value = MainState(error = stringProvider.getString(R.string.noMoreTeams))
         }
     }
 
@@ -71,24 +79,32 @@ class MainViewModel(
         }
     }
 
-    fun deleteTeam(){
-        val name = getNameTeam(index)
-        if (!delete(name)) {
-            _uiState.value = MainState(
-                error = stringProvider.getString(R.string.noTeamWithName),
-            )
-        } else {
-            val teams = getTeams()
-            if (index == teams.size) {
+    fun deleteTeam() {
+        val teams = getTeams()
+        if (teams.isNotEmpty()) {
+            val name = getNameTeam(index)
+            if (!delete(name)) {
                 _uiState.value = MainState(
-                    team = teams[index - 1],
+                    error = stringProvider.getString(R.string.noTeamWithName),
                 )
-                index -= 1
             } else {
-                _uiState.value = MainState(
-                    team = teams[index],
-                )
+                if (teams.isEmpty()) {
+                    _uiState.value = MainState(
+                        team = Team("", 0F, 0, false),
+                    )
+                } else if (index == teams.size) {
+                    _uiState.value = MainState(
+                        team = teams[index - 1],
+                    )
+                    index -= 1
+                } else {
+                    _uiState.value = MainState(
+                        team = teams[index],
+                    )
+                }
             }
+        }else{
+            _uiState.value = MainState(error = stringProvider.getString(R.string.noMoreTeams))
         }
     }
 

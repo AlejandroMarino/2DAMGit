@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.readers.ReadersController">
+   <children>
+      <TableView layoutX="117.0" layoutY="163.0" prefHeight="375.0" prefWidth="446.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="nameColumn" prefWidth="217.0" text="Name" />
+            <TableColumn fx:id="birthColumn" prefWidth="153.0" text="Birth Date" />
+        </columns>
+      </TableView>
+      <ChoiceBox fx:id="newspaperBox" layoutX="678.0" layoutY="242.0" prefWidth="150.0" />
+      <Label layoutX="668.0" layoutY="217.0" text="Filter by newspaper subscription" />
+   </children>
+</AnchorPane>

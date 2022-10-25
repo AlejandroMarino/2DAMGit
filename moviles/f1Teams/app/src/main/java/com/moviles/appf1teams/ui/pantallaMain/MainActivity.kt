@@ -54,12 +54,15 @@ class MainActivity : AppCompatActivity() {
                         Constantes.IntHard -> {
                             toggleButton.check(R.id.buttonH)
                         }
+                        Constantes.Zero -> {
+                            toggleButton.clearChecked()
+                        }
                     }
                     switchMaterial.isChecked = state.team.winner
                 }
             }
             floatingActionButton()
-            bottomNavView()
+            bottomNav()
         }
     }
 
@@ -85,15 +88,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun bottomNavView() {
+    private fun bottomNav() {
         with(binding) {
-            bottomNavigationView.setOnNavigationItemReselectedListener { item ->
+            bottomNavigationView.setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.itemLeft -> {
                         viewModel.previousTeam()
+                        true
                     }
                     R.id.itemRight -> {
                         viewModel.nextTeam()
+                        true
                     }
                     R.id.itemUpdate -> {
                         if (textName.text.toString() != Constantes.EmptyText && toggleButton.checkedButtonId != Constantes.NotFound) {
@@ -112,9 +117,14 @@ class MainActivity : AppCompatActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
+                        true
                     }
                     R.id.itemDelete -> {
                         viewModel.deleteTeam()
+                        true
+                    }
+                    else -> {
+                        false
                     }
                 }
             }

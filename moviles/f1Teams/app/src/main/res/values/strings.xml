@@ -12,4 +12,5 @@
     <string name="attrRequired">All the attributes are required</string>
     <string name="repeatedName">There is already a team with that name</string>
     <string name="noTeamWithName">There is no team with that name</string>
+    <string name="noMoreTeams">There are no more teams</string>
 </resources>
