@@ -17,6 +17,33 @@
 /* /web_editor/static/src/scss/web_editor.variables.scss defined in bundle 'web.assets_common' */
  
 
+/* /mail/static/src/scss/variables.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /portal/static/src/scss/primary_variables.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /website/static/src/scss/primary_variables.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /website/static/src/scss/options/user_values.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /website/static/src/scss/options/colors/user_color_palette.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /website/static/src/scss/options/colors/user_theme_color_palette.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /website/static/src/snippets/s_badge/000_variables.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /website/static/src/snippets/s_product_list/000_variables.scss defined in bundle 'web.assets_common' */
+ 
+
+/* /website/static/src/scss/secondary_variables.scss defined in bundle 'web.assets_common' */
+ 
+
 /* /web_editor/static/src/scss/secondary_variables.scss defined in bundle 'web.assets_common' */
  
 
