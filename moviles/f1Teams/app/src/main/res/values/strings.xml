@@ -13,4 +13,9 @@
     <string name="repeatedName">There is already a team with that name</string>
     <string name="noTeamWithName">There is no team with that name</string>
     <string name="noMoreTeams">There are no more teams</string>
+    <string name="watch">watch</string>
+    <string name="delete">delete</string>
+    <string name="add_new_team">Add New Team</string>
+    <string name="team_Deleted">The team was deleted</string>
+    <string name="undo">Undo</string>
 </resources>

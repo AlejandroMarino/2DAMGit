@@ -5,10 +5,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import com.moviles.appf1teams.R
 import com.moviles.appf1teams.databinding.ActivityRecycleviewBinding
 import com.moviles.appf1teams.domain.modelo.Team
+import com.moviles.appf1teams.domain.usecases.teams.AddTeam
 import com.moviles.appf1teams.domain.usecases.teams.Delete
 import com.moviles.appf1teams.domain.usecases.teams.GetTeams
+import com.moviles.appf1teams.ui.common.Constantes
 import com.moviles.appf1teams.ui.pantalla.main.MainActivity
 import com.moviles.appf1teams.utils.StringProvider
 
@@ -21,6 +25,7 @@ class RecycleViewActivity : AppCompatActivity() {
             StringProvider.instance(this),
             GetTeams(),
             Delete(),
+            AddTeam(),
         )
     }
 
@@ -38,10 +43,9 @@ class RecycleViewActivity : AppCompatActivity() {
                     Toast.makeText(this@RecycleViewActivity, error, Toast.LENGTH_SHORT).show()
                 }
                 if (state.error == null) {
-                    val lista = list
                     val adapter = TeamsAdapter(state.teams, ::clickWatch, ::clickDelete)
-                    lista.let {
-                        lista.adapter = adapter
+                    list.let {
+                        list.adapter = adapter
                     }
                 }
             }
@@ -49,7 +53,7 @@ class RecycleViewActivity : AppCompatActivity() {
             button.setOnClickListener {
                 val intent = Intent(this@RecycleViewActivity, MainActivity::class.java)
 
-                intent.putExtra("team", Team())
+                intent.putExtra(Constantes.team, Team())
                 startActivity(intent)
             }
         }
@@ -57,13 +61,19 @@ class RecycleViewActivity : AppCompatActivity() {
 
     private fun clickWatch(team: Team) {
         val intent = Intent(this@RecycleViewActivity, MainActivity::class.java)
-        intent.putExtra("team", team)
+        intent.putExtra(Constantes.team, team)
         startActivity(intent)
     }
 
     private fun clickDelete(team: Team) {
         viewModel.deleteTeam(team)
+        Snackbar.make(binding.root, R.string.team_Deleted, Snackbar.LENGTH_LONG)
+            .setAction(R.string.undo) {
+                viewModel.addATeam(team)
+            }
+            .setBackgroundTint(resources.getColor(R.color.black))
+            .setTextColor(resources.getColor(R.color.white))
+            .setActionTextColor(resources.getColor(R.color.purple_700))
+            .show()
     }
-
-
 }

@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
             val team = it.getParcelable<Team>("team")
             if (team != null) {
                 viewModel.loadTeam(team)
-            }
+            }else
+                viewModel.loadTeam(Team())
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
