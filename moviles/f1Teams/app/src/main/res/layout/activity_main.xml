@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.pantalla.main.MainActivity">
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -118,7 +117,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-        >
+
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
@@ -137,8 +136,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/transparent_background"
                 app:menu="@menu/bottom_menu"
-                app:labelVisibilityMode="labeled">
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
+                app:labelVisibilityMode="labeled"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -177,6 +175,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.8508892" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

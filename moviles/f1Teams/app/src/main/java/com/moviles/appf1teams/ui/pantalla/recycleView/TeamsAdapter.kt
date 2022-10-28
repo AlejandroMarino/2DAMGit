@@ -13,10 +13,9 @@ class TeamsAdapter(
     private val onClickWatch: (Team) -> Unit,
     private val onClickDelete: (Team) -> Unit,
 
-) : RecyclerView.Adapter<TeamsViewHolder>() {
+    ) : RecyclerView.Adapter<TeamsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamsViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        //ProductoViewHolder(ItemProductoBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false))
         return TeamsViewHolder(layoutInflater.inflate(R.layout.item_team, parent, false))
     }
 
