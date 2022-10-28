@@ -39,8 +39,6 @@ U
 %src/main/resources/META-INF/beans.xml,e\8\e828918b03c044d16fb0afc5e75dea9467bb7645
 N
 src/main/resources/config.yaml,c\d\cd9788c18fb100ac34d237b8e23bdff9867cadf0
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 V
 &src/main/java/data/DaoArticleType.java,1\0\103b518cf550084e13ee2a1252890768870d2cb4
 P
@@ -57,5 +55,3 @@ Q
 !src/main/java/data/DaoReader.java,4\0\405297f285c37bfee9ad5b698de0c128f0eac839
 P
  src/main/java/modelo/Reader.java,f\1\f1d357e48779957d4d9c902a10ded114ad77486a
-Z
-*src/main/java/config/DBConnectionPool.java,3\d\3d00f4cc57cc10de6978efca25d69c9f94f65395
