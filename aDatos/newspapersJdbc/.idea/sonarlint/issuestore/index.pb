@@ -1,8 +1,6 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-w
-G.idea/sonarlint/issuestore/3/9/396fad0c74cb139778b752b985a5d5b7522d506e,0\e\0ea331b02f263fce9136054c48a60e1335e8fca7
 F
 data/articles-type.txt,c\c\ccd1c7986388e8ef4a999b5862166f0accf31760
 C

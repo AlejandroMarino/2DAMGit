@@ -27,17 +27,5 @@ h
 8app/src/main/res/drawable-v24/ic_launcher_foreground.xml,0\7\078508c831007ccb3938b355f0d30a8368f99a8d
 U
 %app/src/main/res/xml/backup_rules.xml,e\0\e0bc1eda8e2c689cb79d5b6e5cfd11385f06c2b8
-p
-@app/src/main/java/com/moviles/appf1teams/utils/StringProvider.kt,d\c\dc0517e0b4428667e2ec7e0495b316cbfde7081e
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-z
-Japp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/GetTeams.kt,7\b\7bfd1a43de69063d17467371bc5874b22ceda2a2
-x
-Happ/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Update.kt,f\e\fe72feebb3cc5a2ddd508c967ed64a81f159bdd1
-y
-Iapp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/AddTeam.kt,a\d\adbb02f6835b3bdfc2f64c45bf0cfae008f6b4c2
-n
->app/src/main/java/com/moviles/appf1teams/domain/modelo/Team.kt,4\d\4d9d01bbd23d0bd8c2fa79ae427b0d93bb0a3032

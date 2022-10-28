@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">appF1Teams</string>
+    <string name="app_name">appF1TeamsView</string>
     <string name="championship_winner">Championship Winner</string>
     <string name="hard">Hard</string>
     <string name="medium">Medium</string>
