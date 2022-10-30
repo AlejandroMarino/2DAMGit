@@ -18,4 +18,5 @@
     <string name="add_new_team">Add New Team</string>
     <string name="team_Deleted">The team was deleted</string>
     <string name="undo">Undo</string>
+    <string name="img">img</string>
 </resources>

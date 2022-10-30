@@ -1,10 +1,12 @@
 package com.moviles.appf1teams.ui.pantalla.recycleView
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.appf1teams.R
 import com.moviles.appf1teams.databinding.ActivityRecycleviewBinding
@@ -37,6 +39,8 @@ class RecycleViewActivity : AppCompatActivity() {
 
         with(binding) {
             setContentView(root)
+
+            img!!.load(Uri.parse("file:///android_asset/logo-F1.png"))
 
             viewModel.uiState.observe(this@RecycleViewActivity) { state ->
                 state.error?.let { error ->

@@ -28,7 +28,7 @@ class TeamsAdapter(
 
 }
 
-class TeamsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class TeamsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemTeamBinding.bind(view)
 

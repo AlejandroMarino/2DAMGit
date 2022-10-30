@@ -55,3 +55,5 @@ Q
 !src/main/java/data/DaoReader.java,4\0\405297f285c37bfee9ad5b698de0c128f0eac839
 P
  src/main/java/modelo/Reader.java,f\1\f1d357e48779957d4d9c902a10ded114ad77486a
+Z
+*src/main/java/config/DBConnectionPool.java,3\d\3d00f4cc57cc10de6978efca25d69c9f94f65395
