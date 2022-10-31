@@ -1,6 +1,4 @@
 
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 F
 data/articles-type.txt,c\c\ccd1c7986388e8ef4a999b5862166f0accf31760
 C
@@ -57,3 +55,7 @@ P
  src/main/java/modelo/Reader.java,f\1\f1d357e48779957d4d9c902a10ded114ad77486a
 Z
 *src/main/java/config/DBConnectionPool.java,3\d\3d00f4cc57cc10de6978efca25d69c9f94f65395
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
