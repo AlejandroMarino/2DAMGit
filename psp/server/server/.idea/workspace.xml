@@ -9,62 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f9bb434-caa3-487e-9701-b107bca58a69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/common/Constantes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/jakarta/listeners/ThymeLeafListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/jakarta/servlets/Respuesta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/jakarta/servlets/ServletTomcat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/resultado.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/jakarta/listeners/ThymeLeafListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/jakarta/servlets/Respuesta.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/jakarta/servlets/ServletTomcat.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT.war" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/META-INF/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/classes/org/example/jakarta/listeners/ThymeLeafListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/classes/org/example/jakarta/servlets/Respuesta.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/classes/org/example/jakarta/servlets/ServletTomcat.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/attoparser-2.0.5.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/jakarta.el-api-5.0.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-3.0.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/javassist-3.24.1-GA.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/ognl-3.2.21.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/slf4j-api-1.7.32.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/thymeleaf-3.1.0.M1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/lib/unbescape-1.1.6.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/templates/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/WEB-INF/templates/resultado.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/3/8/3871c318f5742dcc87460f97147f108fa8dad343" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/3/c/3cc58032cd8b7a57761b9a2cf8278f57532458b1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/4/d/4d9d01bbd23d0bd8c2fa79ae427b0d93bb0a3032" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/5/a/5a2ad662d6772d13a3a0347f3ce9d32e75bf42cd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/5/a/5a307b77595c1256955e656cf46e0611a9758229" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/6/5/659a0b87707feb01c0dd9b8daf4710cb4010caf9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/7/b/7bfd1a43de69063d17467371bc5874b22ceda2a2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/a/d/adbb02f6835b3bdfc2f64c45bf0cfae008f6b4c2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/d/1/d14985017f4bd0840fad3e3e5833da1e4233fcf5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/e/f/ef303f8b147c77525dc096e9a93de6b1911a98b5" beforeDir="false" />
+    <list default="true" id="2f9bb434-caa3-487e-9701-b107bca58a69" name="Changes" comment="PSP">
       <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,6 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/2DAMGit/psp/server/server/src/main/webapp",
     "project.structure.last.edited": "Modules",
@@ -225,7 +171,16 @@
       <updated>1667135583450</updated>
       <workItem from="1667135584769" duration="11000000" />
       <workItem from="1667168041280" duration="13476000" />
+      <workItem from="1667184380320" duration="188000" />
     </task>
+    <task id="LOCAL-00001" summary="PSP">
+      <created>1667184407502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667184407502</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +196,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="PSP" />
+    <option name="LAST_COMMIT_MESSAGE" value="PSP" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

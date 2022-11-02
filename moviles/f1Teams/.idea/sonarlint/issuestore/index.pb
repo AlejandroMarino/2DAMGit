@@ -29,3 +29,25 @@ p
 @app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt,5\d\5d103fc3529f53a0e48e8de2ed1c8f34e3d4e0eb
 „
 Tapp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewState.kt,9\f\9f7f384a688fcbe13275c45c9d258c2d8f796d6c
+‡
+Wapp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt,e\f\ef303f8b147c77525dc096e9a93de6b1911a98b5
+ˆ
+Xapp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewViewModel.kt,5\a\5a2ad662d6772d13a3a0347f3ce9d32e75bf42cd
+€
+Papp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/TeamsAdapter.kt,5\a\5a307b77595c1256955e656cf46e0611a9758229
+n
+>app/src/main/java/com/moviles/appf1teams/domain/modelo/Team.kt,4\d\4d9d01bbd23d0bd8c2fa79ae427b0d93bb0a3032
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+y
+Iapp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/AddTeam.kt,a\d\adbb02f6835b3bdfc2f64c45bf0cfae008f6b4c2
+y
+Iapp/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainActivity.kt,6\5\659a0b87707feb01c0dd9b8daf4710cb4010caf9
+z
+Japp/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainViewModel.kt,3\8\3871c318f5742dcc87460f97147f108fa8dad343
+k
+;app/src/main/java/com/moviles/appf1teams/data/Repository.kt,d\1\d14985017f4bd0840fad3e3e5833da1e4233fcf5
+z
+Japp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/GetTeams.kt,7\b\7bfd1a43de69063d17467371bc5874b22ceda2a2
+x
+Happ/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Delete.kt,3\c\3cc58032cd8b7a57761b9a2cf8278f57532458b1

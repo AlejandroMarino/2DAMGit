@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dungeon [
+        <!ELEMENT dungeon (room+)>
+        <!ELEMENT room (door+, description)>
+        <!ELEMENT door EMPTY >
+        <!ELEMENT description (#PCDATA)>
+
+        <!ATTLIST dungeon name CDATA #REQUIRED>
+        <!ATTLIST room id ID #REQUIRED>
+        <!ATTLIST door name CDATA #REQUIRED>
+        <!ATTLIST door dest IDREF #REQUIRED>
+        ]>
+
+<dungeon name="Dungeon1">
+    <room id="R0">
+        <door name="Norte" dest="R1"/>
+        <door name="Este" dest="R2"/>
+        <door name="Oeste" dest="R3"/>
+        <description>Habitacion principal</description>
+    </room>
+    <room id="R1">
+        <door name="Sur" dest="R0"/>
+        <description>Habitación lleno de cadaveres en descomposicion y calaveras incrustadas en pinchos que salen de la pared</description>
+    </room>
+    <room id="R2">
+        <door name="Oeste" dest="R0"/>
+        <description>Habitación con cofre</description>
+    </room>
+    <room id="R3">
+        <door name="Este" dest="R0"/>
+        <description>Habitación con Mercader</description>
+    </room>
+</dungeon>
