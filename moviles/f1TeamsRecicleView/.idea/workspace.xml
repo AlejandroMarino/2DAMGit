@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c9fa6eb-9206-47fd-90a7-3b80e5ccdfab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout-land/activity_recycleview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../aDatos/newspapersJdbc/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../aDatos/newspapersJdbc/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/6/e/6ec7d34b130497a10dc92abcde9b313d370a89df" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/7/a/7a1d43f2cd7aa41f89c4f7b135fd704c0f4b9254" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/8/e/8e27ba16c655f421171956147d0fde89b7d25d17" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/b/4/b4c706ad34a58eaecbb2ccac09e2ff75a827c52a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/e/0/e0bc1eda8e2c689cb79d5b6e5cfd11385f06c2b8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/e/7/e7c8acfc7129b76f8e357362c92b12e5331f9758" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_recycleview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_recycleview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/item_team.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/item_team.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[1f09cbd8]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GktmVaQSUcerHL0dlWCl8pmRJ1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../dam2_2223/MOVILES/RecyclerView" />
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="appF1Teams.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+        <option name="PROFILING_MODE" value="NOT_SET" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c9fa6eb-9206-47fd-90a7-3b80e5ccdfab" name="Changes" comment="" />
+      <created>1666944568317</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666944568317</updated>
+    </task>
+    <servers />
+  </component>
+</project>
