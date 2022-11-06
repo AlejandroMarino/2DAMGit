@@ -37,25 +37,11 @@ U
 %src/main/resources/META-INF/beans.xml,e\8\e828918b03c044d16fb0afc5e75dea9467bb7645
 N
 src/main/resources/config.yaml,c\d\cd9788c18fb100ac34d237b8e23bdff9867cadf0
-V
-&src/main/java/data/DaoArticleType.java,1\0\103b518cf550084e13ee2a1252890768870d2cb4
-P
- src/main/java/data/DaoLogin.java,8\3\830fa4c9081ec34a30d6ef0d227f4eed0a3047cd
-T
-$src/main/java/data/DaoNewspaper.java,b\d\bdb0d02c7ddf20c68163b9cf7fee48a39017831b
 Q
 !src/main/java/modelo/Article.java,0\3\030018f3151ae9e92dd349f431e488017e08390d
 V
 &src/main/java/config/DBConnection.java,0\d\0d75cf20276b93b14b4a1d900463a2ea37a293d5
-R
-"src/main/java/data/DaoArticle.java,d\9\d9c3a55082a3a6032eb04187cd6dcf6752c59df0
-Q
-!src/main/java/data/DaoReader.java,4\0\405297f285c37bfee9ad5b698de0c128f0eac839
 P
  src/main/java/modelo/Reader.java,f\1\f1d357e48779957d4d9c902a10ded114ad77486a
 Z
 *src/main/java/config/DBConnectionPool.java,3\d\3d00f4cc57cc10de6978efca25d69c9f94f65395
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
