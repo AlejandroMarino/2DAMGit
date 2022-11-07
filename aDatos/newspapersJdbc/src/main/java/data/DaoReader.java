@@ -72,68 +72,104 @@ public class DaoReader {
     }
 
     public int delete(int id) {
-        int rowsAffected = 0;
-        try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM reader WHERE id = ?")) {
-            preparedStatement.setInt(1, id);
-            rowsAffected = preparedStatement.executeUpdate();
-
+        try (Connection con = db.getConnection()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM reader WHERE id = ?")) {
+                con.setAutoCommit(false);
+                preparedStatement.setInt(1, id);
+                return preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                try {
+                    con.rollback();
+                    return -2;
+                } catch (SQLException ex1) {
+                    return -3;
+                }
+            }
         } catch (SQLException sqle) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
+            return -1;
         }
-        return rowsAffected;
     }
 
-    public int saveWithAutoIncrementalID(String name, LocalDate birth_d) {
-        int rowsAffected = 0;
-        try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO reader (name_reader, birth_date) VALUES (?,?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, name);
-            preparedStatement.setDate(2, Date.valueOf(birth_d));
-
-            rowsAffected = preparedStatement.executeUpdate();
-            ResultSet rs = preparedStatement.getGeneratedKeys();
-            if (rs.next()) {
-                int auto_id = rs.getInt(1);
-                System.out.println("The id of the new row is " + auto_id);
+    public int add(String name, LocalDate birth_d) {
+        try (Connection con = db.getConnection()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO reader (name_reader, birth_date) VALUES (?,?)",
+                    Statement.RETURN_GENERATED_KEYS)) {
+                con.setAutoCommit(false);
+                preparedStatement.setString(1, name);
+                preparedStatement.setDate(2, Date.valueOf(birth_d));
+                con.commit();
+                return preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                try {
+                    con.rollback();
+                    return -2;
+                } catch (SQLException ex1) {
+                    return -3;
+                }
             }
-
-        } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
+            return -1;
         }
-        return rowsAffected;
     }
 
     public boolean update(Reader r) {
         boolean updated = false;
         if (r.getBirthDate() == null) {
-            try (Connection con = db.getConnection();
-                 PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=? WHERE id=?")) {
-                preparedStatement.setString(1, r.getName());
-                preparedStatement.setInt(2, r.getId());
-                updated = preparedStatement.executeUpdate() > 0;
+            try (Connection con = db.getConnection()) {
+                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=? WHERE id=?")) {
+                    con.setAutoCommit(false);
+                    preparedStatement.setString(1, r.getName());
+                    preparedStatement.setInt(2, r.getId());
+                    updated = preparedStatement.executeUpdate() > 0;
+                    con.commit();
+                } catch (SQLException ex) {
+                    try {
+                        con.rollback();
+                        return false;
+                    } catch (SQLException ex1) {
+                        return false;
+                    }
+                }
             } catch (SQLException sqle) {
                 Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
             }
         } else if (r.getName() == null || r.getName().isBlank()) {
-            try (Connection con = db.getConnection();
-                 PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET birth_date=? WHERE id=?")) {
-                preparedStatement.setDate(1, Date.valueOf(r.getBirthDate()));
-                preparedStatement.setInt(2, r.getId());
-                updated = preparedStatement.executeUpdate() > 0;
+            try (Connection con = db.getConnection()) {
+                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET birth_date=? WHERE id=?")) {
+                    con.setAutoCommit(false);
+                    preparedStatement.setDate(1, Date.valueOf(r.getBirthDate()));
+                    preparedStatement.setInt(2, r.getId());
+                    updated = preparedStatement.executeUpdate() > 0;
+                } catch (SQLException ex) {
+                    try {
+                        con.rollback();
+                        return false;
+                    } catch (SQLException ex1) {
+                        return false;
+                    }
+                }
             } catch (SQLException sqle) {
                 Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
             }
         } else {
-            try (Connection con = db.getConnection();
-                 PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=?, birth_date=? WHERE id=?")) {
-                preparedStatement.setString(1, r.getName());
-                preparedStatement.setDate(2, Date.valueOf(r.getBirthDate()));
-                preparedStatement.setInt(3, r.getId());
-                updated = preparedStatement.executeUpdate() > 0;
+            try (Connection con = db.getConnection()) {
+                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=?, birth_date=? WHERE id=?")) {
+                    con.setAutoCommit(false);
+                    preparedStatement.setString(1, r.getName());
+                    preparedStatement.setDate(2, Date.valueOf(r.getBirthDate()));
+                    preparedStatement.setInt(3, r.getId());
+                    con.commit();
+                    updated = preparedStatement.executeUpdate() > 0;
+                }catch (SQLException ex) {
+                    try {
+                        con.rollback();
+                        return false;
+                    } catch (SQLException ex1) {
+                        return false;
+                    }
+                }
             } catch (SQLException sqle) {
                 Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
             }

@@ -48,24 +48,46 @@ public class DaoReadArticle {
     }
 
     public int add(ReadArticle ra) {
-        try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO read_article (id_article, id_reader, ranking) VALUES (?, ?, ?)")) {
-            preparedStatement.setInt(1, ra.getIdArticle());
-            preparedStatement.setInt(2, ra.getIdReader());
-            preparedStatement.setInt(3, ra.getRanking());
-            return preparedStatement.executeUpdate();
+        try (Connection con = db.getConnection()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO read_article (id_article, id_reader, ranking) VALUES (?, ?, ?)")) {
+                con.setAutoCommit(false);
+                preparedStatement.setInt(1, ra.getIdArticle());
+                preparedStatement.setInt(2, ra.getIdReader());
+                preparedStatement.setInt(3, ra.getRanking());
+                con.commit();
+                return preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                try {
+                    con.rollback();
+                    return -2;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return -3;
+                }
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return -1;
         }
     }
 
+
     public int delete(int idArticle, int idReader) {
-        try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM read_article WHERE id_article = ? AND id_reader = ?")) {
-            preparedStatement.setInt(1, idArticle);
-            preparedStatement.setInt(2, idReader);
-            return preparedStatement.executeUpdate();
+        try (Connection con = db.getConnection()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM read_article WHERE id_article = ? AND id_reader = ?")) {
+                preparedStatement.setInt(1, idArticle);
+                preparedStatement.setInt(2, idReader);
+                con.commit();
+                return preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                try {
+                    con.rollback();
+                    return -2;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return -3;
+                }
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return -1;
