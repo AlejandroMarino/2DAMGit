@@ -65,13 +65,24 @@ public class DaoSubscribe {
     }
 
     public int add(Subscribe s) {
-        try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO subscribe (id_reader, id_newspaper, start_date, cancellation_date) VALUES (?, ?, ?, ?)")) {
-            preparedStatement.setInt(1, s.getIdReader());
-            preparedStatement.setInt(2, s.getIdNewspaper());
-            preparedStatement.setDate(3, Date.valueOf(s.getStartDate()));
-            preparedStatement.setDate(4, Date.valueOf(s.getCancellationDate()));
-            return preparedStatement.executeUpdate();
+        try (Connection con = db.getConnection()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO subscribe (id_reader, id_newspaper, start_date, cancellation_date) VALUES (?, ?, ?, ?)")) {
+                con.setAutoCommit(false);
+                preparedStatement.setInt(1, s.getIdReader());
+                preparedStatement.setInt(2, s.getIdNewspaper());
+                preparedStatement.setDate(3, Date.valueOf(s.getStartDate()));
+                preparedStatement.setDate(4, Date.valueOf(s.getCancellationDate()));
+                con.commit();
+                return preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                try {
+                    con.rollback();
+                    return -2;
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    return -3;
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(DaoSubscribe.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
@@ -79,40 +90,98 @@ public class DaoSubscribe {
     }
 
     public int update(Subscribe s) {
-        if (s.getStartDate() ==  null){
-            try (Connection con = db.getConnection();
-                 PreparedStatement preparedStatement = con.prepareStatement("UPDATE subscribe SET cancellation_date = ? WHERE id_reader = ? AND id_newspaper = ?")) {
-                preparedStatement.setDate(1, Date.valueOf(s.getCancellationDate()));
-                preparedStatement.setInt(2, s.getIdReader());
-                preparedStatement.setInt(3, s.getIdNewspaper());
-                return preparedStatement.executeUpdate();
+        if (s.getStartDate() == null) {
+            try (Connection con = db.getConnection()) {
+                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE subscribe SET cancellation_date = ? WHERE id_reader = ? AND id_newspaper = ?")) {
+                    con.setAutoCommit(false);
+                    preparedStatement.setDate(1, Date.valueOf(s.getCancellationDate()));
+                    preparedStatement.setInt(2, s.getIdReader());
+                    preparedStatement.setInt(3, s.getIdNewspaper());
+                    con.commit();
+                    return preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    try {
+                        con.rollback();
+                        return -2;
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        return -3;
+                    }
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DaoSubscribe.class.getName()).log(Level.SEVERE, null, ex);
                 return -1;
             }
-        } else if (s.getCancellationDate() == null){
-            try (Connection con = db.getConnection();
-                 PreparedStatement preparedStatement = con.prepareStatement("UPDATE subscribe SET start_date = ? WHERE id_reader = ? AND id_newspaper = ?")) {
-                preparedStatement.setDate(1, Date.valueOf(s.getStartDate()));
-                preparedStatement.setInt(2, s.getIdReader());
-                preparedStatement.setInt(3, s.getIdNewspaper());
-                return preparedStatement.executeUpdate();
+        } else if (s.getCancellationDate() == null) {
+            try (Connection con = db.getConnection()) {
+                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE subscribe SET start_date = ? WHERE id_reader = ? AND id_newspaper = ?")) {
+                    con.setAutoCommit(false);
+                    preparedStatement.setDate(1, Date.valueOf(s.getStartDate()));
+                    preparedStatement.setInt(2, s.getIdReader());
+                    preparedStatement.setInt(3, s.getIdNewspaper());
+                    con.commit();
+                    return preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    try {
+                        con.rollback();
+                        return -2;
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        return -3;
+                    }
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DaoSubscribe.class.getName()).log(Level.SEVERE, null, ex);
                 return -1;
             }
         } else {
-            try (Connection con = db.getConnection();
-                 PreparedStatement preparedStatement = con.prepareStatement("UPDATE subscribe SET start_date = ?, cancellation_date = ? WHERE id_reader = ? AND id_newspaper = ?")) {
-                preparedStatement.setDate(1, Date.valueOf(s.getStartDate()));
-                preparedStatement.setDate(2, Date.valueOf(s.getCancellationDate()));
-                preparedStatement.setInt(3, s.getIdReader());
-                preparedStatement.setInt(4, s.getIdNewspaper());
-                return preparedStatement.executeUpdate();
+            try (Connection con = db.getConnection()) {
+                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE subscribe SET start_date = ?, cancellation_date = ? WHERE id_reader = ? AND id_newspaper = ?")) {
+
+                    con.setAutoCommit(false);
+                    preparedStatement.setDate(1, Date.valueOf(s.getStartDate()));
+                    preparedStatement.setDate(2, Date.valueOf(s.getCancellationDate()));
+                    preparedStatement.setInt(3, s.getIdReader());
+                    preparedStatement.setInt(4, s.getIdNewspaper());
+                    con.commit();
+                    return preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    try {
+                        con.rollback();
+                        return -2;
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        return -3;
+                    }
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DaoSubscribe.class.getName()).log(Level.SEVERE, null, ex);
                 return -1;
             }
+        }
+    }
+
+    public int delete(int idReader, int idNewspaper) {
+        try (Connection con = db.getConnection()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM subscribe WHERE id_reader = ? AND id_newspaper = ?")) {
+
+                con.setAutoCommit(false);
+                preparedStatement.setInt(1, idReader);
+                preparedStatement.setInt(2, idNewspaper);
+                con.commit();
+                return preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                try {
+                    con.rollback();
+                    return -2;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return -3;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoSubscribe.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
         }
     }
 }

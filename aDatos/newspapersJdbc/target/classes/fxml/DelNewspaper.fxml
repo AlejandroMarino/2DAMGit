@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.delNewspaper.DelNewspaperController">
+<AnchorPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.delNewspaper.DelNewspaperController">
    <children>
       <Label layoutX="469.0" layoutY="99.0" text="Newspapers" />
       <Button layoutX="475.0" layoutY="558.0" mnemonicParsing="false" onAction="#delete" text="Delete" />

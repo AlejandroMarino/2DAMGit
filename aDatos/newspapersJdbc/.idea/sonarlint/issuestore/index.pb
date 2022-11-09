@@ -7,8 +7,6 @@ A
 data/articles.txt,e\b\eba3ccb9beb9883b0df9fcda7ca192f5623a5ea4
 Y
 )src/main/resources/i18n/textos.properties,4\2\42514ee430a13cc601cf3417d5bbb772cc492041
-N
-src/main/java/modelo/Type.java,5\3\53ea93239638072c0b563d4c6bec4a3a7c0b8caa
 L
 src/main/resources/user.yaml,b\2\b2e1030458867a3d7598646992381e5d278ae8b6
 S
@@ -37,11 +35,11 @@ U
 %src/main/resources/META-INF/beans.xml,e\8\e828918b03c044d16fb0afc5e75dea9467bb7645
 N
 src/main/resources/config.yaml,c\d\cd9788c18fb100ac34d237b8e23bdff9867cadf0
-Q
-!src/main/java/modelo/Article.java,0\3\030018f3151ae9e92dd349f431e488017e08390d
 V
 &src/main/java/config/DBConnection.java,0\d\0d75cf20276b93b14b4a1d900463a2ea37a293d5
 P
  src/main/java/modelo/Reader.java,f\1\f1d357e48779957d4d9c902a10ded114ad77486a
 Z
 *src/main/java/config/DBConnectionPool.java,3\d\3d00f4cc57cc10de6978efca25d69c9f94f65395
+U
+%src/main/java/modelo/ReadArticle.java,4\7\477b60dda4122b8d4b627f912e0228e70c49677e

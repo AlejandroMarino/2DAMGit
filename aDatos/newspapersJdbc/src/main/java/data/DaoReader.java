@@ -22,7 +22,7 @@ public class DaoReader {
         this.db = db;
     }
 
-    private List<Reader> readRS(ResultSet rs) {
+    public List<Reader> readRS(ResultSet rs) {
         List<Reader> readers = new ArrayList<>();
         try {
             while (rs.next()) {
