@@ -1,9 +1,6 @@
 package com.moviles.appf1teams.ui.pantalla.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import com.moviles.appf1teams.R
 import com.moviles.appf1teams.domain.modelo.Team
 import com.moviles.appf1teams.domain.usecases.teams.AddTeam
@@ -11,6 +8,7 @@ import com.moviles.appf1teams.domain.usecases.teams.Delete
 import com.moviles.appf1teams.domain.usecases.teams.GetTeams
 import com.moviles.appf1teams.domain.usecases.teams.Update
 import com.moviles.appf1teams.utils.StringProvider
+import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val stringProvider: StringProvider,
@@ -24,94 +22,133 @@ class MainViewModel(
     val uiState: LiveData<MainState> get() = _uiState
     private var index = 0
 
-
-    private fun allTeams() = getTeams()
-
-    fun loadTeam(team: Team) {
-        _uiState.value = MainState(team = team)
-        index = allTeams().indexOf(team)
-    }
-
-    fun previousTeam() {
-        val teams = getTeams()
-        if (teams.isNotEmpty()) {
-            if (index == 0) {
-                _uiState.value = MainState(team = teams[teams.size - 1])
-                index = teams.size - 1
-            } else {
-                _uiState.value = MainState(team = teams[index - 1])
-                index -= 1
+    fun handleEvent(event: MainEvent) {
+        when (event) {
+            is MainEvent.AddTeam -> {
+                addTeam(event.team)
             }
-        } else {
-            _uiState.value = MainState(error = stringProvider.getString(R.string.noMoreTeams))
+            MainEvent.DeleteTeam -> {
+                deleteTeam()
+            }
+            is MainEvent.LoadTeam -> {
+                loadTeam(event.team)
+            }
+            is MainEvent.UpdateTeam -> {
+                updateTeam(event.name, event.performance, event.tyre, event.winner)
+            }
+            MainEvent.NextTeam -> {
+                nextTeam()
+            }
+            MainEvent.PreviousTeam -> {
+                previousTeam()
+            }
         }
     }
 
-    private fun getNameTeam(index: Int): String {
-        val team = getTeams()[index]
+    private suspend fun allTeams() = getTeams.invoke()
+
+    private fun loadTeam(team: Team) {
+        viewModelScope.launch {
+            _uiState.value = MainState(team = team)
+            index = allTeams().indexOf(team)
+        }
+    }
+
+    private fun previousTeam() {
+        viewModelScope.launch {
+            val teams = getTeams.invoke()
+            if (teams.isNotEmpty()) {
+                if (index == 0) {
+                    _uiState.value = MainState(team = teams[teams.size - 1])
+                    index = teams.size - 1
+                } else {
+                    _uiState.value = MainState(team = teams[index - 1])
+                    index -= 1
+                }
+            } else {
+                _uiState.value = MainState(message = stringProvider.getString(R.string.noMoreTeams))
+            }
+        }
+    }
+
+    private suspend fun getNameTeam(index: Int): String {
+        val team = getTeams.invoke()[index]
         return team.name
     }
 
-    fun nextTeam() {
-        val teams = getTeams()
-        if (teams.isNotEmpty()) {
-            if (index == teams.size - 1) {
-                _uiState.value = MainState(team = teams[0])
-                index = 0
+    private fun nextTeam() {
+        viewModelScope.launch {
+            val teams = getTeams.invoke()
+            if (teams.isNotEmpty()) {
+                if (index == teams.size - 1) {
+                    _uiState.value = MainState(team = teams[0])
+                    index = 0
+                } else {
+                    _uiState.value = MainState(team = teams[index + 1])
+                    index += 1
+                }
             } else {
-                _uiState.value = MainState(team = teams[index + 1])
-                index += 1
+                _uiState.value = MainState(message = stringProvider.getString(R.string.noMoreTeams))
             }
-        } else {
-            _uiState.value = MainState(error = stringProvider.getString(R.string.noMoreTeams))
         }
     }
 
-    fun addTeam(name: String, performance: Float, tyre: Int, winner: Boolean) {
-        val team = Team(name, performance, tyre, winner)
-        if (!addTeam(team)) {
-            _uiState.value = MainState(
-                error = stringProvider.getString(R.string.repeatedName),
-            )
-        } else {
-            _uiState.value = MainState(
-                team = team,
-            )
-        }
-    }
-
-    fun deleteTeam() {
-        val teams = getTeams()
-        if (teams.isNotEmpty()) {
-            val name = getNameTeam(index)
-            if (!delete(name)) {
+    //si añades uno con el mismo nombre peta
+    private fun addTeam(team: Team) {
+        viewModelScope.launch {
+            if (!addTeam.invoke(team)) {
                 _uiState.value = MainState(
-                    error = stringProvider.getString(R.string.noTeamWithName),
+                    message = stringProvider.getString(R.string.repeatedName),
                 )
             } else {
-                if (teams.isEmpty()) {
-                    _uiState.value = MainState(
-                        team = Team(),
-                    )
-                } else if (index == teams.size) {
-                    _uiState.value = MainState(
-                        team = teams[index - 1],
-                    )
-                    index -= 1
-                } else {
-                    _uiState.value = MainState(
-                        team = teams[index],
-                    )
-                }
+                _uiState.value = MainState(
+                    team = team, message = stringProvider.getString(R.string.teamAdded)
+                )
             }
-        } else {
-            _uiState.value = MainState(error = stringProvider.getString(R.string.noMoreTeams))
         }
     }
 
-    fun updateTeam(newName: String, performance: Float, tyre: Int, winner: Boolean) {
-        val name = allTeams()[index].name
-        update(name, newName, performance, tyre, winner)
+    private fun deleteTeam() {
+        viewModelScope.launch {
+            val teams = getTeams.invoke()
+            if (teams.isNotEmpty()) {
+                val name = getNameTeam(index)
+                if (!delete.invoke(name)) {
+                    _uiState.value = MainState(
+                        message = stringProvider.getString(R.string.noTeamWithName),
+                    )
+                } else {
+                    if (teams.isEmpty()) {
+                        _uiState.value = MainState(
+                            team = Team(),
+                        )
+                    } else if (index == teams.size) {
+                        _uiState.value = MainState(
+                            team = teams[index - 1],
+                        )
+                        index -= 1
+                    } else {
+                        _uiState.value = MainState(
+                            team = teams[index],
+                        )
+                    }
+                }
+            } else {
+                _uiState.value = MainState(message = stringProvider.getString(R.string.noMoreTeams))
+            }
+        }
+    }
+
+
+    //comprovar errores, si actualizas el nombre no va
+    private fun updateTeam(newName: String, performance: Float, tyre: Int, winner: Boolean) {
+        viewModelScope.launch {
+            val name = allTeams()[index].name
+            update.invoke(name, newName, performance, tyre, winner)
+            _uiState.value = MainState(
+                message = stringProvider.getString(R.string.updatedTeam),
+            )
+        }
     }
 }
 

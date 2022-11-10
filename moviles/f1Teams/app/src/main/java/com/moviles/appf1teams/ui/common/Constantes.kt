@@ -9,5 +9,5 @@ object Constantes {
         const val NotFound = -1
         const val Zero = 0
         const val team = "team"
-        const val error_al_cargar_img = "Error al cargar la imagen"
+        const val image = "file:///android_asset/logo-F1.png"
 }

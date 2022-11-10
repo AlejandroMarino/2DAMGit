@@ -2,6 +2,9 @@ package com.moviles.appf1teams.data
 
 import com.moviles.appf1teams.domain.modelo.Team
 
+
+//BORRAR
+
 object Repository {
     private val teams = mutableListOf<Team>()
 

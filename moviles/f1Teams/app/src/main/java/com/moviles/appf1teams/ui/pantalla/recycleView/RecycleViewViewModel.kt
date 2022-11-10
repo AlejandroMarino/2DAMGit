@@ -1,14 +1,12 @@
 package com.moviles.appf1teams.ui.pantalla.recycleView
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import com.moviles.appf1teams.domain.modelo.Team
 import com.moviles.appf1teams.domain.usecases.teams.AddTeam
 import com.moviles.appf1teams.domain.usecases.teams.Delete
 import com.moviles.appf1teams.domain.usecases.teams.GetTeams
 import com.moviles.appf1teams.utils.StringProvider
+import kotlinx.coroutines.launch
 
 class RecycleViewViewModel(
     private val stringProvider: StringProvider,
@@ -20,18 +18,38 @@ class RecycleViewViewModel(
     private val _uiState = MutableLiveData<RecycleViewState>()
     val uiState: LiveData<RecycleViewState> get() = _uiState
 
-    fun loadTeams() {
-        _uiState.value = RecycleViewState(teams = getTeams())
+    fun handleEvent(event: RecycleViewEvent) {
+        when (event) {
+            RecycleViewEvent.LoadTeams -> {
+                loadTeams()
+            }
+            is RecycleViewEvent.DeleteTeam -> {
+                deleteTeam(event.team)
+            }
+            is RecycleViewEvent.AddTeam -> {
+                addTeam(event.team)
+            }
+        }
     }
 
-    fun deleteTeam(team: Team) {
-        delete(team.name)
-        _uiState.value = RecycleViewState(teams = getTeams())
+    private fun loadTeams() {
+        viewModelScope.launch {
+            _uiState.value = RecycleViewState(teams = getTeams.invoke())
+        }
     }
 
-    fun addATeam(team: Team) {
-        addTeam(team)
-        _uiState.value = RecycleViewState(teams = getTeams())
+    private fun deleteTeam(team: Team) {
+        viewModelScope.launch {
+            delete.invoke(team.name)
+            _uiState.value = RecycleViewState(teams = getTeams.invoke())
+        }
+    }
+
+    private fun addTeam(team: Team) {
+        viewModelScope.launch {
+            addTeam.invoke(team)
+            _uiState.value = RecycleViewState(teams = getTeams.invoke())
+        }
     }
 }
 

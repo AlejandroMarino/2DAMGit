@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.appf1teams.R
+import com.moviles.appf1teams.data.TeamRepository
+import com.moviles.appf1teams.data.TeamsRoomDatabase
 import com.moviles.appf1teams.databinding.ActivityRecycleviewBinding
 import com.moviles.appf1teams.domain.modelo.Team
 import com.moviles.appf1teams.domain.usecases.teams.AddTeam
@@ -18,30 +20,31 @@ import com.moviles.appf1teams.ui.common.Constantes
 import com.moviles.appf1teams.ui.pantalla.main.MainActivity
 import com.moviles.appf1teams.utils.StringProvider
 
+
 class RecycleViewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecycleviewBinding
 
-
+//no crear el adapter cada vez que cambia un valor del recycler view hacerlo nuevo
     private val viewModel: RecycleViewViewModel by viewModels {
         RecycleViewViewModelFactory(
             StringProvider.instance(this),
-            GetTeams(),
-            Delete(),
-            AddTeam(),
+            GetTeams(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
+            Delete(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
+            AddTeam(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
         )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.loadTeams()
+        viewModel.handleEvent(RecycleViewEvent.LoadTeams)
         binding = ActivityRecycleviewBinding.inflate(layoutInflater)
 
         with(binding) {
             setContentView(root)
 
-            img!!.load(Uri.parse("file:///android_asset/logo-F1.png"))
+            img!!.load(Uri.parse(Constantes.image))
 
             viewModel.uiState.observe(this@RecycleViewActivity) { state ->
                 state.error?.let { error ->
@@ -70,10 +73,10 @@ class RecycleViewActivity : AppCompatActivity() {
     }
 
     private fun clickDelete(team: Team) {
-        viewModel.deleteTeam(team)
+        viewModel.handleEvent(RecycleViewEvent.DeleteTeam(team))
         Snackbar.make(binding.root, R.string.team_Deleted, Snackbar.LENGTH_LONG)
             .setAction(R.string.undo) {
-                viewModel.addATeam(team)
+                viewModel.handleEvent(RecycleViewEvent.AddTeam(team))
             }
             .setBackgroundTint(resources.getColor(R.color.black))
             .setTextColor(resources.getColor(R.color.white))

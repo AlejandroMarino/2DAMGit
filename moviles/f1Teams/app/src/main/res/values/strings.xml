@@ -19,4 +19,6 @@
     <string name="team_Deleted">The team was deleted</string>
     <string name="undo">Undo</string>
     <string name="img">img</string>
+    <string name="updatedTeam">The team was updated</string>
+    <string name="teamAdded">The team was added</string>
 </resources>

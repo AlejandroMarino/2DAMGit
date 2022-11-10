@@ -4,6 +4,6 @@ import com.moviles.appf1teams.domain.modelo.Team
 
 data class MainState(
     val team: Team = Team(),
-    val error: String? = null
+    val message: String? = null
 )
 
