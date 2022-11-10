@@ -22,6 +22,7 @@ class RecycleViewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecycleviewBinding
 
+
     private val viewModel: RecycleViewViewModel by viewModels {
         RecycleViewViewModelFactory(
             StringProvider.instance(this),
@@ -47,10 +48,9 @@ class RecycleViewActivity : AppCompatActivity() {
                     Toast.makeText(this@RecycleViewActivity, error, Toast.LENGTH_SHORT).show()
                 }
                 if (state.error == null) {
-                    val adapter = TeamsAdapter(state.teams, ::clickWatch, ::clickDelete)
-                    list.let {
+                    var adapter = TeamsAdapter(state.teams, ::clickWatch, ::clickDelete)
                         list.adapter = adapter
-                    }
+
                 }
             }
 
