@@ -12,14 +12,14 @@ interface TeamDao {
     @Query("SELECT * from teams")
     suspend fun getTeams(): List<TeamEntity>
 
-    @Query("DELETE FROM teams WHERE name = :name")
-    suspend fun deleteTeam(name: String)
+    @Query("DELETE FROM teams WHERE id = :id")
+    suspend fun deleteTeam(id: Int)
 
-    @Query("SELECT * from teams where name = :name")
-    suspend fun getTeam(name: String): TeamEntity
+    @Query("SELECT * from teams where id = :id")
+    suspend fun getTeam(id: Int): TeamEntity
 
-    @Query("UPDATE teams SET name = :name, performance = :performance, tyre = :tyre, winner = :winner WHERE name = :newName")
-    suspend fun updateTeam(name : String, newName: String, performance: Float, tyre: Int, winner: Boolean)
+    @Query("UPDATE teams SET name = :name, performance = :performance, tyre = :tyre, winner = :winner WHERE id = :id")
+    suspend fun updateTeam(id: Int, name: String, performance: Float, tyre: Int, winner: Boolean)
 
     @Insert(onConflict = androidx.room.OnConflictStrategy.ABORT)
     suspend fun insertTeam(team: TeamEntity)

@@ -5,12 +5,12 @@ import com.moviles.appf1teams.data.TeamRepository
 class Update(private val teamRepository: TeamRepository) {
 
     suspend fun invoke(
+        id: Int?,
         name: String,
-        newName: String,
         performance: Float,
         tyre: Int,
         winner: Boolean
-    ) = teamRepository.updateTeam(name, newName, performance, tyre, winner)
+    ) = id?.let { teamRepository.updateTeam(it, name, performance, tyre, winner) }
 
 //    operator fun invoke(
 //        name: String,

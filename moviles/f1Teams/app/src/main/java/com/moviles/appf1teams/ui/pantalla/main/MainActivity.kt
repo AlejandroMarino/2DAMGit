@@ -83,10 +83,10 @@ class MainActivity : AppCompatActivity() {
                     viewModel.handleEvent(
                         MainEvent.AddTeam(
                             Team(
-                                textName.text.toString(),
-                                slider.value,
-                                num,
-                                switchMaterial.isChecked
+                                name= textName.text.toString(),
+                                performance = slider.value,
+                                tyre = num,
+                                winner = switchMaterial.isChecked
                             )
                         )
                     )

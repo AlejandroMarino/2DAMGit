@@ -18,6 +18,10 @@ class RecycleViewViewModel(
     private val _uiState = MutableLiveData<RecycleViewState>()
     val uiState: LiveData<RecycleViewState> get() = _uiState
 
+    init {
+        loadTeams()
+    }
+
     fun handleEvent(event: RecycleViewEvent) {
         when (event) {
             RecycleViewEvent.LoadTeams -> {
@@ -34,13 +38,19 @@ class RecycleViewViewModel(
 
     private fun loadTeams() {
         viewModelScope.launch {
-            _uiState.value = RecycleViewState(teams = getTeams.invoke())
+            try {
+                _uiState.value?.teams = getTeams.invoke()
+                _uiState.value = RecycleViewState(teams = getTeams.invoke())
+            } catch (e: Exception) {
+                _uiState.value = _uiState.value?.copy(error = e.message)
+            }
         }
     }
 
     private fun deleteTeam(team: Team) {
         viewModelScope.launch {
-            delete.invoke(team.name)
+            team.id?.let { delete.invoke(it) }
+            loadTeams()
             _uiState.value = RecycleViewState(teams = getTeams.invoke())
         }
     }
@@ -48,6 +58,7 @@ class RecycleViewViewModel(
     private fun addTeam(team: Team) {
         viewModelScope.launch {
             addTeam.invoke(team)
+            loadTeams()
             _uiState.value = RecycleViewState(teams = getTeams.invoke())
         }
     }

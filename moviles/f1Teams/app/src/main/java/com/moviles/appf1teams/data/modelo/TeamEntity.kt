@@ -7,9 +7,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "teams")
 data class TeamEntity(
-
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
     @ColumnInfo(name = "name")
-    @PrimaryKey(autoGenerate = false)
     val name: String,
     @ColumnInfo(name = "performance")
     val performance: Float,

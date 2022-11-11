@@ -22,7 +22,7 @@ abstract class TeamsRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     TeamsRoomDatabase::class.java,
-                    "teams_database"
+                    "item_database"
                 )
                     .createFromAsset("database/teams.db")
                     .fallbackToDestructiveMigrationFrom(1)

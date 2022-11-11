@@ -71,9 +71,9 @@ class MainViewModel(
         }
     }
 
-    private suspend fun getNameTeam(index: Int): String {
+    private suspend fun getIdTeam(index: Int): Int {
         val team = getTeams.invoke()[index]
-        return team.name
+        return team.id ?: 0
     }
 
     private fun nextTeam() {
@@ -112,8 +112,8 @@ class MainViewModel(
         viewModelScope.launch {
             val teams = getTeams.invoke()
             if (teams.isNotEmpty()) {
-                val name = getNameTeam(index)
-                if (!delete.invoke(name)) {
+                val id = getIdTeam(index)
+                if (!delete.invoke(id)) {
                     _uiState.value = MainState(
                         message = stringProvider.getString(R.string.noTeamWithName),
                     )
@@ -141,10 +141,10 @@ class MainViewModel(
 
 
     //comprovar errores, si actualizas el nombre no va
-    private fun updateTeam(newName: String, performance: Float, tyre: Int, winner: Boolean) {
+    private fun updateTeam(name: String, performance: Float, tyre: Int, winner: Boolean) {
         viewModelScope.launch {
-            val name = allTeams()[index].name
-            update.invoke(name, newName, performance, tyre, winner)
+            val id = getIdTeam(index)
+            update.invoke(id, name, performance, tyre, winner)
             _uiState.value = MainState(
                 message = stringProvider.getString(R.string.updatedTeam),
             )
