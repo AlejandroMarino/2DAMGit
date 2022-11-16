@@ -38,12 +38,7 @@ class RecycleViewViewModel(
 
     private fun loadTeams() {
         viewModelScope.launch {
-            try {
-                _uiState.value?.teams = getTeams.invoke()
-                _uiState.value = RecycleViewState(teams = getTeams.invoke())
-            } catch (e: Exception) {
-                _uiState.value = _uiState.value?.copy(error = e.message)
-            }
+            _uiState.value = RecycleViewState(teams = getTeams.invoke(), error = null)
         }
     }
 

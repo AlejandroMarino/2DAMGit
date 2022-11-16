@@ -6,18 +6,11 @@ import com.moviles.appf1teams.domain.modelo.Team
 class AddTeam(private val teamRepository: TeamRepository) {
 
     suspend fun invoke(team: Team): Boolean {
-        return run {
+        return try {
             teamRepository.addTeam(team)
             true
+        }catch (e: Exception) {
+            false
         }
     }
-
-//    operator fun invoke(team: Team): Boolean {
-//        return if (Repository.getTeam(team.name) == null) {
-//            Repository.addTeam(team)
-//            true
-//        }else{
-//            false
-//        }
-//    }
 }

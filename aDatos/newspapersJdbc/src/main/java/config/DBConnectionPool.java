@@ -23,6 +23,10 @@ public class DBConnectionPool {
         basicDataSource = getBasicPool();
     }
 
+    public DataSource getDataSource(){
+        return hikariDataSource;
+    }
+
     private DataSource getHikariPool() {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl(config.getPath());

@@ -1,16 +1,41 @@
 package data;
 
-import config.Configuration;
+import config.DBConnectionPool;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import modelo.Type;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 public class DaoArticleType {
 
-    private Configuration config;
+    private final DBConnectionPool db;
 
     @Inject
-    public DaoArticleType(Configuration config) {
-        this.config = config;
+    public DaoArticleType(DBConnectionPool db) {
+        this.db = db;
     }
+
+    public Either<Integer, List<Type>> getAll() {
+        try {
+            JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
+            return Either.right(jtm.query("SELECT * FROM type", BeanPropertyRowMapper.newInstance(Type.class)));
+        } catch (Exception e) {
+            return Either.left(-1);
+        }
+    }
+
+    public Either<Integer, Type> get(int id) {
+        try {
+            JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
+            return Either.right(jtm.queryForObject("SELECT * FROM type WHERE id = ?", BeanPropertyRowMapper.newInstance(Type.class), id));
+        } catch (Exception e) {
+            return Either.left(-1);
+        }
+    }
+
 
 //    public Either<String, List<Type>> allTypes() {
 //        List<Type> types = new ArrayList<>();

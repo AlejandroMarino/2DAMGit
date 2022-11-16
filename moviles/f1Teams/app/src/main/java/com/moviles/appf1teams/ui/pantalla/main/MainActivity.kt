@@ -9,10 +9,7 @@ import com.moviles.appf1teams.data.TeamRepository
 import com.moviles.appf1teams.data.TeamsRoomDatabase
 import com.moviles.appf1teams.databinding.ActivityMainBinding
 import com.moviles.appf1teams.domain.modelo.Team
-import com.moviles.appf1teams.domain.usecases.teams.AddTeam
-import com.moviles.appf1teams.domain.usecases.teams.Delete
-import com.moviles.appf1teams.domain.usecases.teams.GetTeams
-import com.moviles.appf1teams.domain.usecases.teams.Update
+import com.moviles.appf1teams.domain.usecases.teams.*
 import com.moviles.appf1teams.ui.common.Constantes
 import com.moviles.appf1teams.utils.StringProvider
 
@@ -20,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-//pasar id al cambiar de pantalla
     private val viewModel: MainViewModel by viewModels {
         MainViewModelFactory(
             StringProvider.instance(this),
@@ -28,19 +24,18 @@ class MainActivity : AppCompatActivity() {
             Delete(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
             Update(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
             GetTeams(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
+            GetTeamById(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
         )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        intent.extras?.let {
-            val team = it.getParcelable<Team>(Constantes.team)
-            if (team != null) {
-                viewModel.handleEvent(MainEvent.LoadTeam(team))
-            } else
-                viewModel.handleEvent(MainEvent.LoadTeam(Team()))
-        }
+        val id = intent.getIntExtra(Constantes.id, Constantes.NotFound)
+
+        viewModel.handleEvent(MainEvent.LoadTeam(id))
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         with(binding) {
@@ -83,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                     viewModel.handleEvent(
                         MainEvent.AddTeam(
                             Team(
-                                name= textName.text.toString(),
+                                name = textName.text.toString(),
                                 performance = slider.value,
                                 tyre = num,
                                 winner = switchMaterial.isChecked

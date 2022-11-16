@@ -1,6 +1,7 @@
 package data;
 
 import config.DBConnectionPool;
+import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import modelo.ReadArticle;
 
@@ -33,17 +34,16 @@ public class DaoReadArticle {
         return readArticles;
     }
 
-    public List<ReadArticle> getAll() {
+    public Either<Integer, List<ReadArticle>> getAll() {
         try (Connection con = db.getConnection();
              Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                      ResultSet.CONCUR_READ_ONLY)) {
 
             ResultSet rs = statement.executeQuery("SELECT * FROM read_article");
-            return readArticlesRS(rs);
+            return Either.right(readArticlesRS(rs));
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            return null;
+            return Either.left(-1);
         }
     }
 

@@ -3,11 +3,9 @@ package com.moviles.appf1teams.ui.pantalla.recycleView
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.GridLayout
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.appf1teams.R
@@ -28,7 +26,6 @@ class RecycleViewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecycleviewBinding
 
-//no crear el adapter cada vez que cambia un valor del recycler view hacerlo nuevo
     private val viewModel: RecycleViewViewModel by viewModels {
         RecycleViewViewModelFactory(
             StringProvider.instance(this),
@@ -38,17 +35,23 @@ class RecycleViewActivity : AppCompatActivity() {
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.handleEvent(RecycleViewEvent.LoadTeams)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRecycleviewBinding.inflate(layoutInflater)
         with(binding) {
             setContentView(root)
-            adapter = TeamsAdapter(object : TeamsAdapter.TeamActions{
+            adapter = TeamsAdapter(object : TeamsAdapter.TeamActions {
                 override fun onClickWatch(team: Team) {
                     val intent = Intent(this@RecycleViewActivity, MainActivity::class.java)
-                    intent.putExtra(Constantes.team, team)
+                    intent.putExtra(Constantes.id, team.id)
                     startActivity(intent)
                 }
+
                 override fun onClickDelete(team: Team) {
                     viewModel.handleEvent(RecycleViewEvent.DeleteTeam(team))
                     Snackbar.make(binding.root, R.string.team_Deleted, Snackbar.LENGTH_LONG)
@@ -62,7 +65,6 @@ class RecycleViewActivity : AppCompatActivity() {
                 }
             })
             list.adapter = adapter
-            list.setHasFixedSize(true)
 
             img!!.load(Uri.parse(Constantes.image))
 
@@ -70,14 +72,11 @@ class RecycleViewActivity : AppCompatActivity() {
                 state.error?.let { error ->
                     Toast.makeText(this@RecycleViewActivity, error, Toast.LENGTH_SHORT).show()
                 }
-                if (state.error == null) {
-                    adapter.submitList(state.teams)
-                }
+                adapter.submitList(state.teams)
             }
 
             button.setOnClickListener {
                 val intent = Intent(this@RecycleViewActivity, MainActivity::class.java)
-                intent.putExtra(Constantes.team, Team())
                 startActivity(intent)
             }
         }

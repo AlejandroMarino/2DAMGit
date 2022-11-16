@@ -50,7 +50,7 @@ public class DaoSubscribe {
         }
     }
 
-    public Either<Integer, Subscribe> getSubscribe(int idReader, int idNewspaper) {
+    public Either<Integer, Subscribe> get(int idReader, int idNewspaper) {
         try (Connection con = db.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM subscribe WHERE id_reader = ? AND id_newspaper = ?")) {
             preparedStatement.setInt(1, idReader);

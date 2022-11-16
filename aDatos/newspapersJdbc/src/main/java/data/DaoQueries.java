@@ -32,20 +32,25 @@ public class DaoQueries {
             preparedStatement.setInt(1, newspaper.getId());
 
             ResultSet rs = preparedStatement.executeQuery();
-            return Either.right(dR.readRS(rs));
+            return Either.right(dR.readRS(rs).get());
         } catch (SQLException ex) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, ex);
             return Either.left(-1);
         }
     }
 
-    public Either<Integer,List<Reader>> getArticleTypeReaders(Type type){
+    public Either<Integer, List<Reader>> getArticleTypeReaders(Type type) {
         try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM reader WHERE id IN (SELECT id_reader FROM article WHERE id_type = ?)")) {
+             PreparedStatement preparedStatement = con.prepareStatement("select * from reader\n" +
+                     "where id in (select ra.id_reader\n" +
+                     "             from readarticle ra\n" +
+                     "             where ra.id_article = (select a.id\n" +
+                     "                                    from article a\n" +
+                     "                                    where a.id_type = ?))")) {
             preparedStatement.setInt(1, type.getId());
 
             ResultSet rs = preparedStatement.executeQuery();
-            return Either.right(dR.readRS(rs));
+            return Either.right(dR.readRS(rs).get());
         } catch (SQLException ex) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, ex);
             return Either.left(-1);
@@ -58,10 +63,11 @@ public class DaoQueries {
             preparedStatement.setInt(1, newspaper.getId());
 
             ResultSet rs = preparedStatement.executeQuery();
-            return Either.right(dR.readRS(rs));
+            return Either.right(dR.readRS(rs).get());
         } catch (SQLException ex) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, ex);
             return Either.left(-1);
         }
     }
+
 }

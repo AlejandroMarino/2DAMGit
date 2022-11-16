@@ -14,6 +14,8 @@ module basefx {
     requires com.zaxxer.hikari;
     requires commons.dbcp2;
     requires jakarta.annotation;
+    requires spring.jdbc;
+    requires spring.tx;
 
     exports ui.fx;
     exports data;
