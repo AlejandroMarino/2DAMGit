@@ -9,71 +9,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f9bb434-caa3-487e-9701-b107bca58a69" name="Changes" comment="GEmpresa">
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/modelo/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/modelo/queries/DescriptionNumberType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/common/Constantes.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/common/Constantes.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/GetTeamById.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/0/f/0ff991da61610a4205b1dca5393ad0561cf92cfd" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/0/f/0ff991da61610a4205b1dca5393ad0561cf92cfd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/0/103b518cf550084e13ee2a1252890768870d2cb4" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/0/103b518cf550084e13ee2a1252890768870d2cb4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/3/d/3d00f4cc57cc10de6978efca25d69c9f94f65395" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/3/d/3d00f4cc57cc10de6978efca25d69c9f94f65395" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/0/405297f285c37bfee9ad5b698de0c128f0eac839" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/0/405297f285c37bfee9ad5b698de0c128f0eac839" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/9/6/9687d046bd3ed63c48f83e384f14cddd6d179e6a" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/9/6/9687d046bd3ed63c48f83e384f14cddd6d179e6a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/b/d/bdb0d02c7ddf20c68163b9cf7fee48a39017831b" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/b/d/bdb0d02c7ddf20c68163b9cf7fee48a39017831b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/d/9/d9c3a55082a3a6032eb04187cd6dcf6752c59df0" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/d/9/d9c3a55082a3a6032eb04187cd6dcf6752c59df0" afterDir="false" />
+    <list default="true" id="2f9bb434-caa3-487e-9701-b107bca58a69" name="Changes" comment="cosas">
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/DBConnectionPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/ListenerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoArticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoArticleType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoNewspaper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoQueries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoReadArticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoSubscribe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Newspaper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/ReadArticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Reader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Subscribe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Type.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/queries/DescriptionNumberType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesArticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesArticleType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesNewspaper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesReadArticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesSubscribe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/webapp/WEB-INF/beans.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/webapp/WEB-INF/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/0/f/0ff991da61610a4205b1dca5393ad0561cf92cfd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/3/137b59f0405a3a484cde0bc7eeea63c811a3835c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/e/1e6e54dd15b6c15ccdb9a01e74c11121be2e2955" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/0/405297f285c37bfee9ad5b698de0c128f0eac839" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/9/6/9687d046bd3ed63c48f83e384f14cddd6d179e6a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/b/d/bda776b1a315ba81e713c04653cf674abe670238" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/b/d/bdb0d02c7ddf20c68163b9cf7fee48a39017831b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/d/9/d9c3a55082a3a6032eb04187cd6dcf6752c59df0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/e/7/e79bb1c963a7e2cdc178eb853fc5b509189886f9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/f/4/f4c8362a7bceb3ce3569d96cdcbbff135b58a161" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/f/b/fb0d169b0180ca93ab4e6a1a1e6a2a9ee0e6554b" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/config/DBConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/config/DBConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoArticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoArticleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoArticleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoNewspaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoNewspaper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoQueries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoReadArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoReadArticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoSubscribe.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/data/DaoSubscribe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesArticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesArticleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesArticleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesNewspaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesNewspaper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesReadArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/src/main/java/servicios/ServicesReadArticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/assets/database/teams.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/assets/database/teams.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/Repository.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/TeamDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/TeamDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/TeamRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/TeamRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/TeamsRoomDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/TeamsRoomDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/modelo/TeamEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/modelo/TeamEntity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/modelo/datamappers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/data/modelo/datamappers.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/modelo/Team.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/modelo/Team.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/AddTeam.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/AddTeam.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Delete.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Delete.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/GetTeams.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/GetTeams.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Update.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/domain/usecases/teams/Update.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainEvent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/TeamsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../moviles/f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/TeamsAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../moviles/teams.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/1337d72a3b1928dba82aa5210f5cdc0e88ce895b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/18dd71e41fd8baf246975fcb321d4c92ad84681e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/66b4601c5d60e7aa4cf82c70dd8390bb935596c8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/7958d854b42de0ad2fe877937768cdc174e739a5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/83008b1a88ba03a2548bb5b9ad0768c6c307d36c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b89aac6298498e582fd626f9c999a01d8fb638c6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/b/cbfb0d2e9b2b9fbf9d54374577c894a38643c6d0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f096f4f8a12fbbe3f19a18c534abb5a368fe736c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f59c98f82c3e035400d98eb9a98ed7e09e2cd12b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT.war" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,20 +97,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/2DAMGit/psp/server/server&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/git2DAM/PSP/miprimerREST/miprimerREST",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\2DAMGit\psp\server\server\src\main\webapp" />
@@ -323,7 +313,8 @@
       <workItem from="1667746274782" duration="1024000" />
       <workItem from="1667837059003" duration="739000" />
       <workItem from="1668477871871" duration="2893000" />
-      <workItem from="1668535868005" duration="713000" />
+      <workItem from="1668535868005" duration="1446000" />
+      <workItem from="1668616884188" duration="5541000" />
     </task>
     <task id="LOCAL-00001" summary="PSP">
       <created>1667184407502</created>
@@ -346,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667524597448</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="cosas">
+      <created>1668563029825</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668563029825</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +364,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="PSP" />
     <MESSAGE value="GEmpresa" />
-    <option name="LAST_COMMIT_MESSAGE" value="GEmpresa" />
+    <MESSAGE value="cosas" />
+    <option name="LAST_COMMIT_MESSAGE" value="cosas" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
