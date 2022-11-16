@@ -10,6 +10,6 @@ fun TeamEntity.toTeam(): Team {
 
 fun Team.toTeamEntity(): TeamEntity {
     return TeamEntity(
-       this.id, this.name, this.performance, this.tyre, this.winner
+        this.name, this.id, this.performance, this.winner, this.tyre,
     )
 }

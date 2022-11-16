@@ -30,6 +30,7 @@ class TeamsAdapter(val actions: TeamActions) :
         bind(item)
     }
 
+
     inner class TeamsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemTeamBinding.bind(view)

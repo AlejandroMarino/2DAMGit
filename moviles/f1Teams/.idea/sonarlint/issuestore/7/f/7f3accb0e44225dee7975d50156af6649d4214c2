@@ -1,0 +1,42 @@
+
+u
+java:S2293ª"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ýßàúÿÿÿÿ
+f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÄ‹‰
+k	java:S117h"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(± ¨ãûÿÿÿÿ
+f	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºî€
+f	java:S117~"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»½œ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºî€
+l	java:S117ž"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ý×—³ùÿÿÿÿ
+g	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ääÆÆ
+f	java:S117£"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹§>
+l	java:S117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ýßàúÿÿÿÿ
+g	java:S117¬"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù®Ë“
+g	java:S117Ð"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú†í
+g	java:S117Ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºî€
+g	java:S117Ó"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ääÆÆ
+f	java:S117×"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹§>
+g	java:S117Þ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Ìâ¸
+y
+java:S1488E"^Immediately return this expression instead of assigning it to the temporary variable "_query".(Ëˆ’øüÿÿÿÿ
+t
+java:S1488L"^Immediately return this expression instead of assigning it to the temporary variable "_query".(€îÏþ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ôªÎèùÿÿÿÿ
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ùÃÌé
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(®þ±Ã
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(šÆ¿ˆýÿÿÿÿ
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(Ãþ”«ýÿÿÿÿ
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôÝžÕýÿÿÿÿ
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(¤î˜Óüÿÿÿÿ
+d	java:S116"ORename this field "__db" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÛôÇ
+ƒ	java:S116 "iRename this field "__insertionAdapterOfTeamEntity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÀùŠùÿÿÿÿ
+l	java:S116""WRename this field "__converters" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷’é¼
+z	java:S116$"eRename this field "__preparedStmtOfDeleteTeam" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÝ†›
+	java:S116&"eRename this field "__preparedStmtOfUpdateTeam" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØÚ¯©øÿÿÿÿ

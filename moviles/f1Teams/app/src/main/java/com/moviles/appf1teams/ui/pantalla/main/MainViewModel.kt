@@ -3,10 +3,7 @@ package com.moviles.appf1teams.ui.pantalla.main
 import androidx.lifecycle.*
 import com.moviles.appf1teams.R
 import com.moviles.appf1teams.domain.modelo.Team
-import com.moviles.appf1teams.domain.usecases.teams.AddTeam
-import com.moviles.appf1teams.domain.usecases.teams.Delete
-import com.moviles.appf1teams.domain.usecases.teams.GetTeams
-import com.moviles.appf1teams.domain.usecases.teams.Update
+import com.moviles.appf1teams.domain.usecases.teams.*
 import com.moviles.appf1teams.utils.StringProvider
 import kotlinx.coroutines.launch
 
@@ -16,6 +13,7 @@ class MainViewModel(
     private val delete: Delete,
     private val update: Update,
     private val getTeams: GetTeams,
+    private val getTeamById: GetTeamById,
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData<MainState>()
@@ -31,7 +29,7 @@ class MainViewModel(
                 deleteTeam()
             }
             is MainEvent.LoadTeam -> {
-                loadTeam(event.team)
+                loadTeam(event.id)
             }
             is MainEvent.UpdateTeam -> {
                 updateTeam(event.name, event.performance, event.tyre, event.winner)
@@ -47,17 +45,27 @@ class MainViewModel(
 
     private suspend fun allTeams() = getTeams.invoke()
 
-    private fun loadTeam(team: Team) {
+    private fun loadTeam(id: Int) {
         viewModelScope.launch {
-            _uiState.value = MainState(team = team)
-            index = allTeams().indexOf(team)
+            if (id == -1) {
+                _uiState.value = MainState(team = Team())
+                index = -1
+            } else {
+                val team = getTeamById.invoke(id)
+                _uiState.value = MainState(team = team)
+                index = allTeams().indexOf(team)
+            }
         }
     }
 
     private fun previousTeam() {
         viewModelScope.launch {
             val teams = getTeams.invoke()
-            if (teams.isNotEmpty()) {
+            var lim = 1
+            if (index == -1) {
+                lim = 0
+            }
+            if (teams.size > lim) {
                 if (index == 0) {
                     _uiState.value = MainState(team = teams[teams.size - 1])
                     index = teams.size - 1
@@ -79,7 +87,11 @@ class MainViewModel(
     private fun nextTeam() {
         viewModelScope.launch {
             val teams = getTeams.invoke()
-            if (teams.isNotEmpty()) {
+            var lim = 1
+            if (index == -1) {
+                lim = 0
+            }
+            if (teams.size > lim) {
                 if (index == teams.size - 1) {
                     _uiState.value = MainState(team = teams[0])
                     index = 0
@@ -93,7 +105,6 @@ class MainViewModel(
         }
     }
 
-    //si añades uno con el mismo nombre peta
     private fun addTeam(team: Team) {
         viewModelScope.launch {
             if (!addTeam.invoke(team)) {
@@ -104,6 +115,7 @@ class MainViewModel(
                 _uiState.value = MainState(
                     team = team, message = stringProvider.getString(R.string.teamAdded)
                 )
+                index = allTeams().size - 1
             }
         }
     }
@@ -112,26 +124,32 @@ class MainViewModel(
         viewModelScope.launch {
             val teams = getTeams.invoke()
             if (teams.isNotEmpty()) {
-                val id = getIdTeam(index)
-                if (!delete.invoke(id)) {
+                if (index != -1) {
+                    val id = getIdTeam(index)
+                    if (!delete.invoke(id)) {
+                        _uiState.value = MainState(
+                            message = stringProvider.getString(R.string.noTeamWithName),
+                        )
+                    } else {
+                        if (teams.isEmpty()) {
+                            _uiState.value = MainState(
+                                team = Team(),
+                            )
+                        } else if (index == teams.size) {
+                            _uiState.value = MainState(
+                                team = teams[index - 1],
+                            )
+                            index -= 1
+                        } else {
+                            _uiState.value = MainState(
+                                team = teams[index],
+                            )
+                        }
+                    }
+                } else {
                     _uiState.value = MainState(
                         message = stringProvider.getString(R.string.noTeamWithName),
                     )
-                } else {
-                    if (teams.isEmpty()) {
-                        _uiState.value = MainState(
-                            team = Team(),
-                        )
-                    } else if (index == teams.size) {
-                        _uiState.value = MainState(
-                            team = teams[index - 1],
-                        )
-                        index -= 1
-                    } else {
-                        _uiState.value = MainState(
-                            team = teams[index],
-                        )
-                    }
                 }
             } else {
                 _uiState.value = MainState(message = stringProvider.getString(R.string.noMoreTeams))
@@ -140,7 +158,6 @@ class MainViewModel(
     }
 
 
-    //comprovar errores, si actualizas el nombre no va
     private fun updateTeam(name: String, performance: Float, tyre: Int, winner: Boolean) {
         viewModelScope.launch {
             val id = getIdTeam(index)
@@ -158,6 +175,7 @@ class MainViewModelFactory(
     private val delete: Delete,
     private val update: Update,
     private val getTeams: GetTeams,
+    private val getTeamById: GetTeamById,
 
     ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -169,6 +187,7 @@ class MainViewModelFactory(
                 delete,
                 update,
                 getTeams,
+                getTeamById,
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

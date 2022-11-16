@@ -5,19 +5,11 @@ import com.moviles.appf1teams.data.TeamRepository
 class Delete(private val teamRepository: TeamRepository) {
 
     suspend fun invoke(id: Int): Boolean {
-        return run {
+        return try{
             teamRepository.deleteTeam(id)
             true
+        }catch (e: Exception){
+            false
         }
     }
-
-//    operator fun invoke(name: String): Boolean {
-//        val team = Repository.getTeam(name)
-//        return if (team != null) {
-//            Repository.deleteTeam(team)
-//            true
-//        }else{
-//            false
-//        }
-//    }
 }

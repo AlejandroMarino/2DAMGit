@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.moviles.appf1teams.data.common.Constantes
 import com.moviles.appf1teams.data.modelo.TeamEntity
 
-@Database(entities = [TeamEntity::class], version = 1, exportSchema = true)
+@Database(entities = [TeamEntity::class], version = 5, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class TeamsRoomDatabase : RoomDatabase() {
 
@@ -22,9 +23,9 @@ abstract class TeamsRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     TeamsRoomDatabase::class.java,
-                    "item_database"
+                    Constantes.database
                 )
-                    .createFromAsset("database/teams.db")
+                    .createFromAsset(Constantes.databaseLocation)
                     .fallbackToDestructiveMigrationFrom(1)
                     .build()
                 INSTANCE = instance
