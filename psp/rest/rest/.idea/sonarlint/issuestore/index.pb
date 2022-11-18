@@ -1,0 +1,41 @@
+
+Q
+!src/main/java/modelo/Article.java,0\3\030018f3151ae9e92dd349f431e488017e08390d
+P
+ src/main/java/data/DaoLogin.java,8\3\830fa4c9081ec34a30d6ef0d227f4eed0a3047cd
+T
+$src/main/java/data/DaoNewspaper.java,b\d\bdb0d02c7ddf20c68163b9cf7fee48a39017831b
+R
+"src/main/java/data/DaoQueries.java,1\e\1e6e54dd15b6c15ccdb9a01e74c11121be2e2955
+V
+&src/main/java/data/DaoReadArticle.java,0\f\0ff991da61610a4205b1dca5393ad0561cf92cfd
+Q
+!src/main/java/data/DaoReader.java,4\0\405297f285c37bfee9ad5b698de0c128f0eac839
+T
+$src/main/java/data/DaoSubscribe.java,f\4\f4c8362a7bceb3ce3569d96cdcbbff135b58a161
+g
+7src/main/java/modelo/queries/DescriptionNumberType.java,e\7\e79bb1c963a7e2cdc178eb853fc5b509189886f9
+O
+src/main/java/modelo/Login.java,7\0\707659f1c3b610f8a9c1463dbe5a3f4e40889265
+U
+%src/main/java/modelo/ReadArticle.java,4\7\477b60dda4122b8d4b627f912e0228e70c49677e
+P
+ src/main/java/modelo/Reader.java,f\1\f1d357e48779957d4d9c902a10ded114ad77486a
+\
+,src/main/java/servicios/ServicesArticle.java,f\b\fb0d169b0180ca93ab4e6a1a1e6a2a9ee0e6554b
+`
+0src/main/java/servicios/ServicesArticleType.java,f\b\fb42d15e336320deb248b6871c5251a152addea7
+Z
+*src/main/java/servicios/ServicesLogin.java,4\0\40b1cce50cc6b5c92d3108701538d7ad103f0873
+^
+.src/main/java/servicios/ServicesNewspaper.java,9\6\9687d046bd3ed63c48f83e384f14cddd6d179e6a
+`
+0src/main/java/servicios/ServicesReadArticle.java,b\d\bda776b1a315ba81e713c04653cf674abe670238
+[
++src/main/java/servicios/ServicesReader.java,1\3\137b59f0405a3a484cde0bc7eeea63c811a3835c
+^
+.src/main/java/servicios/ServicesSubscribe.java,f\2\f2f2219dc504063cdbd4c4b60c5d5fe41a9ae1c4
+S
+#src/main/java/modelo/Subscribe.java,0\5\05e791ff1eaf864662da00481ddb669521c8205d
+N
+src/main/java/modelo/Type.java,5\3\53ea93239638072c0b563d4c6bec4a3a7c0b8caa
