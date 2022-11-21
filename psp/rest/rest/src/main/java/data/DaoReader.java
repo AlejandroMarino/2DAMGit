@@ -2,9 +2,10 @@ package data;
 
 
 import config.DBConnectionPool;
-import io.vavr.control.Either;
+import data.modelo.Reader;
+import domain.modelo.BaseDatosCaidaException;
+import domain.modelo.NotFoundException;
 import jakarta.inject.Inject;
-import modelo.Reader;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -23,7 +24,7 @@ public class DaoReader {
         this.db = db;
     }
 
-    public List<Reader> readRS(ResultSet rs) {
+    private List<Reader> readRS(ResultSet rs) {
         List<Reader> readers = new ArrayList<>();
         try {
             while (rs.next()) {
@@ -39,21 +40,21 @@ public class DaoReader {
         return readers;
     }
 
-    public Either<Integer, List<Reader>> getAll() {
+    public List<Reader> getAll() {
         try (Connection con = db.getConnection();
              Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                      ResultSet.CONCUR_READ_ONLY)) {
 
             ResultSet rs = statement.executeQuery("SELECT * FROM reader");
-            return Either.right(readRS(rs));
+            return readRS(rs);
 
         } catch (SQLException ex) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, ex);
-            return Either.left(-1);
+            throw new BaseDatosCaidaException("Error en la base de datos");
         }
     }
 
-    public Either<Integer, Reader> getReader(int id) {
+    public Reader getReader(int id) {
         try (Connection con = db.getConnection();
              PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM reader WHERE id = ?")) {
             preparedStatement.setInt(1, id);
@@ -61,80 +62,73 @@ public class DaoReader {
             ResultSet rs = preparedStatement.executeQuery();
             List<Reader> readers = readRS(rs);
             if (readers.isEmpty()) {
-                return Either.left(-1);
+                throw new NotFoundException("No se ha encontrado el lector");
             } else {
-                return Either.right(readers.get(0));
+                return readers.get(0);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, ex);
-            return Either.left(-2);
+            throw new BaseDatosCaidaException("Error en la base de datos");
         }
     }
 
-    public int delete(int id) {
+    public void delete(int id) {
         try (Connection con = db.getConnection()) {
             try (PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM reader WHERE id = ?")) {
                 con.setAutoCommit(false);
                 preparedStatement.setInt(1, id);
-                return preparedStatement.executeUpdate();
+                preparedStatement.executeUpdate();
             } catch (SQLException ex) {
                 try {
                     con.rollback();
-                    return -2;
+                    throw new NotFoundException("No se ha encontrado el lector");
                 } catch (SQLException ex1) {
-                    return -3;
+                    throw new BaseDatosCaidaException("Error en la base de datos");
                 }
             }
         } catch (SQLException sqle) {
             Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
-            return -1;
+            throw new BaseDatosCaidaException("Error en la base de datos");
         }
     }
 
-    public int add(String name, LocalDate birth_d) {
-        try (Connection con = db.getConnection()) {
-            try (PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO reader (name_reader, birth_date) VALUES (?,?)",
-                    Statement.RETURN_GENERATED_KEYS)) {
-                con.setAutoCommit(false);
-                preparedStatement.setString(1, name);
-                preparedStatement.setDate(2, Date.valueOf(birth_d));
-                con.commit();
-                return preparedStatement.executeUpdate();
-            } catch (SQLException ex) {
-                try {
-                    con.rollback();
-                    return -2;
-                } catch (SQLException ex1) {
-                    return -3;
-                }
-            }
+    public Reader add(Reader reader) {
+        List<Reader> readers;
+        try (Connection con = db.getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO reader (name_reader, birth_date) VALUES (?,?)",
+                     Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, reader.getName());
+            preparedStatement.setDate(2, Date.valueOf(reader.getBirthDate()));
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            readers = readRS(rs);
         } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
+            throw new BaseDatosCaidaException("Error al conectar con base de datos");
         }
+        return readers.get(0);
     }
 
-    public boolean update(Reader r) {
-        boolean updated = false;
+    public Reader update(Reader r) {
         if (r.getBirthDate() == null) {
             try (Connection con = db.getConnection()) {
                 try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=? WHERE id=?")) {
                     con.setAutoCommit(false);
                     preparedStatement.setString(1, r.getName());
                     preparedStatement.setInt(2, r.getId());
-                    updated = preparedStatement.executeUpdate() > 0;
                     con.commit();
+                    preparedStatement.executeUpdate();
                 } catch (SQLException ex) {
                     try {
                         con.rollback();
-                        return false;
+                        throw new NotFoundException("No se ha podido actualizar el lector");
                     } catch (SQLException ex1) {
-                        return false;
+                        throw new BaseDatosCaidaException("Error en la base de datos");
                     }
                 }
             } catch (SQLException sqle) {
                 Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
+                throw new BaseDatosCaidaException("Error en la base de datos");
             }
         } else if (r.getName() == null || r.getName().isBlank()) {
             try (Connection con = db.getConnection()) {
@@ -142,17 +136,19 @@ public class DaoReader {
                     con.setAutoCommit(false);
                     preparedStatement.setDate(1, Date.valueOf(r.getBirthDate()));
                     preparedStatement.setInt(2, r.getId());
-                    updated = preparedStatement.executeUpdate() > 0;
+                    con.commit();
+                    preparedStatement.executeUpdate();
                 } catch (SQLException ex) {
                     try {
                         con.rollback();
-                        return false;
+                        throw new NotFoundException("No se ha podido actualizar el lector");
                     } catch (SQLException ex1) {
-                        return false;
+                        throw new BaseDatosCaidaException("Error en la base de datos");
                     }
                 }
             } catch (SQLException sqle) {
                 Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
+                throw new BaseDatosCaidaException("Error en la base de datos");
             }
         } else {
             try (Connection con = db.getConnection()) {
@@ -162,19 +158,20 @@ public class DaoReader {
                     preparedStatement.setDate(2, Date.valueOf(r.getBirthDate()));
                     preparedStatement.setInt(3, r.getId());
                     con.commit();
-                    updated = preparedStatement.executeUpdate() > 0;
-                }catch (SQLException ex) {
+                    preparedStatement.executeUpdate();
+                } catch (SQLException ex) {
                     try {
                         con.rollback();
-                        return false;
+                        throw new NotFoundException("No se ha podido actualizar el lector");
                     } catch (SQLException ex1) {
-                        return false;
+                        throw new BaseDatosCaidaException("Error en la base de datos");
                     }
                 }
             } catch (SQLException sqle) {
                 Logger.getLogger(DaoReader.class.getName()).log(Level.SEVERE, null, sqle);
+                throw new BaseDatosCaidaException("Error en la base de datos");
             }
         }
-        return updated;
+        return r;
     }
 }

@@ -1,13 +1,15 @@
 package jakarta.rest;
 
+import data.modelo.Newspaper;
+import domain.servicios.ServicesNewspaper;
+import jakarta.errores.ApiError;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import servicios.ServicesNewspaper;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Path("/newspapers")
 @Produces(MediaType.APPLICATION_JSON)
@@ -22,7 +24,40 @@ public class RestNewspapers {
     }
 
     @GET
-    public Response getAllNewspapers() {
-        return Response.ok(sN.getAll()).build();
+    public List<Newspaper> getAllNewspapers() {
+        return sN.getAll();
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Newspaper getNewspaper(@PathParam("id") int id) {
+        return sN.get(id);
+    }
+
+    @POST
+    public Response addNewspaper(Newspaper newspaper) {
+        if (sN.add(newspaper)) {
+            return Response.status(Response.Status.CREATED).entity(newspaper).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(ApiError.builder()
+                            .message("newspaper no añadido")
+                            .fecha(LocalDateTime.now())
+                            .build())
+                    .build();
+        }
+    }
+
+    @DELETE
+    public Response delNewspaper(@QueryParam("id") int id) {
+        sN.delete(id);
+        return Response.noContent().build();
+    }
+
+    @PUT
+    public Response updateNewspaper(Newspaper newspaper) {
+        Newspaper news = sN.update(newspaper);
+        return Response.status(Response.Status.OK).entity(news).build();
     }
 }

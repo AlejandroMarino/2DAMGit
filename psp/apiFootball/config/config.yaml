@@ -1,0 +1,5 @@
+ path_base: https://api.football-data.org/v2/
+ #path_base: "https://gateway.marvel.com/v1/public/"
+#path_base: http://localhost:8080/JAX-RS-1.0-SNAPSHOT/
+ #path_base: https://pokeapi.co/api/v2/
+

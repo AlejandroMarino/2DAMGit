@@ -10,60 +10,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f9bb434-caa3-487e-9701-b107bca58a69" name="Changes" comment="cosas">
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/DBConnectionPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/ListenerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoArticle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoArticleType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoNewspaper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoQueries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoReadArticle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoSubscribe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Article.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Newspaper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/ReadArticle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Reader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Subscribe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Type.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/queries/DescriptionNumberType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesArticle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesArticleType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesNewspaper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesReadArticle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesSubscribe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/webapp/WEB-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/webapp/WEB-INF/config/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/0/f/0ff991da61610a4205b1dca5393ad0561cf92cfd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/3/137b59f0405a3a484cde0bc7eeea63c811a3835c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/1/e/1e6e54dd15b6c15ccdb9a01e74c11121be2e2955" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/0/405297f285c37bfee9ad5b698de0c128f0eac839" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/9/6/9687d046bd3ed63c48f83e384f14cddd6d179e6a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/b/d/bda776b1a315ba81e713c04653cf674abe670238" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/b/d/bdb0d02c7ddf20c68163b9cf7fee48a39017831b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/d/9/d9c3a55082a3a6032eb04187cd6dcf6752c59df0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/e/7/e79bb1c963a7e2cdc178eb853fc5b509189886f9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/f/4/f4c8362a7bceb3ce3569d96cdcbbff135b58a161" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/f/b/fb0d169b0180ca93ab4e6a1a1e6a2a9ee0e6554b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aDatos/newspapersJdbc/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../../../dInterfaces/ejercicio1/Ejercicio1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/cliente/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/domain/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/domain/src/main/java/domain/error/ApiError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/domain/src/main/java/domain/modelo/Newspaper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/domain/src/main/java/domain/modelo/Reader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/domain/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/config/Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/config/DBConnectionPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/config/ListenerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/data/DaoNewspaper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/data/DaoReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/domain/modelo/BaseDatosCaidaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/domain/modelo/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/domain/servicios/ServicesNewspaper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/domain/servicios/ServicesReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/jakarta/di/Producers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/jakarta/errores/BaseDatosCaidaExceptionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/jakarta/errores/NotFoundExceptionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/jakarta/rest/JAXRSApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/jakarta/rest/RestNewspapers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/java/jakarta/rest/RestReaders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/resources/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/servidor/src/main/webapp/WEB-INF/beans.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/domain/modelo/BaseDatosCaidaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/domain/modelo/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/domain/servicios/ServicesReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/jakarta/di/Producers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/jakarta/errores/BaseDatosCaidaExceptionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/jakarta/errores/NotFoundExceptionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/jakarta/rest/RestReaders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../empresas/Environment Analysis.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../empresas/Environment Analysis.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../gEmpresas/Matplotlib.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../gEmpresas/Matplotlib.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/DBConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/DBConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/ListenerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/config/ListenerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoArticle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoArticleType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoNewspaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoNewspaper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoQueries.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoReadArticle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/DaoSubscribe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/jakarta/rest/RestNewspapers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/jakarta/rest/RestNewspapers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Article.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Newspaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/modelo/Newspaper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/ReadArticle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/data/modelo/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Subscribe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/modelo/queries/DescriptionNumberType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesArticle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesArticleType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesNewspaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/java/domain/servicios/ServicesNewspaper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesReadArticle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/java/servicios/ServicesSubscribe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../rest/rest/src/main/webapp/WEB-INF/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../rest/rest/src/main/resources/config.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +116,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/git2DAM/PSP/miprimerREST/miprimerREST",
+    "last_opened_file_path": "D:/2DAMGit/psp/server/server",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -315,6 +326,7 @@
       <workItem from="1668477871871" duration="2893000" />
       <workItem from="1668535868005" duration="1446000" />
       <workItem from="1668616884188" duration="5541000" />
+      <workItem from="1668986452003" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="PSP">
       <created>1667184407502</created>
