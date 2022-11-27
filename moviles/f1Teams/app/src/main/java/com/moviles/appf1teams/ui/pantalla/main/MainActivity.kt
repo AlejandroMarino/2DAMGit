@@ -1,32 +1,24 @@
 package com.moviles.appf1teams.ui.pantalla.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.moviles.appf1teams.R
-import com.moviles.appf1teams.data.TeamRepository
-import com.moviles.appf1teams.data.TeamsRoomDatabase
 import com.moviles.appf1teams.databinding.ActivityMainBinding
 import com.moviles.appf1teams.domain.modelo.Team
-import com.moviles.appf1teams.domain.usecases.teams.*
 import com.moviles.appf1teams.ui.common.Constantes
-import com.moviles.appf1teams.utils.StringProvider
+import com.moviles.appf1teams.ui.pantalla.drivers.DriversActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory(
-            StringProvider.instance(this),
-            AddTeam(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-            Delete(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-            Update(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-            GetTeams(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-            GetTeamById(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-        )
-    }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         val id = intent.getIntExtra(Constantes.id, Constantes.NotFound)
 
         viewModel.handleEvent(MainEvent.LoadTeam(id))
-
-
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         with(binding) {
@@ -64,9 +54,22 @@ class MainActivity : AppCompatActivity() {
                     }
                     switchMaterial.isChecked = state.team.winner
                 }
+                if (viewModel.uiState.value?.team?.id == 0) {
+                    verDrivers?.visibility = View.INVISIBLE
+                    drivers?.visibility = View.INVISIBLE
+                } else {
+                    verDrivers?.visibility = View.VISIBLE
+                    drivers?.visibility = View.VISIBLE
+                }
             }
             floatingActionButton()
             bottomNav()
+
+            verDrivers?.setOnClickListener {
+                val intent = Intent(this@MainActivity, DriversActivity::class.java)
+                intent.putExtra(Constantes.id, viewModel.uiState.value?.team?.id)
+                startActivity(intent)
+            }
         }
     }
 
@@ -88,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@MainActivity,
-                        StringProvider.instance(this@MainActivity).getString(R.string.attrRequired),
+                        R.string.attrRequired,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -122,8 +125,7 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 this@MainActivity,
-                                StringProvider.instance(this@MainActivity)
-                                    .getString(R.string.attrRequired),
+                                resources.getString(R.string.attrRequired),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -159,6 +161,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
 }

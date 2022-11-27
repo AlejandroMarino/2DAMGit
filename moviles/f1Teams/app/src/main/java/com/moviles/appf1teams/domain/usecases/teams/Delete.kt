@@ -1,14 +1,16 @@
 package com.moviles.appf1teams.domain.usecases.teams
 
 import com.moviles.appf1teams.data.TeamRepository
+import javax.inject.Inject
 
-class Delete(private val teamRepository: TeamRepository) {
+class Delete @Inject constructor(private val teamRepository: TeamRepository) {
 
     suspend fun invoke(id: Int): Boolean {
-        return try{
-            teamRepository.deleteTeam(id)
+        val team = teamRepository.getTeam(id)
+        return try {
+            teamRepository.deleteTeam(team)
             true
-        }catch (e: Exception){
+        } catch (e: Exception) {
             false
         }
     }

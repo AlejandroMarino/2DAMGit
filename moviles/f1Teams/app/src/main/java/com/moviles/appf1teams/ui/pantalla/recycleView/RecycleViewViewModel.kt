@@ -1,14 +1,21 @@
 package com.moviles.appf1teams.ui.pantalla.recycleView
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.moviles.appf1teams.R
 import com.moviles.appf1teams.domain.modelo.Team
 import com.moviles.appf1teams.domain.usecases.teams.AddTeam
 import com.moviles.appf1teams.domain.usecases.teams.Delete
 import com.moviles.appf1teams.domain.usecases.teams.GetTeams
 import com.moviles.appf1teams.utils.StringProvider
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RecycleViewViewModel(
+@HiltViewModel
+class RecycleViewViewModel @Inject constructor(
     private val stringProvider: StringProvider,
     private val getTeams: GetTeams,
     private val delete: Delete,
@@ -42,11 +49,16 @@ class RecycleViewViewModel(
         }
     }
 
+    //mirar si uso loadteams
     private fun deleteTeam(team: Team) {
         viewModelScope.launch {
-            team.id?.let { delete.invoke(it) }
-            loadTeams()
-            _uiState.value = RecycleViewState(teams = getTeams.invoke())
+            if (
+                delete.invoke(team.id)) {
+                loadTeams()
+                _uiState.value = RecycleViewState(teams = getTeams.invoke())
+            } else {
+                _uiState.value = _uiState.value?.copy(error = stringProvider.getString(R.string.error_deleting))
+            }
         }
     }
 
@@ -56,26 +68,5 @@ class RecycleViewViewModel(
             loadTeams()
             _uiState.value = RecycleViewState(teams = getTeams.invoke())
         }
-    }
-}
-
-class RecycleViewViewModelFactory(
-    private val stringProvider: StringProvider,
-    private val getTeams: GetTeams,
-    private val delete: Delete,
-    private val addTeam: AddTeam,
-
-    ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(RecycleViewViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return RecycleViewViewModel(
-                stringProvider,
-                getTeams,
-                delete,
-                addTeam,
-            ) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

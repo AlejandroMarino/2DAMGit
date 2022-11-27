@@ -5,9 +5,12 @@ import com.moviles.appf1teams.R
 import com.moviles.appf1teams.domain.modelo.Team
 import com.moviles.appf1teams.domain.usecases.teams.*
 import com.moviles.appf1teams.utils.StringProvider
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val stringProvider: StringProvider,
     private val addTeam: AddTeam,
     private val delete: Delete,
@@ -66,7 +69,7 @@ class MainViewModel(
                 lim = 0
             }
             if (teams.size > lim) {
-                if (index == 0) {
+                if (index == 0 || index == -1) {
                     _uiState.value = MainState(team = teams[teams.size - 1])
                     index = teams.size - 1
                 } else {
@@ -81,7 +84,7 @@ class MainViewModel(
 
     private suspend fun getIdTeam(index: Int): Int {
         val team = getTeams.invoke()[index]
-        return team.id ?: 0
+        return team.id
     }
 
     private fun nextTeam() {
@@ -112,9 +115,8 @@ class MainViewModel(
                     message = stringProvider.getString(R.string.repeatedName),
                 )
             } else {
-                _uiState.value = MainState(
-                    team = team, message = stringProvider.getString(R.string.teamAdded)
-                )
+                val t = getTeams.invoke()[allTeams().size-1]
+                _uiState.value = MainState(t, message = stringProvider.getString(R.string.teamAdded))
                 index = allTeams().size - 1
             }
         }
@@ -166,30 +168,5 @@ class MainViewModel(
                 message = stringProvider.getString(R.string.updatedTeam),
             )
         }
-    }
-}
-
-class MainViewModelFactory(
-    private val stringProvider: StringProvider,
-    private val addTeam: AddTeam,
-    private val delete: Delete,
-    private val update: Update,
-    private val getTeams: GetTeams,
-    private val getTeamById: GetTeamById,
-
-    ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return MainViewModel(
-                stringProvider,
-                addTeam,
-                delete,
-                update,
-                getTeams,
-                getTeamById,
-            ) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

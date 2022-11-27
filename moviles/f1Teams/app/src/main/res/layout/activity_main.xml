@@ -15,6 +15,7 @@
         app:boxBackgroundMode="outline"
         app:layout_constraintBottom_toTopOf="@+id/labelPerformance"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
         app:layout_constraintTop_toTopOf="@id/guidelineTop"
         app:startIconDrawable="@drawable/ic_baseline_rename_24">
@@ -30,10 +31,11 @@
         android:id="@+id/labelPerformance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:text="@string/performance"
         app:layout_constraintBottom_toTopOf="@id/slider"
         app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toEndOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/textField" />
 
@@ -44,19 +46,21 @@
         android:contentDescription="@string/rate"
         android:valueFrom="0"
         android:valueTo="100"
+        app:layout_constraintBottom_toTopOf="@id/labelTyres"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@+id/labelPerformance"
-        app:layout_constraintBottom_toTopOf="@id/labelTyres"/>
+        app:layout_constraintTop_toBottomOf="@+id/labelPerformance" />
 
     <androidx.constraintlayout.utils.widget.MotionLabel
         android:id="@+id/labelTyres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:text="@string/favourite_tyres"
         app:layout_constraintBottom_toTopOf="@id/toggleButton"
         app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toEndOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/slider" />
 
@@ -65,10 +69,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/switchMaterial"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@id/labelTyres"
-        app:layout_constraintBottom_toTopOf="@id/switchMaterial"
         app:singleSelection="true">
 
         <Button
@@ -97,8 +102,8 @@
         android:id="@+id/switchMaterial"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"
         android:checked="false"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
@@ -106,6 +111,7 @@
         android:textColor="@color/design_default_color_primary"
         app:layout_constraintBottom_toTopOf="@id/guidelineBottom"
         app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@+id/toggleButton"
         tools:ignore="TextContrastCheck" />
@@ -176,5 +182,29 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.8508892" />
+
+    <TextView
+        android:id="@+id/drivers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/watch_drivers"
+        android:textColor="@color/purple_500"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
+        app:layout_constraintEnd_toStartOf="@+id/verDrivers"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/switchMaterial"
+        app:layout_constraintVertical_bias="0.546" />
+
+    <ImageButton
+        android:id="@+id/verDrivers"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/watch_drivers"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintStart_toEndOf="@+id/drivers"
+        app:layout_constraintTop_toBottomOf="@+id/switchMaterial"
+        app:layout_constraintVertical_bias="0.558"
+        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

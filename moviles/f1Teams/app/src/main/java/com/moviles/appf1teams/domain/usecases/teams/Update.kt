@@ -1,8 +1,9 @@
 package com.moviles.appf1teams.domain.usecases.teams
 
 import com.moviles.appf1teams.data.TeamRepository
+import javax.inject.Inject
 
-class Update(private val teamRepository: TeamRepository) {
+class Update @Inject constructor(private val teamRepository: TeamRepository) {
     suspend fun invoke(
         id: Int?,
         name: String,

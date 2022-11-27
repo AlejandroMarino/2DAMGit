@@ -9,36 +9,25 @@ import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.appf1teams.R
-import com.moviles.appf1teams.data.TeamRepository
-import com.moviles.appf1teams.data.TeamsRoomDatabase
 import com.moviles.appf1teams.databinding.ActivityRecycleviewBinding
 import com.moviles.appf1teams.domain.modelo.Team
-import com.moviles.appf1teams.domain.usecases.teams.AddTeam
-import com.moviles.appf1teams.domain.usecases.teams.Delete
-import com.moviles.appf1teams.domain.usecases.teams.GetTeams
 import com.moviles.appf1teams.ui.common.Constantes
 import com.moviles.appf1teams.ui.pantalla.main.MainActivity
-import com.moviles.appf1teams.utils.StringProvider
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RecycleViewActivity : AppCompatActivity() {
     private lateinit var adapter: TeamsAdapter
 
     private lateinit var binding: ActivityRecycleviewBinding
 
-    private val viewModel: RecycleViewViewModel by viewModels {
-        RecycleViewViewModelFactory(
-            StringProvider.instance(this),
-            GetTeams(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-            Delete(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-            AddTeam(TeamRepository(TeamsRoomDatabase.getDatabase(this).teamDao())),
-        )
-    }
+    private val viewModel: RecycleViewViewModel by viewModels()
 
     override fun onResume() {
         super.onResume()
         viewModel.handleEvent(RecycleViewEvent.LoadTeams)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

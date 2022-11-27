@@ -41,7 +41,6 @@ class TeamsAdapter(val actions: TeamActions) :
             with(binding) {
                 textView.text = team.name
 
-
                 iconButtonWatch.setOnClickListener {
                     actions.onClickWatch(team)
                 }

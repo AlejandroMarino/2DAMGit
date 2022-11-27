@@ -10,6 +10,10 @@
     <string name="name">name</string>
     <string name="add">add</string>
     <string name="attrRequired">All the attributes are required</string>
+    <string name="driver_deleted">Driver deleted</string>
+    <string name="driver_added">Driver added</string>
+    <string name="error_deleting_driver">"Error while deleting driver"</string>
+    <string name="error_deleting">"Error while deleting"</string>
     <string name="repeatedName">There is already a team with that name</string>
     <string name="noTeamWithName">There is no team with that name</string>
     <string name="noMoreTeams">There are no more teams</string>
@@ -21,4 +25,7 @@
     <string name="img">img</string>
     <string name="updatedTeam">The team was updated</string>
     <string name="teamAdded">The team was added</string>
+    <string name="alreadyExists">There is already a driver with that name</string>
+    <string name="watch_drivers">Watch drivers</string>
+    <string name="number">number</string>
 </resources>
