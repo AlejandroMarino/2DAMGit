@@ -1,20 +1,19 @@
 package com.moviles.appf1teams.data.modelo
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.moviles.appf1teams.data.common.Constantes
 
 @Entity(
     tableName = "drivers",
     indices = [Index(value = [Constantes.name], unique = true)],
     foreignKeys = [
-        ForeignKey(entity = TeamEntity::class,
+        ForeignKey(
+            entity = TeamEntity::class,
             parentColumns = ["id"],
-            childColumns = ["id_team"])
-            ])
+            childColumns = ["id_team"]
+        )
+    ]
+)
 data class DriverEntity(
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
