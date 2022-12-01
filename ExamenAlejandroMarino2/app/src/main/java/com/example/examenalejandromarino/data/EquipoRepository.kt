@@ -9,7 +9,6 @@ import javax.inject.Inject
 
 class EquipoRepository @Inject constructor(
     private val daoEquipo: DaoEquipo,
-    private val daoComponente: DaoComponente
 ) {
 
     suspend fun getEquipos() = daoEquipo.getEquipos().map { it.toEquipo() }
@@ -20,10 +19,10 @@ class EquipoRepository @Inject constructor(
 
     suspend fun addEquipo(equipo: Equipo) = daoEquipo.addEquipo(equipo.toEquipoEntity())
 
-    suspend fun addComponente(id: Int, componente: Componente) = daoComponente.addComponente(componente.toComponenteEntity(id))
+    suspend fun addComponente(id: Int, componente: Componente) = daoEquipo.addComponente(componente.toComponenteEntity(id))
 
-    suspend fun getComponentes(id: Int) = daoComponente.getComponentes(id)
+    suspend fun getComponentes(id: Int) = daoEquipo.getComponentes(id)
 
-    suspend fun getComponente(nombre: String) = daoComponente.getComponente(nombre)
+    suspend fun getComponente(nombre: String) = daoEquipo.getComponente(nombre)
 
 }

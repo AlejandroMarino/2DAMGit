@@ -35,7 +35,7 @@ interface TeamDao {
     @Query(Constantes.querieDeleteDriver)
     suspend fun deleteDriver(idDriver: Int)
 
-    @Transaction()
+    @Transaction
     suspend fun createTransaction(team: TeamWithDriver) {
         team.drivers?.onEach { it.id?.let { it1 -> deleteDriver(it1) } }
         deleteTeam(team.team.id)

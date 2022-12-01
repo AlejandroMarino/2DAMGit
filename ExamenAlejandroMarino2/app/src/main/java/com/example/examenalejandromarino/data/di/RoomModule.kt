@@ -2,7 +2,6 @@ package com.example.examenalejandromarino.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.examenalejandromarino.data.DaoComponente
 import com.example.examenalejandromarino.data.DaoEquipo
 import com.example.examenalejandromarino.data.EquiposRoomDatabase
 import dagger.Module
@@ -35,7 +34,4 @@ object RoomModule {
 
     @Provides
     fun providesDaoEquipos(equiposRoomDatabase: EquiposRoomDatabase) : DaoEquipo = equiposRoomDatabase.daoEquipo()
-
-    @Provides
-    fun providesDaoComponentes(equiposRoomDatabase: EquiposRoomDatabase) : DaoComponente = equiposRoomDatabase.daoComponente()
 }
