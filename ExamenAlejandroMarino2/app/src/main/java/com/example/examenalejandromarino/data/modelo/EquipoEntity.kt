@@ -19,5 +19,5 @@ data class EquipoEntity(
     @ColumnInfo(name = "nacionalidad")
     val nacionalidad: String,
     @ColumnInfo(name = "puesto")
-    val puesto: Int
+    val puesto: Int,
 )

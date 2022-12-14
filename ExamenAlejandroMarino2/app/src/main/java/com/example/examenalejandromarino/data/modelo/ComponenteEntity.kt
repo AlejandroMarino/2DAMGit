@@ -1,7 +1,9 @@
 package com.example.examenalejandromarino.data.modelo
 
-import androidx.room.*
-import com.example.examenalejandromarino.domain.modelo.Tipo
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "componentes",
@@ -18,7 +20,7 @@ data class ComponenteEntity(
     @PrimaryKey(autoGenerate = false)
     val nombre: String,
     @ColumnInfo(name = "tipo")
-    val tipo: Tipo,
+    val tipo: String,
     @ColumnInfo(name = "id_equipo")
-    val id_equipo: Int,
+    val id_equipo: Int = 0,
 )
