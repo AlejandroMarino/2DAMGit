@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">ExamenAlejandroMarino</string>
-    <string name="delete">delete</string>
-    <string name="puesto">puesto</string>
-    <string name="nombre">nombre</string>
-    <string name="add">add</string>
-    <string name="nacionalidad">nacionalidad</string>
-    <string name="equipo">Equipo</string>
-</resources>

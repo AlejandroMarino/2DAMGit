@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.addArticles.AddArticlesController">
+    <children>
+        <Label layoutX="481.0" layoutY="72.0" text="Articles" />
+        <TableView fx:id="tableArticle" layoutX="227.0" layoutY="108.0" prefHeight="382.0" prefWidth="547.0">
+            <columns>
+                <TableColumn fx:id="columId" prefWidth="59.0" text="Id" />
+                <TableColumn fx:id="columName" prefWidth="126.0" text="Name" />
+                <TableColumn fx:id="columDescription" prefWidth="206.0" text="Description" />
+                <TableColumn fx:id="columType" prefWidth="69.0" text="Type" />
+                <TableColumn fx:id="columIdNewspaper" prefWidth="86.0" text="Id Newspaper" />
+            </columns>
+        </TableView>
+      <TextField fx:id="txId" layoutX="44.0" layoutY="567.0" />
+      <TextField fx:id="txName" layoutX="232.0" layoutY="567.0" />
+      <TextField fx:id="txDescription" layoutX="426.0" layoutY="567.0" />
+      <TextField fx:id="txType" layoutX="619.0" layoutY="567.0" />
+      <TextField fx:id="txNewspaper" layoutX="806.0" layoutY="567.0" />
+      <Label layoutX="112.0" layoutY="534.0" text="Id:" />
+      <Label layoutX="289.0" layoutY="534.0" text="Name:" />
+      <Label layoutX="469.0" layoutY="534.0" text="Description:" />
+      <Label layoutX="679.0" layoutY="534.0" text="Type:" />
+      <Label layoutX="843.0" layoutY="534.0" text="Id Newspaper:" />
+      <Button layoutX="482.0" layoutY="627.0" mnemonicParsing="false" onAction="#add" text="Add" />
+    </children>
+</AnchorPane>

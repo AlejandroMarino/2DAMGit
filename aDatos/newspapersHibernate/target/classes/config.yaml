@@ -1,0 +1,9 @@
+newspapers: data/newspapers.txt
+articles: data/articles.txt
+types: data/articles-type.txt
+path: jdbc:mysql://dam2.mysql.iesquevedo.es:3335/
+database: AlejandroMarino_Newspaper
+user_name: root
+dB_password: quevedo2dam
+driver: com.mysql.cj.jdbc.Driver
+

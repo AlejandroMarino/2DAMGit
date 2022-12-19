@@ -1,0 +1,24 @@
+
+P
+java:S1141M"5Extract this nested try block into a separate method.(Ô·Øùÿÿÿÿ
+P
+java:S1141R"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+P
+java:S1141a"5Extract this nested try block into a separate method.(°æ¹Îúÿÿÿÿ
+P
+java:S1141i"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+P
+java:S1141z"5Extract this nested try block into a separate method.(÷×…«úÿÿÿÿ
+Q
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+Q
+java:S1141"5Extract this nested try block into a separate method.(ºˆÂûÿÿÿÿ
+Q
+java:S1141“"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+L
+java:S1141Ÿ"5Extract this nested try block into a separate method.(ï÷íé
+Q
+java:S1141§"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+k	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Ş»Áúÿÿÿÿ
+m
+java:S3776v"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(ßß©ûùÿÿÿÿ
