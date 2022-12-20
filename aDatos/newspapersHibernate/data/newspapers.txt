@@ -1,3 +1,0 @@
-1;Marca;2.0;Paco
-2;As;1.0;Juan
-3;Mundo Deportivo;1.0;Berto

@@ -1,8 +1,0 @@
-1;El Rayo;ha ganao;1;1
-2;El Madrid;ha empatao;1;1
-3;El Betis;ha perdio;2;1
-4;El Celta;ha ganao;3;1
-5;El Elche;ha perdio;5;1
-6;El Valencia;ha empatao;1;2
-7;El Villareal;ha ganao;2;2
-8;El Barsa;ha ganao;3;2

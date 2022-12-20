@@ -1,8 +1,0 @@
-1;economy
-2;environment
-3;health
-4;education
-5;social
-6;security
-7;infrastructure
-8;politics

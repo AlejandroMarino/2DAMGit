@@ -16,6 +16,7 @@ module basefx {
     requires jakarta.annotation;
     requires spring.jdbc;
     requires spring.tx;
+    requires jakarta.persistence;
 
     exports ui.fx;
     exports data;

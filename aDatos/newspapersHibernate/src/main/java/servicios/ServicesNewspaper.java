@@ -12,20 +12,18 @@ import java.util.List;
 public class ServicesNewspaper {
     private final DaoNewspaper daoNewspaper;
     private final DaoArticle daoArticle;
-    private final ServicesArticle servicesArticle;
 
     @Inject
-    public ServicesNewspaper(DaoNewspaper daoNewspaper, DaoArticle daoArticle, ServicesArticle servicesArticle) {
+    public ServicesNewspaper(DaoNewspaper daoNewspaper, DaoArticle daoArticle) {
         this.daoNewspaper = daoNewspaper;
         this.daoArticle = daoArticle;
-        this.servicesArticle = servicesArticle;
     }
 
     public boolean delete(Newspaper n) {
         if (getAll().isLeft()) {
             return false;
         } else {
-            return daoNewspaper.delete(n.getId()) > 0;
+            return daoNewspaper.delete(n) > 0;
         }
     }
 
