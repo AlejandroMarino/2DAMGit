@@ -17,7 +17,7 @@ fun Equipo.toEquipoEntity(): EquipoEntity {
 
 fun ComponenteEntity.toComponente(): Componente {
     return Componente(
-        this.tipo, this.nombre
+        this.tipo, this.nombre,
     )
 }
 
