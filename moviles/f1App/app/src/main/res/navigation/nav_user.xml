@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_user"
+    app:startDestination="@id/watch_teams">
+
+    <fragment
+        android:id="@+id/watch_teams"
+        android:name="com.moviles.f1app.ui.pantalla.user.lists.teams.WatchTeamsFragment"
+        android:label="fragment_watch_teams"
+        tools:layout="@layout/fragment_watch_teams" >
+        <action
+            android:id="@+id/action_watch_teams_to_watch_team"
+            app:destination="@id/watch_team" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_team"
+        android:name="com.moviles.f1app.ui.pantalla.user.detail.team.WatchTeamFragment"
+        android:label="fragment_watch_team"
+        tools:layout="@layout/fragment_watch_team" >
+        <action
+            android:id="@+id/action_watch_team_to_watch_teams"
+            app:destination="@id/watch_teams" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_drivers"
+        android:name="com.moviles.f1app.ui.pantalla.user.lists.drivers.WatchDriversFragment"
+        android:label="fragment_watch_drivers"
+        tools:layout="@layout/fragment_watch_drivers" >
+        <action
+            android:id="@+id/action_watch_drivers_to_watch_driver"
+            app:destination="@id/watch_driver" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_driver"
+        android:name="com.moviles.f1app.ui.pantalla.user.detail.driver.WatchDriverFragment"
+        android:label="fragment_watch_driver"
+        tools:layout="@layout/fragment_watch_driver" >
+        <action
+            android:id="@+id/action_watch_driver_to_watch_drivers"
+            app:destination="@id/watch_drivers" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_races"
+        android:name="com.moviles.f1app.ui.pantalla.user.lists.races.WatchRacesFragment"
+        android:label="fragment_watch_races"
+        tools:layout="@layout/fragment_watch_races" >
+        <action
+            android:id="@+id/action_watch_races_to_watch_race"
+            app:destination="@id/watch_race" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_race"
+        android:name="com.moviles.f1app.ui.pantalla.user.detail.race.WatchRaceFragment"
+        android:label="fragment_watch_race"
+        tools:layout="@layout/fragment_watch_race" >
+        <action
+            android:id="@+id/action_watch_race_to_watch_races"
+            app:destination="@id/watch_races" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_tracks"
+        android:name="com.moviles.f1app.ui.pantalla.user.lists.tracks.WatchTracksFragment"
+        android:label="fragment_watch_tracks"
+        tools:layout="@layout/fragment_watch_tracks" >
+        <action
+            android:id="@+id/action_watch_tracks_to_watch_track"
+            app:destination="@id/watch_track" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_track"
+        android:name="com.moviles.f1app.ui.pantalla.user.detail.track.WatchTrackFragment"
+        android:label="fragment_watch_track"
+        tools:layout="@layout/fragment_watch_track" >
+        <action
+            android:id="@+id/action_watch_track_to_watch_tracks"
+            app:destination="@id/watch_tracks" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_cars"
+        android:name="com.moviles.f1app.ui.pantalla.user.lists.cars.WatchCarsFragment"
+        android:label="fragment_watch_cars"
+        tools:layout="@layout/fragment_watch_cars" >
+        <action
+            android:id="@+id/action_watch_cars_to_watch_car"
+            app:destination="@id/watch_car" />
+    </fragment>
+    <fragment
+        android:id="@+id/watch_car"
+        android:name="com.moviles.f1app.ui.pantalla.user.detail.car.WatchCarFragment"
+        android:label="fragment_watch_car"
+        tools:layout="@layout/fragment_watch_car" >
+        <action
+            android:id="@+id/action_watch_car_to_watch_cars"
+            app:destination="@id/watch_cars" />
+    </fragment>
+</navigation>

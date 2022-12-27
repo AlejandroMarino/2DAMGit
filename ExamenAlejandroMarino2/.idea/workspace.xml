@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d55cc1f0-a5dc-4fed-b6b0-b9fc0fded794" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0af35b0911a3bbc1515a106c9854a8b4876f827b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/f/0f0c259638ed456ee3f89b86fcf1e49bb083260b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/140db7fc4e20ad9884de7731a4838d96be6d3a0f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2c8aaaa437f49722cb3164d9aa2a77a7dde4e83d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/495e5f6e62b6283cff5c7c1c072efe65ce7da233" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57988cb8db4680642755d113b3b2eb8bcab2a10c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5bafdc191b4d731e2b0fe47caa6bb32e3fb589a8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/d/5d64f31dea2e53539dec376a25d5d2e19073c162" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/66db86c99ff92fdad49bd74dc6dbfb4ba3f708d7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/769fc64f8b4b5b29931473598cf30b68d97d95ab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c1ec947ff8aacb46497bff6b88fb985a3ca5459" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/96477a96bb1bf15605352579246259b0ed5e9209" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98655e2ebddf1565efcee04d9b1b58b749ab2923" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a41ebe6f2b2a4e1da0ac7a7694c4a5be5f8166ce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4f5e4bb152caea5e959bd372ede2fc2f5fb77bf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/a/aa943dea172b0626bba41cf7c0efa7c82772dc8b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b58b9bb350ae5497f2137c2b5357e8264e0a6b9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b8c54111b15e762ce72d8b207e8256d8cb7367d0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd809975063023a4223d04df5f08524fecde02f9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e392191aeae700a35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/Converters.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/DaoComponente.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/DaoEquipo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/DaoEquipo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/EquipoRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/EquipoRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/EquiposRoomDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/EquiposRoomDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/di/RoomModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/di/RoomModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/modelo/ComponenteEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/modelo/ComponenteEntity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/modelo/EquipoEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/modelo/EquipoEntity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/modelo/datamappers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/data/modelo/datamappers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/domain/modelo/Componente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/examenalejandromarino/domain/modelo/Componente.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/1/9/190ce3da8469e0f7707bc7b04cb156e011ffa681" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/3/0/3082fad6221af21cf3260776f2dda167846b959c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/4/0/40beb23613ab0b69320eebf6f419fc8c90ed90e5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/4/c/4cca113491e6ab2cf8936d8af1fe3e73852c15ca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/5/a/5a2ad662d6772d13a3a0347f3ce9d32e75bf42cd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/5/a/5a307b77595c1256955e656cf46e0611a9758229" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/6/d/6dd9c50113d949ed86a6bd0db2b6f307aae5f74e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/7/7/77011fa78d8ef7fe4354e7cc86595f475dffd1e1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/8/1/81e13d24c797607f26e84a8c998844451e43a97c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/8/7/87cfa45c175c7ef245e716fc20edbf3adf3da9f4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/9/4/94a3c1d890489efa4ecc507e64dab7a5cd9a4f1f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/9/f/9f7f384a688fcbe13275c45c9d258c2d8f796d6c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/b/f/bf008034361afd3a2e2829c3c1ed37191e87a607" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/d/9/d9395f3729de6bf625118731ea59b21eca05b02c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/d/c/dc0517e0b4428667e2ec7e0495b316cbfde7081e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/e/1/e158a0ce6d21d269192af68c1c54969185a04bfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/e/f/ef303f8b147c77525dc096e9a93de6b1911a98b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e392191aeae700a35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../moviles/f1Teams/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../psp/clienteServidor/clienteServidor/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../psp/clienteServidor/clienteServidor/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2IJhFy6ISTjUjxwW3z8S8g0XqZf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="ExamenAlejandroMarino.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+        <option name="PROFILING_MODE" value="NOT_SET" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d55cc1f0-a5dc-4fed-b6b0-b9fc0fded794" name="Changes" comment="" />
+      <created>1669905494204</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669905494204</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/edit_teams">
+
+    <fragment
+        android:id="@+id/edit_cars"
+        android:name="com.moviles.f1app.ui.pantalla.admin.list.cars.EditCarsFragment"
+        android:label="fragment_edit_cars"
+        tools:layout="@layout/fragment_edit_cars" >
+        <action
+            android:id="@+id/action_edit_cars_to_edit_car"
+            app:destination="@id/edit_car" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_teams"
+        android:name="com.moviles.f1app.ui.pantalla.admin.list.teams.EditTeamsFragment"
+        android:label="fragment_edit_teams"
+        tools:layout="@layout/fragment_edit_teams" >
+        <action
+            android:id="@+id/action_edit_teams_to_edit_team"
+            app:destination="@id/edit_team" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_drivers"
+        android:name="com.moviles.f1app.ui.pantalla.admin.list.drivers.EditDriversFragment"
+        android:label="fragment_edit_drivers"
+        tools:layout="@layout/fragment_edit_drivers" >
+        <action
+            android:id="@+id/action_edit_drivers_to_edit_driver"
+            app:destination="@id/edit_driver" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_races"
+        android:name="com.moviles.f1app.ui.pantalla.admin.list.races.EditRacesFragment"
+        android:label="fragment_edit_races"
+        tools:layout="@layout/fragment_edit_races" >
+        <action
+            android:id="@+id/action_edit_races_to_edit_race"
+            app:destination="@id/edit_race" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_tracks"
+        android:name="com.moviles.f1app.ui.pantalla.admin.list.tracks.EditTracksFragment"
+        android:label="fragment_edit_tracks"
+        tools:layout="@layout/fragment_edit_tracks" >
+        <action
+            android:id="@+id/action_edit_tracks_to_edit_track"
+            app:destination="@id/edit_track" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_team"
+        android:name="com.moviles.f1app.ui.pantalla.admin.detail.team.EditTeamFragment"
+        android:label="fragment_edit_team"
+        tools:layout="@layout/fragment_edit_team" >
+        <action
+            android:id="@+id/action_edit_team_to_edit_teams"
+            app:destination="@id/edit_teams" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_driver"
+        android:name="com.moviles.f1app.ui.pantalla.admin.detail.driver.EditDriverFragment"
+        android:label="fragment_edit_driver"
+        tools:layout="@layout/fragment_edit_driver" >
+        <action
+            android:id="@+id/action_edit_driver_to_edit_drivers"
+            app:destination="@id/edit_drivers" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_race"
+        android:name="com.moviles.f1app.ui.pantalla.admin.detail.race.EditRaceFragment"
+        android:label="fragment_edit_race"
+        tools:layout="@layout/fragment_edit_race" >
+        <action
+            android:id="@+id/action_edit_race_to_edit_races"
+            app:destination="@id/edit_races" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_track"
+        android:name="com.moviles.f1app.ui.pantalla.admin.detail.track.EditTrackFragment"
+        android:label="fragment_edit_track"
+        tools:layout="@layout/fragment_edit_track" >
+        <action
+            android:id="@+id/action_edit_track_to_edit_tracks"
+            app:destination="@id/edit_tracks" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_car"
+        android:name="com.moviles.f1app.ui.pantalla.admin.detail.car.EditCarFragment"
+        android:label="fragment_edit_car"
+        tools:layout="@layout/fragment_edit_car" >
+        <action
+            android:id="@+id/action_edit_car_to_edit_cars"
+            app:destination="@id/edit_cars" />
+    </fragment>
+</navigation>

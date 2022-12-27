@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.example.examenalejandromarino.app-mergeDebugResources-41:/layout/activity_addequipo.xml",
+        "source": "com.example.examenalejandromarino.app-main-44:/layout/activity_addequipo.xml"
+    },
+    {
+        "merged": "com.example.examenalejandromarino.app-mergeDebugResources-41:/layout/item_componente.xml",
+        "source": "com.example.examenalejandromarino.app-main-44:/layout/item_componente.xml"
+    },
+    {
+        "merged": "com.example.examenalejandromarino.app-mergeDebugResources-41:/layout/activity_componentes.xml",
+        "source": "com.example.examenalejandromarino.app-main-44:/layout/activity_componentes.xml"
+    },
+    {
+        "merged": "com.example.examenalejandromarino.app-mergeDebugResources-41:/layout/item_equipo.xml",
+        "source": "com.example.examenalejandromarino.app-main-44:/layout/item_equipo.xml"
+    },
+    {
+        "merged": "com.example.examenalejandromarino.app-mergeDebugResources-41:/layout/activity_main.xml",
+        "source": "com.example.examenalejandromarino.app-main-44:/layout/activity_main.xml"
+    }
+]
