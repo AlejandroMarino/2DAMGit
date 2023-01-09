@@ -59,40 +59,4 @@
             android:id="@+id/action_watch_race_to_watch_races"
             app:destination="@id/watch_races" />
     </fragment>
-    <fragment
-        android:id="@+id/watch_tracks"
-        android:name="com.moviles.f1app.ui.pantalla.user.lists.tracks.WatchTracksFragment"
-        android:label="fragment_watch_tracks"
-        tools:layout="@layout/fragment_watch_tracks" >
-        <action
-            android:id="@+id/action_watch_tracks_to_watch_track"
-            app:destination="@id/watch_track" />
-    </fragment>
-    <fragment
-        android:id="@+id/watch_track"
-        android:name="com.moviles.f1app.ui.pantalla.user.detail.track.WatchTrackFragment"
-        android:label="fragment_watch_track"
-        tools:layout="@layout/fragment_watch_track" >
-        <action
-            android:id="@+id/action_watch_track_to_watch_tracks"
-            app:destination="@id/watch_tracks" />
-    </fragment>
-    <fragment
-        android:id="@+id/watch_cars"
-        android:name="com.moviles.f1app.ui.pantalla.user.lists.cars.WatchCarsFragment"
-        android:label="fragment_watch_cars"
-        tools:layout="@layout/fragment_watch_cars" >
-        <action
-            android:id="@+id/action_watch_cars_to_watch_car"
-            app:destination="@id/watch_car" />
-    </fragment>
-    <fragment
-        android:id="@+id/watch_car"
-        android:name="com.moviles.f1app.ui.pantalla.user.detail.car.WatchCarFragment"
-        android:label="fragment_watch_car"
-        tools:layout="@layout/fragment_watch_car" >
-        <action
-            android:id="@+id/action_watch_car_to_watch_cars"
-            app:destination="@id/watch_cars" />
-    </fragment>
 </navigation>

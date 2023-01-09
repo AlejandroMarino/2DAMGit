@@ -1,33 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_team"
+        android:id="@+id/item_teams"
         android:enabled="true"
         android:icon="@drawable/team_icon_24"
-        android:title="team" />
+        android:title="teams" />
 
     <item
-        android:id="@+id/item_driver"
+        android:id="@+id/item_drivers"
         android:enabled="true"
         android:icon="@drawable/piloto_icon_24"
-        android:title="driver" />
+        android:title="drivers" />
 
     <item
-        android:id="@+id/item_race"
+        android:id="@+id/item_races"
         android:enabled="true"
         android:icon="@drawable/race_icon_24"
-        android:title="race" />
-
-    <item
-        android:id="@+id/item_track"
-        android:enabled="true"
-        android:icon="@drawable/circuito_icon_24"
-        android:title="track" />
-
-    <item
-        android:id="@+id/item_car"
-        android:enabled="true"
-        android:icon="@drawable/coche_icon_24"
-        android:title="car" />
-
+        android:title="races" />
 </menu>

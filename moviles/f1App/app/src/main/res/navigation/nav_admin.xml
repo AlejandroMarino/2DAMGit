@@ -6,22 +6,15 @@
     app:startDestination="@id/edit_teams">
 
     <fragment
-        android:id="@+id/edit_cars"
-        android:name="com.moviles.f1app.ui.pantalla.admin.list.cars.EditCarsFragment"
-        android:label="fragment_edit_cars"
-        tools:layout="@layout/fragment_edit_cars" >
-        <action
-            android:id="@+id/action_edit_cars_to_edit_car"
-            app:destination="@id/edit_car" />
-    </fragment>
-    <fragment
         android:id="@+id/edit_teams"
         android:name="com.moviles.f1app.ui.pantalla.admin.list.teams.EditTeamsFragment"
         android:label="fragment_edit_teams"
         tools:layout="@layout/fragment_edit_teams" >
         <action
             android:id="@+id/action_edit_teams_to_edit_team"
-            app:destination="@id/edit_team" />
+            app:destination="@id/edit_team"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/edit_drivers"
@@ -42,15 +35,6 @@
             app:destination="@id/edit_race" />
     </fragment>
     <fragment
-        android:id="@+id/edit_tracks"
-        android:name="com.moviles.f1app.ui.pantalla.admin.list.tracks.EditTracksFragment"
-        android:label="fragment_edit_tracks"
-        tools:layout="@layout/fragment_edit_tracks" >
-        <action
-            android:id="@+id/action_edit_tracks_to_edit_track"
-            app:destination="@id/edit_track" />
-    </fragment>
-    <fragment
         android:id="@+id/edit_team"
         android:name="com.moviles.f1app.ui.pantalla.admin.detail.team.EditTeamFragment"
         android:label="fragment_edit_team"
@@ -58,6 +42,9 @@
         <action
             android:id="@+id/action_edit_team_to_edit_teams"
             app:destination="@id/edit_teams" />
+        <argument
+            android:name="idTeam"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/edit_driver"
@@ -67,6 +54,9 @@
         <action
             android:id="@+id/action_edit_driver_to_edit_drivers"
             app:destination="@id/edit_drivers" />
+        <argument
+            android:name="idDriver"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/edit_race"
@@ -76,23 +66,8 @@
         <action
             android:id="@+id/action_edit_race_to_edit_races"
             app:destination="@id/edit_races" />
-    </fragment>
-    <fragment
-        android:id="@+id/edit_track"
-        android:name="com.moviles.f1app.ui.pantalla.admin.detail.track.EditTrackFragment"
-        android:label="fragment_edit_track"
-        tools:layout="@layout/fragment_edit_track" >
-        <action
-            android:id="@+id/action_edit_track_to_edit_tracks"
-            app:destination="@id/edit_tracks" />
-    </fragment>
-    <fragment
-        android:id="@+id/edit_car"
-        android:name="com.moviles.f1app.ui.pantalla.admin.detail.car.EditCarFragment"
-        android:label="fragment_edit_car"
-        tools:layout="@layout/fragment_edit_car" >
-        <action
-            android:id="@+id/action_edit_car_to_edit_cars"
-            app:destination="@id/edit_cars" />
+        <argument
+            android:name="idRace"
+            app:argType="integer" />
     </fragment>
 </navigation>

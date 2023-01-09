@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemIrAdmin"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Ir a pantalla Administrador"
+        android:contentDescription="admin"
+         />
+    <item
+        android:id="@+id/itemIrUser"
+        android:title="Ir a pantalla Usuario"
+        android:contentDescription="user"
+         />
+</menu>

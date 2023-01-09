@@ -1,3 +1,19 @@
 
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+‰
+Yapp/src/main/java/com/moviles/f1app/ui/pantalla/user/detail/driver/WatchDriverFragment.kt,f\b\fb82ac651f413f03ddd165ae88f488df2835e5e9
+Š
+Zapp/src/main/java/com/moviles/f1app/ui/pantalla/user/lists/drivers/WatchDriversFragment.kt,3\3\33e3f97094d3f576cb2ba5d9c48de4e75a1eb568
+…
+Uapp/src/main/java/com/moviles/f1app/ui/pantalla/user/detail/race/WatchRaceFragment.kt,5\2\525999d62faa674d4c338f04bac8ce14cb696519
+†
+Vapp/src/main/java/com/moviles/f1app/ui/pantalla/user/lists/races/WatchRacesFragment.kt,e\5\e51f7f4bf9afb68ce070e68f444b1510e1fc69c0
+…
+Uapp/src/main/java/com/moviles/f1app/ui/pantalla/user/detail/team/WatchTeamFragment.kt,9\2\92226f6cf9a9728a44e34460b25f8fb1e5d5dedf
+†
+Vapp/src/main/java/com/moviles/f1app/ui/pantalla/user/lists/teams/WatchTeamsFragment.kt,c\2\c2619fd098b03b8b28e23bd4b95cf7e3dc228442
+‰
+Yapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverFragment.kt,9\d\9d15e0073f49fcf681a4e4a354c54b07247a6433
+…
+Uapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/race/EditRaceFragment.kt,8\7\87a9550e0e03146e444716a898d8e7b6de592c14
+|
+Lapp/src/main/java/com/moviles/f1app/domain/usecases/drivers/DeleteDrivers.kt,9\5\95ccd2d85708eab760dbfdfe9e85316ea48f2ccb
