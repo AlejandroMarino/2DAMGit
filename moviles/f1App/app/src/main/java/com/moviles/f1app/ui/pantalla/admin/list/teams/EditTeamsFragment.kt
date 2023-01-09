@@ -26,7 +26,7 @@ class EditTeamsFragment : Fragment(),MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding  = FragmentEditTeamsBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,6 +35,8 @@ class EditTeamsFragment : Fragment(),MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+
+            viewModel.handleEvent(EditTeamsEvent.LoadTeams)
             adapter = TeamsAdapter(object : TeamsAdapter.TeamsActions {
                 override fun onTeamWatch(team: Team) {
                     val id: Int = team.id

@@ -15,5 +15,15 @@ Vapp/src/main/java/com/moviles/f1app/ui/pantalla/user/lists/teams/WatchTeamsFrag
 Yapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverFragment.kt,9\d\9d15e0073f49fcf681a4e4a354c54b07247a6433
 …
 Uapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/race/EditRaceFragment.kt,8\7\87a9550e0e03146e444716a898d8e7b6de592c14
-|
-Lapp/src/main/java/com/moviles/f1app/domain/usecases/drivers/DeleteDrivers.kt,9\5\95ccd2d85708eab760dbfdfe9e85316ea48f2ccb
+n
+>app/src/main/java/com/moviles/f1app/data/modelo/datamappers.kt,d\c\dcb925c0ec1aa38db7b438c5286a391dea21848d
+†
+Vapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/list/teams/EditTeamsViewModel.kt,d\8\d8731579aaa7d6aa658544350a58c4b41fcefaa0
+…
+Uapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/list/teams/EditTeamsFragment.kt,9\e\9e93d84e39c1639f973530c629ef8bd8b8dc5ef8
+…
+Uapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/team/EditTeamFragment.kt,a\c\acd4e5822a086038a402d4f330e5ec7650864d33
+‚
+Rapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/team/EditTeamEvent.kt,3\a\3aa4ffcce1f5468df08904ffef42cdfb7114df43
+†
+Vapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/team/EditTeamViewModel.kt,5\f\5f071a72961a7b15e78e082b5b6ab6abf6984001

@@ -23,7 +23,7 @@ public class ServicesArticle {
         if (arts.isEmpty()) {
             return false;
         } else {
-            arts.forEach(art -> daoArticle.delete(art.getId()));
+            arts.forEach(daoArticle::delete);
             return true;
         }
     }

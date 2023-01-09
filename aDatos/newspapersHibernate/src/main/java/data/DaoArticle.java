@@ -1,9 +1,11 @@
 package data;
 
-import config.DBConnectionPool;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import modelo.Article;
+import modelo.Reader;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -18,125 +20,99 @@ import java.util.Map;
 
 public class DaoArticle {
 
-    private final DBConnectionPool db;
+    private final JPAUtil jpaUtil;
+    private EntityManager em;
 
     @Inject
-    public DaoArticle(DBConnectionPool db) {
-        this.db = db;
+    public DaoArticle(JPAUtil jpaUtil) {
+        this.jpaUtil = jpaUtil;
     }
 
     public Either<Integer, List<Article>> getAll() {
+        List<Article> list;
+        em = jpaUtil.getEntityManager();
         try {
-            JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            return Either.right(jtm.query("SELECT * FROM article", BeanPropertyRowMapper.newInstance(Article.class)));
+            list = em.createNamedQuery("GetAllArticles", Article.class).getResultList();
         } catch (Exception e) {
+            e.printStackTrace();
             return Either.left(-1);
+        }finally {
+            if (em != null) em.close();
         }
+        return Either.right(list);
     }
 
-    public Either<Integer,Article> get(int id) {
+    public Either<Integer, Article> get(int id) {
+        Article r;
+        em = jpaUtil.getEntityManager();
         try {
-            JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            return Either.right(jtm.queryForObject("SELECT * FROM article WHERE id = ?", BeanPropertyRowMapper.newInstance(Article.class), id));
-        }catch (Exception e){
+            r = em.find(Article.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
             return Either.left(-1);
+        } finally {
+            if (em != null) em.close();
         }
+        return Either.right(r);
     }
 
     public int add(Article article) {
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(db.getDataSource()).withTableName("article");
-        Map<String, Object> parameters = new HashMap<>();
-
-        parameters.put("name_article", article.getName());
-        parameters.put("id_type", article.getType());
-        parameters.put("id_newspaper", article.getIdNewspaper());
-        return jdbcInsert.execute(parameters);
+        em = jpaUtil.getEntityManager();
+        int result;
+        EntityTransaction tx = null;
+        try{
+            tx = em.getTransaction();
+            tx.begin();
+            em.persist(article);
+            tx.commit();
+            result = 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (tx.isActive()) tx.rollback();
+            result = 0;
+        } finally {
+            if (em != null) em.close();
+        }
+        return result;
     }
 
-    public int delete(int id) {
-        int res = -1;
-        TransactionDefinition def = new DefaultTransactionDefinition();
-        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(db.getDataSource());
-        TransactionStatus status = transactionManager.getTransaction(def);
-
+    public int delete(Article article) {
+        em = jpaUtil.getEntityManager();
+        int result;
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
         try {
-            JdbcTemplate jtm = new JdbcTemplate(transactionManager.getDataSource());
-            jtm.update("DELETE FROM article WHERE id = ?", id);
-            res = jtm.update("DELETE FROM readarticle WHERE id_article = ?", id);
-            transactionManager.commit(status);
+            em.remove(em.merge(article));
+            tx.commit();
+            result = 1;
         } catch (Exception e) {
-            transactionManager.rollback(status);
-            throw e;
+            if (tx.isActive()) tx.rollback();
+            e.printStackTrace();
+            result = 0;
+        }finally {
+            if (em != null) em.close();
         }
-        return res;
+        return result;
     }
 
     public int update(Article article) {
-        JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-        return jtm.update("UPDATE article SET name_article = ?, id_type = ?, id_newspaper = ? WHERE id = ?",
-                article.getName(), article.getType(), article.getIdNewspaper(), article.getId());
+        em = jpaUtil.getEntityManager();
+        int result;
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        try {
+            em.merge(article);
+            tx.commit();
+            result = 1;
+        } catch (Exception e) {
+            if (tx.isActive()) tx.rollback();
+            e.printStackTrace();
+            result = 0;
+        }finally {
+            if (em != null) em.close();
+        }
+        return result;
     }
-
-
-//    public int addArt(Article article) {
-//        BufferedWriter writer;
-//        Path p = Paths.get(config.getArticles());
-//        if (getAll().isLeft()) {
-//            return -1;
-//        } else {
-//            if (availableId(article.getId())) {
-//                try {
-//                    writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND);
-//                    writer.newLine();
-//                    writer.append(article.toString());
-//                    writer.close();
-//                    return 0;
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                    return -1;
-//                }
-//            } else {
-//                return 1;
-//            }
-//        }
-//    }
-
-//    public Either<String, List<Article>> getAll() {
-//        List<Article> articles = new ArrayList<>();
-//        BufferedReader reader;
-//        Path p = Paths.get(config.getArticles());
-//        try {
-//            reader = Files.newBufferedReader(p, StandardCharsets.UTF_8);
-//            reader.lines().forEach(line -> articles.add(new Article(line)));
-//            reader.close();
-//            return Either.right(articles);
-//        } catch (IOException e) {
-//            return Either.left("No articles found");
-//        }
-//    }
-
-//    public boolean delete(Article a) {
-//        List<Article> articles = getAll().get();
-//        articles.remove(a);
-//        BufferedWriter writer;
-//        Path p = Paths.get(config.getArticles());
-//        try {
-//            writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
-//            for (Article article : articles) {
-//                writer.newLine();
-//                writer.write(article.toString());
-//            }
-//            writer.close();
-//            return true;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
-
-//    private boolean availableId(int id) {
-//        return getAll().get().stream().noneMatch(article -> article.getId() == id);
-//    }
 
 }
 

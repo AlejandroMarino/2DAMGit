@@ -31,8 +31,12 @@ class EditTeamViewModel @Inject constructor(
 
     private fun addTeam(team: Team) {
         viewModelScope.launch {
-            addTeam.invoke(team)
-            _uiState.value = EditTeamState(message = stringProvider.getString(R.string.added))
+            try {
+                addTeam.invoke(team)
+                _uiState.value = EditTeamState(message = stringProvider.getString(R.string.added))
+            } catch (e: Exception) {
+                _uiState.value = EditTeamState(message = stringProvider.getString(R.string.error_adding))
+            }
         }
     }
 }
