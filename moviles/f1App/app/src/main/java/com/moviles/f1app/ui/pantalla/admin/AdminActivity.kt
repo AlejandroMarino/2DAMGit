@@ -52,7 +52,7 @@ class AdminActivity : AppCompatActivity() {
             navView.setupWithNavController(navController)
 
             topAppBar.setNavigationOnClickListener {
-                Log.i("TAG", navController.currentDestination?.id.toString() ?: "null")
+                Log.i("TAG", navController.currentDestination?.id.toString())
                 drawerLayout.open()
             }
 
@@ -95,17 +95,53 @@ class AdminActivity : AppCompatActivity() {
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 topAppBar.isVisible = true
-                topAppBar.navigationIcon = getDrawable(R.drawable.ic_menu_24)
+
 
                 when (destination.id) {
                     R.id.edit_drivers -> {
                         topAppBar.title = "Drivers"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_menu_24)
+//                        topAppBar.menu.findItem(R.id.item_add).isVisible = true
+//                        topAppBar.menu.findItem(R.id.item_delete).isVisible = false
                     }
                     R.id.edit_teams -> {
                         topAppBar.title = "Teams"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_menu_24)
+//                        topAppBar.menu.findItem(R.id.item_add).isVisible = true
+//                        topAppBar.menu.findItem(R.id.item_delete).isVisible = false
                     }
                     R.id.edit_races -> {
                         topAppBar.title = "Races"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_menu_24)
+//                        topAppBar.menu.findItem(R.id.item_add).isVisible = true
+//                        topAppBar.menu.findItem(R.id.item_delete).isVisible = false
+                    }
+                    R.id.edit_driver -> {
+                        topAppBar.title = "Driver"
+//                        topAppBar.menu.findItem(R.id.item_add).isVisible = false
+//                        topAppBar.menu.findItem(R.id.item_delete).isVisible = false
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
+                        topAppBar.setNavigationOnClickListener{
+                            navController.navigateUp()
+                        }
+                    }
+                    R.id.edit_race -> {
+                        topAppBar.title = "Race"
+//                        topAppBar.menu.findItem(R.id.item_add).isVisible = false
+//                        topAppBar.menu.findItem(R.id.item_delete).isVisible = false
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
+                        topAppBar.setNavigationOnClickListener{
+                            navController.navigateUp()
+                        }
+                    }
+                    R.id.edit_team -> {
+                        topAppBar.title = "Team"
+//                        topAppBar.menu.findItem(R.id.item_add).isVisible = false
+//                        topAppBar.menu.findItem(R.id.item_delete).isVisible = false
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
+                        topAppBar.setNavigationOnClickListener{
+                            navController.navigateUp()
+                        }
                     }
                 }
             }

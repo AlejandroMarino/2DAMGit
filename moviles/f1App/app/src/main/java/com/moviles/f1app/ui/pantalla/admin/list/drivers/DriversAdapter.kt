@@ -46,11 +46,6 @@ class DriversAdapter(val actions: DriversAdapter.DriversActions) :
                 itemView.setOnClickListener {
                     actions.onDriverWatch(driver)
                 }
-
-                itemView.setOnDragListener { _, _ ->
-                    actions.onDriverDelete(driver)
-                    true
-                }
             }
         }
     }

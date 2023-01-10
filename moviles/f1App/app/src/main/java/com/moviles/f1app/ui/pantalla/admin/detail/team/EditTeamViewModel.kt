@@ -16,7 +16,7 @@ import javax.inject.Inject
 class EditTeamViewModel @Inject constructor(
     private val stringProvider: StringProvider,
     private val addTeam: AddTeam,
-) : ViewModel(){
+) : ViewModel() {
 
     private val _uiState = MutableLiveData<EditTeamState>()
     val uiState: LiveData<EditTeamState> get() = _uiState
@@ -31,11 +31,12 @@ class EditTeamViewModel @Inject constructor(
 
     private fun addTeam(team: Team) {
         viewModelScope.launch {
-            try {
-                addTeam.invoke(team)
-                _uiState.value = EditTeamState(message = stringProvider.getString(R.string.added))
-            } catch (e: Exception) {
-                _uiState.value = EditTeamState(message = stringProvider.getString(R.string.error_adding))
+            if (addTeam.invoke(team)) {
+                _uiState.value =
+                    EditTeamState(message = stringProvider.getString(R.string.added))
+            } else {
+                _uiState.value =
+                    EditTeamState(message = stringProvider.getString(R.string.error_adding))
             }
         }
     }

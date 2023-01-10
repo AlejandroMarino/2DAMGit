@@ -44,11 +44,6 @@ class TeamsAdapter(val actions: TeamsActions) :
                 itemView.setOnClickListener {
                     actions.onTeamWatch(team)
                 }
-
-                itemView.setOnDragListener { _, _ ->
-                    actions.onTeamDelete(team)
-                    true
-                }
             }
         }
     }

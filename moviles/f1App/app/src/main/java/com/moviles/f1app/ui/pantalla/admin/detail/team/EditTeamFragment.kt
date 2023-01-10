@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditTeamBinding
 import com.moviles.f1app.domain.modelo.Team
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +24,7 @@ class EditTeamFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding  = FragmentEditTeamBinding.inflate(inflater, container, false)
+        _binding = FragmentEditTeamBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,7 +34,7 @@ class EditTeamFragment : Fragment() {
 
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
                 state.message?.let { message ->
-                    Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -49,7 +48,10 @@ class EditTeamFragment : Fragment() {
                     )
                 )
             }
+
+
         }
     }
+
 
 }

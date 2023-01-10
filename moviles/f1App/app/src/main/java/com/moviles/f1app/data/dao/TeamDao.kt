@@ -15,8 +15,8 @@ interface TeamDao {
     @Query(Constantes.querieGetTeam)
     suspend fun getTeam(id: Int): TeamWithDrivers
 
-    @Insert(onConflict = androidx.room.OnConflictStrategy.ABORT)
-    fun addTeam(team: TeamEntity)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun addTeam(team: TeamEntity)
 
     @Delete
     @Transaction

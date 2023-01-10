@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditDriversBinding
 import com.moviles.f1app.domain.modelo.Driver
+import com.moviles.f1app.ui.pantalla.admin.list.teams.SwipeToDeleteTeam
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -56,11 +58,14 @@ class EditDriversFragment : Fragment() {
                         }
                         .setBackgroundTint(resources.getColor(R.color.black))
                         .setTextColor(resources.getColor(R.color.white))
-                        .setActionTextColor(resources.getColor(R.color.purple_700))
+                        .setActionTextColor(resources.getColor(R.color.yellow_06))
                         .show()
                 }
             })
             list.adapter = adapter
+
+            val itemTouchHelper = ItemTouchHelper(SwipeToDeleteDriver(adapter))
+            itemTouchHelper.attachToRecyclerView(list)
 
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
                 state.error?.let { error ->

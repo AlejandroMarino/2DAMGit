@@ -3,14 +3,12 @@ package com.moviles.f1app.ui.pantalla.user
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.moviles.f1app.R
@@ -49,7 +47,7 @@ class UserActivity : AppCompatActivity() {
             navView.setupWithNavController(navController)
 
             topAppBar.setNavigationOnClickListener {
-                Log.i("TAG", navController.currentDestination?.id.toString() ?: "null")
+                Log.i("TAG", navController.currentDestination?.id.toString())
                 drawerLayout.open()
             }
 

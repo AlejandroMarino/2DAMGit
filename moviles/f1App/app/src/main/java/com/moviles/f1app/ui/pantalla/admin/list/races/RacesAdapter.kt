@@ -44,11 +44,6 @@ class RacesAdapter(val actions: RacesActions) :
                 itemView.setOnClickListener {
                     actions.onRaceWatch(race)
                 }
-
-                itemView.setOnDragListener { _, _ ->
-                    actions.onRaceDelete(race)
-                    true
-                }
             }
         }
     }
