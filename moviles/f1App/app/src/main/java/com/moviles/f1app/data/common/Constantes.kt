@@ -6,15 +6,17 @@ object Constantes {
 
     const val querieGetAllTeams = "SELECT * FROM teams"
     const val querieGetTeam = "SELECT * FROM teams WHERE id = :id"
-    const val querieDeleteTeam = "DELETE FROM teams WHERE id = :id"
-    const val querieUpdateTeam = "UPDATE teams SET name = :name, performance = :performance, tyre = :tyre, winner = :winner WHERE id = :id"
+    const val querieGetTeamByName = "SELECT * FROM teams WHERE name = :name"
+    const val querieUpdateTeam = "UPDATE teams SET name = :name, car = :car WHERE id = :id"
     const val querieGetDrivers = "SELECT * FROM drivers"
     const val querieGetDriversOfTeam = "SELECT * FROM drivers WHERE id_team =:idTeam"
     const val querieGetDriver = "SELECT * FROM drivers WHERE idDriver = :id"
+    const val querieUpdateDriver = "UPDATE drivers SET name = :name, number = :number, id_team = :idTeam WHERE idDriver = :id"
     const val querieGetDriverTeam = "SELECT id_team From drivers WHERE idDriver = :id"
     const val querieDeleteDriver = "DELETE FROM drivers WHERE idDriver = :idDriver"
     const val querieGetRaces = "SELECT * FROM races"
     const val querieGetRace = "SELECT * FROM races WHERE idRace = :id"
+    const val querieUpdateRace = "UPDATE races SET track = :track, date = :date WHERE idRace = :id"
     const val querieGetPerformance = "SELECT * FROM driver_race WHERE idDriver = :idDriver AND idRace = :idRace"
 
 

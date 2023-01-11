@@ -3,10 +3,11 @@ package com.moviles.f1app.ui.pantalla.admin.list.teams
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import android.widget.Toolbar
+import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.snackbar.Snackbar
@@ -16,7 +17,7 @@ import com.moviles.f1app.domain.modelo.Team
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EditTeamsFragment : Fragment(),MenuProvider {
+class EditTeamsFragment : Fragment(), MenuProvider {
 
     private lateinit var adapter: TeamsAdapter
 
@@ -30,20 +31,20 @@ class EditTeamsFragment : Fragment(),MenuProvider {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding  = FragmentEditTeamsBinding.inflate(inflater, container, false)
+        _binding = FragmentEditTeamsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         with(binding) {
 
-
-            viewModel.handleEvent(EditTeamsEvent.LoadTeams)
             adapter = TeamsAdapter(object : TeamsAdapter.TeamsActions {
                 override fun onTeamWatch(team: Team) {
-                    val id: Int = team.id
-                    val action = EditTeamsFragmentDirections.actionEditTeamsToEditTeam(id)
+                    val action = EditTeamsFragmentDirections.actionEditTeamsToEditTeam(team.id)
                     findNavController().navigate(action)
                 }
 
@@ -70,24 +71,19 @@ class EditTeamsFragment : Fragment(),MenuProvider {
                 }
                 adapter.submitList(state.teams)
             }
-
-            button.setOnClickListener() {
-                val action = EditTeamsFragmentDirections.actionEditTeamsToEditTeam(0)
-                findNavController().navigate(action)
-            }
-
-
         }
     }
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_lists, menu)
 
-        menu.findItem(R.id.edit_teams).isVisible = false
+        menu.findItem(R.id.item_add).isVisible = true
+        menu.findItem(R.id.item_update).isVisible = false
+        menu.findItem(R.id.item_delete).isVisible = false
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when(menuItem.itemId) {
+        return when (menuItem.itemId) {
             R.id.item_add -> {
                 val action = EditTeamsFragmentDirections.actionEditTeamsToEditTeam(0)
                 findNavController().navigate(action)
@@ -99,6 +95,4 @@ class EditTeamsFragment : Fragment(),MenuProvider {
             else -> false
         }
     }
-
-
 }

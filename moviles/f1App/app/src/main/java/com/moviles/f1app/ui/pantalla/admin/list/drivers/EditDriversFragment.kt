@@ -1,47 +1,48 @@
 package com.moviles.f1app.ui.pantalla.admin.list.drivers
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditDriversBinding
 import com.moviles.f1app.domain.modelo.Driver
+import com.moviles.f1app.ui.pantalla.admin.list.teams.EditTeamsFragmentDirections
 import com.moviles.f1app.ui.pantalla.admin.list.teams.SwipeToDeleteTeam
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class EditDriversFragment : Fragment() {
+class EditDriversFragment : Fragment(), MenuProvider {
 
     private lateinit var adapter: DriversAdapter
 
-    private lateinit var binding: FragmentEditDriversBinding
+    private var _binding: FragmentEditDriversBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: EditDriversViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_drivers, container, false)
+        _binding = FragmentEditDriversBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentEditDriversBinding.inflate(layoutInflater)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         with(binding) {
             adapter = DriversAdapter(object : DriversAdapter.DriversActions {
                 override fun onDriverWatch(driver: Driver) {
@@ -74,6 +75,28 @@ class EditDriversFragment : Fragment() {
                 adapter.submitList(state.drivers)
             }
 
+        }
+    }
+
+    override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_lists, menu)
+
+        menu.findItem(R.id.item_add).isVisible = true
+        menu.findItem(R.id.item_update).isVisible = false
+        menu.findItem(R.id.item_delete).isVisible = false
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.item_add -> {
+                val action = EditDriversFragmentDirections.actionEditDriversToEditDriver(0)
+                findNavController().navigate(action)
+                true
+            }
+            R.id.item_delete -> {
+                true
+            }
+            else -> false
         }
     }
 }

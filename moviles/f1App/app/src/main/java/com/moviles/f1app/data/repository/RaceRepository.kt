@@ -5,6 +5,7 @@ import com.moviles.f1app.data.modelo.toDriverRaceCrossRef
 import com.moviles.f1app.data.modelo.toRace
 import com.moviles.f1app.data.modelo.toRaceEntity
 import com.moviles.f1app.domain.modelo.Race
+import java.time.LocalDate
 import javax.inject.Inject
 
 class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
@@ -14,6 +15,8 @@ class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
     suspend fun getRace(id: Int) = raceDao.getRace(id).toRace()
 
     suspend fun addRace(race: Race) = raceDao.addRace(race.toRaceEntity())
+
+    suspend fun updateRace(id: Int, track: String, date: LocalDate) = raceDao.updateRace(id, track, date)
 
     suspend fun deleteRace(race: Race) = raceDao.deleteRace(
         race.toRaceEntity(),

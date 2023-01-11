@@ -1,46 +1,48 @@
 package com.moviles.f1app.ui.pantalla.admin.list.races
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditRacesBinding
 import com.moviles.f1app.domain.modelo.Race
+import com.moviles.f1app.ui.pantalla.admin.list.teams.EditTeamsFragmentDirections
 import com.moviles.f1app.ui.pantalla.admin.list.teams.SwipeToDeleteTeam
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EditRacesFragment : Fragment() {
+class EditRacesFragment : Fragment(), MenuProvider {
 
     private lateinit var adapter: RacesAdapter
 
-    private lateinit var binding: FragmentEditRacesBinding
+    private var _binding: FragmentEditRacesBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: EditRacesViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_races, container, false)
+        _binding = FragmentEditRacesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentEditRacesBinding.inflate(layoutInflater)
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         with(binding) {
             adapter = RacesAdapter(object : RacesAdapter.RacesActions {
                 override fun onRaceWatch(race: Race) {
@@ -75,5 +77,25 @@ class EditRacesFragment : Fragment() {
         }
     }
 
+    override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_lists, menu)
 
+        menu.findItem(R.id.item_add).isVisible = true
+        menu.findItem(R.id.item_update).isVisible = false
+        menu.findItem(R.id.item_delete).isVisible = false
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.item_add -> {
+                val action = EditRacesFragmentDirections.actionEditRacesToEditRace(0)
+                findNavController().navigate(action)
+                true
+            }
+            R.id.item_delete -> {
+                true
+            }
+            else -> false
+        }
+    }
 }

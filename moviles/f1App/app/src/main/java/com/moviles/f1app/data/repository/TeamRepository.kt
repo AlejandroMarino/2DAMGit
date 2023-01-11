@@ -14,8 +14,12 @@ class TeamRepository @Inject constructor(private val teamDao: TeamDao) {
 
     suspend fun getTeam(id: Int) = teamDao.getTeam(id).toTeam()
 
+    suspend fun getTeamByName(name: String) = teamDao.getTeamByName(name).toTeam()
+
     suspend fun deleteTeam(team: Team) =
         teamDao.deleteTeam(team.toTeamEntity(), team.drivers.map { it.toDriverEntity() })
 
     suspend fun addTeam(team: Team) = teamDao.addTeam(team.toTeamEntity())
+
+    suspend fun updateTeam(id: Int, name: String, car: String) = teamDao.updateTeam(id, name, car)
 }

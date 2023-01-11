@@ -18,6 +18,9 @@ interface DriverDao {
     @Query(Constantes.querieGetDriver)
     suspend fun getDriver(id: Int): DriverWithRaces
 
+    @Query(Constantes.querieUpdateDriver)
+    suspend fun updateDriver(id: Int, name: String, number: Int, idTeam: Int)
+
     @Delete
     @Transaction
     suspend fun deleteDriver(driver: DriverEntity, performance: List<DriverRaceCrossRef>)

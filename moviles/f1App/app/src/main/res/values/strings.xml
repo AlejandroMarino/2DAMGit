@@ -6,4 +6,12 @@
     <string name="undo">Undo</string>
     <string name="added">Successfully added</string>
     <string name="error_adding">Error while adding</string>
+    <string name="updated">Successfully updated</string>
+    <string name="error_updating">Error while updating</string>
+
+    <string-array name="items_array">
+        <item>Drivers</item>
+        <item>Teams</item>
+        <item>Circuits</item>
+    </string-array>
 </resources>

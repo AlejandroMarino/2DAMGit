@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 data class Race(
     val id: Int = 0,
-    val track: String,
-    val date: LocalDate,
+    val track: String = "",
+    val date: LocalDate = LocalDate.now(),
     val performances: Map<Int, Performance> = emptyMap(),
 )
