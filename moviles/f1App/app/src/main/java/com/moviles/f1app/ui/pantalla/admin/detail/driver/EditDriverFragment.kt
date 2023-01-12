@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditDriverBinding
+import com.moviles.f1app.domain.modelo.Driver
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,7 +42,17 @@ class EditDriverFragment : Fragment(), MenuProvider {
         viewModel.handleEvent(EditDriverEvent.GetTeams)
 
         with(binding) {
-            var items: Array<String> = emptyArray()
+
+            val id = arguments?.getInt("idDriver")
+            if (id != null && id != 0) {
+                idDriver = id
+                viewModel.handleEvent(EditDriverEvent.GetDriver(id))
+            } else {
+                idDriver = 0
+                textTeam.setText("", false)
+            }
+
+            var items: Array<String>
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
                 state.message?.let { message ->
                     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
@@ -53,17 +64,20 @@ class EditDriverFragment : Fragment(), MenuProvider {
                         R.layout.item_dropdown,
                         items
                     )
-                    autoCompleteTextView.setAdapter(arrayAdapter)
+                    textTeam.setAdapter(arrayAdapter)
+                }
+                state.driver.let { driver ->
+                    textNameD.setText(driver.name)
+                    textTeam.setText(
+                        viewModel.uiState.value?.teamName,
+                        false
+                    )
+                    if (driver.number != 0) {
+                        textNumber.setText(driver.number.toString())
+                    }
                 }
             }
 
-            val id = arguments?.getInt("idDriver")
-            if (id != null && id != 0) {
-                idDriver = id
-                viewModel.handleEvent(EditDriverEvent.GetDriver(id))
-            } else {
-                idDriver = 0
-            }
         }
     }
 
@@ -79,9 +93,39 @@ class EditDriverFragment : Fragment(), MenuProvider {
         with(binding) {
             return when (menuItem.itemId) {
                 R.id.item_add -> {
+                    if (textNameD.text.toString() != "" && textNumber.text.toString() != "" &&
+                        textTeam.text.toString() != "Team" && textTeam.text.toString() != ""
+                    ) {
+                        viewModel.handleEvent(
+                            EditDriverEvent.AddDriver(
+                                Driver(
+                                    name = textNameD.text.toString(),
+                                    number = textNumber.text.toString().toInt()
+                                ), textTeam.text.toString()
+                            )
+                        )
+                    } else {
+                        Toast.makeText(context, R.string.error_adding, Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
                 R.id.item_update -> {
+                    if (idDriver != 0 && textNameD.text.toString() != "" &&
+                        textNumber.text.toString() != "" && textTeam.text.toString() != "Team" &&
+                        textTeam.text.toString() != ""
+                    ) {
+                        viewModel.handleEvent(
+                            EditDriverEvent.UpdateDriver(
+                                Driver(
+                                    id = idDriver,
+                                    name = textNameD.text.toString(),
+                                    number = textNumber.text.toString().toInt()
+                                ), textTeam.text.toString()
+                            )
+                        )
+                    } else {
+                        Toast.makeText(context, R.string.error_updating, Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
                 R.id.item_delete -> {

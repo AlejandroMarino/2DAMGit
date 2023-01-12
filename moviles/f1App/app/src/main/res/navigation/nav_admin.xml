@@ -57,6 +57,9 @@
         <argument
             android:name="idDriver"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_edit_driver_to_editPerformanceFragment"
+            app:destination="@id/edit_Performance" />
     </fragment>
     <fragment
         android:id="@+id/edit_race"
@@ -69,5 +72,26 @@
         <argument
             android:name="idRace"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_edit_race_to_editPerformanceFragment"
+            app:destination="@id/edit_Performance" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_Performance"
+        android:name="com.moviles.f1app.ui.pantalla.admin.detail.performance.EditPerformanceFragment"
+        android:label="fragment_edit_performance"
+        tools:layout="@layout/fragment_edit_performance" >
+        <argument
+            android:name="idRace"
+            app:argType="integer" />
+        <argument
+            android:name="idDriver"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_editPerformanceFragment_to_edit_race"
+            app:destination="@id/edit_race" />
+        <action
+            android:id="@+id/action_editPerformanceFragment_to_edit_driver"
+            app:destination="@id/edit_driver" />
     </fragment>
 </navigation>

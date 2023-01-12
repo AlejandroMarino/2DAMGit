@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditDriversViewModel @Inject constructor(
-    private val StringProvider: StringProvider,
+    private val stringProvider: StringProvider,
     private val getDrivers: GetAllDrivers,
     private val deleteDriver: DeleteDriver,
     private val addDriver: AddDriver,
@@ -39,10 +39,6 @@ class EditDriversViewModel @Inject constructor(
         }
     }
 
-    init {
-        loadDrivers()
-    }
-
     private fun loadDrivers() {
         viewModelScope.launch {
             _uiState.value = EditDriversState(drivers = getDrivers.invoke(), error = null)
@@ -56,7 +52,7 @@ class EditDriversViewModel @Inject constructor(
                 _uiState.value = EditDriversState(drivers = getDrivers.invoke())
             } else {
                 _uiState.value = _uiState.value?.copy(
-                    error = StringProvider.getString(R.string.error_deleting)
+                    error = stringProvider.getString(R.string.error_deleting)
                 )
             }
         }
@@ -70,7 +66,7 @@ class EditDriversViewModel @Inject constructor(
                 _uiState.value = EditDriversState(drivers = getDrivers.invoke())
             } else {
                 _uiState.value = _uiState.value?.copy(
-                    error = StringProvider.getString(R.string.error_adding)
+                    error = stringProvider.getString(R.string.error_adding)
                 )
             }
         }

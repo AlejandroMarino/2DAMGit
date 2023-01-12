@@ -8,6 +8,7 @@ import com.moviles.f1app.R
 import com.moviles.f1app.domain.modelo.Team
 import com.moviles.f1app.domain.usecases.teams.AddTeam
 import com.moviles.f1app.domain.usecases.teams.GetTeam
+import com.moviles.f1app.domain.usecases.teams.GetTeamByName
 import com.moviles.f1app.domain.usecases.teams.UpdateTeam
 import com.moviles.f1app.utils.StringProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,6 +20,7 @@ class EditTeamViewModel @Inject constructor(
     private val stringProvider: StringProvider,
     private val addTeam: AddTeam,
     private val getTeam: GetTeam,
+    private val getTeamByName: GetTeamByName,
     private val updateTeam: UpdateTeam,
 ) : ViewModel() {
 
@@ -43,7 +45,7 @@ class EditTeamViewModel @Inject constructor(
         viewModelScope.launch {
             if (addTeam.invoke(team)) {
                 _uiState.value = EditTeamState(
-                    getTeam.invoke(team.id),
+                    getTeamByName.invoke(team.name),
                     stringProvider.getString(R.string.added)
                 )
             } else {
@@ -64,6 +66,7 @@ class EditTeamViewModel @Inject constructor(
         viewModelScope.launch {
             if (updateTeam.invoke(team)) {
                 _uiState.value = _uiState.value?.copy(
+                    team = getTeam.invoke(team.id),
                     message = stringProvider.getString(R.string.updated)
                 )
             } else {

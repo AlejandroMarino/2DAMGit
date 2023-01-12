@@ -70,7 +70,7 @@ class EditTeamFragment : Fragment(), MenuProvider {
         with(binding) {
             return when (menuItem.itemId) {
                 R.id.item_add -> {
-                    if (idTeam != 0 && textName.text.toString() != "" && textCar.text.toString() != "") {
+                    if (textName.text.toString() != "" && textCar.text.toString() != "") {
                         viewModel.handleEvent(
                             EditTeamEvent.AddTeam(
                                 Team(

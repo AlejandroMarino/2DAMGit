@@ -7,8 +7,6 @@ p
 Tapp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewState.kt,9\f\9f7f384a688fcbe13275c45c9d258c2d8f796d6c
 „
 Tapp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewEvent.kt,3\0\3082fad6221af21cf3260776f2dda167846b959c
-t
-Dapp/src/main/java/com/moviles/appf1teams/data/modelo/DriverEntity.kt,6\d\6dd9c50113d949ed86a6bd0db2b6f307aae5f74e
 y
 Iapp/src/main/java/com/moviles/appf1teams/domain/usecases/teams/AddTeam.kt,a\d\adbb02f6835b3bdfc2f64c45bf0cfae008f6b4c2
 x
@@ -25,8 +23,6 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 r
 Bapp/src/main/java/com/moviles/appf1teams/data/common/Constantes.kt,9\4\94a3c1d890489efa4ecc507e64dab7a5cd9a4f1f
-€
-Papp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/TeamsAdapter.kt,5\a\5a307b77595c1256955e656cf46e0611a9758229
 r
 Bapp/src/main/java/com/moviles/appf1teams/data/modelo/TeamEntity.kt,e\1\e158a0ce6d21d269192af68c1c54969185a04bfe
 v
@@ -51,10 +47,6 @@ n
 >app/src/main/java/com/moviles/appf1teams/domain/modelo/Team.kt,4\d\4d9d01bbd23d0bd8c2fa79ae427b0d93bb0a3032
 t
 Dapp/src/main/java/com/moviles/appf1teams/domain/common/Constantes.kt,5\7\576b3043804f229e2a51eddb1ddfe1bf018653fd
-c
-3app/src/main/java/com/moviles/appf1teams/RoomApp.kt,7\7\77011fa78d8ef7fe4354e7cc86595f475dffd1e1
-‡
-Wapp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt,e\f\ef303f8b147c77525dc096e9a93de6b1911a98b5
 v
 Fapp/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainEvent.kt,5\3\533f85aebed30dbc70466b60878770a722f3f1ae
 y
@@ -63,5 +55,15 @@ o
 ?app/src/main/java/com/moviles/appf1teams/data/TeamRepository.kt,4\c\4cca113491e6ab2cf8936d8af1fe3e73852c15ca
 h
 8app/src/main/java/com/moviles/appf1teams/data/TeamDao.kt,4\0\40beb23613ab0b69320eebf6f419fc8c90ed90e5
+‡
+Wapp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt,e\f\ef303f8b147c77525dc096e9a93de6b1911a98b5
+c
+3app/src/main/java/com/moviles/appf1teams/RoomApp.kt,7\7\77011fa78d8ef7fe4354e7cc86595f475dffd1e1
 z
 Japp/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainViewModel.kt,3\8\3871c318f5742dcc87460f97147f108fa8dad343
+t
+Dapp/src/main/java/com/moviles/appf1teams/data/modelo/DriverEntity.kt,6\d\6dd9c50113d949ed86a6bd0db2b6f307aae5f74e
+
+Oapp/src/main/java/com/moviles/appf1teams/ui/pantalla/drivers/DriversActivity.kt,7\9\79c6189711a50581c0e8fea0472eae25888a027a
+€
+Papp/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/TeamsAdapter.kt,5\a\5a307b77595c1256955e656cf46e0611a9758229

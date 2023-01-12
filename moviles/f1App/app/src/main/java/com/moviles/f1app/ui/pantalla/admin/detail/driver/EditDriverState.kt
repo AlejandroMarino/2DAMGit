@@ -7,4 +7,5 @@ data class EditDriverState(
     val driver: Driver = Driver(),
     val teams: List<Team> = emptyList(),
     val message: String? = null,
+    val teamName: String = "",
 )

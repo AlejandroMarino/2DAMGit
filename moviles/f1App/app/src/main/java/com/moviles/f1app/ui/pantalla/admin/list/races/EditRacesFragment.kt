@@ -14,8 +14,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditRacesBinding
 import com.moviles.f1app.domain.modelo.Race
-import com.moviles.f1app.ui.pantalla.admin.list.teams.EditTeamsFragmentDirections
-import com.moviles.f1app.ui.pantalla.admin.list.teams.SwipeToDeleteTeam
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +30,7 @@ class EditRacesFragment : Fragment(), MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentEditRacesBinding.inflate(inflater, container, false)
         return binding.root
@@ -42,6 +40,8 @@ class EditRacesFragment : Fragment(), MenuProvider {
         super.onViewCreated(view, savedInstanceState)
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        viewModel.handleEvent(EditRacesEvent.LoadRaces)
 
         with(binding) {
             adapter = RacesAdapter(object : RacesAdapter.RacesActions {
@@ -53,7 +53,7 @@ class EditRacesFragment : Fragment(), MenuProvider {
 
                 override fun onRaceDelete(race: Race) {
                     viewModel.handleEvent(EditRacesEvent.DeleteRace(race))
-                    Snackbar.make(binding.root, R.string.team_Deleted, Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root, R.string.deleted, Snackbar.LENGTH_LONG)
                         .setAction(R.string.undo) {
                             viewModel.handleEvent(EditRacesEvent.AddRace(race))
                         }

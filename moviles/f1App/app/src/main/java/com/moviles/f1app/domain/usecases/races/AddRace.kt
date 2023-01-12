@@ -6,11 +6,11 @@ import javax.inject.Inject
 
 class AddRace @Inject constructor(private val raceRepository: RaceRepository) {
 
-    suspend fun invoke(race: Race):Boolean{
+    suspend fun invoke(race: Race): Boolean {
         return try {
             raceRepository.addRace(race)
             true
-        }catch (e:Exception){
+        } catch (e: Exception) {
             false
         }
     }

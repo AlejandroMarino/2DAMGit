@@ -26,9 +26,6 @@ class EditRacesViewModel @Inject constructor(
     private val _uiState = MutableLiveData<EditRacesState>()
     val uiState: LiveData<EditRacesState> get() = _uiState
 
-    init {
-        loadRaces()
-    }
 
     fun handleEvent(event: EditRacesEvent) {
         when (event) {

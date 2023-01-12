@@ -19,6 +19,9 @@ interface RaceDao {
     @Query(Constantes.querieGetRace)
     suspend fun getRace(id: Int): RaceWithDrivers
 
+    @Query(Constantes.querieGetRaceByTrack)
+    suspend fun getRaceByTrack(track: String): RaceWithDrivers
+
     @Insert
     suspend fun addRace(race: RaceEntity)
 

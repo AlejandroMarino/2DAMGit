@@ -3,9 +3,7 @@ package com.moviles.f1app.ui.pantalla.admin
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -138,6 +136,13 @@ class AdminActivity : AppCompatActivity() {
                     }
                     R.id.edit_team -> {
                         topAppBar.title = "Team"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
+                        topAppBar.setNavigationOnClickListener{
+                            navController.navigateUp()
+                        }
+                    }
+                    R.id.edit_Performance -> {
+                        topAppBar.title = "Performance"
                         topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
                         topAppBar.setNavigationOnClickListener{
                             navController.navigateUp()

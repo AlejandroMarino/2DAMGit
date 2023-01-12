@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moviles.f1app.R
 import com.moviles.f1app.domain.modelo.Driver
-import com.moviles.f1app.domain.modelo.Team
 import com.moviles.f1app.domain.usecases.drivers.AddDriver
 import com.moviles.f1app.domain.usecases.drivers.GetDriver
 import com.moviles.f1app.domain.usecases.drivers.UpdateDriver
+import com.moviles.f1app.domain.usecases.teams.GetTeam
 import com.moviles.f1app.domain.usecases.teams.GetTeamByName
 import com.moviles.f1app.domain.usecases.teams.GetTeams
 import com.moviles.f1app.utils.StringProvider
@@ -24,6 +24,7 @@ class EditDriverViewModel @Inject constructor(
     private val getDriver: GetDriver,
     private val updateDriver: UpdateDriver,
     private val getTeams: GetTeams,
+    private val getTeam: GetTeam,
     private val getTeamByName: GetTeamByName,
 ) : ViewModel() {
 
@@ -52,7 +53,6 @@ class EditDriverViewModel @Inject constructor(
             driver.idTeam = getTeamByName.invoke(teamName).id
             if (addDriver.invoke(driver)) {
                 _uiState.value = _uiState.value?.copy(
-                    driver = getDriver.invoke(driver.id),
                     message = stringProvider.getString(R.string.added)
                 )
             } else {
@@ -82,7 +82,11 @@ class EditDriverViewModel @Inject constructor(
 
     private fun getDriver(id: Int) {
         viewModelScope.launch {
-            _uiState.value = _uiState.value?.copy(driver = getDriver.invoke(id))
+            _uiState.value = EditDriverState(
+                driver = getDriver.invoke(id),
+                teamName = getTeam.invoke(getDriver.invoke(id).idTeam).name,
+                teams = getTeams.invoke()
+            )
         }
     }
 

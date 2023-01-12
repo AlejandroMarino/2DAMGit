@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moviles.f1app.R
+import com.moviles.f1app.domain.modelo.Performance
 import com.moviles.f1app.domain.modelo.Race
-import com.moviles.f1app.domain.modelo.Team
+import com.moviles.f1app.domain.usecases.performances.AddPerformance
+import com.moviles.f1app.domain.usecases.performances.DeletePerformance
+import com.moviles.f1app.domain.usecases.performances.GetRacePerformances
 import com.moviles.f1app.domain.usecases.races.AddRace
 import com.moviles.f1app.domain.usecases.races.GetRace
 import com.moviles.f1app.domain.usecases.races.UpdateRace
-import com.moviles.f1app.ui.pantalla.admin.detail.team.EditTeamState
 import com.moviles.f1app.utils.StringProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -22,6 +24,8 @@ class EditRaceViewModel @Inject constructor(
     private val addRace: AddRace,
     private val getRace: GetRace,
     private val updateRace: UpdateRace,
+    private val deletePerformance: DeletePerformance,
+    private val addPerformance: AddPerformance,
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData<EditRaceState>()
@@ -32,11 +36,17 @@ class EditRaceViewModel @Inject constructor(
             is EditRaceEvent.AddRace -> {
                 addRace(event.race)
             }
-            is EditRaceEvent.GetRace -> {
-                getRace(event.id)
+            is EditRaceEvent.GetData -> {
+                getData(event.id)
             }
             is EditRaceEvent.UpdateRace -> {
                 updateRace(event.race)
+            }
+            is EditRaceEvent.DeletePerformance -> {
+                deletePerformance(event.performance)
+            }
+            is EditRaceEvent.AddPerformance -> {
+                addPerformance(event.performance)
             }
         }
     }
@@ -45,8 +55,7 @@ class EditRaceViewModel @Inject constructor(
         viewModelScope.launch {
             if (addRace.invoke(race)) {
                 _uiState.value = EditRaceState(
-                    getRace.invoke(race.id),
-                    stringProvider.getString(R.string.added)
+                    message = stringProvider.getString(R.string.added)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(
@@ -56,9 +65,11 @@ class EditRaceViewModel @Inject constructor(
         }
     }
 
-    private fun getRace(id: Int) {
+    private fun getData(id: Int) {
         viewModelScope.launch {
-            _uiState.value = EditRaceState(race = getRace.invoke(id))
+            _uiState.value = EditRaceState(
+                race = getRace.invoke(id),
+            )
         }
     }
 
@@ -71,6 +82,35 @@ class EditRaceViewModel @Inject constructor(
             } else {
                 _uiState.value = _uiState.value?.copy(
                     message = stringProvider.getString(R.string.error_updating)
+                )
+            }
+        }
+    }
+
+    private fun deletePerformance(performance: Performance) {
+        viewModelScope.launch {
+            if (deletePerformance.invoke(performance)) {
+                _uiState.value = _uiState.value?.copy(
+                    message = stringProvider.getString(R.string.deleted),
+                    race = getRace.invoke(performance.idRace)
+                )
+            } else {
+                _uiState.value = _uiState.value?.copy(
+                    message = stringProvider.getString(R.string.error_deleting)
+                )
+            }
+        }
+    }
+
+    private fun addPerformance(performance: Performance) {
+        viewModelScope.launch {
+            if (addPerformance.invoke(performance)) {
+                _uiState.value = _uiState.value?.copy(
+                    race = getRace.invoke(performance.idRace)
+                )
+            } else {
+                _uiState.value = _uiState.value?.copy(
+                    message = stringProvider.getString(R.string.error_adding)
                 )
             }
         }

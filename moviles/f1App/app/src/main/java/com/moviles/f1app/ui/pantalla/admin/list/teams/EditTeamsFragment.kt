@@ -40,6 +40,8 @@ class EditTeamsFragment : Fragment(), MenuProvider {
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
+        viewModel.handleEvent(EditTeamsEvent.LoadTeams)
+
         with(binding) {
 
             adapter = TeamsAdapter(object : TeamsAdapter.TeamsActions {
@@ -50,7 +52,7 @@ class EditTeamsFragment : Fragment(), MenuProvider {
 
                 override fun onTeamDelete(team: Team) {
                     viewModel.handleEvent(EditTeamsEvent.DeleteTeam(team))
-                    Snackbar.make(binding.root, R.string.team_Deleted, Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root, R.string.deleted, Snackbar.LENGTH_LONG)
                         .setAction(R.string.undo) {
                             viewModel.handleEvent(EditTeamsEvent.AddTeam(team))
                         }

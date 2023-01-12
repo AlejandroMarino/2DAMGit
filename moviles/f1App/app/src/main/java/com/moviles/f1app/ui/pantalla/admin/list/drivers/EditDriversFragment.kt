@@ -14,8 +14,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditDriversBinding
 import com.moviles.f1app.domain.modelo.Driver
-import com.moviles.f1app.ui.pantalla.admin.list.teams.EditTeamsFragmentDirections
-import com.moviles.f1app.ui.pantalla.admin.list.teams.SwipeToDeleteTeam
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -43,6 +41,8 @@ class EditDriversFragment : Fragment(), MenuProvider {
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
+        viewModel.handleEvent(EditDriversEvent.LoadDrivers)
+
         with(binding) {
             adapter = DriversAdapter(object : DriversAdapter.DriversActions {
                 override fun onDriverWatch(driver: Driver) {
@@ -53,7 +53,7 @@ class EditDriversFragment : Fragment(), MenuProvider {
 
                 override fun onDriverDelete(driver: Driver) {
                     viewModel.handleEvent(EditDriversEvent.DeleteDriver(driver))
-                    Snackbar.make(binding.root, R.string.team_Deleted, Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root, R.string.deleted, Snackbar.LENGTH_LONG)
                         .setAction(R.string.undo) {
                             viewModel.handleEvent(EditDriversEvent.AddDriver(driver))
                         }

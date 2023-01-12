@@ -39,10 +39,6 @@ class EditTeamsViewModel @Inject constructor(
         }
     }
 
-    init {
-        loadTeams()
-    }
-
     private fun loadTeams() {
         viewModelScope.launch {
             _uiState.value = EditTeamsState(teams = getTeams.invoke(), error = null)

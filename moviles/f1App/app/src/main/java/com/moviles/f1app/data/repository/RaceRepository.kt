@@ -14,6 +14,8 @@ class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
 
     suspend fun getRace(id: Int) = raceDao.getRace(id).toRace()
 
+    suspend fun getRaceByTrack(track: String) = raceDao.getRaceByTrack(track).toRace()
+
     suspend fun addRace(race: Race) = raceDao.addRace(race.toRaceEntity())
 
     suspend fun updateRace(id: Int, track: String, date: LocalDate) = raceDao.updateRace(id, track, date)
