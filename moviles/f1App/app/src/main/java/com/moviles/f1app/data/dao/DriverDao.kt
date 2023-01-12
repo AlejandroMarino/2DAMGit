@@ -9,19 +9,19 @@ import com.moviles.f1app.data.modelo.relacciones.DriverWithRaces
 @Dao
 interface DriverDao {
 
-    @Query(Constantes.querieGetDrivers)
+    @Query(Constantes.queryGetDrivers)
     suspend fun getDrivers(): List<DriverWithRaces>
 
-    @Query(Constantes.querieGetDriversOfTeam)
+    @Query(Constantes.queryGetDriversOfTeam)
     suspend fun getDriversOfTeam(idTeam: Int): List<DriverWithRaces>
 
-    @Query(Constantes.querieGetDriver)
+    @Query(Constantes.queryGetDriver)
     suspend fun getDriver(id: Int): DriverWithRaces
 
-    @Query(Constantes.querieGetDriverByName)
+    @Query(Constantes.queryGetDriverByName)
     suspend fun getDriverByName(name: String): DriverWithRaces
 
-    @Query(Constantes.querieUpdateDriver)
+    @Query(Constantes.queryUpdateDriver)
     suspend fun updateDriver(id: Int, name: String, number: Int, idTeam: Int)
 
     @Delete

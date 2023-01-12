@@ -3,10 +3,7 @@ package com.moviles.f1app.data.modelo
 import com.moviles.f1app.data.modelo.relacciones.DriverWithRaces
 import com.moviles.f1app.data.modelo.relacciones.RaceWithDrivers
 import com.moviles.f1app.data.modelo.relacciones.TeamWithDrivers
-import com.moviles.f1app.domain.modelo.Driver
-import com.moviles.f1app.domain.modelo.Performance
-import com.moviles.f1app.domain.modelo.Race
-import com.moviles.f1app.domain.modelo.Team
+import com.moviles.f1app.domain.modelo.*
 
 
 fun TeamEntity.toTeam(): Team {
@@ -86,4 +83,8 @@ fun Performance.toDriverRaceCrossRef(): DriverRaceCrossRef {
 
 fun DriverRaceCrossRef.toPerformance(): Performance {
     return Performance(this.idDriver, this.idRace, this.position, this.fastestLap)
+}
+
+fun DriverRaceWithNames.toPerformance(): PerformanceWithObjects {
+    return PerformanceWithObjects(this.driver.toDriver(), this.race.toRace(), this.position, this.fastestLap)
 }
