@@ -9,13 +9,18 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditDriverBinding
 import com.moviles.f1app.domain.modelo.Driver
+import com.moviles.f1app.domain.modelo.Performance
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EditDriverFragment : Fragment(), MenuProvider {
+    private lateinit var adapter: PerformanceAdapterDriver
 
     private var _binding: FragmentEditDriverBinding? = null
     private val binding get() = _binding!!
@@ -52,6 +57,34 @@ class EditDriverFragment : Fragment(), MenuProvider {
                 textTeam.setText("", false)
             }
 
+            adapter =
+                PerformanceAdapterDriver(object : PerformanceAdapterDriver.PerformanceActions {
+                    override fun onClickWatch(performance: Performance) {
+                        val action =
+                            EditDriverFragmentDirections.actionEditDriverToEditPerformanceFragment(
+                                performance.idRace,
+                                performance.idDriver,
+                            )
+                        findNavController().navigate(action)
+                    }
+
+                    override fun onClickDelete(performance: Performance) {
+                        viewModel.handleEvent(EditDriverEvent.DeletePerformance(performance))
+                        Snackbar.make(binding.root, "Performance deleted", Snackbar.LENGTH_LONG)
+                            .setAction("Undo") {
+                                viewModel.handleEvent(EditDriverEvent.AddPerformance(performance))
+                            }
+                            .setBackgroundTint(resources.getColor(R.color.black))
+                            .setTextColor(resources.getColor(R.color.white))
+                            .setActionTextColor(resources.getColor(R.color.yellow_06))
+                            .show()
+                    }
+                })
+            listPerformances.adapter = adapter
+
+            val itemTouchHelper = ItemTouchHelper(SwipeToDeletePerformanceD(adapter))
+            itemTouchHelper.attachToRecyclerView(listPerformances)
+
             var items: Array<String>
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
                 state.message?.let { message ->
@@ -76,6 +109,15 @@ class EditDriverFragment : Fragment(), MenuProvider {
                         textNumber.setText(driver.number.toString())
                     }
                 }
+                adapter.submitList(state.driver.performances.toList().map { it.second })
+            }
+
+            addPerformance.setOnClickListener {
+                val action = EditDriverFragmentDirections.actionEditDriverToEditPerformanceFragment(
+                    0,
+                    idDriver
+                )
+                findNavController().navigate(action)
             }
 
         }

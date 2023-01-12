@@ -1,4 +1,4 @@
-package com.moviles.f1app.ui.pantalla.admin.detail
+package com.moviles.f1app.ui.pantalla.admin.detail.driver
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +10,8 @@ import com.moviles.f1app.R
 import com.moviles.f1app.databinding.ItemPerformanceBinding
 import com.moviles.f1app.domain.modelo.Performance
 
-class PerformanceAdapter(val actions: PerformanceActions) :
-    ListAdapter<Performance, PerformanceAdapter.PerformanceViewHolder>(DiffCallback()) {
+class PerformanceAdapterDriver(val actions: PerformanceActions) :
+    ListAdapter<Performance, PerformanceAdapterDriver.PerformanceViewHolder>(DiffCallback()) {
 
     interface PerformanceActions {
         fun onClickWatch(performance: Performance)
@@ -39,7 +39,7 @@ class PerformanceAdapter(val actions: PerformanceActions) :
             performance: Performance,
         ) {
             with(binding) {
-                name.text = performance.idDriver.toString()
+                name.text = performance.idRace.toString()
                 textPosition.text = performance.position.toString()
                 textLap.text = performance.fastestLap
 

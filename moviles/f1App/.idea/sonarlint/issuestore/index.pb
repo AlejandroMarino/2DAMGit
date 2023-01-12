@@ -50,6 +50,4 @@ d
 ‚
 Rapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/team/EditTeamState.kt,e\5\e5df4442063648118c649cdfb5b8d8249ea88e3d
 w
-Gapp/src/main/java/com/moviles/f1app/domain/usecases/races/UpdateRace.kt,2\a\2a454dffa5c3e60eb0353aff724ffe35385c44a3
-w
 Gapp/src/main/java/com/moviles/f1app/domain/usecases/teams/UpdateTeam.kt,9\5\959714ab07a48bc6c78e524e49ad3ab574acf639

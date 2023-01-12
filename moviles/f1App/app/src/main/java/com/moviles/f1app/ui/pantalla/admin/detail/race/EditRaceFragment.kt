@@ -18,8 +18,6 @@ import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditRaceBinding
 import com.moviles.f1app.domain.modelo.Performance
 import com.moviles.f1app.domain.modelo.Race
-import com.moviles.f1app.ui.pantalla.admin.detail.PerformanceAdapter
-import com.moviles.f1app.ui.pantalla.admin.detail.SwipeToDeletePerformance
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -27,7 +25,7 @@ import java.util.*
 
 @AndroidEntryPoint
 class EditRaceFragment : Fragment(), MenuProvider {
-    private lateinit var adapter: PerformanceAdapter
+    private lateinit var adapter: PerformanceAdapterRace
 
     private var _binding: FragmentEditRaceBinding? = null
     private val binding get() = _binding!!
@@ -61,7 +59,7 @@ class EditRaceFragment : Fragment(), MenuProvider {
                 idRace = 0
             }
 
-            adapter = PerformanceAdapter(object : PerformanceAdapter.PerformanceActions {
+            adapter = PerformanceAdapterRace(object : PerformanceAdapterRace.PerformanceActions {
                 override fun onClickWatch(performance: Performance) {
                     val action = EditRaceFragmentDirections.actionEditRaceToEditPerformanceFragment(
                         performance.idRace,
@@ -82,10 +80,10 @@ class EditRaceFragment : Fragment(), MenuProvider {
                         .show()
                 }
             })
-            listPerformances.adapter = adapter
+            listPerformancesR.adapter = adapter
 
-            val itemTouchHelper = ItemTouchHelper(SwipeToDeletePerformance(adapter))
-            itemTouchHelper.attachToRecyclerView(listPerformances)
+            val itemTouchHelper = ItemTouchHelper(SwipeToDeletePerformanceR(adapter))
+            itemTouchHelper.attachToRecyclerView(listPerformancesR)
 
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
                 state.message?.let { message ->
@@ -151,7 +149,7 @@ class EditRaceFragment : Fragment(), MenuProvider {
         with(binding) {
             return when (menuItem.itemId) {
                 R.id.item_add -> {
-                    if (textTrack.text.toString() != "" ) {
+                    if (textTrack.text.toString() != "") {
                         viewModel.handleEvent(
                             EditRaceEvent.AddRace(
                                 Race(

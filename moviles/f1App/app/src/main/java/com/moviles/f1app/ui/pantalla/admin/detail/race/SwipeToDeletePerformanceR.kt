@@ -1,9 +1,10 @@
-package com.moviles.f1app.ui.pantalla.admin.detail
+package com.moviles.f1app.ui.pantalla.admin.detail.race
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.moviles.f1app.ui.pantalla.admin.detail.race.PerformanceAdapterRace
 
-class SwipeToDeletePerformance(var adapter: PerformanceAdapter) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+class SwipeToDeletePerformanceR(var adapter: PerformanceAdapterRace) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
     override fun onMove(
         recyclerView: RecyclerView,

@@ -40,10 +40,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textFieldT" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listPerformances"
+        android:id="@+id/listPerformancesR"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toStartOf="@+id/guideRight"
         app:layout_constraintStart_toStartOf="@id/guideLeft"
         app:layout_constraintTop_toBottomOf="@+id/datePicker" />

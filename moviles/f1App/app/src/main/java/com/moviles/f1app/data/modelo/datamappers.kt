@@ -81,9 +81,9 @@ fun Race.toRaceWithDrivers(): RaceWithDrivers {
 }
 
 fun Performance.toDriverRaceCrossRef(): DriverRaceCrossRef {
-    return DriverRaceCrossRef(this.idDriver, this.idRace, this.position, this.fastestLap)
+    return DriverRaceCrossRef(this.driver.id, this.race.id, this.position, this.fastestLap)
 }
 
-fun DriverRaceCrossRef.toPerformance(): Performance {
-    return Performance(this.idDriver, this.idRace, this.position, this.fastestLap)
-}
+
+
+fun DriverRaceConNombres.toPerformance():Performance{return Performance(this.driver.toDriver(), this.race.toRace(), this.position, this.fastestLap)}
