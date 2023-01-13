@@ -35,3 +35,13 @@ k
 ;servidor/src/main/java/domain/servicios/ServicesReader.java,5\c\5c62ca608af2a6f727e37950389f71c536496888
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+^
+.domain/src/main/java/domain/modelo/Reader.java,9\7\971499f635cfdd8d90ea255406de83bac4da95ed
+_
+/cliente/src/main/java/data/dao/DaoGenerics.java,8\0\8024dfb9afa067b2a4ba1ac4c6529460b6e753b8
+y
+Iservidor/src/main/java/jakarta/errores/BaseDatosCaidaExceptionMapper.java,7\d\7d368a4f4977a3f9f12b0e4e93bc82fb15811dff
+@
+servidor/pom.xml,f\0\f0784b6bd8e433bbdb1fd1f40fb81f8a7afbdc18
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
