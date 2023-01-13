@@ -13,19 +13,19 @@ import java.time.LocalDate
 
 @Dao
 interface RaceDao {
-    @Query(Constantes.querieGetRaces)
+    @Query(Constantes.queryGetRaces)
     suspend fun getRaces(): List<RaceWithDrivers>
 
-    @Query(Constantes.querieGetRace)
+    @Query(Constantes.queryGetRace)
     suspend fun getRace(id: Int): RaceWithDrivers
 
-    @Query(Constantes.querieGetRaceByTrack)
+    @Query(Constantes.queryGetRaceByTrack)
     suspend fun getRaceByTrack(track: String): RaceWithDrivers
 
     @Insert
     suspend fun addRace(race: RaceEntity)
 
-    @Query(Constantes.querieUpdateRace)
+    @Query(Constantes.queryUpdateRace)
     suspend fun updateRace(id: Int, track: String, date: LocalDate)
 
     @Delete

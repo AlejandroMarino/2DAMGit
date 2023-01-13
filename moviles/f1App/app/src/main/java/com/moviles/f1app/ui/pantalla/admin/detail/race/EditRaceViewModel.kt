@@ -5,13 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moviles.f1app.R
-import com.moviles.f1app.domain.modelo.Performance
+import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import com.moviles.f1app.domain.modelo.Race
 import com.moviles.f1app.domain.usecases.performances.AddPerformance
 import com.moviles.f1app.domain.usecases.performances.DeletePerformance
+import com.moviles.f1app.domain.usecases.performances.GetPerformance
 import com.moviles.f1app.domain.usecases.performances.GetRacePerformances
 import com.moviles.f1app.domain.usecases.races.AddRace
 import com.moviles.f1app.domain.usecases.races.GetRace
+import com.moviles.f1app.domain.usecases.races.GetRaceByTrack
 import com.moviles.f1app.domain.usecases.races.UpdateRace
 import com.moviles.f1app.utils.StringProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +25,10 @@ class EditRaceViewModel @Inject constructor(
     private val stringProvider: StringProvider,
     private val addRace: AddRace,
     private val getRace: GetRace,
+    private val getRaceByTrack: GetRaceByTrack,
     private val updateRace: UpdateRace,
+    private val getPerformance: GetPerformance,
+    private val getRacePerformances: GetRacePerformances,
     private val deletePerformance: DeletePerformance,
     private val addPerformance: AddPerformance,
 ) : ViewModel() {
@@ -54,8 +59,11 @@ class EditRaceViewModel @Inject constructor(
     private fun addRace(race: Race) {
         viewModelScope.launch {
             if (addRace.invoke(race)) {
+                val rc = getRaceByTrack.invoke(race.track)
                 _uiState.value = EditRaceState(
-                    message = stringProvider.getString(R.string.added)
+                    race = rc,
+                    message = stringProvider.getString(R.string.added),
+                    performances = getRacePerformances.invoke(rc.id)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(
@@ -69,15 +77,19 @@ class EditRaceViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.value = EditRaceState(
                 race = getRace.invoke(id),
+                performances = getRacePerformances.invoke(id)
             )
         }
     }
 
     private fun updateRace(race: Race) {
         viewModelScope.launch {
+            race.id = _uiState.value?.race?.id ?: 0
             if (updateRace.invoke(race)) {
                 _uiState.value = _uiState.value?.copy(
-                    message = stringProvider.getString(R.string.updated)
+                    race = getRace.invoke(race.id),
+                    message = stringProvider.getString(R.string.updated),
+                    performances = getRacePerformances.invoke(race.id)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(
@@ -87,12 +99,14 @@ class EditRaceViewModel @Inject constructor(
         }
     }
 
-    private fun deletePerformance(performance: Performance) {
+    private fun deletePerformance(performance: PerformanceWithObjects) {
         viewModelScope.launch {
-            if (deletePerformance.invoke(performance)) {
+            val per = getPerformance.invoke(performance.driver.id, performance.race.id)
+            if (deletePerformance.invoke(per)) {
                 _uiState.value = _uiState.value?.copy(
                     message = stringProvider.getString(R.string.deleted),
-                    race = getRace.invoke(performance.idRace)
+                    race = getRace.invoke(performance.race.id),
+                    performances = getRacePerformances.invoke(performance.race.id)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(
@@ -102,11 +116,13 @@ class EditRaceViewModel @Inject constructor(
         }
     }
 
-    private fun addPerformance(performance: Performance) {
+    private fun addPerformance(performance: PerformanceWithObjects) {
         viewModelScope.launch {
-            if (addPerformance.invoke(performance)) {
+            val per = getPerformance.invoke(performance.driver.id, performance.race.id)
+            if (addPerformance.invoke(per)) {
                 _uiState.value = _uiState.value?.copy(
-                    race = getRace.invoke(performance.idRace)
+                    race = getRace.invoke(performance.race.id),
+                    performances = getRacePerformances.invoke(performance.race.id)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(

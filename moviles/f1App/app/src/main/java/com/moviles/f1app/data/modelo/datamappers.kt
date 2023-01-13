@@ -1,12 +1,10 @@
 package com.moviles.f1app.data.modelo
 
+import com.moviles.f1app.data.modelo.relacciones.DriverRaceWithObjects
 import com.moviles.f1app.data.modelo.relacciones.DriverWithRaces
 import com.moviles.f1app.data.modelo.relacciones.RaceWithDrivers
 import com.moviles.f1app.data.modelo.relacciones.TeamWithDrivers
-import com.moviles.f1app.domain.modelo.Driver
-import com.moviles.f1app.domain.modelo.Performance
-import com.moviles.f1app.domain.modelo.Race
-import com.moviles.f1app.domain.modelo.Team
+import com.moviles.f1app.domain.modelo.*
 
 
 fun TeamEntity.toTeam(): Team {
@@ -81,9 +79,14 @@ fun Race.toRaceWithDrivers(): RaceWithDrivers {
 }
 
 fun Performance.toDriverRaceCrossRef(): DriverRaceCrossRef {
-    return DriverRaceCrossRef(this.driver.id, this.race.id, this.position, this.fastestLap)
+    return DriverRaceCrossRef(this.idDriver, this.idRace, this.position, this.fastestLap)
 }
 
+fun DriverRaceCrossRef.toPerformance(): Performance {
+    return Performance(this.idDriver, this.idRace, this.position, this.fastestLap)
+}
 
+fun DriverRaceWithObjects.toPerformanceWithObjects(): PerformanceWithObjects {
+    return PerformanceWithObjects(this.driver.toDriver(), this.race.toRace(), this.driverRaceCrossRef.position, this.driverRaceCrossRef.fastestLap)
+}
 
-fun DriverRaceConNombres.toPerformance():Performance{return Performance(this.driver.toDriver(), this.race.toRace(), this.position, this.fastestLap)}

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moviles.f1app.domain.modelo.Performance
+import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import com.moviles.f1app.domain.usecases.drivers.GetAllDrivers
 import com.moviles.f1app.domain.usecases.drivers.GetDriverByName
 import com.moviles.f1app.domain.usecases.performances.AddPerformance
@@ -25,6 +26,7 @@ class EditPerformanceViewModel @Inject constructor(
     private val getRaces: GetRaces,
     private val getRaceByTrack: GetRaceByTrack,
     private val getPerformance: GetPerformance,
+    private val getPerformanceWithObjects: PerformanceWithObjects,
     private val addPerformance: AddPerformance,
     private val updatePerformance: UpdatePerformance,
 ) : ViewModel() {
@@ -59,7 +61,7 @@ class EditPerformanceViewModel @Inject constructor(
     private fun getPerformance(idDriver: Int, idRace: Int) {
         viewModelScope.launch {
             _uiState.value =
-                _uiState.value?.copy(performance = getPerformance.invoke(idDriver, idRace))
+                EditPerformanceState(performance = getPerformance.invoke(idDriver, idRace))
         }
     }
 

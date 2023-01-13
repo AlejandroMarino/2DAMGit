@@ -7,6 +7,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,7 +17,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditRaceBinding
-import com.moviles.f1app.domain.modelo.Performance
+import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import com.moviles.f1app.domain.modelo.Race
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
@@ -51,6 +52,8 @@ class EditRaceFragment : Fragment(), MenuProvider {
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         with(binding) {
+            addPerformance.isVisible = false
+
             val id = arguments?.getInt("idRace")
             if (id != null && id != 0) {
                 idRace = id
@@ -60,15 +63,15 @@ class EditRaceFragment : Fragment(), MenuProvider {
             }
 
             adapter = PerformanceAdapterRace(object : PerformanceAdapterRace.PerformanceActions {
-                override fun onClickWatch(performance: Performance) {
+                override fun onClickWatch(performance: PerformanceWithObjects) {
                     val action = EditRaceFragmentDirections.actionEditRaceToEditPerformanceFragment(
-                        performance.idRace,
-                        performance.idDriver
+                        performance.race.id,
+                        performance.driver.id
                     )
                     findNavController().navigate(action)
                 }
 
-                override fun onClickDelete(performance: Performance) {
+                override fun onClickDelete(performance: PerformanceWithObjects) {
                     viewModel.handleEvent(EditRaceEvent.DeletePerformance(performance))
                     Snackbar.make(binding.root, R.string.deleted, Snackbar.LENGTH_LONG)
                         .setAction(R.string.undo) {
@@ -90,10 +93,11 @@ class EditRaceFragment : Fragment(), MenuProvider {
                     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                 }
                 state.race.let { race ->
+                    addPerformance.isVisible = race.id != 0
                     textTrack.setText(race.track)
                     datePicker.text = race.date.format(formatter)
                 }
-                adapter.submitList(state.race.performances.toList().map { it.second })
+                adapter.submitList(state.performances)
             }
 
 
@@ -165,6 +169,7 @@ class EditRaceFragment : Fragment(), MenuProvider {
                     true
                 }
                 R.id.item_update -> {
+                    idRace = viewModel.uiState.value?.race?.id ?: 0
                     if (idRace != 0 && textTrack.text.toString() != "") {
                         viewModel.handleEvent(
                             EditRaceEvent.UpdateRace(

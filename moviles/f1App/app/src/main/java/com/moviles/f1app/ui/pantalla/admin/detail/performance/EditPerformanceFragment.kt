@@ -62,8 +62,10 @@ class EditPerformanceFragment : Fragment(), MenuProvider {
             var itemsR: Array<String>
 
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
-                state.message?.let { message ->
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                state.message.let { message ->
+                    if (message != "") {
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                    }
                 }
                 state.drivers.let { drivers ->
                     itemsD = drivers.map { it.name }.toTypedArray()
@@ -76,8 +78,8 @@ class EditPerformanceFragment : Fragment(), MenuProvider {
                     textRace.setAdapter(arrayAdapter)
                 }
                 state.performance.let { performance ->
-                    textDriver.setText(viewModel.uiState.value?.driverName, false)
-                    textRace.setText(viewModel.uiState.value?.trackName, false)
+                    textDriver.setText(viewModel.uiState.value?.performance?.driver?.name, false)
+                    textRace.setText(viewModel.uiState.value?.performance?.race?.track, false)
                     if (performance.position != 0) {
                         textPos.setText(performance.position)
                     }

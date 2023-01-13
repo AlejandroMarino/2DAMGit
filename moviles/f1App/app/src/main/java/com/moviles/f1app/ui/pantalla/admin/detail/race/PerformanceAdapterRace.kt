@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.ItemPerformanceBinding
 import com.moviles.f1app.domain.modelo.Performance
+import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 
 class PerformanceAdapterRace(val actions: PerformanceActions) :
-    ListAdapter<Performance, PerformanceAdapterRace.PerformanceViewHolder>(DiffCallback()) {
+    ListAdapter<PerformanceWithObjects, PerformanceAdapterRace.PerformanceViewHolder>(DiffCallback()) {
 
     interface PerformanceActions {
-        fun onClickWatch(performance: Performance)
-        fun onClickDelete(performance: Performance)
+        fun onClickWatch(performance: PerformanceWithObjects)
+        fun onClickDelete(performance: PerformanceWithObjects)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PerformanceViewHolder {
@@ -36,10 +37,10 @@ class PerformanceAdapterRace(val actions: PerformanceActions) :
         private val binding = ItemPerformanceBinding.bind(view)
 
         fun bind(
-            performance: Performance,
+            performance: PerformanceWithObjects,
         ) {
             with(binding) {
-                name.text = performance.idDriver.toString()
+                name.text = performance.driver.name
                 textPosition.text = performance.position.toString()
                 textLap.text = performance.fastestLap
 
@@ -50,13 +51,13 @@ class PerformanceAdapterRace(val actions: PerformanceActions) :
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Performance>() {
+    class DiffCallback : DiffUtil.ItemCallback<PerformanceWithObjects>() {
 
-        override fun areItemsTheSame(oldItem: Performance, newItem: Performance): Boolean {
-            return oldItem.idDriver == newItem.idDriver && oldItem.idRace == newItem.idRace
+        override fun areItemsTheSame(oldItem: PerformanceWithObjects, newItem: PerformanceWithObjects): Boolean {
+            return oldItem.driver == newItem.driver && oldItem.race == newItem.race
         }
 
-        override fun areContentsTheSame(oldItem: Performance, newItem: Performance): Boolean {
+        override fun areContentsTheSame(oldItem: PerformanceWithObjects, newItem: PerformanceWithObjects): Boolean {
             return oldItem == newItem
         }
     }

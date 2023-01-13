@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -15,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentEditDriverBinding
 import com.moviles.f1app.domain.modelo.Driver
-import com.moviles.f1app.domain.modelo.Performance
+import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,6 +48,7 @@ class EditDriverFragment : Fragment(), MenuProvider {
         viewModel.handleEvent(EditDriverEvent.GetTeams)
 
         with(binding) {
+            addPerformance.isVisible = false
 
             val id = arguments?.getInt("idDriver")
             if (id != null && id != 0) {
@@ -59,16 +61,16 @@ class EditDriverFragment : Fragment(), MenuProvider {
 
             adapter =
                 PerformanceAdapterDriver(object : PerformanceAdapterDriver.PerformanceActions {
-                    override fun onClickWatch(performance: Performance) {
+                    override fun onClickWatch(performance: PerformanceWithObjects) {
                         val action =
                             EditDriverFragmentDirections.actionEditDriverToEditPerformanceFragment(
-                                performance.idRace,
-                                performance.idDriver,
+                                performance.race.id,
+                                performance.driver.id,
                             )
                         findNavController().navigate(action)
                     }
 
-                    override fun onClickDelete(performance: Performance) {
+                    override fun onClickDelete(performance: PerformanceWithObjects) {
                         viewModel.handleEvent(EditDriverEvent.DeletePerformance(performance))
                         Snackbar.make(binding.root, "Performance deleted", Snackbar.LENGTH_LONG)
                             .setAction("Undo") {
@@ -100,6 +102,7 @@ class EditDriverFragment : Fragment(), MenuProvider {
                     textTeam.setAdapter(arrayAdapter)
                 }
                 state.driver.let { driver ->
+                    addPerformance.isVisible = driver.id != 0
                     textNameD.setText(driver.name)
                     textTeam.setText(
                         viewModel.uiState.value?.teamName,
@@ -108,14 +111,15 @@ class EditDriverFragment : Fragment(), MenuProvider {
                     if (driver.number != 0) {
                         textNumber.setText(driver.number.toString())
                     }
+
                 }
-                adapter.submitList(state.driver.performances.toList().map { it.second })
+                adapter.submitList(state.performances)
             }
 
             addPerformance.setOnClickListener {
                 val action = EditDriverFragmentDirections.actionEditDriverToEditPerformanceFragment(
                     0,
-                    idDriver
+                    viewModel.uiState.value?.driver?.id ?: 0
                 )
                 findNavController().navigate(action)
             }
@@ -152,6 +156,7 @@ class EditDriverFragment : Fragment(), MenuProvider {
                     true
                 }
                 R.id.item_update -> {
+                    val idDriver = viewModel.uiState.value?.driver?.id ?: 0
                     if (idDriver != 0 && textNameD.text.toString() != "" &&
                         textNumber.text.toString() != "" && textTeam.text.toString() != "Team" &&
                         textTeam.text.toString() != ""

@@ -9,13 +9,13 @@ import com.moviles.f1app.data.modelo.relacciones.TeamWithDrivers
 @Dao
 interface TeamDao {
 
-    @Query(Constantes.querieGetAllTeams)
+    @Query(Constantes.queryGetAllTeams)
     suspend fun getTeams(): List<TeamWithDrivers>
 
-    @Query(Constantes.querieGetTeam)
+    @Query(Constantes.queryGetTeam)
     suspend fun getTeam(id: Int): TeamWithDrivers
 
-    @Query(Constantes.querieGetTeamByName)
+    @Query(Constantes.queryGetTeamByName)
     suspend fun getTeamByName(name: String) : TeamWithDrivers
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
@@ -25,6 +25,6 @@ interface TeamDao {
     @Transaction
     suspend fun deleteTeam(team: TeamEntity, drivers: List<DriverEntity>)
 
-    @Query(Constantes.querieUpdateTeam)
+    @Query(Constantes.queryUpdateTeam)
     suspend fun updateTeam(id: Int, name: String, car: String)
 }

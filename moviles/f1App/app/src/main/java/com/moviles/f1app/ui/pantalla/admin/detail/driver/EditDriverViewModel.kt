@@ -7,11 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.moviles.f1app.R
 import com.moviles.f1app.domain.modelo.Driver
 import com.moviles.f1app.domain.modelo.Performance
+import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import com.moviles.f1app.domain.usecases.drivers.AddDriver
 import com.moviles.f1app.domain.usecases.drivers.GetDriver
+import com.moviles.f1app.domain.usecases.drivers.GetDriverByName
 import com.moviles.f1app.domain.usecases.drivers.UpdateDriver
 import com.moviles.f1app.domain.usecases.performances.AddPerformance
 import com.moviles.f1app.domain.usecases.performances.DeletePerformance
+import com.moviles.f1app.domain.usecases.performances.GetDriverPerformances
+import com.moviles.f1app.domain.usecases.performances.GetPerformance
 import com.moviles.f1app.domain.usecases.teams.GetTeam
 import com.moviles.f1app.domain.usecases.teams.GetTeamByName
 import com.moviles.f1app.domain.usecases.teams.GetTeams
@@ -25,11 +29,14 @@ class EditDriverViewModel @Inject constructor(
     private val stringProvider: StringProvider,
     private val addDriver: AddDriver,
     private val getDriver: GetDriver,
+    private val getDriverByName: GetDriverByName,
     private val updateDriver: UpdateDriver,
     private val getTeams: GetTeams,
     private val getTeam: GetTeam,
     private val getTeamByName: GetTeamByName,
     private val deletePerformance: DeletePerformance,
+    private val getPerformance: GetPerformance,
+    private val getDriverPerformances: GetDriverPerformances,
     private val addPerformance: AddPerformance,
 ) : ViewModel() {
 
@@ -63,8 +70,11 @@ class EditDriverViewModel @Inject constructor(
         viewModelScope.launch {
             driver.idTeam = getTeamByName.invoke(teamName).id
             if (addDriver.invoke(driver)) {
+                val dr = getDriverByName.invoke(driver.name)
                 _uiState.value = _uiState.value?.copy(
-                    message = stringProvider.getString(R.string.added)
+                    driver = dr,
+                    message = stringProvider.getString(R.string.added),
+                    performances = getDriverPerformances.invoke(dr.id)
                 )
             } else {
                 _uiState.value =
@@ -81,7 +91,8 @@ class EditDriverViewModel @Inject constructor(
             if (updateDriver.invoke(driver)) {
                 _uiState.value = _uiState.value?.copy(
                     driver = getDriver.invoke(driver.id),
-                    message = stringProvider.getString(R.string.updated)
+                    message = stringProvider.getString(R.string.updated),
+                    performances = getDriverPerformances.invoke(driver.id)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(
@@ -96,7 +107,8 @@ class EditDriverViewModel @Inject constructor(
             _uiState.value = EditDriverState(
                 driver = getDriver.invoke(id),
                 teamName = getTeam.invoke(getDriver.invoke(id).idTeam).name,
-                teams = getTeams.invoke()
+                teams = getTeams.invoke(),
+                performances = getDriverPerformances.invoke(id)
             )
         }
     }
@@ -107,12 +119,14 @@ class EditDriverViewModel @Inject constructor(
         }
     }
 
-    private fun deletePerformance(performance: Performance) {
+    private fun deletePerformance(performance: PerformanceWithObjects) {
         viewModelScope.launch {
-            if (deletePerformance.invoke(performance)) {
+            val per: Performance = getPerformance.invoke(performance.driver.id, performance.race.id)
+            if (deletePerformance.invoke(per)) {
                 _uiState.value = _uiState.value?.copy(
                     message = stringProvider.getString(R.string.deleted),
-                    driver = getDriver.invoke(performance.idRace)
+                    driver = getDriver.invoke(performance.driver.id),
+                    performances = getDriverPerformances.invoke(performance.driver.id)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(
@@ -122,11 +136,13 @@ class EditDriverViewModel @Inject constructor(
         }
     }
 
-    private fun addPerformance(performance: Performance){
+    private fun addPerformance(performance: PerformanceWithObjects){
         viewModelScope.launch {
-            if (addPerformance.invoke(performance)) {
+            val per: Performance = getPerformance.invoke(performance.driver.id, performance.race.id)
+            if (addPerformance.invoke(per)) {
                 _uiState.value = _uiState.value?.copy(
-                    driver = getDriver.invoke(performance.idRace)
+                    driver = getDriver.invoke(performance.driver.id),
+                    performances = getDriverPerformances.invoke(performance.driver.id)
                 )
             } else {
                 _uiState.value = _uiState.value?.copy(
