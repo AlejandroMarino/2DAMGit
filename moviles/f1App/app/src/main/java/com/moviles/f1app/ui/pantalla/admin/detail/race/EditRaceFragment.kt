@@ -143,10 +143,15 @@ class EditRaceFragment : Fragment(), MenuProvider {
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_lists, menu)
-
         menu.findItem(R.id.item_add).isVisible = true
-        menu.findItem(R.id.item_update).isVisible = true
-        menu.findItem(R.id.item_delete).isVisible = false
+        menu.findItem(R.id.item_update).isVisible = false
+
+        viewModel.uiState.observe(viewLifecycleOwner){ state ->
+            state.race.let {
+                menu.findItem(R.id.item_update).isVisible = it.id != 0
+            }
+
+        }
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -183,9 +188,6 @@ class EditRaceFragment : Fragment(), MenuProvider {
                         Toast.makeText(context, R.string.error_updating, Toast.LENGTH_SHORT)
                             .show()
                     }
-                    true
-                }
-                R.id.item_delete -> {
                     true
                 }
                 else -> false

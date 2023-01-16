@@ -14,9 +14,7 @@ object Constantes {
     const val queryGetDriversOfTeam = "SELECT * FROM drivers WHERE id_team =:idTeam"
     const val queryGetDriver = "SELECT * FROM drivers WHERE idDriver = :id"
     const val queryGetDriverByName = "SELECT * FROM drivers WHERE name = :name"
-    const val queryUpdateDriver = "UPDATE drivers SET name = :name, number = :number, id_team = :idTeam WHERE idDriver = :id"
-    const val queryGetDriverTeam = "SELECT id_team From drivers WHERE idDriver = :id"
-    const val queryDeleteDriver = "DELETE FROM drivers WHERE idDriver = :idDriver"
+    const val queryUpdateDriver = "UPDATE drivers SET name = :name, number = :number, photo = :photo, id_team = :idTeam WHERE idDriver = :id"
     //Race
     const val queryGetRaces = "SELECT * FROM races"
     const val queryGetRace = "SELECT * FROM races WHERE idRace = :id"
@@ -32,10 +30,10 @@ object Constantes {
     //Database
 
     const val database = "item_database"
-    const val databaseLocation = "database/efe1.db"
+    const val databaseLocation = "database/f1.db"
     const val assetdb = "assetDB"
     const val destructiveMigration = 1
-    const val version = 3
+    const val version = 2
 
 
     //Entity
@@ -47,6 +45,7 @@ object Constantes {
     const val id = "id"
     const val name = "name"
     const val number = "number"
+    const val photo = "photo"
     const val id_team = "id_team"
     const val idDriver = "idDriver"
     const val idRace = "idRace"

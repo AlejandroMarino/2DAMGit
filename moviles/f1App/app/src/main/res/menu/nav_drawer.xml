@@ -3,12 +3,12 @@
     <item
         android:id="@+id/itemIrAdmin"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Ir a pantalla Administrador"
-        android:contentDescription="admin"
+        android:title="@string/go_to_admin_screen"
+        android:contentDescription="@string/admin"
          />
     <item
         android:id="@+id/itemIrUser"
-        android:title="Ir a pantalla Usuario"
-        android:contentDescription="user"
+        android:title="@string/go_to_user_screen"
+        android:contentDescription="@string/user"
          />
 </menu>

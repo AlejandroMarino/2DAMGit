@@ -18,8 +18,8 @@ class DriverRepository @Inject constructor(private val driverDao: DriverDao) {
 
     suspend fun getDriverByName(name: String) = driverDao.getDriverByName(name).toDriver()
 
-    suspend fun updateDriver(id: Int, name: String, number: Int, idTeam: Int) =
-        driverDao.updateDriver(id, name, number, idTeam)
+    suspend fun updateDriver(id: Int, name: String, number: Int, photo: String,idTeam: Int) =
+        driverDao.updateDriver(id, name, number, photo ,idTeam)
 
     suspend fun deleteDriver(driver: Driver) = driverDao.deleteDriver(
         driver.toDriverEntity(),

@@ -24,6 +24,9 @@ interface PerformanceDao {
     @Query(Constantes.queryGetPerformance)
     suspend fun getPerformance(idDriver: Int, idRace: Int): DriverRaceCrossRef
 
+    @Query(Constantes.queryGetPerformance)
+    suspend fun getPerformanceWithObjects(idDriver: Int, idRace: Int): DriverRaceWithObjects
+
     @Query(Constantes.queryGerDriverPerformances)
     suspend fun getDriverPerformances(idDriver: Int): List<DriverRaceWithObjects>
 

@@ -95,12 +95,48 @@ class UserActivity : AppCompatActivity() {
                 when (destination.id) {
                     R.id.watch_drivers -> {
                         topAppBar.title = "Drivers"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_menu_24)
+                        topAppBar.setNavigationOnClickListener {
+                            Log.i("TAG", navController.currentDestination?.id.toString())
+                            drawerLayout.open()
+                        }
                     }
                     R.id.watch_teams -> {
                         topAppBar.title = "Teams"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_menu_24)
+                        topAppBar.setNavigationOnClickListener {
+                            Log.i("TAG", navController.currentDestination?.id.toString())
+                            drawerLayout.open()
+                        }
                     }
                     R.id.watch_races -> {
                         topAppBar.title = "Races"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_menu_24)
+                        topAppBar.setNavigationOnClickListener {
+                            Log.i("TAG", navController.currentDestination?.id.toString())
+                            drawerLayout.open()
+                        }
+                    }
+                    R.id.watch_team -> {
+                        topAppBar.title = "Team"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
+                        topAppBar.setNavigationOnClickListener {
+                            navController.navigateUp()
+                        }
+                    }
+                    R.id.watch_driver -> {
+                        topAppBar.title = "Driver"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
+                        topAppBar.setNavigationOnClickListener {
+                            navController.navigateUp()
+                        }
+                    }
+                    R.id.watch_race -> {
+                        topAppBar.title = "Race"
+                        topAppBar.navigationIcon = getDrawable(R.drawable.ic_arrow_back_24)
+                        topAppBar.setNavigationOnClickListener {
+                            navController.navigateUp()
+                        }
                     }
                 }
             }

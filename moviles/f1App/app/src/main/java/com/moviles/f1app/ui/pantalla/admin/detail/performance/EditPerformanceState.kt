@@ -10,4 +10,6 @@ data class EditPerformanceState (
     val message: String? = null,
     val races: List<Race> = emptyList(),
     val drivers: List<Driver> = emptyList(),
+    val driverName: String = "",
+    val trackName: String = "",
 )

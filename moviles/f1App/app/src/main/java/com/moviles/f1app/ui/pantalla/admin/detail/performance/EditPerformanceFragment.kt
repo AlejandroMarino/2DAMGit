@@ -2,6 +2,7 @@ package com.moviles.f1app.ui.pantalla.admin.detail.performance
 
 import android.os.Bundle
 import android.view.*
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.MenuHost
@@ -15,7 +16,7 @@ import com.moviles.f1app.domain.modelo.Performance
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EditPerformanceFragment : Fragment(), MenuProvider {
+class EditPerformanceFragment : Fragment(), MenuProvider, AdapterView.OnItemClickListener {
 
     private var _binding: FragmentEditPerformanceBinding? = null
     private val binding get() = _binding!!
@@ -24,14 +25,10 @@ class EditPerformanceFragment : Fragment(), MenuProvider {
 
     private lateinit var arrayAdapter: ArrayAdapter<String>
 
-    private var idDriver: Int = 0
-    private var idRace: Int = 0
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentEditPerformanceBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,31 +38,20 @@ class EditPerformanceFragment : Fragment(), MenuProvider {
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        viewModel.handleEvent(EditPerformanceEvent.GetData)
 
         with(binding) {
 
-            val idD = arguments?.getInt("idDriver")
-            val idR = arguments?.getInt("idRace")
-            if (idD != null && idD != 0 && idR != null && idR != 0) {
-                idDriver = idD
-                idRace = idR
-                viewModel.handleEvent(EditPerformanceEvent.GetPerformance(idD, idR))
-            } else {
-                idDriver = 0
-                idRace = 0
-                textDriver.setText("", false)
-                textRace.setText("", false)
-            }
+            val idR = arguments?.getInt("idRace") ?: 0
+            val idD = arguments?.getInt("idDriver") ?: 0
+
+            viewModel.handleEvent(EditPerformanceEvent.GetData(idD, idR))
 
             var itemsD: Array<String>
             var itemsR: Array<String>
 
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
-                state.message.let { message ->
-                    if (message != "") {
-                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-                    }
+                state.message?.let { message ->
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                 }
                 state.drivers.let { drivers ->
                     itemsD = drivers.map { it.name }.toTypedArray()
@@ -78,23 +64,41 @@ class EditPerformanceFragment : Fragment(), MenuProvider {
                     textRace.setAdapter(arrayAdapter)
                 }
                 state.performance.let { performance ->
-                    textDriver.setText(viewModel.uiState.value?.performance?.driver?.name, false)
-                    textRace.setText(viewModel.uiState.value?.performance?.race?.track, false)
                     if (performance.position != 0) {
-                        textPos.setText(performance.position)
+                        textPos.setText(performance.position.toString())
+                    }else{
+                        textPos.setText("")
                     }
                     textFastestLap.setText(performance.fastestLap)
                 }
-
+                state.driverName.let {
+                    textDriver.setText(it, false)
+                }
+                state.trackName.let {
+                    textRace.setText(it, false)
+                }
             }
+
+            textDriver.onItemClickListener = this@EditPerformanceFragment
+            textRace.onItemClickListener = this@EditPerformanceFragment
         }
+
     }
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_lists, menu)
         menu.findItem(R.id.item_add).isVisible = true
-        menu.findItem(R.id.item_update).isVisible = true
-        menu.findItem(R.id.item_delete).isVisible = false
+        menu.findItem(R.id.item_update).isVisible = false
+
+        viewModel.uiState.observe(viewLifecycleOwner) { state ->
+            if (state.performance.driver.id != 0) {
+                menu.findItem(R.id.item_add).isVisible = false
+                menu.findItem(R.id.item_update).isVisible = true
+            }else{
+                menu.findItem(R.id.item_add).isVisible = true
+                menu.findItem(R.id.item_update).isVisible = false
+            }
+        }
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -136,11 +140,17 @@ class EditPerformanceFragment : Fragment(), MenuProvider {
                     }
                     true
                 }
-                R.id.item_delete -> {
-                    true
-                }
                 else -> false
             }
         }
+    }
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        with(binding) {
+            if (textRace.text.toString() != "" && textDriver.text.toString() != "") {
+                viewModel.handleEvent(EditPerformanceEvent.GetPerformance(textDriver.text.toString(),textRace.text.toString()))
+            }
+        }
+
     }
 }

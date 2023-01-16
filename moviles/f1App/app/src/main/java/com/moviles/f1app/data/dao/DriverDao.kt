@@ -22,7 +22,7 @@ interface DriverDao {
     suspend fun getDriverByName(name: String): DriverWithRaces
 
     @Query(Constantes.queryUpdateDriver)
-    suspend fun updateDriver(id: Int, name: String, number: Int, idTeam: Int)
+    suspend fun updateDriver(id: Int, name: String, number: Int, photo: String, idTeam: Int)
 
     @Delete
     @Transaction

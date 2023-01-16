@@ -12,6 +12,9 @@ class PerformanceRepository @Inject constructor(private val performanceDao: Perf
     suspend fun getPerformance(idDriver: Int, idRace: Int) =
         performanceDao.getPerformance(idDriver, idRace).toPerformance()
 
+    suspend fun getPerformanceWithObjects(idDriver: Int, idRace: Int) =
+        performanceDao.getPerformanceWithObjects(idDriver, idRace).toPerformanceWithObjects()
+
     suspend fun getDriverPerformances(idDriver: Int) =
         performanceDao.getDriverPerformances(idDriver).map { it.toPerformanceWithObjects() }
 

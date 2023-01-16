@@ -83,7 +83,6 @@ class EditDriversFragment : Fragment(), MenuProvider {
 
         menu.findItem(R.id.item_add).isVisible = true
         menu.findItem(R.id.item_update).isVisible = false
-        menu.findItem(R.id.item_delete).isVisible = false
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -91,9 +90,6 @@ class EditDriversFragment : Fragment(), MenuProvider {
             R.id.item_add -> {
                 val action = EditDriversFragmentDirections.actionEditDriversToEditDriver(0)
                 findNavController().navigate(action)
-                true
-            }
-            R.id.item_delete -> {
                 true
             }
             else -> false

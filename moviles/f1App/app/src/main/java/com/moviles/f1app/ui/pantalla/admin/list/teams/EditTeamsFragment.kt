@@ -81,7 +81,6 @@ class EditTeamsFragment : Fragment(), MenuProvider {
 
         menu.findItem(R.id.item_add).isVisible = true
         menu.findItem(R.id.item_update).isVisible = false
-        menu.findItem(R.id.item_delete).isVisible = false
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -89,9 +88,6 @@ class EditTeamsFragment : Fragment(), MenuProvider {
             R.id.item_add -> {
                 val action = EditTeamsFragmentDirections.actionEditTeamsToEditTeam(0)
                 findNavController().navigate(action)
-                true
-            }
-            R.id.item_delete -> {
                 true
             }
             else -> false

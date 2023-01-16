@@ -3,17 +3,21 @@ package com.moviles.f1app.ui.pantalla.admin.detail.performance
 import com.moviles.f1app.domain.modelo.Performance
 
 sealed class EditPerformanceEvent {
-    object GetData : EditPerformanceEvent()
-    data class GetPerformance(val idDriver: Int, val idRace: Int) : EditPerformanceEvent()
-    data class AddPerformance(
+    class GetData(val idDriver: Int, val idRace: Int) : EditPerformanceEvent()
+    class GetPerformance(val driverName: String, val trackName: String) : EditPerformanceEvent()
+    class AddPerformance(
         val performance: Performance,
         val driverName: String,
         val trackName: String
     ) : EditPerformanceEvent()
 
-    data class UpdatePerformance(
+    class UpdatePerformance(
         val performance: Performance,
         val driverName: String,
         val trackName: String
     ) : EditPerformanceEvent()
+
+    class GetDriverName(val idDriver: Int) : EditPerformanceEvent()
+    class GetTrackName(val idRace: Int) : EditPerformanceEvent()
+    class GetPerformanceByNames(val driverName: String, val trackName: String) : EditPerformanceEvent()
 }

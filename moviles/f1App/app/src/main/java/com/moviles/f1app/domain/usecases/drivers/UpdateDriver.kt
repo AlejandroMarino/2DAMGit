@@ -8,7 +8,13 @@ class UpdateDriver @Inject constructor(private val driverRepository: DriverRepos
 
     suspend fun invoke(driver: Driver): Boolean {
         return try {
-            driverRepository.updateDriver(driver.id, driver.name, driver.number, driver.idTeam)
+            driverRepository.updateDriver(
+                driver.id,
+                driver.name,
+                driver.number,
+                driver.photo,
+                driver.idTeam
+            )
             true
         } catch (e: Exception) {
             false

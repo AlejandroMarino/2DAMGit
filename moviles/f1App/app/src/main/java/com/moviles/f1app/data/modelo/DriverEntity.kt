@@ -22,6 +22,8 @@ data class DriverEntity(
     val name: String,
     @ColumnInfo(name = Constantes.number)
     val number: Int,
+    @ColumnInfo(name = Constantes.photo)
+    val photo: String?,
     @ColumnInfo(name = Constantes.id_team)
     val id_team: Int = 0,
 )

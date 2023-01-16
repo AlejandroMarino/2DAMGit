@@ -10,5 +10,6 @@ sealed class EditDriverEvent {
     class GetDriver(val id: Int) : EditDriverEvent()
     class DeletePerformance(val performance: PerformanceWithObjects) : EditDriverEvent()
     class AddPerformance(val performance: PerformanceWithObjects) : EditDriverEvent()
+    class SetPhoto(val photo: String) : EditDriverEvent()
     object GetTeams : EditDriverEvent()
 }

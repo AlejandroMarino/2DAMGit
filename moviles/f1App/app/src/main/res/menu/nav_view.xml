@@ -4,17 +4,17 @@
         android:id="@+id/item_teams"
         android:enabled="true"
         android:icon="@drawable/team_icon_24"
-        android:title="teams" />
+        android:title="@string/teams" />
 
     <item
         android:id="@+id/item_drivers"
         android:enabled="true"
         android:icon="@drawable/piloto_icon_24"
-        android:title="drivers" />
+        android:title="@string/drivers" />
 
     <item
         android:id="@+id/item_races"
         android:enabled="true"
         android:icon="@drawable/race_icon_24"
-        android:title="races" />
+        android:title="@string/races" />
 </menu>

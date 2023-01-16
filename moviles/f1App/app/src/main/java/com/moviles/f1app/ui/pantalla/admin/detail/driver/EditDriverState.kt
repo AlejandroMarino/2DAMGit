@@ -9,5 +9,6 @@ data class EditDriverState(
     val teams: List<Team> = emptyList(),
     val message: String? = null,
     val teamName: String = "",
+    val photo: String = "",
     val performances: List<PerformanceWithObjects> = emptyList(),
 )

@@ -38,13 +38,13 @@ fun DriverEntity.toDriver(): Driver {
 }
 
 fun Driver.toDriverEntity(): DriverEntity {
-    return DriverEntity(this.id, this.name, this.number, this.idTeam)
+    return DriverEntity(this.id, this.name, this.number,this.photo, this.idTeam)
 }
 
 fun DriverWithRaces.toDriver(): Driver {
     val map: Map<Int, Performance> = this.races.associateBy({ it.idRace }, { it.toPerformance() })
     return Driver(
-        this.driver.idDriver, this.driver.name, this.driver.number, map, this.driver.id_team
+        this.driver.idDriver, this.driver.name, this.driver.number,this.driver.photo ?: "", map, this.driver.id_team
     )
 }
 
@@ -56,7 +56,7 @@ fun Driver.toDriverWithRaces(): DriverWithRaces {
 }
 
 fun Race.toRaceEntity(): RaceEntity {
-    return RaceEntity(this.id, this.track, this.date)
+    return RaceEntity(this.date, this.id, this.track)
 }
 
 fun RaceEntity.toRace(): Race {

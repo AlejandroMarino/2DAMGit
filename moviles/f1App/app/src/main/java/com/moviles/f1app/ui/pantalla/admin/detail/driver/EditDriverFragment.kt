@@ -1,5 +1,9 @@
 package com.moviles.f1app.ui.pantalla.admin.detail.driver
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
@@ -19,6 +23,7 @@ import com.moviles.f1app.domain.modelo.Driver
 import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class EditDriverFragment : Fragment(), MenuProvider {
     private lateinit var adapter: PerformanceAdapterDriver
@@ -31,11 +36,12 @@ class EditDriverFragment : Fragment(), MenuProvider {
     private lateinit var arrayAdapter: ArrayAdapter<String>
     private var idDriver: Int = 0
 
+    private val requestGallery = 1
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentEditDriverBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -111,7 +117,14 @@ class EditDriverFragment : Fragment(), MenuProvider {
                     if (driver.number != 0) {
                         textNumber.setText(driver.number.toString())
                     }
-
+                }
+                state.photo.let { photo ->
+                    if (photo != "") {
+                        imageDriver.setImageURI(Uri.parse(photo))
+                        imageDriver.imageTintList = null
+                    }else{
+                        imageDriver.setImageResource(R.drawable.ic_person_24)
+                    }
                 }
                 adapter.submitList(state.performances)
             }
@@ -124,15 +137,44 @@ class EditDriverFragment : Fragment(), MenuProvider {
                 findNavController().navigate(action)
             }
 
+
+
+            imageDriver.setOnClickListener {
+                if (requireContext().checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permissions, requestGallery)
+                } else {
+                    gallery()
+                }
+            }
+
+            onRequestPermissionsResult(
+                requestGallery,
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                intArrayOf(PackageManager.PERMISSION_GRANTED)
+            )
+        }
+    }
+
+    //Abre la galeria
+    private fun gallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, requestGallery)
+    }
+
+    //Obtiene la imagen seleccionada
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == requestGallery) {
+            binding.imageDriver.setImageURI(data?.data)
+            viewModel.handleEvent(EditDriverEvent.SetPhoto(data?.data.toString()))
         }
     }
 
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_lists, menu)
-
         menu.findItem(R.id.item_add).isVisible = true
         menu.findItem(R.id.item_update).isVisible = true
-        menu.findItem(R.id.item_delete).isVisible = false
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -146,7 +188,8 @@ class EditDriverFragment : Fragment(), MenuProvider {
                             EditDriverEvent.AddDriver(
                                 Driver(
                                     name = textNameD.text.toString(),
-                                    number = textNumber.text.toString().toInt()
+                                    number = textNumber.text.toString().toInt(),
+                                    photo = viewModel.uiState.value?.photo ?: "",
                                 ), textTeam.text.toString()
                             )
                         )
@@ -166,16 +209,14 @@ class EditDriverFragment : Fragment(), MenuProvider {
                                 Driver(
                                     id = idDriver,
                                     name = textNameD.text.toString(),
-                                    number = textNumber.text.toString().toInt()
+                                    number = textNumber.text.toString().toInt(),
+                                    photo = viewModel.uiState.value?.photo ?: "",
                                 ), textTeam.text.toString()
                             )
                         )
                     } else {
                         Toast.makeText(context, R.string.error_updating, Toast.LENGTH_SHORT).show()
                     }
-                    true
-                }
-                R.id.item_delete -> {
                     true
                 }
                 else -> false

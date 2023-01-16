@@ -12,11 +12,11 @@ import java.time.LocalDate
     indices = [Index(value = [Constantes.track], unique = true)]
 )
 data class RaceEntity(
+    @ColumnInfo(name = Constantes.date)
+    val date: LocalDate,
     @ColumnInfo(name = Constantes.idRace)
     @PrimaryKey(autoGenerate = true)
     val idRace: Int = 0,
     @ColumnInfo(name = Constantes.track)
     val track: String,
-    @ColumnInfo(name = Constantes.date)
-    val date: LocalDate,
 )

@@ -60,10 +60,17 @@ class EditDriverViewModel @Inject constructor(
             is EditDriverEvent.AddPerformance -> {
                 addPerformance(event.performance)
             }
+            is EditDriverEvent.SetPhoto -> {
+                setPhoto(event.photo)
+            }
             EditDriverEvent.GetTeams -> {
                 getTeams()
             }
         }
+    }
+
+    private fun setPhoto(photo: String) {
+        _uiState.value = _uiState.value?.copy(photo = photo)
     }
 
     private fun addDriver(driver: Driver, teamName: String) {
@@ -108,7 +115,8 @@ class EditDriverViewModel @Inject constructor(
                 driver = getDriver.invoke(id),
                 teamName = getTeam.invoke(getDriver.invoke(id).idTeam).name,
                 teams = getTeams.invoke(),
-                performances = getDriverPerformances.invoke(id)
+                performances = getDriverPerformances.invoke(id),
+                photo = getDriver.invoke(id).photo
             )
         }
     }

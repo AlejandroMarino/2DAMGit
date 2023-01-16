@@ -5,18 +5,12 @@
     <item
         android:id="@+id/item_update"
         android:icon="@drawable/ic_update_24"
-        android:title="delete"
+        android:title="@string/delete"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/item_add"
         android:icon="@drawable/ic_add_24"
-        android:title="add"
+        android:title="@string/add"
         app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/item_delete"
-        android:icon="@drawable/ic_delete_24"
-        android:title="delete"
-        app:showAsAction="ifRoom"/>
-
 
 </menu>

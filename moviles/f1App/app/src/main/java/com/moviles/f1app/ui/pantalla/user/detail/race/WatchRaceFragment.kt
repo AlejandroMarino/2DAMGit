@@ -1,25 +1,52 @@
 package com.moviles.f1app.ui.pantalla.user.detail.race
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.moviles.f1app.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.moviles.f1app.databinding.FragmentWatchRaceBinding
+import dagger.hilt.android.AndroidEntryPoint
+import java.time.format.DateTimeFormatter
 
-
+@AndroidEntryPoint
 class WatchRaceFragment : Fragment() {
+    private lateinit var adapter: WatchPerformanceAdapterRace
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var _binding: FragmentWatchRaceBinding? = null
+    private val binding get() = _binding!!
 
-    }
+    private val viewModel: WatchRaceViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_watch_race, container, false)
+        _binding = FragmentWatchRaceBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
+        val idRace = arguments?.getInt("idRace") ?: 0
+        viewModel.handleEvent(WatchRaceEvent.GetRace(idRace))
+
+        with(binding) {
+            adapter = WatchPerformanceAdapterRace()
+            list.adapter = adapter
+
+            viewModel.uiState.observe(viewLifecycleOwner) { state ->
+                state.race.let {
+                    textTrack.text = it.track
+                    textDate.text = it.date.format(formatter)
+                }
+                adapter.submitList(state.performances)
+            }
+        }
     }
 }

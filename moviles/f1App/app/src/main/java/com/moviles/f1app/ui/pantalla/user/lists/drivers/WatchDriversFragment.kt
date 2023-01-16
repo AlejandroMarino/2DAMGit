@@ -5,22 +5,52 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.moviles.f1app.R
+import com.moviles.f1app.databinding.FragmentWatchDriversBinding
+import com.moviles.f1app.databinding.FragmentWatchRacesBinding
+import com.moviles.f1app.domain.modelo.Driver
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class WatchDriversFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private lateinit var adapter: WatchDriversAdapter
 
-    }
+    private var _binding: FragmentWatchDriversBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: WatchDriversViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_watch_drivers, container, false)
+        _binding = FragmentWatchDriversBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.handleEvent(WatchDriversEvent.LoadDrivers)
+
+        with(binding) {
+
+            adapter = WatchDriversAdapter(object : WatchDriversAdapter.DriversActions {
+                override fun onDriverWatch(driver: Driver) {
+                    val action = WatchDriversFragmentDirections.actionWatchDriversToWatchDriver(driver.id)
+                    findNavController().navigate(action)
+                }
+            })
+            list.adapter = adapter
+
+            viewModel.uiState.observe(viewLifecycleOwner) {
+                adapter.submitList(it.drivers)
+            }
+        }
     }
 
 }
