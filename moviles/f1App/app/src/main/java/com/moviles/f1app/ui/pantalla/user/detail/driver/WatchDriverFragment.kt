@@ -2,13 +2,12 @@ package com.moviles.f1app.ui.pantalla.user.detail.driver
 
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentWatchDriverBinding
 import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,20 +38,37 @@ class WatchDriverFragment : Fragment() {
         viewModel.handleEvent(WatchDriverEvent.GetDriver(idDriver))
 
         with(binding) {
-            adapter = WatchPerformanceAdapterDriver()
+            adapter = WatchPerformanceAdapterDriver(object :
+                WatchPerformanceAdapterDriver.PerformanceActions {
+                override fun onClickWatch(performance: PerformanceWithObjects) {
+                    val action =
+                        WatchDriverFragmentDirections.actionWatchDriverToWatchRace(performance.race.id)
+                    findNavController().navigate(action)
+                }
+            })
             listRaces.adapter = adapter
 
             viewModel.uiState.observe(viewLifecycleOwner) { state ->
                 state.driver.let {
                     textName.text = it.name
                     textNumber.text = it.number.toString()
-                    driverPhoto.setImageURI(Uri.parse(it.photo))
-                    driverPhoto.imageTintList = null
+                    if (it.photo != "") {
+                        driverPhoto.setImageURI(Uri.parse(it.photo))
+                        driverPhoto.imageTintList = null
+                    }
                 }
                 state.teamName.let {
                     textTeam.text = it
                 }
                 adapter.submitList(state.performances)
+            }
+
+            textTeam.setOnClickListener {
+                val action =
+                    WatchDriverFragmentDirections.actionWatchDriverToWatchTeam(
+                        viewModel.uiState.value?.driver?.idTeam ?: 0
+                    )
+                findNavController().navigate(action)
             }
         }
     }

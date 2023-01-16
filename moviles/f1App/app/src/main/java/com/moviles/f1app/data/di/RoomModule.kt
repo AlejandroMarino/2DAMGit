@@ -33,7 +33,7 @@ object RoomModule {
     ): F1RoomDatabase =
         Room.databaseBuilder(context, F1RoomDatabase::class.java, Constantes.database)
             .createFromAsset(ruta)
-            .fallbackToDestructiveMigrationFrom(2)
+            .fallbackToDestructiveMigration()
             .build()
 
     @Provides

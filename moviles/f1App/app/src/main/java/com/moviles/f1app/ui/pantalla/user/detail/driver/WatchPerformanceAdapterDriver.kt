@@ -11,8 +11,12 @@ import com.moviles.f1app.databinding.ItemPerformanceBinding
 import com.moviles.f1app.domain.modelo.Performance
 import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 
-class WatchPerformanceAdapterDriver() :
+class WatchPerformanceAdapterDriver(val actions: PerformanceActions) :
     ListAdapter<PerformanceWithObjects, WatchPerformanceAdapterDriver.PerformanceViewHolder>(DiffCallback()) {
+
+    interface PerformanceActions {
+        fun onClickWatch(performance: PerformanceWithObjects)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PerformanceViewHolder {
         return PerformanceViewHolder(
@@ -39,6 +43,9 @@ class WatchPerformanceAdapterDriver() :
                 textPosition.text = performance.position.toString()
                 textLap.text = performance.fastestLap
 
+                itemView.setOnClickListener {
+                    actions.onClickWatch(performance)
+                }
             }
         }
     }

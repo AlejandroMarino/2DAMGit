@@ -39,8 +39,11 @@ class WatchDriversAdapter(val actions: WatchDriversAdapter.DriversActions) :
             driver: Driver,
         ) {
             with(binding) {
-
-                driverPhoto.setImageURI(Uri.parse(driver.photo))
+                if (driver.photo != "") {
+                    driverPhoto.setImageURI(Uri.parse(driver.photo))
+                } else {
+                    driverPhoto.setImageResource(R.drawable.ic_person_24)
+                }
                 textView.text = driver.name
 
                 itemView.setOnClickListener {

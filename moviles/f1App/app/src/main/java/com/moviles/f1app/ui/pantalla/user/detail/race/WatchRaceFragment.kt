@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.moviles.f1app.databinding.FragmentWatchRaceBinding
+import com.moviles.f1app.domain.modelo.PerformanceWithObjects
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.format.DateTimeFormatter
 
@@ -37,7 +39,14 @@ class WatchRaceFragment : Fragment() {
         viewModel.handleEvent(WatchRaceEvent.GetRace(idRace))
 
         with(binding) {
-            adapter = WatchPerformanceAdapterRace()
+            adapter = WatchPerformanceAdapterRace(object :
+                WatchPerformanceAdapterRace.PerformanceActions {
+                override fun onClickWatch(performance: PerformanceWithObjects) {
+                    val action =
+                        WatchRaceFragmentDirections.actionWatchRaceToWatchDriver(performance.driver.id)
+                    findNavController().navigate(action)
+                }
+            })
             list.adapter = adapter
 
             viewModel.uiState.observe(viewLifecycleOwner) { state ->

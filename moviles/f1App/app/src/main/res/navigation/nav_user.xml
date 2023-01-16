@@ -49,6 +49,12 @@
         <argument
             android:name="idDriver"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_watch_driver_to_watch_race"
+            app:destination="@id/watch_race" />
+        <action
+            android:id="@+id/action_watch_driver_to_watch_team"
+            app:destination="@id/watch_team" />
     </fragment>
     <fragment
         android:id="@+id/watch_races"
@@ -70,5 +76,8 @@
         <argument
             android:name="idRace"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_watch_race_to_watch_driver"
+            app:destination="@id/watch_driver" />
     </fragment>
 </navigation>
