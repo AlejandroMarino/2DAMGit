@@ -30,10 +30,10 @@ object Constantes {
     //Database
 
     const val database = "item_database"
-    const val databaseLocation = "database/efe1.db"
+    const val databaseLocation = "database/f1.db"
     const val assetdb = "assetDB"
     const val destructiveMigration = 1
-    const val version = 2
+    const val version = 3
 
 
     //Entity
