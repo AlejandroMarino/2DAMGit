@@ -14,7 +14,7 @@ import java.time.LocalDate
 data class RaceEntity(
     @ColumnInfo(name = Constantes.date)
     val date: LocalDate,
-    @ColumnInfo(name = Constantes.idRace)
+    @ColumnInfo(name = Constantes.idRace, )
     @PrimaryKey(autoGenerate = true)
     val idRace: Int = 0,
     @ColumnInfo(name = Constantes.track)
