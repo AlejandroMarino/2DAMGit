@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_content"
+        android:enabled="true"
+        android:icon="@drawable/film_icon_24"
+        android:title="content" />
+
+    <item
+        android:id="@+id/item_actor"
+        android:enabled="true"
+        android:icon="@drawable/actor_icon_24"
+        android:title="actors" />
+</menu>
