@@ -7,14 +7,14 @@ import com.example.filmflows.data.modelo.MovieEntity
 interface MovieDao {
 
     @Query("SELECT * FROM movies order by vote_average DESC")
-    fun getAll(): List<MovieEntity>
+    suspend fun getAll(): List<MovieEntity>
 
     @Query("SELECT * FROM movies WHERE id = :id")
-    fun getMovie(id: Int): MovieEntity
+    suspend fun getMovie(id: Int): MovieEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(movies: List<MovieEntity>)
+    suspend fun insertAll(movies: List<MovieEntity>)
 
     @Delete
-    fun deleteAll(movie: List<MovieEntity>)
+    suspend fun deleteAll(movie: List<MovieEntity>)
 }

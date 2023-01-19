@@ -9,14 +9,14 @@ import javax.inject.Inject
 class SeriesRemoteDataSource @Inject constructor(private val seriesService: SeriesService) :
     BaseApiResponse() {
 
-    suspend fun fetchPopularMovies(): NetworkResult<List<Series>> {
+    suspend fun fetchPopularSeries(): NetworkResult<List<Series>> {
 
         return safeApiCall(apiCall = { seriesService.getPopularSeries() },
             transform = { it.map { seriesEntity -> seriesEntity.toSeries() } })
     }
 
 
-    suspend fun fetchMovie(id: Int): NetworkResult<Series> {
+    suspend fun fetchSeries(id: Int): NetworkResult<Series> {
 
         return safeApiCall(apiCall = { seriesService.getSeries(id) }, transform = { it.toSeries() })
 

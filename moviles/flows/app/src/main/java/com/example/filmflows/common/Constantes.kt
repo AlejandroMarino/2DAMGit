@@ -10,4 +10,6 @@ object Constantes {
     //DB
     const val version = 1
 
+    //img
+    const val imageUrl = "https://image.tmdb.org/t/p/original"
 }
