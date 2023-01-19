@@ -1,6 +1,6 @@
 package com.example.filmflows.data.remote
 
-import com.example.flows.utils.NetworkResult
+import com.example.filmflows.utils.NetworkResult
 import retrofit2.Response
 
 abstract class BaseApiResponse {

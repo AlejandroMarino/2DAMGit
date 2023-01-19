@@ -11,8 +11,6 @@ U
 %src/main/resources/fxml/InfoFish.fxml,1\b\1b8208917798f77eb3414add3bc976f9a13f738c
 S
 #src/main/resources/fxml/Inicio.fxml,1\5\157e713ec5c628b0b71ee0128fde83489cbf0718
-N
-src/main/java/modelo/Fish.java,8\6\867dd0b1030cee4bccff59383d4f817c3e409df9
 V
 &src/main/resources/fxml/Principal.fxml,9\b\9baeeeaf4cdd502d8ad969ab4d52c3aa3e7a43b4
 Y
@@ -49,8 +47,6 @@ W
 'src/main/java/config/Configuracion.java,3\d\3d4ba9367885ebadd3d09e63c531b540ce2bf984
 f
 6src/main/java/ui/pantallas/inicio/InicioViewModel.java,6\0\60cd47a60d926d0f1d46104c79d2b6e1c7476974
-V
-&src/main/java/data/retrofit/ACApi.java,7\e\7e42e9ddf0c23d0e009054f6078ee51dcdd72714
 i
 9src/main/java/ui/pantallas/allFish/AllFishController.java,e\1\e168c275567ff5a70f87d77ce3091fcb14257c13
 h
@@ -67,15 +63,19 @@ n
 >src/main/java/ui/pantallas/imagenFish/ImageFishController.java,0\8\08d27ff14e30e63c80ae132e4b920bd4a47fd038
 j
 :src/main/java/ui/pantallas/infoFish/InfoFishViewModel.java,7\f\7f30ae8014db2c4535434e2e11245a9c1c755ff8
+X
+(src/main/java/data/impl/DaoFishImpl.java,6\3\63d223581be65de161e7fa9348f6fb944c602684
 a
 1src/main/java/data/retrofit/ProducesRetrofit.java,4\6\46f51ead56b358db3c83844f583a7054fbe5f8bd
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 l
 <src/main/java/servicios/serviciosImpl/ServiciosFishImpl.java,0\7\07f0edff21d6b66b72e337aabc0adac2a1d3325a
 O
 src/main/java/data/DaoFish.java,2\1\214bdbf00f2cec70b35b756fd084588b33688494
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-X
-(src/main/java/data/impl/DaoFishImpl.java,6\3\63d223581be65de161e7fa9348f6fb944c602684
+V
+&src/main/java/data/retrofit/ACApi.java,7\e\7e42e9ddf0c23d0e009054f6078ee51dcdd72714
+N
+src/main/java/modelo/Fish.java,8\6\867dd0b1030cee4bccff59383d4f817c3e409df9

@@ -1,15 +1,14 @@
-package com.example.flows.di
+package com.example.filmflows.data.di
 
 import android.content.Context
 import androidx.room.Room
 import com.example.filmflows.data.local.AppDatabase
+import com.example.filmflows.data.local.dao.MovieDao
+import com.example.filmflows.data.local.dao.SeriesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.example.flows.data.local.AppDatabase
-import com.example.flows.data.local.MovieDao
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -31,5 +30,10 @@ object DatabaseModule {
     @Provides
     fun provideMovieDao(appDatabase: AppDatabase): MovieDao {
         return appDatabase.movieDao()
+    }
+
+    @Provides
+    fun provideSeriesDao(appDatabase: AppDatabase): SeriesDao {
+        return appDatabase.seriesDao()
     }
 }

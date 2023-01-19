@@ -43,3 +43,13 @@ Iservidor/src/main/java/jakarta/errores/BaseDatosCaidaExceptionMapper.java,7\d\
 servidor/pom.xml,f\0\f0784b6bd8e433bbdb1fd1f40fb81f8a7afbdc18
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+w
+G.idea/sonarlint/issuestore/7/d/7d368a4f4977a3f9f12b0e4e93bc82fb15811dff,b\8\b8c180ee3f7563c98635c04bc1e1916b5f82fec3
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+w
+G.idea/sonarlint/issuestore/9/7/971499f635cfdd8d90ea255406de83bac4da95ed,7\4\7407dfe7130ed8cae1c3bd71af4beeea4d8ec369
+w
+G.idea/sonarlint/issuestore/f/0/f0784b6bd8e433bbdb1fd1f40fb81f8a7afbdc18,2\d\2d96dcdc9d69da48dc31595ecd847b70f6c00fc5
+w
+G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\863e0292fd7e9b3e74dafd6cc01f73ba76346482

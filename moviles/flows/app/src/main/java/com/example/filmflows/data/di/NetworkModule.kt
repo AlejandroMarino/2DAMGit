@@ -1,16 +1,12 @@
-package com.example.flows.di
+package com.example.filmflows.data.di
 
-import androidx.viewbinding.BuildConfig
-import com.example.filmflows.common.Constants
+import com.example.filmflows.common.Constantes
 import com.example.filmflows.network.AuthInterceptor
-import com.example.flows.BuildConfig
-import com.example.flows.Config
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import com.example.flows.network.AuthInterceptor
-import io.buildwithnd.demotmdb.network.services.MovieService
+import com.example.filmflows.network.services.MovieService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -33,14 +29,14 @@ object NetworkModule {
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(AuthInterceptor(Constants.API_KEY))
+            .addInterceptor(AuthInterceptor(Constantes.API_KEY))
             .build()
     }
 
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(Constantes.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
