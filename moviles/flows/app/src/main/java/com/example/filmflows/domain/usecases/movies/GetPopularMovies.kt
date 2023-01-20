@@ -6,3 +6,4 @@ import javax.inject.Inject
 class GetPopularMovies @Inject constructor(private val moviesRepository: MoviesRepository) {
     operator fun invoke() = moviesRepository.fetchPopularMovies()
 }
+
