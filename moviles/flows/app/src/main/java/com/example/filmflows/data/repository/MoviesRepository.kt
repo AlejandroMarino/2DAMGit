@@ -1,6 +1,7 @@
 package com.example.filmflows.data.repository
 
 import com.example.filmflows.data.local.dao.MovieDao
+import com.example.filmflows.data.modelo.ResponseMovie
 import com.example.filmflows.data.modelo.toMovie
 import com.example.filmflows.data.modelo.toMovieEntity
 import com.example.filmflows.data.remote.MovieRemoteDataSource
@@ -18,26 +19,27 @@ class MoviesRepository @Inject constructor(
 ) {
     fun fetchPopularMovies(): Flow<NetworkResult<List<Movie>>> {
         return flow {
-            emit(fetchPospularMoviesCached())
             emit(NetworkResult.Loading())
             val result = movieRemoteDataSource.fetchPopularMovies()
             emit(result)
             //Cache to database if response is successful
             if (result is NetworkResult.Success) {
-                result.data?.let { it ->
-                    movieDao.deleteAll(it.map{ it.toMovieEntity()})
-                    movieDao.insertAll(it.map{ it.toMovieEntity()})
+                result.data?.let { item ->
+                    movieDao.deleteAll(item.map { it.toMovieEntity() })
+                    movieDao.insertAll(item.map { it.toMovieEntity() })
                 }
+            } else {
+                emit(fetchPopularMoviesCached())
             }
         }.flowOn(Dispatchers.IO)
     }
 
-    private suspend fun fetchPospularMoviesCached(): NetworkResult<List<Movie>> =
+    private suspend fun fetchPopularMoviesCached(): NetworkResult<List<Movie>> =
         movieDao.getAll().let {list->
             NetworkResult.Success(list.map { it.toMovie() } ?: emptyList())
         }
 
-    fun fetchMovie(id: Int): Flow<NetworkResult<Movie>> {
+    fun fetchMovie(id: Int): Flow<NetworkResult<ResponseMovie>> {
         return flow {
             emit(NetworkResult.Loading())
             emit(movieRemoteDataSource.fetchMovie(id))

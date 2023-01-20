@@ -1,6 +1,7 @@
 package com.example.filmflows.data.repository
 
 import com.example.filmflows.data.local.dao.SeriesDao
+import com.example.filmflows.data.modelo.ResponseSeries
 import com.example.filmflows.data.modelo.toSeries
 import com.example.filmflows.data.modelo.toSeriesEntity
 import com.example.filmflows.data.remote.SeriesRemoteDataSource
@@ -18,7 +19,7 @@ class SeriesRepository @Inject constructor(
 ) {
     fun fetchPopularSeries(): Flow<NetworkResult<List<Series>>> {
         return flow {
-            emit(fetchPospularSeriesCached())
+            emit(fetchPopularSeriesCached())
             emit(NetworkResult.Loading())
             val result = seriesRemoteDataSource.fetchPopularSeries()
             emit(result)
@@ -32,12 +33,12 @@ class SeriesRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    private suspend fun fetchPospularSeriesCached(): NetworkResult<List<Series>> =
+    private suspend fun fetchPopularSeriesCached(): NetworkResult<List<Series>> =
         seriesDao.getAll().let { list ->
             NetworkResult.Success(list.map { it.toSeries() } ?: emptyList())
         }
 
-    fun fetchSeries(id: Int): Flow<NetworkResult<Series>> {
+    fun fetchSeries(id: Int): Flow<NetworkResult<ResponseSeries>> {
         return flow {
             emit(NetworkResult.Loading())
             emit(seriesRemoteDataSource.fetchSeries(id))

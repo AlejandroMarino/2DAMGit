@@ -19,12 +19,9 @@ import javax.inject.Inject
 class ContentFragmentViewModel @Inject constructor(
     @ApplicationContext val appContext: Context,
     private val getPopularMovies: GetPopularMovies,
-    private val moviesRepository: MoviesRepository,
 ) : ViewModel() {
 
-    private val _uiState: MutableStateFlow<ContentFragmentState> by lazy {
-        MutableStateFlow((ContentFragmentState()))
-    }
+    private val _uiState = MutableStateFlow(ContentFragmentState())
     val uiState: StateFlow<ContentFragmentState> = _uiState
 
     fun handleEvent(event: ContentFragmentEvent) {
@@ -38,8 +35,7 @@ class ContentFragmentViewModel @Inject constructor(
     private fun getPopularMovies() {
         viewModelScope.launch {
             if (Utils.hasInternetConnection(appContext)) {
-                moviesRepository.fetchPopularMovies()
-                    .collect { result ->
+                getPopularMovies.invoke().collect { result ->
                         when (result) {
                             is NetworkResult.Error -> {
                                 _uiState.update {
@@ -53,20 +49,18 @@ class ContentFragmentViewModel @Inject constructor(
                             is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
                             is NetworkResult.Success -> _uiState.update {
                                 it.copy(
-                                    movies = result.data ?: emptyList(), isLoading = false
+                                    movies = result.data, isLoading = false
                                 )
                             }
-
                         }
                     }
             } else {
                 _uiState.update {
                     it.copy(
                         error = "no hay internet cargando de cache.",
-                        isLoading = false
+                        isLoading = false,
                     )
                 }
-
             }
         }
     }

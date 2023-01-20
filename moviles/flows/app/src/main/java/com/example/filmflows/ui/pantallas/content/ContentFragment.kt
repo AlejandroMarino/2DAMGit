@@ -1,6 +1,5 @@
 package com.example.filmflows.ui.pantallas.content
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,9 +20,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ContentFragment : Fragment() {
 
-    private var _binding: FragmentContentBinding? = null
-    private val binding get() = _binding!!
-
+    private lateinit var binding: FragmentContentBinding
     private lateinit var adapter: MoviesAdapter
 
     private val viewModel: ContentFragmentViewModel by viewModels()
@@ -33,36 +30,38 @@ class ContentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentContentBinding.inflate(inflater, container, false)
+        binding = FragmentContentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.handleEvent(ContentFragmentEvent.GetPopularMovies)
 
-        with(binding) {
+        init()
+        binding.list.adapter = adapter
 
-            init()
-
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.uiState.collect {
-                        it.error?.let { error ->
-                            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                        }
-                        adapter.submitList(it.movies)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { value ->
+                    if (value.error != null) {
+                        Toast.makeText(
+                            requireContext(),
+                            viewModel.uiState.value.error,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
+                    binding.loading.visibility =
+                        if (value.isLoading) View.VISIBLE else View.GONE
+                    adapter.submitList(value.movies)
                 }
             }
-
         }
     }
 
     private fun init() {
-
-        val layoutManager = LinearLayoutManager(context)
+        val layoutManager = LinearLayoutManager(this.context)
         binding.list.layoutManager = layoutManager
-
         val dividerItemDecoration = DividerItemDecoration(
             binding.list.context,
             layoutManager.orientation
@@ -74,7 +73,9 @@ class ContentFragment : Fragment() {
 
             }
         })
-        binding.list.adapter = adapter
+
+
+
     }
 
 }
