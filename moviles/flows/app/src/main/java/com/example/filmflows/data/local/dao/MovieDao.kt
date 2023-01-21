@@ -1,15 +1,16 @@
 package com.example.filmflows.data.local.dao
 
 import androidx.room.*
+import com.example.filmflows.common.Constantes
 import com.example.filmflows.data.modelo.MovieEntity
 
 @Dao
 interface MovieDao {
 
-    @Query("SELECT * FROM movies order by vote_average DESC")
+    @Query(Constantes.queryGetMovies)
     suspend fun getAll(): List<MovieEntity>
 
-    @Query("SELECT * FROM movies WHERE id = :id")
+    @Query(Constantes.queryGetMovie)
     suspend fun getMovie(id: Int): MovieEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

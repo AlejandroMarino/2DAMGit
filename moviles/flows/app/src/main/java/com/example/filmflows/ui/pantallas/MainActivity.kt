@@ -20,18 +20,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
 
         with(binding) {
             bottomNavigationView.setOnItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.item_content -> {
-                        navController.navigate(R.id.contentFragment)
+                    R.id.item_movies -> {
+                        navController.navigate(R.id.moviesFragment)
                         true
                     }
-                    R.id.item_actor -> {
-                        navController.navigate(R.id.actorFragment)
+                    R.id.item_series -> {
+                        navController.navigate(R.id.seriesFragment)
                         true
                     }
                     else -> false

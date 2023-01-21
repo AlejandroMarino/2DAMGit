@@ -3,19 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/contentFragment">
+    app:startDestination="@id/moviesFragment">
     <fragment
-        android:id="@+id/contentFragment"
-        android:name="com.example.filmflows.ui.pantallas.content.ContentFragment"
+        android:id="@+id/moviesFragment"
+        android:name="com.example.filmflows.ui.pantallas.movies.MoviesFragment"
         android:label="fragment_content"
-        tools:layout="@layout/fragment_content" >
+        tools:layout="@layout/fragment_movies" >
         <action
-            android:id="@+id/action_contentFragment_to_actorsFragment"
-            app:destination="@id/actorFragment" />
+            android:id="@+id/action_contentFragment_to_seriesFragment"
+            app:destination="@id/seriesFragment" />
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/actorFragment"
-        android:name="com.example.filmflows.ui.pantallas.actor.ActorFragment"
-        android:label="fragment_actors"
-        tools:layout="@layout/fragment_actor" />
+        android:id="@+id/seriesFragment"
+        android:name="com.example.filmflows.ui.pantallas.series.SeriesFragment"
+        android:label="fragment_series"
+        tools:layout="@layout/fragment_series" >
+        <action
+            android:id="@+id/action_seriesFragment_to_contentFragment"
+            app:destination="@id/moviesFragment" />
+        <action
+            android:id="@+id/action_seriesFragment_to_seriesDetailFragment"
+            app:destination="@id/seriesDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.filmflows.ui.pantallas.movieDetail.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" >
+        <action
+            android:id="@+id/action_movieDetailFragment_to_moviesFragment"
+            app:destination="@id/moviesFragment" />
+        <argument
+            android:name="idMovie"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/seriesDetailFragment"
+        android:name="com.example.filmflows.ui.pantallas.seriesDetail.SeriesDetailFragment"
+        android:label="fragment_series_detail"
+        tools:layout="@layout/fragment_series_detail" >
+        <action
+            android:id="@+id/action_seriesDetailFragment_to_seriesFragment"
+            app:destination="@id/seriesFragment" />
+        <argument
+            android:name="idSeries"
+            app:argType="integer" />
+    </fragment>
 </navigation>

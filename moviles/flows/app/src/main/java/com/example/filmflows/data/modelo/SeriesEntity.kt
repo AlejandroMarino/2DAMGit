@@ -2,8 +2,9 @@ package com.example.filmflows.data.modelo
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.filmflows.common.Constantes
 
-@Entity(tableName = "series")
+@Entity(tableName = Constantes.seriesTable)
 data class SeriesEntity(
     @PrimaryKey
     val id: Int = 0,
