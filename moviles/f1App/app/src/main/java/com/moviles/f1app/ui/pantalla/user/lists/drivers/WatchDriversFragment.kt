@@ -1,15 +1,13 @@
 package com.moviles.f1app.ui.pantalla.user.lists.drivers
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.moviles.f1app.R
 import com.moviles.f1app.databinding.FragmentWatchDriversBinding
-import com.moviles.f1app.databinding.FragmentWatchRacesBinding
 import com.moviles.f1app.domain.modelo.Driver
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,7 +39,8 @@ class WatchDriversFragment : Fragment() {
 
             adapter = WatchDriversAdapter(object : WatchDriversAdapter.DriversActions {
                 override fun onDriverWatch(driver: Driver) {
-                    val action = WatchDriversFragmentDirections.actionWatchDriversToWatchDriver(driver.id)
+                    val action =
+                        WatchDriversFragmentDirections.actionWatchDriversToWatchDriver(driver.id)
                     findNavController().navigate(action)
                 }
             })

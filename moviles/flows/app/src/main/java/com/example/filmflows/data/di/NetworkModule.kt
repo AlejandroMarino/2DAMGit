@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import com.example.filmflows.network.services.MovieService
+import com.example.filmflows.network.services.SeriesService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -45,5 +46,10 @@ object NetworkModule {
     @Provides
     fun provideMovieService(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java);
+    }
+
+    @Provides
+    fun provideSeriesService(retrofit: Retrofit): SeriesService {
+        return retrofit.create(SeriesService::class.java);
     }
 }

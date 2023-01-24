@@ -4,6 +4,7 @@ import com.example.filmflows.data.local.dao.MovieDao
 import com.example.filmflows.data.modelo.ResponseMovie
 import com.example.filmflows.data.modelo.toMovie
 import com.example.filmflows.data.modelo.toMovieEntity
+import com.example.filmflows.data.modelo.toResponseMovie
 import com.example.filmflows.data.remote.MovieRemoteDataSource
 import com.example.filmflows.domain.modelo.Movie
 import com.example.filmflows.utils.NetworkResult
@@ -35,15 +36,24 @@ class MoviesRepository @Inject constructor(
     }
 
     private suspend fun fetchPopularMoviesCached(): NetworkResult<List<Movie>> =
-        movieDao.getAll().let {list->
-            NetworkResult.Success(list.map { it.toMovie() } ?: emptyList())
+        movieDao.getAll().let { list ->
+            NetworkResult.Success(list.map { it.toMovie() })
         }
 
     fun fetchMovie(id: Int): Flow<NetworkResult<ResponseMovie>> {
         return flow {
             emit(NetworkResult.Loading())
-            emit(movieRemoteDataSource.fetchMovie(id))
+            val result = movieRemoteDataSource.fetchMovie(id)
+            emit(result)
+            if (result is NetworkResult.Error) {
+                emit(fetchMovieCached(id))
+            }
         }.flowOn(Dispatchers.IO)
     }
+
+    private suspend fun fetchMovieCached(id: Int): NetworkResult<ResponseMovie> =
+        movieDao.getMovie(id).let {
+            NetworkResult.Success(it.toMovie().toResponseMovie())
+        }
 
 }

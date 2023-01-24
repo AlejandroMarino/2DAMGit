@@ -2,6 +2,7 @@ package com.example.filmflows.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.filmflows.common.Constantes
 import com.example.filmflows.data.local.AppDatabase
 import com.example.filmflows.data.local.dao.MovieDao
 import com.example.filmflows.data.local.dao.SeriesDao
@@ -22,7 +23,7 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "app.db"
+            Constantes.appDb
         ).fallbackToDestructiveMigration()
             .build()
     }

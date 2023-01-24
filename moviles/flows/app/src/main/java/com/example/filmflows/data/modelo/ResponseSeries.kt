@@ -4,7 +4,7 @@ data class ResponseSeries(
     val id: Int,
     val name: String,
     val overview: String,
-    val voteAverage: Double,
-    val firstAirDate: String,
-    val posterPath: String,
+    val vote_average: Double,
+    val first_air_date: String,
+    val poster_path: String,
 )

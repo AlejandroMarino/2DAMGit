@@ -2,4 +2,21 @@
     <string name="app_name">FilmFlows</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="popularMovies">Popular movies</string>
+    <string name="movies">Movies</string>
+    <string name="movie">Movie</string>
+    <string name="series">Series</string>
+    <string name="popularSeries">Popular series</string>
+    <string name="noInternet">No internet connection</string>
+    <string name="poster">Poster</string>
+    <string name="title">Title:</string>
+    <string name="gato">gato</string>
+    <string name="vote_average">Vote average:</string>
+    <string name="_5_5">5.5</string>
+    <string name="release_date">Release date:</string>
+    <string name="_2020_01_01">2020-01-01</string>
+    <string name="overview">Overview:</string>
+    <string name="textview">TextView</string>
+    <string name="name">Name:</string>
+    <string name="first_air_date">First air date:</string>
 </resources>

@@ -1,9 +1,7 @@
 package com.example.filmflows.data.repository
 
 import com.example.filmflows.data.local.dao.SeriesDao
-import com.example.filmflows.data.modelo.ResponseSeries
-import com.example.filmflows.data.modelo.toSeries
-import com.example.filmflows.data.modelo.toSeriesEntity
+import com.example.filmflows.data.modelo.*
 import com.example.filmflows.data.remote.SeriesRemoteDataSource
 import com.example.filmflows.domain.modelo.Series
 import com.example.filmflows.utils.NetworkResult
@@ -19,7 +17,6 @@ class SeriesRepository @Inject constructor(
 ) {
     fun fetchPopularSeries(): Flow<NetworkResult<List<Series>>> {
         return flow {
-            emit(fetchPopularSeriesCached())
             emit(NetworkResult.Loading())
             val result = seriesRemoteDataSource.fetchPopularSeries()
             emit(result)
@@ -29,20 +26,33 @@ class SeriesRepository @Inject constructor(
                     seriesDao.deleteAll(it.map { it.toSeriesEntity() })
                     seriesDao.insertAll(it.map { it.toSeriesEntity() })
                 }
+            }else {
+                emit(fetchPopularSeriesCached())
             }
         }.flowOn(Dispatchers.IO)
     }
 
     private suspend fun fetchPopularSeriesCached(): NetworkResult<List<Series>> =
         seriesDao.getAll().let { list ->
-            NetworkResult.Success(list.map { it.toSeries() } ?: emptyList())
+            NetworkResult.Success(list.map { it.toSeries() })
         }
 
     fun fetchSeries(id: Int): Flow<NetworkResult<ResponseSeries>> {
         return flow {
             emit(NetworkResult.Loading())
-            emit(seriesRemoteDataSource.fetchSeries(id))
+            val result = seriesRemoteDataSource.fetchSeries(id)
+            emit(result)
+            if (result is NetworkResult.Success) {
+                result.data
+            }else {
+                emit(fetchSeriesCached(id))
+            }
         }.flowOn(Dispatchers.IO)
     }
+
+    private suspend fun fetchSeriesCached(id: Int): NetworkResult<ResponseSeries> =
+        seriesDao.getSeries(id).let {
+            NetworkResult.Success(it.toSeries().toResponseSeries())
+        }
 }
 
