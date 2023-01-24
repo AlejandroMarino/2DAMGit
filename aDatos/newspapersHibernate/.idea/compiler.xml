@@ -10,6 +10,7 @@
         <module name="newspapersHibernate" />
         <module name="newspapersJdbc" />
         <module name="basefx" />
+        <module name="hibernate" />
         <module name="prova" />
       </profile>
     </annotationProcessing>
