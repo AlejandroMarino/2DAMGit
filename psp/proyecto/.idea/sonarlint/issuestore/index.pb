@@ -53,8 +53,6 @@ h
 8src/main/java/ui/pantallas/allFish/AllFishViewModel.java,4\2\42420f4cee845aa1ae232edffdbe50fc6d8a98d6
 k
 ;src/main/java/ui/pantallas/infoFish/InfoFishController.java,9\7\9732243f4ab8e4e77809ad1b5d34575aeb9bfdf7
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 Z
 *src/main/java/servicios/ServiciosFish.java,1\f\1f8ee01a3754944e0368fbe916c8e4f98c6c4f5c
 m
@@ -65,17 +63,3 @@ j
 :src/main/java/ui/pantallas/infoFish/InfoFishViewModel.java,7\f\7f30ae8014db2c4535434e2e11245a9c1c755ff8
 X
 (src/main/java/data/impl/DaoFishImpl.java,6\3\63d223581be65de161e7fa9348f6fb944c602684
-a
-1src/main/java/data/retrofit/ProducesRetrofit.java,4\6\46f51ead56b358db3c83844f583a7054fbe5f8bd
-N
-src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-l
-<src/main/java/servicios/serviciosImpl/ServiciosFishImpl.java,0\7\07f0edff21d6b66b72e337aabc0adac2a1d3325a
-O
-src/main/java/data/DaoFish.java,2\1\214bdbf00f2cec70b35b756fd084588b33688494
-V
-&src/main/java/data/retrofit/ACApi.java,7\e\7e42e9ddf0c23d0e009054f6078ee51dcdd72714
-N
-src/main/java/modelo/Fish.java,8\6\867dd0b1030cee4bccff59383d4f817c3e409df9
