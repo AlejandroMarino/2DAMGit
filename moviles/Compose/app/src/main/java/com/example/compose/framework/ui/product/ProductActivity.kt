@@ -1,4 +1,4 @@
-package com.example.compose.framework.ui.recycleView
+package com.example.compose.framework.ui.product
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
