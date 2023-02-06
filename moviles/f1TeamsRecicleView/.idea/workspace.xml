@@ -10,38 +10,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c9fa6eb-9206-47fd-90a7-3b80e5ccdfab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout-land/activity_recycleview.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../aDatos/newspapersJdbc/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../aDatos/newspapersJdbc/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/6/e/6ec7d34b130497a10dc92abcde9b313d370a89df" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/7/a/7a1d43f2cd7aa41f89c4f7b135fd704c0f4b9254" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/8/e/8e27ba16c655f421171956147d0fde89b7d25d17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/b/4/b4c706ad34a58eaecbb2ccac09e2ff75a827c52a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/e/0/e0bc1eda8e2c689cb79d5b6e5cfd11385f06c2b8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/e/7/e7c8acfc7129b76f8e357362c92b12e5331f9758" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1App/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/8/2/8294d0b3b41c90634bf60bd563517eea54446307" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/8/e/8e3134397f667aab0bc57e47ada859614c244afb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/9/e/9e93d84e39c1639f973530c629ef8bd8b8dc5ef8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/d/8/d8731579aaa7d6aa658544350a58c4b41fcefaa0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/e/4/e4e738a9d7dcf34ea10e928f00a2840db0c51a35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../f1App/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/1/9/190ce3da8469e0f7707bc7b04cb156e011ffa681" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/4/0/40beb23613ab0b69320eebf6f419fc8c90ed90e5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/6/5/659a0b87707feb01c0dd9b8daf4710cb4010caf9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/8/7/87cfa45c175c7ef245e716fc20edbf3adf3da9f4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/b/f/bf008034361afd3a2e2829c3c1ed37191e87a607" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/d/9/d9395f3729de6bf625118731ea59b21eca05b02c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/e/1/e158a0ce6d21d269192af68c1c54969185a04bfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/f/9/f9286dbefb2302d719e57ba7c2197519c0314081" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/common/Constantes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/java/com/moviles/appf1teams/ui/pantalla/recycleView/RecycleViewViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_recycleview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/activity_recycleview.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/item_team.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/layout/item_team.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../f1Teams/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../f1Teams/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flows/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flows/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flows/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flows/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flows/.idea/sonarlint/issuestore/6/a/6a6bd6e103035f82cb0420fc811baa174eb12f84" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flows/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../flows/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[1f09cbd8]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\2dam\.android\avd\Pixel_5_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -54,17 +56,20 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GktmVaQSUcerHL0dlWCl8pmRJ1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../dam2_2223/MOVILES/RecyclerView" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/2dam/Documents/MarinoRepositorio/moviles/flows"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="appF1Teams.app.main" />
@@ -115,15 +120,12 @@
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
         <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
-        <option name="PROFILING_MODE" value="NOT_SET" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
