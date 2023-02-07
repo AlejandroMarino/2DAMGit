@@ -3,18 +3,18 @@ package com.example.compose.ui.screens.product
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Device
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.compose.ui.theme.ComposeTheme
 
-class MainActivity : ComponentActivity() {
+class ProductActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    TextField("Android")
                 }
             }
         }
@@ -32,11 +32,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun TextField(name: String) {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    OutlinedTextField(
+        value = text,
+        label = { Text(text = name) },
+        onValueChange = {
+            text = it
+        },
+        modifier = Modifier
+            .wrapContentHeight()
+            .padding(10.dp)
+    )
 }
 
-@Preview(showBackground = true,
+@Preview(
+    showBackground = true,
     device = Devices.PIXEL_4,
     showSystemUi = true,
 )
@@ -44,10 +55,16 @@ fun Greeting(name: String) {
 fun DefaultPreview() {
     ComposeTheme {
         Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
+            color = MaterialTheme.colors.background,
         ) {
-            Greeting("Android")
+            Column(
+                modifier = Modifier.padding(25.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                TextField("Name")
+                TextField("Price")
+                TextField("Description")
+            }
         }
     }
 }
