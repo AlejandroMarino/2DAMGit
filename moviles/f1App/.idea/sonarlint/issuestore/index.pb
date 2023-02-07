@@ -3,10 +3,6 @@
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 u
 Eapp/src/main/java/com/moviles/f1app/data/repository/RaceRepository.kt,b\1\b15cb1147cbac662885452761eadd9cc68a2c268
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 o
 ?app/src/main/java/com/moviles/f1app/data/modelo/DriverEntity.kt,a\8\a817ec0ef482a8efd26c51467fb9aa14ddd40a06
 m
@@ -23,7 +19,15 @@ x
 Happ/src/main/java/com/moviles/f1app/domain/usecases/drivers/AddDriver.kt,6\f\6f7a43b28ab195fceb3bb396cab350120ccc3afc
 |
 Lapp/src/main/java/com/moviles/f1app/domain/usecases/drivers/GetAllDrivers.kt,4\9\49eb4ed76206007b74076ed125dd2ef7fc8b749c
-i
-9app/src/main/java/com/moviles/f1app/data/di/RoomModule.kt,8\e\8e90f10680c72f2ed2921fcd38a541344f863da4
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 ^
 .app/src/main/java/com/moviles/f1app/RoomApp.kt,1\e\1ecd3fb712cf1c1e00811b37b8fe22046e11d01d
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+i
+9app/src/main/java/com/moviles/f1app/data/di/RoomModule.kt,8\e\8e90f10680c72f2ed2921fcd38a541344f863da4
+v
+Fapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/AdminActivity.kt,8\e\8e3134397f667aab0bc57e47ada859614c244afb
