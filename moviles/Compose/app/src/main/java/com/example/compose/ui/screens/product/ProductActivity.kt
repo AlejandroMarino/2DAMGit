@@ -3,8 +3,11 @@ package com.example.compose.ui.screens.product
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -64,6 +67,24 @@ fun DefaultPreview() {
                 TextField("Name")
                 TextField("Price")
                 TextField("Description")
+
+                IconButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .align(Alignment.End)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Add",
+                        modifier = Modifier
+                            .size(40.dp)
+                            .background(
+                                color = MaterialTheme.colors.primary,
+                                shape = MaterialTheme.shapes.small
+                            )
+                    )
+                }
             }
         }
     }
