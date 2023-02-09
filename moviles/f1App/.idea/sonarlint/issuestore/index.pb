@@ -3,18 +3,6 @@
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 u
 Eapp/src/main/java/com/moviles/f1app/data/repository/RaceRepository.kt,b\1\b15cb1147cbac662885452761eadd9cc68a2c268
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-v
-Fapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/AdminActivity.kt,8\e\8e3134397f667aab0bc57e47ada859614c244afb
-i
-9app/src/main/java/com/moviles/f1app/data/di/RoomModule.kt,8\e\8e90f10680c72f2ed2921fcd38a541344f863da4
-^
-.app/src/main/java/com/moviles/f1app/RoomApp.kt,1\e\1ecd3fb712cf1c1e00811b37b8fe22046e11d01d
 n
 >app/src/main/java/com/moviles/f1app/data/modelo/datamappers.kt,d\c\dcb925c0ec1aa38db7b438c5286a391dea21848d
 i
@@ -41,5 +29,19 @@ m
 =app/src/main/java/com/moviles/f1app/data/common/Constantes.kt,0\3\03ebffa4436684347b98f714f64d9aa20aa2f9f3
 Š
 Zapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverViewModel.kt,0\b\0bb71e44d22182ee1302f10e8a62e4e0ea80836e
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+^
+.app/src/main/java/com/moviles/f1app/RoomApp.kt,1\e\1ecd3fb712cf1c1e00811b37b8fe22046e11d01d
+i
+9app/src/main/java/com/moviles/f1app/data/di/RoomModule.kt,8\e\8e90f10680c72f2ed2921fcd38a541344f863da4
+v
+Fapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/AdminActivity.kt,8\e\8e3134397f667aab0bc57e47ada859614c244afb
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 ‰
 Yapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverFragment.kt,9\d\9d15e0073f49fcf681a4e4a354c54b07247a6433
+u
+Eapp/src/main/java/com/moviles/f1app/data/modelo/DriverRaceCrossRef.kt,e\4\e4e738a9d7dcf34ea10e928f00a2840db0c51a35

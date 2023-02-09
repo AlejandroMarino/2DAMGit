@@ -18,6 +18,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.compose.R
 import com.example.compose.domain.modelo.Product
 import com.example.compose.ui.theme.ComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +28,8 @@ class ProductActivity : ComponentActivity() {
 
     private val viewModel: ProductViewModel by viewModels()
 
+    private val product: Product = Product()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,34 +37,50 @@ class ProductActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background
                 ) {
-                    TextField("Android")
+                    NameField()
                 }
             }
         }
     }
 
-
     @Composable
-    fun TextField(name: String) {
+    fun NameField() {
         var text by remember { mutableStateOf(TextFieldValue("")) }
-        OutlinedTextField(value = text, label = { Text(text = name) }, onValueChange = {
-            text = it
-        }, modifier = Modifier
-            .wrapContentHeight()
-            .padding(10.dp)
+        OutlinedTextField(value = text,
+            label = { Text(text = getString(R.string.name)) },
+            onValueChange = {
+                text = it
+            },
+            modifier = Modifier
+                .wrapContentHeight()
+                .padding(10.dp)
         )
     }
 
     @Composable
-    fun NumberField(name: String) {
+    fun DescriptionField() {
         var text by remember { mutableStateOf(TextFieldValue("")) }
-        OutlinedTextField(value = text, label = { Text(text = name) }, onValueChange = {
-            text = it
+        OutlinedTextField(value = text,
+            label = { Text(text = getString(R.string.name)) },
+            onValueChange = {
+                text = it
+            },
+            modifier = Modifier
+                .wrapContentHeight()
+                .padding(10.dp)
+        )
+    }
+
+    @Composable
+    fun PriceField() {
+        var product by remember { mutableStateOf(product) }
+        OutlinedTextField(value = product.price, label = { Text(text = getString(R.string.price)) },
+            onValueChange = {
         }, keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number
         ), modifier = Modifier
-            .wrapContentHeight()
-            .padding(10.dp)
+                .wrapContentHeight()
+                .padding(10.dp)
         )
     }
 
@@ -80,12 +99,11 @@ class ProductActivity : ComponentActivity() {
                     modifier = Modifier.padding(25.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    TextField("Name")
-                    NumberField("Price")
-                    TextField("Description")
-
+                    PriceField()
+                    NameField()
                     IconButton(
-                        onClick = { addProduct(Product(name = "eeeeeeeeeeeeeeeeeeeeeeee")) }, modifier = Modifier
+                        onClick = { addProduct(Product(name = "eeeeeeeeeeeeeeeeeeeeeeee")) },
+                        modifier = Modifier
                             .padding(10.dp)
                             .align(Alignment.End)
                     ) {
