@@ -5,6 +5,14 @@ q
 Aapp/src/main/java/com/example/filmflows/data/di/DatabaseModule.kt,d\e\de6f44929ecdf86f829c078c0882ffc6f3a0c501
 p
 @app/src/main/java/com/example/filmflows/data/di/NetworkModule.kt,8\1\810afd7f98d0d56e12f513089abf321bfdb861e5
+r
+Bapp/src/main/java/com/example/filmflows/data/local/dao/MovieDao.kt,c\9\c92d099b916deec6df5f941f9f3fecd7156e31be
+s
+Capp/src/main/java/com/example/filmflows/data/local/dao/SeriesDao.kt,f\e\fe31eb6b35096601313508d0b00f69691158ae1b
+ˆ
+Xapp/src/main/java/com/example/filmflows/ui/pantallas/movieDetail/MovieDetailViewModel.kt,7\6\769fb53578398f24f11a952f8af1f9b81b9fa3f6
+„
+Tapp/src/main/java/com/example/filmflows/ui/pantallas/movieDetail/MovieDetailEvent.kt,5\5\5504689582cf20755b820c808fe8c9509d36d1cf
 q
 Aapp/src/main/java/com/example/filmflows/data/local/AppDatabase.kt,2\b\2b196e103749022750202d8e7c58033237b3cb48
 <
@@ -15,13 +23,13 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-r
-Bapp/src/main/java/com/example/filmflows/data/local/dao/MovieDao.kt,c\9\c92d099b916deec6df5f941f9f3fecd7156e31be
-s
-Capp/src/main/java/com/example/filmflows/data/local/dao/SeriesDao.kt,f\e\fe31eb6b35096601313508d0b00f69691158ae1b
-„
-Tapp/src/main/java/com/example/filmflows/ui/pantallas/movieDetail/MovieDetailEvent.kt,5\5\5504689582cf20755b820c808fe8c9509d36d1cf
-ˆ
-Xapp/src/main/java/com/example/filmflows/ui/pantallas/movieDetail/MovieDetailViewModel.kt,7\6\769fb53578398f24f11a952f8af1f9b81b9fa3f6
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+n
+>app/src/main/java/com/example/filmflows/domain/modelo/Movie.kt,1\e\1ee0b915f83842a1bb05782775473b3ecbddf062
+o
+?app/src/main/java/com/example/filmflows/domain/modelo/Series.kt,8\4\848a183c8e9a5cd2ac533bbce694dac977b39e16
 ‡
 Wapp/src/main/java/com/example/filmflows/ui/pantallas/movieDetail/MovieDetailFragment.kt,1\9\1914e260047bf44aadce9be3a5dc879a374d7bac
+}
+Mapp/src/main/java/com/example/filmflows/ui/pantallas/movies/MoviesFragment.kt,1\7\17f82047e1ef9ff554ede45db206f823c59a0e87

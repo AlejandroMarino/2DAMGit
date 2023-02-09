@@ -28,7 +28,11 @@ class ProductViewModel @Inject constructor(
 
     private fun addProduct(product: Product) {
         viewModelScope.launch {
-            addProduct.invoke(product)
+           if ( addProduct.invoke(product)){
+               _uiState.value = ProductState(message = "Added successfully")
+           } else {
+               _uiState.value = ProductState(message = "Error while adding")
+           }
         }
     }
 }
