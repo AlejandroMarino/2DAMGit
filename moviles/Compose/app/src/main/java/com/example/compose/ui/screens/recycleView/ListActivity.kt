@@ -14,7 +14,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,21 +31,19 @@ import dagger.hilt.android.AndroidEntryPoint
 class ListActivity : ComponentActivity() {
 
     private val viewModel: ListViewModel by viewModels()
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.handleEvent(ListEvent.GetProducts)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.handleEvent(ListEvent.GetProducts)
         setContent {
             ComposeTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background
                 ) {
-//                    lifecycleScope.launch {
-//                        viewModel.uiState.collect{
-//                            if (it.message.isNotBlank()) {
-//                                Toast.makeText(this@ListActivity, it.message, Toast.LENGTH_SHORT).show()
-//                            }
-//                        }
-//                    }
                     Column(modifier = Modifier.padding(top = 50.dp)) {
                         List()
                         Row(
@@ -71,9 +72,10 @@ class ListActivity : ComponentActivity() {
 
     @Composable
     fun List() {
+        val state by viewModel.uiState.collectAsState()
         LazyColumn(contentPadding = PaddingValues(16.dp)) {
             items(
-                items = viewModel.uiState.value.products,
+                items = state.products,
                 itemContent = {
                     ProductItem(product = it)
                 }
@@ -131,7 +133,7 @@ class ListActivity : ComponentActivity() {
         }
     }
 
-    fun changeActivity() {
+    private fun changeActivity() {
         startActivity(Intent(this, ProductActivity::class.java))
     }
 
@@ -161,11 +163,11 @@ class ListActivity : ComponentActivity() {
                         IconButton(onClick = { changeActivity() }) {
                             Icon(
                                 imageVector = Icons.Default.Add,
-                                contentDescription = "Favorite",
+                                contentDescription = "add",
                                 modifier = Modifier
                                     .background(
                                         color = MaterialTheme.colors.primaryVariant,
-                                        shape = RoundedCornerShape(50)
+                                        shape = RoundedCornerShape(corner = CornerSize(16.dp))
                                     )
                                     .padding(vertical = 10.dp, horizontal = 30.dp)
                             )

@@ -25,6 +25,10 @@ class ListViewModel @Inject constructor(
         }
     }
 
+    init {
+        getProducts()
+    }
+
 
     private fun getProducts() {
         viewModelScope.launch {
