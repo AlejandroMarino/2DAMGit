@@ -1,5 +1,6 @@
 package com.example.compose.ui.screens.product
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -11,6 +12,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewModelScope
 import com.example.compose.R
 import com.example.compose.domain.modelo.Product
+import com.example.compose.ui.screens.recycleView.ListActivity
 import com.example.compose.ui.theme.ComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -49,34 +52,53 @@ class ProductActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background, modifier = Modifier.fillMaxSize()
                 ) {
                     Column(
-                        modifier = Modifier.padding(25.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        NameField()
-                        PriceField()
-                        DescriptionField()
-                        IconButton(
-                            onClick = {
-                                if (product.name.isBlank() || product.price == 0.0 || product.description.isBlank()) {
-                                    Toast.makeText(this@ProductActivity, "Fill all fields", Toast.LENGTH_SHORT).show()
-                                } else {
-                                    addProduct(product)
+                        TopAppBar(
+                            title = { Text(text = "Add Product") },
+                            navigationIcon = {
+                                IconButton(onClick = { changeActivity() }) {
+                                    Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                                 }
                             },
                             modifier = Modifier
-                                .padding(10.dp)
-                                .align(Alignment.End)
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .align(Alignment.CenterHorizontally)
+                        )
+                        Column(
+                            modifier = Modifier.padding(25.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
-                            Icon(
-                                imageVector = Icons.Default.Add,
-                                contentDescription = "Add",
-                                modifier = Modifier
-                                    .size(40.dp)
-                                    .background(
-                                        color = MaterialTheme.colors.primary,
-                                        shape = MaterialTheme.shapes.small
-                                    )
-                            )
+                            NameField()
+                            PriceField()
+                            DescriptionField()
+                            IconButton(
+                                onClick = {
+                                    if (product.name.isBlank() || product.price == 0.0 || product.description.isBlank()) {
+                                        Toast.makeText(
+                                            this@ProductActivity,
+                                            "Fill all fields",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    } else {
+                                        addProduct(product)
+                                    }
+                                }, modifier = Modifier
+                                    .padding(10.dp)
+                                    .align(Alignment.End)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Add,
+                                    contentDescription = "Add",
+                                    modifier = Modifier
+                                        .size(40.dp)
+                                        .background(
+                                            color = MaterialTheme.colors.primary,
+                                            shape = MaterialTheme.shapes.small
+                                        )
+                                )
+                            }
                         }
                     }
                 }
@@ -84,57 +106,55 @@ class ProductActivity : ComponentActivity() {
         }
     }
 
+    private fun changeActivity() {
+        startActivity(Intent(this, ListActivity::class.java))
+    }
+
     @Composable
     fun NameField() {
         var text by remember { mutableStateOf(TextFieldValue("")) }
-        OutlinedTextField(
-            value = text,
-            label = { Text(text = "name") },
-            onValueChange = {
-                text = it
-                product = product.copy(name = it.text)
-            }, modifier = Modifier
-                .wrapContentHeight()
-                .padding(10.dp),
-            leadingIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_name_24),
-                    modifier = Modifier.size(25.dp),
-                    contentDescription = "name"
-                )
-            }
-        )
+        OutlinedTextField(value = text, label = { Text(text = "name") }, onValueChange = {
+            text = it
+            product = product.copy(name = it.text)
+        }, modifier = Modifier
+            .wrapContentHeight()
+            .padding(10.dp), leadingIcon = {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_name_24),
+                modifier = Modifier.size(25.dp),
+                contentDescription = "name"
+            )
+        })
     }
 
     @Composable
     fun PriceField() {
         var text by remember { mutableStateOf(TextFieldValue("")) }
-        OutlinedTextField(value = text,
-            label = { Text(text = "price") },
-            onValueChange = {
-                text = it
-                product = product.copy(price = it.text.toDouble())
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number
-            ),
-            modifier = Modifier
-                .wrapContentHeight()
-                .padding(10.dp),
-            trailingIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_euro_24),
-                    modifier = Modifier.size(25.dp),
-                    contentDescription = "euro"
-                )
-            })
+        OutlinedTextField(value = text, label = { Text(text = "price") }, onValueChange = {
+            val price = it.text.replace(",", ".").replace("-", "")
+            text = it.copy(text = price)
+            product = if (price.isBlank()) {
+                product.copy(price = 0.0)
+            } else {
+                product.copy(price = price.toDouble())
+            }
+        }, keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Number
+        ), modifier = Modifier
+            .wrapContentHeight()
+            .padding(10.dp), trailingIcon = {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_euro_24),
+                modifier = Modifier.size(25.dp),
+                contentDescription = "euro"
+            )
+        })
     }
 
     @Composable
     fun DescriptionField() {
         var text by remember { mutableStateOf(TextFieldValue("")) }
-        OutlinedTextField(
-            value = text,
+        OutlinedTextField(value = text,
             label = { Text(text = "description") },
             maxLines = 5,
             onValueChange = {
@@ -150,8 +170,7 @@ class ProductActivity : ComponentActivity() {
                     modifier = Modifier.size(25.dp),
                     contentDescription = "description"
                 )
-            }
-        )
+            })
     }
 
     @Preview(
@@ -166,34 +185,53 @@ class ProductActivity : ComponentActivity() {
                 color = MaterialTheme.colors.background, modifier = Modifier.fillMaxSize()
             ) {
                 Column(
-                    modifier = Modifier.padding(25.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    NameField()
-                    PriceField()
-                    DescriptionField()
-                    IconButton(
-                        onClick = {
-                            if (product.name.isBlank() || product.price == 0.0 || product.description.isBlank()) {
-                                Toast.makeText(this@ProductActivity, "Fill all fields", Toast.LENGTH_SHORT).show()
-                            } else {
-                                addProduct(product)
+                    TopAppBar(
+                        title = { Text(text = "Add Product") },
+                        navigationIcon = {
+                            IconButton(onClick = { changeActivity() }) {
+                                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                             }
                         },
                         modifier = Modifier
-                            .padding(10.dp)
-                            .align(Alignment.End)
+                            .fillMaxWidth()
+                            .wrapContentHeight()
+                            .align(Alignment.CenterHorizontally)
+                    )
+                    Column(
+                        modifier = Modifier.padding(25.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Add,
-                            contentDescription = "Add",
-                            modifier = Modifier
-                                .size(40.dp)
-                                .background(
-                                    color = MaterialTheme.colors.primary,
-                                    shape = MaterialTheme.shapes.small
-                                )
-                        )
+                        NameField()
+                        PriceField()
+                        DescriptionField()
+                        IconButton(
+                            onClick = {
+                                if (product.name.isBlank() || product.price == 0.0 || product.description.isBlank()) {
+                                    Toast.makeText(
+                                        this@ProductActivity,
+                                        "Fill all fields",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    addProduct(product)
+                                }
+                            }, modifier = Modifier
+                                .padding(10.dp)
+                                .align(Alignment.End)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Add,
+                                contentDescription = "Add",
+                                modifier = Modifier
+                                    .size(40.dp)
+                                    .background(
+                                        color = MaterialTheme.colors.primary,
+                                        shape = MaterialTheme.shapes.small
+                                    )
+                            )
+                        }
                     }
                 }
             }
