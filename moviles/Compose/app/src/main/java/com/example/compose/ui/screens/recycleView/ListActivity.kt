@@ -14,14 +14,16 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.compose.R
 import com.example.compose.domain.modelo.Product
 import com.example.compose.ui.screens.product.ProductActivity
 import com.example.compose.ui.theme.ComposeTheme
@@ -44,7 +46,7 @@ class ListActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background
                 ) {
-                    Column(modifier = Modifier.padding(top = 50.dp)) {
+                    Column(modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_xxl))) {
                         List()
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -53,13 +55,16 @@ class ListActivity : ComponentActivity() {
                             IconButton(onClick = { changeActivity() }) {
                                 Icon(
                                     imageVector = Icons.Default.Add,
-                                    contentDescription = "Favorite",
+                                    contentDescription = stringResource(R.string.add),
                                     modifier = Modifier
                                         .background(
                                             color = MaterialTheme.colors.primaryVariant,
                                             shape = RoundedCornerShape(50)
                                         )
-                                        .padding(vertical = 10.dp, horizontal = 30.dp)
+                                        .padding(
+                                            vertical = dimensionResource(id = R.dimen.padding_m),
+                                            horizontal = dimensionResource(id = R.dimen.padding_xl)
+                                        )
                                 )
                             }
                         }
@@ -73,13 +78,10 @@ class ListActivity : ComponentActivity() {
     @Composable
     fun List() {
         val state by viewModel.uiState.collectAsState()
-        LazyColumn(contentPadding = PaddingValues(16.dp)) {
-            items(
-                items = state.products,
-                itemContent = {
-                    ProductItem(product = it)
-                }
-            )
+        LazyColumn(contentPadding = PaddingValues(dimensionResource(id = R.dimen.padding_m))) {
+            items(items = state.products, itemContent = {
+                ProductItem(product = it)
+            })
         }
     }
 
@@ -87,46 +89,44 @@ class ListActivity : ComponentActivity() {
     fun ProductItem(product: Product) {
         Card(
             modifier = Modifier
-                .padding(8.dp)
+                .padding(dimensionResource(id = R.dimen.padding_s))
                 .fillMaxWidth()
                 .wrapContentHeight(),
-            elevation = 8.dp,
+            elevation = dimensionResource(id = R.dimen.padding_s),
             backgroundColor = MaterialTheme.colors.primaryVariant,
-            shape = RoundedCornerShape(corner = CornerSize(16.dp))
+            shape = RoundedCornerShape(corner = CornerSize(dimensionResource(id = R.dimen.padding_m)))
         ) {
             Column {
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
                         text = product.name,
-                        modifier = Modifier.padding(16.dp),
+                        modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_m)),
                         style = MaterialTheme.typography.h6
                     )
                     Text(
-                        text = product.price.toString() + " €", modifier = Modifier
-                            .padding(16.dp)
-                            .padding(top = 5.dp)
+                        text = product.price.toString() + getString(R.string.euro_symbol),
+                        modifier = Modifier
+                            .padding(dimensionResource(id = R.dimen.padding_m))
+                            .padding(top = dimensionResource(id = R.dimen.padding_xs))
                     )
                 }
                 Row {
                     Divider(
                         color = MaterialTheme.colors.onSurface,
-                        modifier = Modifier.padding(horizontal = 7.dp)
+                        modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_s))
                     )
                 }
                 Row {
                     Text(
-                        text = product.description,
-                        modifier = Modifier.padding(
-                            top = 5.dp,
-                            bottom = 7.dp,
-                            start = 16.dp,
-                            end = 16.dp
-                        ),
-                        style = MaterialTheme.typography.body1
+                        text = product.description, modifier = Modifier.padding(
+                            top = dimensionResource(id = R.dimen.padding_xs),
+                            bottom = dimensionResource(id = R.dimen.padding_s),
+                            start = dimensionResource(id = R.dimen.padding_m),
+                            end = dimensionResource(id = R.dimen.padding_m)
+                        ), style = MaterialTheme.typography.body1
                     )
                 }
             }

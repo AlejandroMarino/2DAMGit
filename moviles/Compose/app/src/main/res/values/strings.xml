@@ -2,4 +2,17 @@
     <string name="app_name">Compose</string>
     <string name="name">Name</string>
     <string name="price">Price</string>
+    <string name="coma">,</string>
+    <string name="dot">.</string>
+    <string name="minus">-</string>
+    <string name="empty"></string>
+    <string name="euro">euro</string>
+    <string name="description">Description</string>
+    <string name="add_product">Add Product</string>
+    <string name="back">Back</string>
+    <string name="add">Add</string>
+    <string name="fill_all_fields">Fill all fields</string>
+    <string name="successfully_added">Successfully added</string>
+    <string name="error_adding">Error while adding</string>
+    <string name="euro_symbol"> €</string>
 </resources>
