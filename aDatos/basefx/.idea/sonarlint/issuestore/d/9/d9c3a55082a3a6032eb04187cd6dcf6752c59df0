@@ -1,0 +1,9 @@
+
+b
+java:S2095&"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(ºÑ¾è
+b
+java:S2095I"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(…ÒÚË
+C
+java:S1128"(Remove this unused import 'modelo.Type'.(Þ»Ñâýÿÿÿÿ
+S
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ
