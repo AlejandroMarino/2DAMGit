@@ -59,10 +59,10 @@ class SeriesViewModel @Inject constructor(
                         is NetworkResult.Error -> {
                             _uiState.update {
                                 it.copy(
-                                    isLoading = false
+                                    isLoading = false,
+                                    error = stringProvider.getString(R.string.noInternet)
                                 )
                             }
-                            Toast.makeText(stringProvider.context, stringProvider.getString(R.string.noInternet), Toast.LENGTH_SHORT).show()
                         }
                         else -> _uiState.update {
                             it.copy(

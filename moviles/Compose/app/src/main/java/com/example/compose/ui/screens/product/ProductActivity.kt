@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewModelScope
 import com.example.compose.R
 import com.example.compose.domain.modelo.Product
-import com.example.compose.ui.screens.recycleView.ListActivity
+import com.example.compose.ui.screens.list.ListActivity
 import com.example.compose.ui.theme.ComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

@@ -1,7 +1,5 @@
 package com.example.filmflows.ui.pantallas.movies
 
-import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmflows.R
@@ -10,7 +8,6 @@ import com.example.filmflows.utils.NetworkResult
 import com.example.filmflows.utils.StringProvider
 import com.example.filmflows.utils.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -60,9 +57,9 @@ class MoviesViewModel @Inject constructor(
                             _uiState.update {
                                 it.copy(
                                     isLoading = false,
+                                    error = stringProvider.getString(R.string.noInternet)
                                 )
                             }
-                            Toast.makeText(stringProvider.context, stringProvider.getString(R.string.noInternet), Toast.LENGTH_SHORT).show()
                         }
                         else -> _uiState.update {
                             it.copy(

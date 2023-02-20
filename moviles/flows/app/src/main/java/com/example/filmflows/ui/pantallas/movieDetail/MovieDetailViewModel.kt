@@ -61,9 +61,9 @@ class MovieDetailViewModel @Inject constructor(
                             _uiState.update {
                                 it.copy(
                                     isLoading = false,
+                                    error = stringProvider.getString(R.string.noInternet)
                                 )
                             }
-                            Toast.makeText(stringProvider.context, stringProvider.getString(R.string.noInternet), Toast.LENGTH_SHORT).show()
                         }else -> _uiState.update{
                             it.copy(
                                 movie = result.data, isLoading = false
