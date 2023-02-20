@@ -61,7 +61,6 @@ class MovieDetailViewModel @Inject constructor(
                             _uiState.update {
                                 it.copy(
                                     isLoading = false,
-                                    error = stringProvider.getString(R.string.noInternet)
                                 )
                             }
                         }else -> _uiState.update{
