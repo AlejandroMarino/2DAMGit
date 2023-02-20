@@ -19,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.compose2.R
 import com.example.compose2.domain.modelo.Product
 import com.example.compose2.ui.Navigator
@@ -137,11 +136,11 @@ fun PriceField(onPriceFieldChanged: (Double) -> Unit) {
         label = { Text(text = stringResource(id = R.string.price)) },
         onValueChange = {
             var price = it.text.replace(coma, dot).replace(minus, empty).replace(" ", empty)
-            if (price.isNotEmpty()){
-                if (price[0] == dot[0]){
+            if (price.isNotEmpty()) {
+                if (price[0] == dot[0]) {
                     price = it.text.replaceFirst(dot, empty)
                 }
-                if ( price[0] == coma[0]){
+                if (price[0] == coma[0]) {
                     price = it.text.replaceFirst(coma, empty)
                 }
             }
