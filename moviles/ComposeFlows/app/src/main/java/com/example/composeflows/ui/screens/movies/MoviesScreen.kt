@@ -44,7 +44,7 @@ fun MoviesScreen(
                     navigateToMovieDetail,
                     viewModel.uiState.collectAsState().value.isLoading
                 )
-                Error(viewModel.uiState.collectAsState().value.error, viewModel)
+                Error(viewModel.uiState.collectAsState().value.error, errorCaught = {viewModel.handleEvent(MoviesEvent.ErrorCaught)})
             },
             bottomBar = bottomBar
         )
@@ -52,11 +52,11 @@ fun MoviesScreen(
 }
 
 @Composable
-fun Error(error: String?, viewModel: MoviesViewModel) {
+fun Error(error: String?, errorCaught: () -> Unit) {
     val context = LocalContext.current
     if (!error.isNullOrEmpty()) {
         Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
-        viewModel.handleEvent(MoviesEvent.ErrorCaught)
+        errorCaught()
     }
 }
 
