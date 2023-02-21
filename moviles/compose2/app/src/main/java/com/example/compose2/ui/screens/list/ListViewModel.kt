@@ -25,11 +25,6 @@ class ListViewModel @Inject constructor(
         }
     }
 
-    init {
-        getProducts()
-    }
-
-
     private fun getProducts() {
         viewModelScope.launch {
             _uiState.value = ListState(products = getProducts.invoke())

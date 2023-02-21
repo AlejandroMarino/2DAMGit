@@ -19,12 +19,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.compose2.R
 import com.example.compose2.domain.modelo.Product
 import com.example.compose2.ui.Navigator
 
 @Composable
-fun ProductActivity(viewModel: ProductViewModel, navigator: Navigator) {
+fun ProductActivity(
+    navigator: Navigator,
+    viewModel: ProductViewModel = hiltViewModel()
+) {
     Box(
         Modifier
             .fillMaxSize()

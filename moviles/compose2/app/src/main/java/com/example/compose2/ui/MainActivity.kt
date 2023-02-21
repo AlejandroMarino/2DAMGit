@@ -37,10 +37,10 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background){
                     NavHost(navController = navController, startDestination = "list") {
                         composable("list") {
-                            ListActivity(viewModelList, navigator)
+                            ListActivity(navigator)
                         }
                         composable("product") {
-                            ProductActivity(viewModelProduct, navigator)
+                            ProductActivity(navigator)
                         }
                     }
                 }

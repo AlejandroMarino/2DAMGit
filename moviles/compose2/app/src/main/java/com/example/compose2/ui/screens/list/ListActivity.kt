@@ -10,21 +10,25 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.compose2.R
 import com.example.compose2.domain.modelo.Product
 import com.example.compose2.ui.Navigator
 
 @Composable
 fun ListActivity(
-    viewModel: ListViewModel,
-    navigator: Navigator
+    navigator: Navigator,
+    viewModel: ListViewModel = hiltViewModel()
 ) {
-    viewModel.handleEvent(ListEvent.GetProducts)
+    LaunchedEffect(key1 = true) {
+        viewModel.handleEvent(ListEvent.GetProducts)
+    }
     Box(
         Modifier
             .fillMaxSize()

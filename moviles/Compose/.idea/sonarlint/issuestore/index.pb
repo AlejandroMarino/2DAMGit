@@ -17,8 +17,6 @@ r
 Bapp/src/main/java/com/example/compose/data/ProductsRoomDatabase.kt,8\6\8606058f09149756d63d1fc4d88f79059d2ab462
 i
 9app/src/main/java/com/example/compose/data/ProductsDao.kt,9\7\978ffe60bae4070a87fab0ddb15793b89f7b9054
-w
-G.idea/sonarlint/issuestore/3/4/34d0786a535ac7d6ae774fd7e31305ba79365fdf,7\8\78bbb0371ba2c779d70d6384729c869b04b56be3
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 x
@@ -27,27 +25,15 @@ x
 Happ/src/main/java/com/example/compose/ui/screens/product/ProductState.kt,4\b\4b8ce7f20f2e32786489fb98cdb279a7d8a5bf57
 |
 Lapp/src/main/java/com/example/compose/ui/screens/product/ProductViewModel.kt,6\7\6741ecfbbc3d67bc9d63cdec0c38d03ee12dcf82
-v
-Fapp/src/main/java/com/example/compose/ui/screens/list/ListViewModel.kt,3\3\335c5bb7c1a0c5bbfb4559bf2a88c4763b92927e
-r
-Bapp/src/main/java/com/example/compose/ui/screens/list/ListState.kt,9\c\9ca1f877b83dcfc9a54c8fcbe40756cf2e7864ab
-r
-Bapp/src/main/java/com/example/compose/ui/screens/list/ListEvent.kt,b\4\b46d6f0f9ec85a86cea8943ecf2d404d33b756a1
 g
 7app/src/main/java/com/example/compose/ui/theme/Color.kt,e\b\eb283491b5ba4f6858974d1d6c29cc3adbb2d02c
 g
 7app/src/main/java/com/example/compose/ui/theme/Theme.kt,d\3\d36a21d1e6a44cf1bdc858f82de570e68a4613b5
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-m
-=app/src/main/java/com/example/compose/utils/StringProvider.kt,8\6\86a43d4f4bd727ade97950f102fa880131928708
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-{
-Kapp/src/main/java/com/example/compose/ui/screens/product/ProductActivity.kt,1\a\1ae18c159b6763e0d5b70b820b3de1743877d595
 `
 0app/src/main/java/com/example/compose/RoomApp.kt,5\0\500e49c1257e4fe9c4ed4fd12d04226cdd324337
-u
-Eapp/src/main/java/com/example/compose/ui/screens/list/ListActivity.kt,9\8\980f176ee5b536c32265f8318e5d9d1a7077bbe1
