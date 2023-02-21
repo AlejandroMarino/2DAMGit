@@ -134,12 +134,8 @@ y
 Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductState.kt,9\d\9dc6cf236d4439258c99a659fd122f28c2089326
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-}
-Mapp/src/main/java/com/example/compose2/ui/screens/product/ProductViewModel.kt,2\e\2ed98c381b5ce9156552a3a9c514db58c0de2672
 s
 Capp/src/main/java/com/example/compose2/data/ProductsRoomDatabase.kt,1\8\1818b90257137bd9e7ebbb41f5b50d900bc40ddb
-w
-Gapp/src/main/java/com/example/compose2/ui/screens/list/ListViewModel.kt,c\f\cf090ec641070daafde45e479b69a69078bb0551
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
@@ -150,11 +146,15 @@ h
 8app/src/main/java/com/example/compose2/ui/theme/Color.kt,2\b\2b43173e0474c29f119fb28b356896397c1e4850
 h
 8app/src/main/java/com/example/compose2/ui/theme/Theme.kt,d\b\dbb7c8ed4c7797bd131ca90dc93a8d9aa46cb986
-y
-Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductEvent.kt,b\8\b831736ab0575ec81349d965e83923302b67baff
-|
-Lapp/src/main/java/com/example/compose2/ui/screens/product/ProductActivity.kt,8\3\833cd71d83445f18abbd5e81fd39ab79f499d809
 i
 9app/src/main/java/com/example/compose2/ui/MainActivity.kt,6\9\69d17256e2a72be38e00123d716b9de33d282e72
+|
+Lapp/src/main/java/com/example/compose2/ui/screens/product/ProductActivity.kt,8\3\833cd71d83445f18abbd5e81fd39ab79f499d809
+w
+Gapp/src/main/java/com/example/compose2/ui/screens/list/ListViewModel.kt,c\f\cf090ec641070daafde45e479b69a69078bb0551
 v
 Fapp/src/main/java/com/example/compose2/ui/screens/list/ListActivity.kt,5\1\516ae0564660b3f4fe14b98093debb9c269bfbe0
+y
+Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductEvent.kt,b\8\b831736ab0575ec81349d965e83923302b67baff
+}
+Mapp/src/main/java/com/example/compose2/ui/screens/product/ProductViewModel.kt,2\e\2ed98c381b5ce9156552a3a9c514db58c0de2672

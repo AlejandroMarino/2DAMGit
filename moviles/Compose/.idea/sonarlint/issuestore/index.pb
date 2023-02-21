@@ -37,3 +37,5 @@ P
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 `
 0app/src/main/java/com/example/compose/RoomApp.kt,5\0\500e49c1257e4fe9c4ed4fd12d04226cdd324337
+{
+Kapp/src/main/java/com/example/compose/ui/screens/product/ProductActivity.kt,1\a\1ae18c159b6763e0d5b70b820b3de1743877d595

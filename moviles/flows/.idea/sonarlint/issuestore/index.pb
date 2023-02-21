@@ -13,8 +13,6 @@ o
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-c
-3app/src/main/java/com/example/filmflows/FlowsApp.kt,6\a\6a6bd6e103035f82cb0420fc811baa174eb12f84
 z
 Japp/src/main/java/com/example/filmflows/ui/pantallas/movies/MoviesState.kt,2\1\2124bb63ae4aafd8c4ededd7d06be95a3f7cf881
 z
@@ -51,3 +49,5 @@ l
 <app/src/main/java/com/example/filmflows/common/Constantes.kt,d\6\d6f9071c8c84fe649f82dfbee729e84dc4615e09
 q
 Aapp/src/main/java/com/example/filmflows/data/di/DatabaseModule.kt,d\e\de6f44929ecdf86f829c078c0882ffc6f3a0c501
+c
+3app/src/main/java/com/example/filmflows/FlowsApp.kt,6\a\6a6bd6e103035f82cb0420fc811baa174eb12f84
