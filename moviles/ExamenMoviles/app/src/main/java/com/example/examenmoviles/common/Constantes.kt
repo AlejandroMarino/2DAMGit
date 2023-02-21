@@ -2,7 +2,7 @@ package com.example.examenmoviles.common
 
 object Constantes {
 
-    const val BASE_URL = "http://10.2.3.113:8080"
+    const val BASE_URL = "http://192.168.1.137:8080"
     const val getHospitales = "/hospitales"
     const val getPacientes = "/pacientes"
 

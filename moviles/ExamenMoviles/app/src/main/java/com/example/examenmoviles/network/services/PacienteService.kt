@@ -7,11 +7,12 @@ import androidx.room.Transaction
 import com.example.examenmoviles.common.Constantes
 import com.example.examenmoviles.data.modelo.relaciones.PacienteConEnfermedades
 import com.example.examenmoviles.domain.modelo.Paciente
+import retrofit2.Response
 import retrofit2.http.GET
 
 interface PacienteService {
 
     @GET(Constantes.getPacientes)
-    suspend fun getPacientes(): List<Paciente>
+    suspend fun getPacientes(): Response<List<Paciente>>
 
 }

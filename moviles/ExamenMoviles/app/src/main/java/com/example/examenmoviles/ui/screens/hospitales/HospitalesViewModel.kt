@@ -2,8 +2,13 @@ package com.example.examenmoviles.ui.screens.hospitales
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.examenmoviles.data.repository.HospitalRepository
+import com.example.examenmoviles.R
 import com.example.examenmoviles.domain.modelo.Hospital
+import com.example.examenmoviles.domain.usecases.GetHospitales
+import com.example.examenmoviles.domain.usecases.GetPacientesDeHospital
+import com.example.examenmoviles.utils.NetworkResult
+import com.example.examenmoviles.utils.StringProvider
+import com.example.examenmoviles.utils.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HospitalesViewModel @Inject constructor(
-    private val hospitalRepository: HospitalRepository,
+    private val getHospitales: GetHospitales,
+    private val getPacientesDeHospital: GetPacientesDeHospital,
+    private val stringProvider: StringProvider
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HospitalesState())
@@ -33,17 +40,51 @@ class HospitalesViewModel @Inject constructor(
 
     private fun getHospitales() {
         viewModelScope.launch {
-            hospitalRepository.fetchHospitales().collect() {result->
-                _uiState.update { it.copy(hospitales = result) }
+            getHospitales.invoke().collect { result ->
+                if (Utils.hasInternetConnection(stringProvider.context)) {
+                    when (result) {
+                        is NetworkResult.Error -> {
+                            _uiState.update {
+                                it.copy(
+                                    error = result.message ?: "",
+                                    isLoading = false
+                                )
+                            }
+                        }
+                        is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
+                        is NetworkResult.Success -> _uiState.update {
+                            it.copy(
+                                hospitales = result.data?: emptyList(), isLoading = false
+                            )
+                        }
+                    }
+                } else {
+                    when (result) {
+                        is NetworkResult.Error -> {
+                            _uiState.update {
+                                it.copy(
+                                    isLoading = false,
+                                )
+                            }
+                        }
+                        else -> _uiState.update {
+                            it.copy(
+                                hospitales = result.data?: emptyList(), isLoading = false
+                            )
+                        }
+                    }
+                }
             }
         }
     }
 
     private fun getPacientes(hospital: Hospital) {
         viewModelScope.launch {
-            hospitalRepository.fetchHospitales().collect(){result->
-                val pacientes = result.find { it.id == hospital.id }?.pacientes ?: emptyList()
-                _uiState.update { it.copy(pacientes = pacientes) }
+            val pacientes = getPacientesDeHospital.invoke(hospital)
+            _uiState.update {
+                it.copy(
+                    pacientes = pacientes
+                )
             }
         }
     }
