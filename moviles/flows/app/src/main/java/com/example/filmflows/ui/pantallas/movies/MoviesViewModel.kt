@@ -28,6 +28,17 @@ class MoviesViewModel @Inject constructor(
             MoviesEvent.GetPopularMovies -> {
                 getPopularMovies()
             }
+            MoviesEvent.ErrorCaught -> {
+                errorCaught()
+            }
+        }
+    }
+
+    private fun errorCaught() {
+        _uiState.update {
+            it.copy(
+                error = null
+            )
         }
     }
 

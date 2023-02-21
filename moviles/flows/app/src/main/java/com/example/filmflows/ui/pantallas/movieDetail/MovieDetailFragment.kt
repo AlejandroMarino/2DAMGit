@@ -51,6 +51,7 @@ class MovieDetailFragment : Fragment() {
                                 viewModel.uiState.value.error,
                                 Toast.LENGTH_SHORT
                             ).show()
+
                         }
                         binding.loading.visibility =
                             if (value.isLoading) View.VISIBLE else View.GONE

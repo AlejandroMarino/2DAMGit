@@ -1,0 +1,55 @@
+
+o
+java:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(£É¯Œ
+n
+java:S2293^"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ´;
+o
+java:S2293_"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜«à
+t
+java:S2293u"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÿÛ‰”úÿÿÿÿ
+o
+java:S2293v"YReplace the type specification in this constructor call with the diamond operator ("<>").(‚Ş¸µ
+u
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ì¾È¿ûÿÿÿÿ
+u
+java:S2293”"YReplace the type specification in this constructor call with the diamond operator ("<>").(ş§¢œıÿÿÿÿ
+d
+java:S1192a"IDefine a constant instead of duplicating this literal "products" 3 times.(–Ôôúùÿÿÿÿ
+f	java:S117'"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŒº
+k	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½›Ó¥ÿÿÿÿÿ
+f	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àùü
+k	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞíßÛüÿÿÿÿ
+k	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÜœÅıÿÿÿÿ
+k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢…Êˆüÿÿÿÿ
+f	java:S117T"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓÆä
+f	java:S117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åØÿê
+f	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£É¯Œ
+e	java:S117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ´;
+f	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜«à
+k	java:S117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Ôôúùÿÿÿÿ
+f	java:S117b"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤É€¦
+k	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ıŞŸûÿÿÿÿ
+f	java:S117o"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªêª”
+k	java:S117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÛ‰”úÿÿÿÿ
+f	java:S117v"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ş¸µ
+k	java:S117}"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­ê×¶ùÿÿÿÿ
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¾È¿ûÿÿÿÿ
+l	java:S117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş§¢œıÿÿÿÿ
+u
+java:S1488o"_Immediately return this expression instead of assigning it to the temporary variable "_helper".(ªêª”
+Š
+java:S1488”"nImmediately return this expression instead of assigning it to the temporary variable "_autoMigrationSpecsSet".(ş§¢œıÿÿÿÿ
+b	java:S101""MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ë’’©
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ùÃÌé
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôİÕıÿÿÿÿ
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(¤î˜Óüÿÿÿÿ
+q	java:S116#"WRename this field "_productsDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áœâêùÿÿÿÿ
+m
+java:S3776&"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Òëàúÿÿÿÿ
+—
+java:S1186T"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÓÆä

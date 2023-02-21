@@ -22,19 +22,18 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.compose2.R
 import com.example.compose2.domain.modelo.Product
-import com.example.compose2.ui.Navigator
 
 @Composable
 fun ProductActivity(
-    navigator: Navigator,
-    viewModel: ProductViewModel = hiltViewModel()
+    viewModel: ProductViewModel = hiltViewModel(),
+    onNavigateToList: () -> Unit
 ) {
     Box(
         Modifier
             .fillMaxSize()
     ) {
         Scaffold(
-            topBar = { TopBar(navigator) },
+            topBar = { TopBar(onNavigateToList) },
             content = { Content(viewModel, Modifier.padding(it)) },
             floatingActionButton = {
                 AddButton(viewModel, viewModel.uiState.collectAsState().value.product)
@@ -44,11 +43,11 @@ fun ProductActivity(
 }
 
 @Composable
-fun TopBar(navigator: Navigator) {
+fun TopBar(navigateToList: () -> Unit) {
     TopAppBar(
         title = { Text(text = stringResource(id = R.string.add_product)) },
         navigationIcon = {
-            IconButton(onClick = { navigator.navigateToList() }) {
+            IconButton(onClick = { navigateToList() }) {
                 Icon(
                     Icons.Default.ArrowBack,
                     contentDescription = stringResource(id = R.string.back)

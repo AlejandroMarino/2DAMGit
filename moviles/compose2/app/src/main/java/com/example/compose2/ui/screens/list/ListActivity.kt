@@ -19,12 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.compose2.R
 import com.example.compose2.domain.modelo.Product
-import com.example.compose2.ui.Navigator
 
 @Composable
 fun ListActivity(
-    navigator: Navigator,
-    viewModel: ListViewModel = hiltViewModel()
+    viewModel: ListViewModel = hiltViewModel(),
+    onNavigateToProduct: () -> Unit
 ) {
     LaunchedEffect(key1 = true) {
         viewModel.handleEvent(ListEvent.GetProducts)
@@ -41,7 +40,7 @@ fun ListActivity(
                 )
             },
             floatingActionButton = {
-                AddButton(navigator)
+                AddButton(onNavigateToProduct)
             },
         )
     }
@@ -111,8 +110,8 @@ fun ItemDescription(product: Product) {
 }
 
 @Composable
-private fun AddButton(navigator: Navigator) {
-    FloatingActionButton(onClick = { navigator.navigateToProduct() }) {
+private fun AddButton(navigateToProduct: () -> Unit) {
+    FloatingActionButton(onClick = { navigateToProduct() }) {
         Icon(
             imageVector = Icons.Default.Add,
             contentDescription = stringResource(R.string.add),

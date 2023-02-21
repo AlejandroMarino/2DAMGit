@@ -23,8 +23,6 @@ i
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 u
 Eapp/src/main/java/com/moviles/f1app/data/modelo/DriverRaceCrossRef.kt,e\4\e4e738a9d7dcf34ea10e928f00a2840db0c51a35
-v
-Fapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/AdminActivity.kt,8\e\8e3134397f667aab0bc57e47ada859614c244afb
 Ü
 Vapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverEvent.kt,4\e\4e201324980ee06542432f7aeb1f2621418e42f1
 Ü
@@ -39,6 +37,8 @@ Zapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/list/drivers/EditDriversV
 Vapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/list/teams/EditTeamsViewModel.kt,d\8\d8731579aaa7d6aa658544350a58c4b41fcefaa0
 â
 Yapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverFragment.kt,9\d\9d15e0073f49fcf681a4e4a354c54b07247a6433
+ä
+Zapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverViewModel.kt,0\b\0bb71e44d22182ee1302f10e8a62e4e0ea80836e
 è
 _app/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/PerformanceAdapterDriver.kt,2\1\218fbd2554d657f23356a93c85ca51d91d01c57e
 x
@@ -49,7 +49,7 @@ o
 ?app/src/main/java/com/moviles/f1app/data/modelo/DriverEntity.kt,a\8\a817ec0ef482a8efd26c51467fb9aa14ddd40a06
 m
 =app/src/main/java/com/moviles/f1app/data/common/Constantes.kt,0\3\03ebffa4436684347b98f714f64d9aa20aa2f9f3
-ä
-Zapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverViewModel.kt,0\b\0bb71e44d22182ee1302f10e8a62e4e0ea80836e
 j
 :app/src/main/java/com/moviles/f1app/data/F1RoomDatabase.kt,4\c\4c9320986bf6cfc02f9338776740791781daa302
+v
+Fapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/AdminActivity.kt,8\e\8e3134397f667aab0bc57e47ada859614c244afb

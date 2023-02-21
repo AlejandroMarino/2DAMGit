@@ -1,0 +1,11 @@
+
+C
+java:S1604%"(Make this anonymous inner class a lambda(¿ü„¡ýÿÿÿÿ
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.( ú½á
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(Ãþ”«ýÿÿÿÿ
+g
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±
+m
+java:S3077"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(†æ‚±
+c	java:S100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾éòÃ
