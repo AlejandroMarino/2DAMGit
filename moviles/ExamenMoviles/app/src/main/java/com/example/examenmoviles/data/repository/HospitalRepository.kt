@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import java.util.UUID
 import javax.inject.Inject
 
 class HospitalRepository @Inject constructor(
@@ -21,5 +22,12 @@ class HospitalRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+    suspend fun deleteHospital(id: UUID): Flow<NetworkResult<Void>> {
+        return flow {
+            emit(NetworkResult.Loading())
+            val result = hospitalRemoteDataSource.deleteHospital(id)
+            emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
 
 }

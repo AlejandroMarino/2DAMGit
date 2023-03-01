@@ -1,4 +1,4 @@
-package com.example.examenmoviles.domain.usecases
+package com.example.examenmoviles.domain.usecases.pacientes
 
 import com.example.examenmoviles.data.repository.HospitalRepository
 import com.example.examenmoviles.domain.modelo.Hospital

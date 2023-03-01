@@ -1,4 +1,4 @@
-package com.example.examenmoviles.domain.usecases
+package com.example.examenmoviles.domain.usecases.hospital
 
 import com.example.examenmoviles.data.repository.HospitalRepository
 import javax.inject.Inject

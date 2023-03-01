@@ -98,8 +98,6 @@ X
 (app/src/main/res/drawable/ic_name_24.xml,4\6\46d104ef3eae2483294c309a8df2e49c73a5ee43
 ¹
 ˆapp/build/generated/source/kapt/debug/com/example/compose2/ui/screens/product/ProductViewModel_HiltModules_KeyModule_ProvideFactory.java,b\4\b47464f464cd740cff920ef28f88d46e9b35ed19
-X
-(app/src/main/res/drawable/ic_euro_24.xml,8\4\84852d9b3f190ab5aca88a3665470157683f2cea
 h
 8app/src/main/java/com/example/compose2/ui/theme/Shape.kt,c\d\cd69d6a8aa3c6735275af588022e779fa23b5569
 g
@@ -130,8 +128,6 @@ s
 Capp/src/main/java/com/example/compose2/ui/screens/list/ListState.kt,e\a\eaff58ac7046089c276ec7fdb71e9df522c4d8ca
 s
 Capp/src/main/java/com/example/compose2/ui/screens/list/ListEvent.kt,a\f\af6d519ada94d536ef877af46ca9a75f36315575
-y
-Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductState.kt,9\d\9dc6cf236d4439258c99a659fd122f28c2089326
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 s
@@ -144,5 +140,19 @@ a
 1app/src/main/java/com/example/compose2/RoomApp.kt,6\8\68958e4f135cf77cbfd01ebc1a4848913dd18ee6
 w
 Gapp/src/main/java/com/example/compose2/ui/screens/list/ListViewModel.kt,c\f\cf090ec641070daafde45e479b69a69078bb0551
+i
+9app/src/main/java/com/example/compose2/ui/MainActivity.kt,6\9\69d17256e2a72be38e00123d716b9de33d282e72
+h
+8app/src/main/java/com/example/compose2/ui/theme/Color.kt,2\b\2b43173e0474c29f119fb28b356896397c1e4850
+y
+Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductState.kt,9\d\9dc6cf236d4439258c99a659fd122f28c2089326
+h
+8app/src/main/java/com/example/compose2/ui/theme/Theme.kt,d\b\dbb7c8ed4c7797bd131ca90dc93a8d9aa46cb986
 }
 Mapp/src/main/java/com/example/compose2/ui/screens/product/ProductViewModel.kt,2\e\2ed98c381b5ce9156552a3a9c514db58c0de2672
+y
+Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductEvent.kt,b\8\b831736ab0575ec81349d965e83923302b67baff
+|
+Lapp/src/main/java/com/example/compose2/ui/screens/product/ProductActivity.kt,8\3\833cd71d83445f18abbd5e81fd39ab79f499d809
+v
+Fapp/src/main/java/com/example/compose2/ui/screens/list/ListActivity.kt,5\1\516ae0564660b3f4fe14b98093debb9c269bfbe0

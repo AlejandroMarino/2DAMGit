@@ -28,8 +28,10 @@ abstract class BaseApiResponse {
             val response = apiCall()
             if (response.isSuccessful) {
                 val body = response.body()
-                body?.let {
-                    return NetworkResult.Success(body)
+                return if (body != null) {
+                    NetworkResult.Success(body)
+                } else {
+                    NetworkResult.SuccessNoData()
                 }
             }
             return error("${response.code()} ${response.message()}")

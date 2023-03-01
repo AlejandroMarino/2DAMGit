@@ -2,17 +2,16 @@ package com.example.examenmoviles.ui.screens.hospitales
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.examenmoviles.R
 import com.example.examenmoviles.domain.modelo.Hospital
-import com.example.examenmoviles.domain.usecases.GetHospitales
-import com.example.examenmoviles.domain.usecases.GetPacientesDeHospital
+import com.example.examenmoviles.domain.usecases.hospital.DeleteHospital
+import com.example.examenmoviles.domain.usecases.hospital.GetHospitales
+import com.example.examenmoviles.domain.usecases.pacientes.GetPacientesDeHospital
 import com.example.examenmoviles.utils.NetworkResult
 import com.example.examenmoviles.utils.StringProvider
 import com.example.examenmoviles.utils.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,6 +20,7 @@ import javax.inject.Inject
 class HospitalesViewModel @Inject constructor(
     private val getHospitales: GetHospitales,
     private val getPacientesDeHospital: GetPacientesDeHospital,
+    private val deleteHospital: DeleteHospital,
     private val stringProvider: StringProvider
 ) : ViewModel() {
 
@@ -34,6 +34,9 @@ class HospitalesViewModel @Inject constructor(
             }
             is HospitalesEvent.GetPacientes -> {
                 getPacientes(event.hospital)
+            }
+            is HospitalesEvent.DeleteHospital -> {
+                deleteHospital(event.hospital)
             }
         }
     }
@@ -56,6 +59,13 @@ class HospitalesViewModel @Inject constructor(
                             it.copy(
                                 hospitales = result.data?: emptyList(), isLoading = false
                             )
+                        }
+                        is NetworkResult.SuccessNoData -> {
+                            _uiState.update {
+                                it.copy(
+                                    isLoading = false,
+                                )
+                            }
                         }
                     }
                 } else {
@@ -85,6 +95,42 @@ class HospitalesViewModel @Inject constructor(
                 it.copy(
                     pacientes = pacientes
                 )
+            }
+        }
+    }
+
+    private fun deleteHospital(hospital: Hospital) {
+        viewModelScope.launch {
+            deleteHospital.invoke(hospital).collect{ result ->
+                if (Utils.hasInternetConnection(stringProvider.context)) {
+                    when (result) {
+                        is NetworkResult.Error -> {
+                            _uiState.update {
+                                it.copy(
+                                    error = result.message ?: "Error al eliminar",
+                                    isLoading = false
+                                )
+                            }
+                        }
+                        is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
+                        else -> {
+                            getHospitales()
+                        }
+                    }
+                } else {
+                    when (result) {
+                        is NetworkResult.Error -> {
+                            _uiState.update {
+                                it.copy(
+                                    isLoading = false,
+                                )
+                            }
+                        }
+                        else -> {
+                           getHospitales()
+                        }
+                    }
+                }
             }
         }
     }
