@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_hospitales"
+        android:enabled="true"
+        android:icon="@drawable/ic_hospital_24"
+        android:title="@string/hospitales" />
+    <item
+        android:id="@+id/item_pacientes"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_24"
+        android:title="@string/pacientes" />
+</menu>

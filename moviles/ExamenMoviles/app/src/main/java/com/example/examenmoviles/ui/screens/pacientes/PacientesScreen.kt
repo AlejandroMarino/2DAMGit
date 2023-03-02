@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.examenmoviles.ui.screens.common.TopBarFilter
+import com.example.examenmoviles.ui.screens.detallePaciente.DetallePacienteEvent
+import com.example.examenmoviles.ui.screens.detallePaciente.Error
 import com.example.examenmoviles.ui.screens.hospitales.ListPacientes
 import java.util.*
 
@@ -26,6 +28,7 @@ fun PacientesScreen(
     LaunchedEffect(key1 = true) {
         viewModel.handleEvent(PacientesEvent.GetPacientes)
     }
+    val state = viewModel.uiState.collectAsState().value
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -38,7 +41,7 @@ fun PacientesScreen(
                 )
             },
             content = {
-                if (viewModel.uiState.collectAsState().value.isLoading) {
+                if (state.isLoading) {
                     Box(modifier = Modifier.fillMaxSize()) {
                         CircularProgressIndicator(
                             modifier = Modifier
@@ -54,11 +57,14 @@ fun PacientesScreen(
                     ) {
                         ListPacientes(
                             Modifier,
-                            pacientes = viewModel.uiState.collectAsState().value.pacientes,
+                            pacientes = state.pacientes,
                             goDetallePaciente = goDetallePaciente
                         )
                     }
                 }
+                Error(
+                    state.error
+                ) { viewModel.handleEvent(PacientesEvent.ErrorCatch) }
             },
             bottomBar = bottomBar
         )

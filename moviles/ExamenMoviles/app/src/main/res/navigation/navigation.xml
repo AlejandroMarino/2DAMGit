@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/hospitales">
+
+    <fragment
+        android:id="@+id/hospitales"
+        android:name="com.example.examenmoviles.ui.screens.hospitales.HospitalesFragment"
+        android:label="fragment_hospitales"
+        tools:layout="@layout/fragment_hospitales" >
+        <action
+            android:id="@+id/action_hospitales_to_detallePacientes"
+            app:destination="@id/detallePacientes" />
+    </fragment>
+    <fragment
+        android:id="@+id/pacientes"
+        android:name="com.example.examenmoviles.ui.screens.pacientes.PacientesFragment"
+        android:label="fragment_pacientes"
+        tools:layout="@layout/fragment_pacientes" >
+        <action
+            android:id="@+id/action_pacientes_to_detallePacientes"
+            app:destination="@id/detallePacientes" />
+    </fragment>
+    <fragment
+        android:id="@+id/detallePacientes"
+        android:name="com.example.examenmoviles.ui.screens.detallePaciente.DetallePacienteFragment"
+        android:label="fragment_detalle_pacientes"
+        tools:layout="@layout/fragment_detalle_paciente" >
+        <action
+            android:id="@+id/action_detallePacientes_to_hospitales"
+            app:destination="@id/hospitales" />
+        <action
+            android:id="@+id/action_detallePacientes_to_pacientes"
+            app:destination="@id/pacientes" />
+        <argument
+            android:name="idPaciente"
+            app:argType="string" />
+    </fragment>
+</navigation>

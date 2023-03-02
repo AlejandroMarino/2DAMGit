@@ -2,7 +2,6 @@ package com.example.examenmoviles.ui.screens.detallePaciente
 
 import com.example.examenmoviles.domain.modelo.Enfermedad
 import com.example.examenmoviles.domain.modelo.Paciente
-import java.util.UUID
 
 sealed class DetallePacienteEvent {
     class GetPaciente(val id: String) : DetallePacienteEvent()

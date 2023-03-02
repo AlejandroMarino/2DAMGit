@@ -31,13 +31,14 @@ fun DetallePacienteScreen(
     LaunchedEffect(key1 = true) {
         viewModel.handleEvent(DetallePacienteEvent.GetPaciente(id))
     }
+    val state = viewModel.uiState.collectAsState().value
     Box(
         Modifier.fillMaxSize()
     ) {
         Scaffold(
             topBar = topBar,
             content = {
-                if (viewModel.uiState.collectAsState().value.isLoading) {
+                if (state.isLoading) {
                     Box(modifier = Modifier.fillMaxSize()) {
                         CircularProgressIndicator(
                             modifier = Modifier
@@ -47,8 +48,8 @@ fun DetallePacienteScreen(
                     }
                 } else {
                     ContentPaciente(
-                        viewModel.uiState.collectAsState().value.paciente,
-                        viewModel.uiState.collectAsState().value.enfermedad,
+                        state.paciente,
+                        state.enfermedad,
                         Modifier.padding(it),
                         onClickUpdate = { paciente ->
                             viewModel.handleEvent(
@@ -88,7 +89,7 @@ fun DetallePacienteScreen(
                     )
                 }
                 Error(
-                    viewModel.uiState.collectAsState().value.error
+                    state.error
                 ) { viewModel.handleEvent(DetallePacienteEvent.ErrorCatch) }
             }
         )

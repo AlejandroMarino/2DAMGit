@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun TopBarFilter(
     onTextChange: (String) -> Unit,
-
     ) {
     TopAppBar(
         title = {},

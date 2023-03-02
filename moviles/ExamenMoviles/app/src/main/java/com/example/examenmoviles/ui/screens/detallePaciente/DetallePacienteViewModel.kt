@@ -3,7 +3,6 @@ package com.example.examenmoviles.ui.screens.detallePaciente
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.examenmoviles.domain.modelo.Enfermedad
-import com.example.examenmoviles.domain.modelo.Hospital
 import com.example.examenmoviles.domain.modelo.Paciente
 import com.example.examenmoviles.domain.usecases.pacientes.AddEnfermedad
 import com.example.examenmoviles.domain.usecases.pacientes.GetPaciente
@@ -74,7 +73,6 @@ class DetallePacienteViewModel @Inject constructor(
     }
 
 
-
     private fun getPaciente(id: String) {
         viewModelScope.launch {
             val paciente = getPaciente.invoke(UUID.fromString(id))
@@ -84,8 +82,8 @@ class DetallePacienteViewModel @Inject constructor(
 
     private fun addEnfermedad(enfermedad: Enfermedad) {
         viewModelScope.launch {
-            addEnfermedad.invoke(uiState.value.paciente, enfermedad).collect { result ->
-                if (Utils.hasInternetConnection(stringProvider.context)) {
+            if (Utils.hasInternetConnection(stringProvider.context)) {
+                addEnfermedad.invoke(uiState.value.paciente, enfermedad).collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {
@@ -100,7 +98,9 @@ class DetallePacienteViewModel @Inject constructor(
                             getPaciente(uiState.value.paciente.id.toString())
                         }
                     }
-                } else {
+                }
+            } else {
+                addEnfermedad.invoke(uiState.value.paciente, enfermedad).collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {
@@ -128,8 +128,8 @@ class DetallePacienteViewModel @Inject constructor(
                     )
                 }
             } else {
-                updatePaciente.invoke(paciente).collect { result ->
-                    if (Utils.hasInternetConnection(stringProvider.context)) {
+                if (Utils.hasInternetConnection(stringProvider.context)) {
+                    updatePaciente.invoke(paciente).collect { result ->
                         when (result) {
                             is NetworkResult.Error -> {
                                 _uiState.update {
@@ -144,7 +144,9 @@ class DetallePacienteViewModel @Inject constructor(
                                 getPaciente(uiState.value.paciente.id.toString())
                             }
                         }
-                    } else {
+                    }
+                } else {
+                    updatePaciente.invoke(paciente).collect { result ->
                         when (result) {
                             is NetworkResult.Error -> {
                                 _uiState.update {

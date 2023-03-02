@@ -18,7 +18,6 @@ fun BottomBar(
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination
-
     NavigationBar(
         containerColor = androidx.compose.material.MaterialTheme.colors.primary
     ) {

@@ -38,13 +38,24 @@ class HospitalesViewModel @Inject constructor(
             is HospitalesEvent.DeleteHospital -> {
                 deleteHospital(event.hospital)
             }
+            HospitalesEvent.ErrorCatch -> {
+                errorCatch()
+            }
+        }
+    }
+
+    private fun errorCatch() {
+        _uiState.update {
+            it.copy(
+                error = "",
+            )
         }
     }
 
     private fun getHospitales() {
         viewModelScope.launch {
-            getHospitales.invoke().collect { result ->
-                if (Utils.hasInternetConnection(stringProvider.context)) {
+            if (Utils.hasInternetConnection(stringProvider.context)) {
+                getHospitales.invoke().collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {
@@ -57,7 +68,7 @@ class HospitalesViewModel @Inject constructor(
                         is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
                         is NetworkResult.Success -> _uiState.update {
                             it.copy(
-                                hospitales = result.data?: emptyList(), isLoading = false
+                                hospitales = result.data ?: emptyList(), isLoading = false
                             )
                         }
                         is NetworkResult.SuccessNoData -> {
@@ -68,7 +79,9 @@ class HospitalesViewModel @Inject constructor(
                             }
                         }
                     }
-                } else {
+                }
+            } else {
+                getHospitales.invoke().collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {
@@ -79,7 +92,7 @@ class HospitalesViewModel @Inject constructor(
                         }
                         else -> _uiState.update {
                             it.copy(
-                                hospitales = result.data?: emptyList(), isLoading = false
+                                hospitales = result.data ?: emptyList(), isLoading = false
                             )
                         }
                     }
@@ -101,8 +114,8 @@ class HospitalesViewModel @Inject constructor(
 
     private fun deleteHospital(hospital: Hospital) {
         viewModelScope.launch {
-            deleteHospital.invoke(hospital).collect{ result ->
-                if (Utils.hasInternetConnection(stringProvider.context)) {
+            if (Utils.hasInternetConnection(stringProvider.context)) {
+                deleteHospital.invoke(hospital).collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {
@@ -115,9 +128,12 @@ class HospitalesViewModel @Inject constructor(
                         is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
                         else -> {
                             getHospitales()
+                            _uiState.update { it.copy(pacientes = emptyList()) }
                         }
                     }
-                } else {
+                }
+            } else {
+                deleteHospital.invoke(hospital).collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {
@@ -127,7 +143,8 @@ class HospitalesViewModel @Inject constructor(
                             }
                         }
                         else -> {
-                           getHospitales()
+                            getHospitales()
+                            _uiState.update { it.copy(pacientes = emptyList()) }
                         }
                     }
                 }

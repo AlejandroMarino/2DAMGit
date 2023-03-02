@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 class UpdatePaciente @Inject constructor(private val pacienteRepository: PacienteRepository) {
 
-    suspend operator fun invoke(paciente: Paciente) = pacienteRepository.updatePaciente(paciente)
+    operator fun invoke(paciente: Paciente) = pacienteRepository.updatePaciente(paciente)
 }

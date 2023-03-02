@@ -8,7 +8,7 @@ import javax.inject.Inject
 class AddEnfermedad @Inject constructor(
     private val pacienteRepository: PacienteRepository
 ) {
-    suspend fun invoke(paciente: Paciente, enfermedad: Enfermedad) =
+    fun invoke(paciente: Paciente, enfermedad: Enfermedad) =
         pacienteRepository.addEnfermedad(paciente, enfermedad)
 
 }

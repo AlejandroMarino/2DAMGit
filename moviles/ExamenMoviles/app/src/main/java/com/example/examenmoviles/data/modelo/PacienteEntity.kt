@@ -1,9 +1,8 @@
 package com.example.examenmoviles.data.modelo
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import java.util.UUID
+import java.util.*
 
 @Entity(tableName = "pacientes")
 data class PacienteEntity(

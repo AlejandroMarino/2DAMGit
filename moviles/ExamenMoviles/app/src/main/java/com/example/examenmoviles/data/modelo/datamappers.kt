@@ -2,7 +2,6 @@ package com.example.examenmoviles.data.modelo
 
 import com.example.examenmoviles.data.modelo.relaciones.PacienteConEnfermedades
 import com.example.examenmoviles.domain.modelo.Enfermedad
-import com.example.examenmoviles.domain.modelo.Hospital
 import com.example.examenmoviles.domain.modelo.Paciente
 
 fun PacienteConEnfermedades.toPaciente(): Paciente {

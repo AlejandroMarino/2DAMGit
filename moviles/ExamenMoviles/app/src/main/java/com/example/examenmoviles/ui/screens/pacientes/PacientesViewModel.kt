@@ -22,7 +22,7 @@ class PacientesViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(PacientesState())
     val uiState: StateFlow<PacientesState> = _uiState
-    var todosPacientes: List<Paciente> = emptyList()
+    private var todosPacientes: List<Paciente> = emptyList()
 
     fun handleEvent(event: PacientesEvent) {
         when (event) {
@@ -32,6 +32,17 @@ class PacientesViewModel @Inject constructor(
             is PacientesEvent.FilterPacientes -> {
                 filterPacientes(event.text)
             }
+            PacientesEvent.ErrorCatch -> {
+                errorCatch()
+            }
+        }
+    }
+
+    private fun errorCatch() {
+        _uiState.update {
+            it.copy(
+                error = "",
+            )
         }
     }
 
@@ -47,8 +58,8 @@ class PacientesViewModel @Inject constructor(
 
     private fun getPacientes() {
         viewModelScope.launch {
-            getPacientes.invoke().collect { result ->
-                if (Utils.hasInternetConnection(stringProvider.context)) {
+            if (Utils.hasInternetConnection(stringProvider.context)) {
+                getPacientes.invoke().collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {
@@ -76,7 +87,9 @@ class PacientesViewModel @Inject constructor(
                             todosPacientes = emptyList()
                         }
                     }
-                } else {
+                }
+            } else {
+                getPacientes.invoke().collect { result ->
                     when (result) {
                         is NetworkResult.Error -> {
                             _uiState.update {

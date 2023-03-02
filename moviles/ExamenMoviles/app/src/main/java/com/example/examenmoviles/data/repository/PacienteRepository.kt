@@ -1,7 +1,6 @@
 package com.example.examenmoviles.data.repository
 
 import com.example.examenmoviles.data.local.dao.PacienteDao
-import com.example.examenmoviles.data.modelo.EnfermedadEntity
 import com.example.examenmoviles.data.modelo.toPacienteEntity
 import com.example.examenmoviles.data.remote.PacienteRemoteDataSource
 import com.example.examenmoviles.domain.modelo.Enfermedad

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ExamenMoviles</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hospitales">Hospitales</string>
+    <string name="pacientes">Pacientes</string>
+    <string name="nombre">Nombre</string>
+    <string name="enfermedad">Enfermedad</string>
 </resources>

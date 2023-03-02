@@ -1,5 +1,6 @@
 package com.example.examenmoviles.ui.screens.hospitales
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,10 +16,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.examenmoviles.domain.modelo.Hospital
 import com.example.examenmoviles.domain.modelo.Paciente
+import com.example.examenmoviles.ui.MainXMLActivity
+import com.example.examenmoviles.ui.screens.detallePaciente.DetallePacienteEvent
+import com.example.examenmoviles.ui.screens.detallePaciente.Error
 import java.util.*
 
 @Composable
@@ -30,12 +35,13 @@ fun HospitalesScreen(
     LaunchedEffect(key1 = true) {
         viewModel.handleEvent(HospitalesEvent.GetHospitales)
     }
+    val state = viewModel.uiState.collectAsState().value
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
         Scaffold(
             content = {
-                if (viewModel.uiState.collectAsState().value.isLoading) {
+                if (state.isLoading) {
                     Box(modifier = Modifier.fillMaxSize()) {
                         CircularProgressIndicator(
                             modifier = Modifier
@@ -52,7 +58,7 @@ fun HospitalesScreen(
                     ) {
                         ListHospitales(
                             Modifier,
-                            hospitales = viewModel.uiState.collectAsState().value.hospitales,
+                            hospitales = state.hospitales,
                             getPacientes = { hospital ->
                                 viewModel.handleEvent(
                                     HospitalesEvent.GetPacientes(
@@ -70,17 +76,32 @@ fun HospitalesScreen(
                         )
                         ListPacientes(
                             Modifier,
-                            pacientes = viewModel.uiState.collectAsState().value.pacientes,
+                            pacientes = state.pacientes,
                             goDetallePaciente
                         )
                     }
                 }
+                Error(
+                    state.error
+                ) { viewModel.handleEvent(HospitalesEvent.ErrorCatch) }
+            },
+            floatingActionButton = {
+                goXML()
             },
             bottomBar = bottomBar
         )
     }
 }
 
+@Composable
+private fun goXML(){
+    val context = LocalContext.current
+    FloatingActionButton(onClick = {
+        context.startActivity(Intent(context, MainXMLActivity::class.java))
+    }) {
+        Text(text = "Go XML")
+    }
+}
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
