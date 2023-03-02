@@ -2,6 +2,7 @@ package com.example.examenmoviles.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -41,6 +42,25 @@ class MainXMLActivity : AppCompatActivity() {
                         true
                     }
                     else -> false
+                }
+            }
+
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
+                    R.id.hospitales -> {
+                        topAppBar.isVisible = false
+                    }
+                    R.id.pacientes -> {
+                        topAppBar.isVisible = true
+                        topAppBar.title = "Pacientes"
+                    }
+                    R.id.detallePacientes -> {
+                        topAppBar.isVisible = true
+                        topAppBar.title = "Paciente"
+                        topAppBar.setNavigationOnClickListener{
+                            navController.navigateUp()
+                        }
+                    }
                 }
             }
         }
