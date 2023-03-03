@@ -27,9 +27,9 @@ Mapp/src/main/java/com/example/filmflows/ui/pantallas/series/SeriesFragment.kt,
 Tapp/src/main/java/com/example/filmflows/ui/pantallas/movieDetail/MovieDetailState.kt,c\4\c401436fa79613af667111fea2d9d7e7d8cb3bb1
 l
 <app/src/main/java/com/example/filmflows/common/Constantes.kt,d\6\d6f9071c8c84fe649f82dfbee729e84dc4615e09
-c
-3app/src/main/java/com/example/filmflows/FlowsApp.kt,6\a\6a6bd6e103035f82cb0420fc811baa174eb12f84
 |
 Lapp/src/main/java/com/example/filmflows/ui/pantallas/movies/MoviesAdapter.kt,f\7\f70ed04efaae6bb1a191fde62470ee723865a818
 q
 Aapp/src/main/java/com/example/filmflows/data/di/DatabaseModule.kt,d\e\de6f44929ecdf86f829c078c0882ffc6f3a0c501
+c
+3app/src/main/java/com/example/filmflows/FlowsApp.kt,6\a\6a6bd6e103035f82cb0420fc811baa174eb12f84

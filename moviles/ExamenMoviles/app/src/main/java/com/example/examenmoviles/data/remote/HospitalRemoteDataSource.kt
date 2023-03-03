@@ -6,7 +6,7 @@ import com.example.examenmoviles.utils.NetworkResult
 import java.util.UUID
 import javax.inject.Inject
 
-class HospitalRemoteDataSource @Inject constructor(private val hospitalService: HospitalService) :
+class HospitalRemoteDataSource @Inject constructor(private val hospitalService: HospitalService)    :
     BaseApiResponse() {
 
     suspend fun fetchHospitales(): NetworkResult<List<Hospital>> {
