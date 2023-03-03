@@ -22,8 +22,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.examenmoviles.domain.modelo.Hospital
 import com.example.examenmoviles.domain.modelo.Paciente
 import com.example.examenmoviles.ui.MainXMLActivity
-import com.example.examenmoviles.ui.screens.detallePaciente.DetallePacienteEvent
-import com.example.examenmoviles.ui.screens.detallePaciente.Error
 import java.util.*
 
 @Composable
@@ -94,7 +92,7 @@ fun HospitalesScreen(
 }
 
 @Composable
-private fun goXML(){
+private fun goXML() {
     val context = LocalContext.current
     FloatingActionButton(onClick = {
         context.startActivity(Intent(context, MainXMLActivity::class.java))
