@@ -6,5 +6,6 @@ import java.util.*
 import javax.inject.Inject
 
 class AddPartido @Inject constructor(private val partidoRepository: PartidoRepository) {
-    operator fun invoke(nombre: String) = partidoRepository.addPartido(Partido(id = UUID.randomUUID(),nombre = nombre))
+    operator fun invoke(nombre: String) =
+        partidoRepository.addPartido(Partido(id = UUID.randomUUID(), nombre = nombre))
 }

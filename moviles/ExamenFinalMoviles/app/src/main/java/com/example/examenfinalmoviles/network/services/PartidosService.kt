@@ -1,14 +1,13 @@
 package com.example.examenfinalmoviles.network.services
 
-import com.example.examenfinalmoviles.common.Constantes
 import com.example.examenfinalmoviles.domain.modelo.Partido
 import retrofit2.Response
 import retrofit2.http.*
-import java.util.UUID
+import java.util.*
 
 interface PartidosService {
 
-    @GET(Constantes.getPartidos)
+    @GET("/partidos")
     suspend fun getPartidos(): Response<List<Partido>>
 
     @DELETE("/partidos/{id}")

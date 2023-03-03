@@ -25,8 +25,6 @@ x
 Happ/src/main/java/com/moviles/f1app/domain/usecases/drivers/AddDriver.kt,6\f\6f7a43b28ab195fceb3bb396cab350120ccc3afc
 |
 Lapp/src/main/java/com/moviles/f1app/domain/usecases/drivers/GetAllDrivers.kt,4\9\49eb4ed76206007b74076ed125dd2ef7fc8b749c
-j
-:app/src/main/java/com/moviles/f1app/data/F1RoomDatabase.kt,4\c\4c9320986bf6cfc02f9338776740791781daa302
 Š
 Zapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverViewModel.kt,0\b\0bb71e44d22182ee1302f10e8a62e4e0ea80836e
 „
@@ -47,5 +45,17 @@ o
 Vapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/driver/EditDriverState.kt,2\a\2acde93c2b50f779bf6fcdc3d1548b2c1b9aa887
 g
 7app/src/main/java/com/moviles/f1app/data/dao/TeamDao.kt,a\0\a003c97cf053db6cb7341ec0296aa7519db69e41
+…
+Uapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/detail/race/EditRaceFragment.kt,8\7\87a9550e0e03146e444716a898d8e7b6de592c14
+…
+Uapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/list/teams/SwipeToDeleteTeam.kt,e\c\ecaea47ad091d6b43a88978bd3cee4f165178c3e
+‰
+Yapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/list/drivers/SwipeToDeleteDriver.kt,c\b\cbdfab02127d7246996faa3d6f4254d72e19e7a8
+‰
+Yapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/list/drivers/EditDriversFragment.kt,7\e\7e30e8b17c7d085f137a177338bdac21e3e07227
 v
 Fapp/src/main/java/com/moviles/f1app/ui/pantalla/admin/AdminActivity.kt,8\e\8e3134397f667aab0bc57e47ada859614c244afb
+f
+6app/src/main/java/com/moviles/f1app/data/Converters.kt,4\f\4f4d55c1c89fd5fd87cdd1b82d71984e080edb4e
+j
+:app/src/main/java/com/moviles/f1app/data/F1RoomDatabase.kt,4\c\4c9320986bf6cfc02f9338776740791781daa302

@@ -1,8 +1,10 @@
 package com.example.examenfinalmoviles.data.di
 
 import com.example.examenfinalmoviles.common.Constantes
+import com.example.examenfinalmoviles.data.remote.LocalDateConverter
 import com.example.examenfinalmoviles.network.services.DiputadosService
 import com.example.examenfinalmoviles.network.services.PartidosService
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,6 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDate
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -32,8 +35,12 @@ object NetworkModule {
 
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        val gson =
+            GsonBuilder().registerTypeAdapter(LocalDate::class.java, LocalDateConverter()).create()
         return Retrofit.Builder().baseUrl(Constantes.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build()
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
+            .build()
     }
 
     @Provides

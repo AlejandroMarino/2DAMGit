@@ -8,17 +8,17 @@
     android:layout_margin="10dp"
     app:cardCornerRadius="15dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left|center_vertical"
-            android:padding="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="2dp"
-            android:text="paco"
-            android:textColor="@color/design_default_color_on_primary"
-            android:textSize="20sp"
-            tools:ignore="RtlHardcoded" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="2dp"
+        android:text="paco"
+        android:textColor="@color/design_default_color_on_primary"
+        android:textSize="20sp"
+        tools:ignore="RtlHardcoded" />
 
 </androidx.cardview.widget.CardView>

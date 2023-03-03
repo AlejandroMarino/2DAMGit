@@ -13,12 +13,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.examenfinalmoviles.domain.modelo.Diputado
 import com.example.examenfinalmoviles.domain.modelo.Partido
-import com.example.examenfinalmoviles.ui.screens.common.TopBar
 import java.util.*
 
 @Composable
@@ -48,11 +48,11 @@ fun DiputadosScreen(
                     Column(
                         modifier = Modifier
                             .padding(it)
-                            .padding(16.dp),
-                        Arrangement.SpaceEvenly
+                            .padding(16.dp)
+                            .fillMaxSize()
                     ) {
                         ListPartidos(
-                            Modifier,
+                            Modifier.weight(2f),
                             partidos = state.partidos,
                             getDiputados = { partido ->
                                 viewModel.handleEvent(
@@ -63,17 +63,14 @@ fun DiputadosScreen(
                             },
                         )
                         ListDiputados(
-                            Modifier,
-                            diputados = state.diputados,
-                            goDetalleDiputado
+                            Modifier.weight(2f), diputados = state.diputados, goDetalleDiputado
                         )
                     }
                 }
                 Error(
                     state.error
                 ) { viewModel.handleEvent(DiputadosEvent.ErrorCatch) }
-            },
-            topBar = topBar
+            }, topBar = topBar
         )
     }
 }
@@ -93,23 +90,18 @@ fun ListPartidos(
     partidos: List<Partido>,
     getDiputados: (Partido) -> Unit,
 ) {
-    LazyColumn {
-        items(
-            items = partidos,
-            itemContent = { partido ->
-                ItemsPartido(partido, modifier, getDiputados)
-            }
-        )
+    LazyColumn(modifier = modifier) {
+        items(items = partidos, itemContent = { partido ->
+            ItemsPartido(partido, modifier, getDiputados)
+        })
     }
 }
 
 @Composable
 fun ListDiputados(
-    modifier: Modifier,
-    diputados: List<Diputado>,
-    goDetalleDiputado: (UUID) -> Unit
+    modifier: Modifier, diputados: List<Diputado>, goDetalleDiputado: (UUID) -> Unit
 ) {
-    LazyColumn {
+    LazyColumn(modifier = modifier) {
         items(
             items = diputados,
             itemContent = { diputado ->
@@ -125,15 +117,13 @@ fun ItemsPartido(
     modifier: Modifier,
     getDiputados: (Partido) -> Unit,
 ) {
-    Card(
-        backgroundColor = MaterialTheme.colors.primaryVariant,
+    Card(backgroundColor = MaterialTheme.colors.primaryVariant,
         elevation = 7.dp,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         modifier = modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp)
-            .clickable { getDiputados(partido) }
-    ) {
+            .clickable { getDiputados(partido) }) {
         Text(
             text = partido.nombre,
             color = MaterialTheme.colors.onPrimary,
@@ -143,19 +133,21 @@ fun ItemsPartido(
 }
 
 @Composable
-fun ItemsDiputado(diputado: Diputado, modifier: Modifier, goDetallePaciente: (UUID) -> Unit) {
-    Card(
-        backgroundColor = MaterialTheme.colors.secondaryVariant,
+fun ItemsDiputado(diputado: Diputado, modifier: Modifier, goDetalleDiputado: (UUID) -> Unit) {
+    Card(backgroundColor = if (diputado.corrupto) Color.Red else MaterialTheme.colors.secondaryVariant,
         elevation = 7.dp,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         modifier = modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp)
-            .clickable { goDetallePaciente(diputado.id) }
-    ) {
-        Text(
-            text = diputado.nombre,
-            modifier = modifier.padding(16.dp)
-        )
+            .clickable { goDetalleDiputado(diputado.id) }) {
+        Row(horizontalArrangement = Arrangement.SpaceBetween) {
+            Text(
+                text = diputado.nombre, modifier = modifier.padding(16.dp)
+            )
+            Text(
+                text = diputado.fechaEntradaCongreso.toString(), modifier = modifier.padding(16.dp)
+            )
+        }
     }
 }

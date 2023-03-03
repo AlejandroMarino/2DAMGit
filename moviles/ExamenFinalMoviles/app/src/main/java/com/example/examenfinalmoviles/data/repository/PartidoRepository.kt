@@ -1,6 +1,7 @@
 package com.example.examenfinalmoviles.data.repository
 
 import com.example.examenfinalmoviles.data.local.dao.PartidoDao
+import com.example.examenfinalmoviles.data.modelo.toPartido
 import com.example.examenfinalmoviles.data.modelo.toPartidoEntity
 import com.example.examenfinalmoviles.data.remote.PartidoRemoteDataSource
 import com.example.examenfinalmoviles.domain.modelo.Partido
@@ -29,6 +30,10 @@ class PartidoRepository @Inject constructor(
                 partidoDao
             }
         }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getPartidos(): List<Partido> {
+        return partidoDao.getAll().map { it.toPartido() }
     }
 
     fun addPartido(partido: Partido): Flow<NetworkResult<Void>> {

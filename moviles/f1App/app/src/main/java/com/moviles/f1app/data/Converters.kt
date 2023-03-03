@@ -1,7 +1,6 @@
 package com.moviles.f1app.data
 
 import androidx.room.TypeConverter
-import java.lang.String.format
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

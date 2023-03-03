@@ -3,9 +3,9 @@ package com.example.examenfinalmoviles.ui.screens.diputados
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.examenfinalmoviles.domain.modelo.Partido
-import com.example.examenfinalmoviles.domain.usecases.diputados.GetDiputados
 import com.example.examenfinalmoviles.domain.usecases.diputados.GetDiputadosFromPartido
 import com.example.examenfinalmoviles.domain.usecases.partidos.GetPartidos
+import com.example.examenfinalmoviles.domain.usecases.partidos.GetPartidosRoom
 import com.example.examenfinalmoviles.utils.NetworkResult
 import com.example.examenfinalmoviles.utils.StringProvider
 import com.example.examenfinalmoviles.utils.Utils
@@ -19,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DiputadosViewModel @Inject constructor(
     private val getPartidos: GetPartidos,
+    private val getPartidosRoom: GetPartidosRoom,
     private val getDiputados: GetDiputadosFromPartido,
     private val stringProvider: StringProvider
 ) : ViewModel() {
@@ -49,6 +50,26 @@ class DiputadosViewModel @Inject constructor(
     }
 
     private fun getPartidos() {
+        viewModelScope.launch {
+            val partidos = getPartidosRoom()
+            if (partidos.isEmpty()) {
+                getPartidosRemote()
+            } else {
+                _uiState.update {
+                    it.copy(
+                        partidos = partidos,
+                        isLoading = false
+                    )
+                }
+            }
+        }
+    }
+
+    private suspend fun getPartidosRoom(): List<Partido> {
+        return getPartidosRoom.invoke()
+    }
+
+    private fun getPartidosRemote() {
         viewModelScope.launch {
             if (Utils.hasInternetConnection(stringProvider.context)) {
                 getPartidos.invoke().collect { result ->
@@ -97,7 +118,7 @@ class DiputadosViewModel @Inject constructor(
         }
     }
 
-    private fun getDiputados(partido: Partido){
+    private fun getDiputados(partido: Partido) {
         viewModelScope.launch {
             if (Utils.hasInternetConnection(stringProvider.context)) {
                 getDiputados.invoke(partido.id).collect { result ->
@@ -105,8 +126,9 @@ class DiputadosViewModel @Inject constructor(
                         is NetworkResult.Error -> {
                             _uiState.update {
                                 it.copy(
-                                    error = result.message ?: "",
-                                    isLoading = false
+                                    error = "No hay diputados en este partido",
+                                    isLoading = false,
+                                    diputados = emptyList()
                                 )
                             }
                         }
@@ -132,6 +154,7 @@ class DiputadosViewModel @Inject constructor(
                             _uiState.update {
                                 it.copy(
                                     isLoading = false,
+                                    diputados = emptyList()
                                 )
                             }
                         }

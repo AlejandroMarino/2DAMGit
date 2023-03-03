@@ -22,6 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.examenmoviles.domain.modelo.Hospital
 import com.example.examenmoviles.domain.modelo.Paciente
 import com.example.examenmoviles.ui.MainXMLActivity
+import com.example.examenmoviles.ui.screens.detallePaciente.Error
 import java.util.*
 
 @Composable

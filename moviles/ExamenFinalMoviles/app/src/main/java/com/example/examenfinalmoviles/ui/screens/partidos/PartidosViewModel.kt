@@ -3,10 +3,7 @@ package com.example.examenfinalmoviles.ui.screens.partidos
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.examenfinalmoviles.domain.modelo.Partido
-import com.example.examenfinalmoviles.domain.usecases.partidos.AddPartido
-import com.example.examenfinalmoviles.domain.usecases.partidos.DeletePartido
-import com.example.examenfinalmoviles.domain.usecases.partidos.GetPartidos
-import com.example.examenfinalmoviles.domain.usecases.partidos.UpdatePartido
+import com.example.examenfinalmoviles.domain.usecases.partidos.*
 import com.example.examenfinalmoviles.utils.NetworkResult
 import com.example.examenfinalmoviles.utils.StringProvider
 import com.example.examenfinalmoviles.utils.Utils
@@ -24,6 +21,7 @@ class PartidosViewModel @Inject constructor(
     private val deletePartido: DeletePartido,
     private val updatePartido: UpdatePartido,
     private val addPartido: AddPartido,
+    private val getPartidosRoom: GetPartidosRoom,
     private val stringProvider: StringProvider
 ) : ViewModel() {
 
@@ -62,6 +60,26 @@ class PartidosViewModel @Inject constructor(
     }
 
     private fun getPartidos() {
+        viewModelScope.launch {
+            val partidos = getPartidosRoom()
+            if (partidos.isEmpty()) {
+                getPartidosRemote()
+            } else {
+                _uiState.update {
+                    it.copy(
+                        partidos = partidos,
+                        isLoading = false
+                    )
+                }
+            }
+        }
+    }
+
+    private suspend fun getPartidosRoom(): List<Partido> {
+        return getPartidosRoom.invoke()
+    }
+
+    private fun getPartidosRemote() {
         viewModelScope.launch {
             if (Utils.hasInternetConnection(stringProvider.context)) {
                 getPartidos.invoke().collect { result ->
@@ -134,23 +152,14 @@ class PartidosViewModel @Inject constructor(
                             }
                         }
                         is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
-                        is NetworkResult.Success -> {
+                        else -> {
                             _uiState.update {
                                 it.copy(
                                     isLoading = false,
                                     partido = Partido(UUID.randomUUID(), "")
                                 )
                             }
-                            getPartidos()
-                        }
-                        is NetworkResult.SuccessNoData -> {
-                            _uiState.update {
-                                it.copy(
-                                    isLoading = false,
-                                    partido = Partido(UUID.randomUUID(), "")
-                                )
-                            }
-                            getPartidos()
+                            getPartidosRemote()
                         }
                     }
                 }
@@ -171,7 +180,7 @@ class PartidosViewModel @Inject constructor(
                                     partido = Partido(UUID.randomUUID(), "")
                                 )
                             }
-                            getPartidos()
+                            getPartidosRemote()
                         }
                     }
                 }
@@ -211,23 +220,14 @@ class PartidosViewModel @Inject constructor(
                                 }
                             }
                             is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
-                            is NetworkResult.Success -> {
+                            else -> {
                                 _uiState.update {
                                     it.copy(
                                         isLoading = false,
                                         partido = Partido(UUID.randomUUID(), "")
                                     )
                                 }
-                                getPartidos()
-                            }
-                            is NetworkResult.SuccessNoData -> {
-                                _uiState.update {
-                                    it.copy(
-                                        isLoading = false,
-                                        partido = Partido(UUID.randomUUID(), "")
-                                    )
-                                }
-                                getPartidos()
+                                getPartidosRemote()
                             }
                         }
                     }
@@ -248,7 +248,7 @@ class PartidosViewModel @Inject constructor(
                                         partido = Partido(UUID.randomUUID(), "")
                                     )
                                 }
-                                getPartidos()
+                                getPartidosRemote()
                             }
                         }
                     }
@@ -271,19 +271,11 @@ class PartidosViewModel @Inject constructor(
                             }
                         }
                         is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
-                        is NetworkResult.Success -> {
-                            getPartidos()
+                        else -> {
+                            getPartidosRemote()
                             _uiState.update {
                                 it.copy(
                                     isLoading = false
-                                )
-                            }
-                        }
-                        is NetworkResult.SuccessNoData -> {
-                            getPartidos()
-                            _uiState.update {
-                                it.copy(
-                                    isLoading = false,
                                 )
                             }
                         }
@@ -300,7 +292,7 @@ class PartidosViewModel @Inject constructor(
                             }
                         }
                         else -> {
-                            getPartidos()
+                            getPartidosRemote()
                             _uiState.update {
                                 it.copy(
                                     isLoading = false
