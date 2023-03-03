@@ -37,10 +37,6 @@ w
 G.idea/sonarlint/issuestore/0/b/0b89ccf0e1b86bc698e4af3da3ffbddf30a1836a,b\d\bd7aa5bdbed92ae241c97741983135c27aaf8e86
 w
 G.idea/sonarlint/issuestore/2/9/29418ecfa1bbe2c103042260503ccc077c853bfe,1\f\1f59a0a123297c37fb0acada41f5367bb8f18946
-w
-G.idea/sonarlint/issuestore/7/2/7215e7e63c2ef694250cc1f25ce428befa08bfcc,0\a\0ae0f22f87aca4b4fefa22cfa184ce1f644ecf46
-w
-G.idea/sonarlint/issuestore/7/5/757caabc9cce8165840e6dbeb5d77e10ea7fffac,8\9\899db297dcce3535416d8b45416aa4cd350bb1ae
 z
 Japp/src/main/java/com/example/examenmoviles/data/remote/BaseApiResponse.kt,6\9\69b2c3787a5ac0825681fc101a0a3e609b2f6386
 p
