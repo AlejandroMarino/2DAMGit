@@ -144,3 +144,15 @@ y
 Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductState.kt,9\d\9dc6cf236d4439258c99a659fd122f28c2089326
 h
 8app/src/main/java/com/example/compose2/ui/theme/Theme.kt,d\b\dbb7c8ed4c7797bd131ca90dc93a8d9aa46cb986
+v
+Fapp/src/main/java/com/example/compose2/ui/screens/list/ListActivity.kt,5\1\516ae0564660b3f4fe14b98093debb9c269bfbe0
+y
+Iapp/src/main/java/com/example/compose2/ui/screens/product/ProductEvent.kt,b\8\b831736ab0575ec81349d965e83923302b67baff
+w
+Gapp/src/main/java/com/example/compose2/ui/screens/list/ListViewModel.kt,c\f\cf090ec641070daafde45e479b69a69078bb0551
+}
+Mapp/src/main/java/com/example/compose2/ui/screens/product/ProductViewModel.kt,2\e\2ed98c381b5ce9156552a3a9c514db58c0de2672
+|
+Lapp/src/main/java/com/example/compose2/ui/screens/product/ProductActivity.kt,8\3\833cd71d83445f18abbd5e81fd39ab79f499d809
+i
+9app/src/main/java/com/example/compose2/ui/MainActivity.kt,6\9\69d17256e2a72be38e00123d716b9de33d282e72
