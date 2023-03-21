@@ -1,0 +1,42 @@
+1. Get the orders of a given customer, showing the name of the customer and the
+number of seats
+
+    SELECT first_name, last_name, number_of_seats, orders.id, orders.table_id, orders.customer_id, orders.order_date, orders.total From orders
+        INNER JOIN customers ON orders.customer_id = customers.id = ?
+        INNER JOIN tables On orders.table_id = tables.id;
+
+2. Get the number of items of each order
+
+    Select order_id, sum(order_items.quantity) as "number of items"
+    from order_items
+    group by order_items.order_id;
+
+3. Get the name of the 2 oldest customers of the restaurant
+
+    SELECT first_name, last_name
+    from orders
+             INNER JOIN customers on orders.customer_id = customers.id
+    ORDER BY order_date
+    LIMIT 2;
+
+4. Get the name of the customer that has spent more money in the restaurant
+
+    SELECT first_name, last_name, SUM(orders.total) AS total
+    FROM orders
+             INNER JOIN customers ON orders.customer_id = customers.id
+    GROUP BY orders.customer_id
+    ORDER BY total DESC
+    LIMIT 1;
+
+5. Create two more queries for your classmates to practice
+
+    a) Get the menu_items that have been ordered the most by each customer
+
+    ********
+        SELECT first_name, last_name, menu_items.name, SUM(quantity) AS total_ordered From orders
+        INNER JOIN customers ON orders.customer_id = customers.id
+        INNER JOIN order_items ON orders.id = order_items.order_id
+        INNER JOIN menu_items ON order_items.menu_item_id = menu_items.id
+        GROUP BY customer_id, menu_item_id ORDER BY total_ordered DESC;
+
+    b) Get the customer that has ordered the most quantity of each menu_item
