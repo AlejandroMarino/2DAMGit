@@ -1,9 +1,18 @@
 1. Get the orders of a given customer, showing the name of the customer and the
 number of seats
 
-    SELECT first_name, last_name, number_of_seats, orders.id, orders.table_id, orders.customer_id, orders.order_date, orders.total From orders
-        INNER JOIN customers ON orders.customer_id = customers.id = ?
-        INNER JOIN tables On orders.table_id = tables.id;
+    SELECT first_name,
+           last_name,
+           number_of_seats,
+           orders.id,
+           orders.table_id,
+           orders.customer_id,
+           orders.order_date,
+           orders.total
+    From orders
+             INNER JOIN customers ON orders.customer_id = customers.id
+             INNER JOIN tables On orders.table_id = tables.id
+    WHERE customers.id = ?;
 
 2. Get the number of items of each order
 
@@ -32,11 +41,30 @@ number of seats
 
     a) Get the menu_items that have been ordered the most by each customer
 
-    ********
-        SELECT first_name, last_name, menu_items.name, SUM(quantity) AS total_ordered From orders
-        INNER JOIN customers ON orders.customer_id = customers.id
-        INNER JOIN order_items ON orders.id = order_items.order_id
-        INNER JOIN menu_items ON order_items.menu_item_id = menu_items.id
-        GROUP BY customer_id, menu_item_id ORDER BY total_ordered DESC;
+        SELECT first_name, last_name, menu_items.name, SUM(quantity) AS total_quantity
+        FROM order_items
+                 INNER JOIN menu_items ON order_items.menu_item_id = menu_items.id
+                 INNER JOIN orders ON order_items.order_id = orders.id
+                 INNER JOIN customers ON orders.customer_id = customers.id
+        GROUP BY customers.id, menu_items.name
+        HAVING SUM(quantity) = (SELECT MAX(total_quantity)
+                                FROM (SELECT customers.id As customer_id,
+                                             SUM(quantity) AS total_quantity
+                                      FROM order_items
+                                               INNER JOIN menu_items ON order_items.menu_item_id = menu_items.id
+                                               INNER JOIN orders ON order_items.order_id = orders.id
+                                               INNER JOIN customers ON orders.customer_id = customers.id
+                                      GROUP BY customers.id, menu_items.id) r
+                                WHERE r.customer_id = customers.id);
 
     b) Get the customer that has ordered the most quantity of each menu_item
+
+        SELECT menu_items.name, SUM(order_items.quantity) AS total_quantity, customers.first_name, customers.last_name
+        FROM customers
+                 JOIN orders ON customers.id = orders.customer_id
+                 JOIN order_items ON orders.id = order_items.order_id
+                 JOIN menu_items ON order_items.menu_item_id = menu_items.id
+        WHERE order_items.quantity = (SELECT MAX(oi.quantity)
+                                      FROM order_items oi
+                                      WHERE oi.menu_item_id = order_items.menu_item_id)
+        GROUP BY customers.id, menu_items.id;
