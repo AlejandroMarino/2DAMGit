@@ -1,0 +1,33 @@
+
+D
+data/order_items.txt,f\e\fe548e9551a9756df0154b052a8e4b503e020fc9
+C
+data/menu_items.txt,9\a\9afe336eb4cf9037ef86d8481250b97f1a0da66b
+?
+data/orders.txt,f\9\f903cca12cadf19db00bf34e5c62bac08adff4a1
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+B
+data/customers.txt,8\7\87225fb8c4eb4fa2a1c99a2c525c3c76b5387e0f
+W
+'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
+Y
+)src/main/java/domain/model/Customers.java,7\2\7216c8ce6fe4186cdfff21fd2046ab98571c3cf5
+S
+#src/main/java/dao/DaoCustomers.java,f\0\f0e3e4ad8fe4780bea1caf157aae8e5f239ce16b
+P
+ src/main/java/dao/DaoOrders.java,e\a\ea266c4c4d03f77269c4df8119a5222d5588f7b8
+e
+5src/main/java/services/customers/GetAllCustomers.java,0\8\084d332efb16dbe8c463853ade09e45b6215eba1
+J
+src/main/java/ui/Main.java,f\5\f5f833a11c774bc6d9fec08fc87be62b89228540
+Y
+)src/main/java/domain/model/MenuItems.java,0\5\050ee61e0848604f5a7ae8d0c0e8ce4bb6beb310
+Z
+*src/main/java/domain/model/OrderItems.java,9\4\9429a6f4af17f3357bdcad1c38c15cbe855c5968
+V
+&src/main/java/domain/model/Orders.java,5\4\54414a9a6cb577375741a5d1843e1f50b63065c1
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+O
+src/main/java/dao/DaoLogin.java,8\7\87d42a8a6967e707d6c44eb756c4666397d7a7d2
