@@ -3,6 +3,7 @@ package dao.daoImpl;
 import config.Configuration;
 import dao.DaoOrders;
 import domain.model.Customer;
+import domain.model.MenuItem;
 import domain.model.Order;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -94,7 +95,26 @@ public class DaoOrdersImpl implements DaoOrders {
 
     @Override
     public Either<Integer, Void> update(Order order) {
-        return null;
+        List<Order> orders = getAll().get();
+        if (!orders.removeIf(c -> c.getId() == order.getId())) {
+            return Either.left(-1);
+        } else {
+            orders.add(order);
+            BufferedWriter writer;
+            Path p = Paths.get(config.getCustomers());
+            try {
+                writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
+                for (Order o : orders) {
+                    writer.write(o.toString());
+                    writer.newLine();
+                }
+                writer.close();
+                return Either.right(null);
+            } catch (IOException e) {
+                log.error(e.getMessage());
+                return Either.left(-2);
+            }
+        }
     }
 
     @Override
@@ -106,8 +126,8 @@ public class DaoOrdersImpl implements DaoOrders {
         try {
             writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
             for (Order order : orders) {
-                writer.newLine();
                 writer.write(order.toString());
+                writer.newLine();
             }
             writer.close();
             return Either.right(null);

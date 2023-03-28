@@ -90,7 +90,26 @@ public class DaoMenuItemsImpl implements DaoMenuItems {
 
     @Override
     public Either<Integer, Void> update(MenuItem menuItem) {
-        return null;
+        List<MenuItem> menuItems = getAll().get();
+        if (!menuItems.removeIf(c -> c.getId() == menuItem.getId())) {
+            return Either.left(-1);
+        } else {
+            menuItems.add(menuItem);
+            BufferedWriter writer;
+            Path p = Paths.get(config.getCustomers());
+            try {
+                writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
+                for (MenuItem mi : menuItems) {
+                    writer.write(mi.toString());
+                    writer.newLine();
+                }
+                writer.close();
+                return Either.right(null);
+            } catch (IOException e) {
+                log.error(e.getMessage());
+                return Either.left(-2);
+            }
+        }
     }
 
     @Override
@@ -102,8 +121,8 @@ public class DaoMenuItemsImpl implements DaoMenuItems {
         try {
             writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
             for (MenuItem menuItem : menuItems) {
-                writer.newLine();
                 writer.write(menuItem.toString());
+                writer.newLine();
             }
             writer.close();
             return Either.right(null);

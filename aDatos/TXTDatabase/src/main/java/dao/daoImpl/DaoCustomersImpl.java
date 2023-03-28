@@ -90,7 +90,26 @@ public class DaoCustomersImpl implements DaoCustomers {
 
     @Override
     public Either<Integer, Void> update(Customer customer) {
-        return null;
+        List<Customer> customers = getAll().get();
+        if (!customers.removeIf(c -> c.getId() == customer.getId())) {
+            return Either.left(-1);
+        } else {
+            customers.add(customer);
+            BufferedWriter writer;
+            Path p = Paths.get(config.getCustomers());
+            try {
+                writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
+                for (Customer c : customers) {
+                    writer.write(c.toString());
+                    writer.newLine();
+                }
+                writer.close();
+                return Either.right(null);
+            } catch (IOException e) {
+                log.error(e.getMessage());
+                return Either.left(-2);
+            }
+        }
     }
 
     @Override
@@ -102,8 +121,8 @@ public class DaoCustomersImpl implements DaoCustomers {
         try {
             writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8);
             for (Customer customer : customers) {
-                writer.newLine();
                 writer.write(customer.toString());
+                writer.newLine();
             }
             writer.close();
             return Either.right(null);
