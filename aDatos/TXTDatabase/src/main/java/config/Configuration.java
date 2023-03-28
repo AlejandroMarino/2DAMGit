@@ -1,30 +1,32 @@
 package config;
 
+import jakarta.inject.Singleton;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
+
 import java.io.IOException;
 import java.util.Properties;
 
+@Getter
+@Log4j2
+@Singleton
 public class Configuration {
-    private static Configuration instance=null;
-    private Properties p;
 
-    private Configuration() {
+    public Configuration() {
         try {
-            p = new Properties();
-            p.load(Configuration.class.getClassLoader().getResourceAsStream("configFiles/properties.txt"));
+            properties = new Properties();
+            properties.load(Configuration.class.getClassLoader().getResourceAsStream("configFiles/properties.txt"));
+            this.customers = properties.getProperty("customers");
+            this.menuItems = properties.getProperty("menuItems");
+            this.orderItems = properties.getProperty("orderItems");
+            this.orders = properties.getProperty("orders");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
     }
-
-    public static Configuration getInstance() {
-
-        if (instance==null) {
-            instance=new Configuration();
-        }
-        return instance;
-    }
-
-    public String getProperty(String key) {
-        return p.getProperty(key);
-    }
+    private Properties properties;
+    public String customers;
+    public String menuItems;
+    public String orderItems;
+    public String orders;
 }

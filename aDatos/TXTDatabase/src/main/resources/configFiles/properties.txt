@@ -1,0 +1,4 @@
+customers=data/customers.txt
+menuItems=data/menu_items.txt
+orderItems=data/order_items.txt
+orders=data/orders.txt

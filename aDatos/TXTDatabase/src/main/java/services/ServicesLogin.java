@@ -1,6 +1,6 @@
-package dao;
+package services;
 
-public interface DaoLogin {
+public interface ServicesLogin {
 
     boolean login(String user, String password);
 }
