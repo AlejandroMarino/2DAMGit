@@ -1,0 +1,12 @@
+
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜ÚôÉ8ô‡ˆŸÊ0
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜ÚôÉ8õ‡ˆŸÊ0
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÇ™¿ÿÿÿÿÿ8Äğƒ Ê0
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÇ™¿ÿÿÿÿÿ8ß÷„ Ê0
+l	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éÏÆy8è¨³¡Ê0
+r	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó…¼şÿÿÿÿ8œ¸¥£Ê0
+r	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü§äğıÿÿÿÿ8Õ„†£Ê0
+r	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü§äğıÿÿÿÿ8ï§¤Ê0
+e	java:S116"QRename this field "p_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ¨“}
+j	java:S116"URename this field "total_cost" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úÎ¡¶
+v	java:S116"ZRename this field "items_purchased" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×îûõ8£‡ŸÊ0

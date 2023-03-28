@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clientsXML>
+    <clients>
+        <id>1</id>
+        <name>client1</name>
+        <balance>10000.0</balance>
+
+            <purchase>
+
+                    <item>
+                        <id>1</id>
+                    </item>
+                    <item>
+                        <id>3</id>
+                    </item>
+
+                <total_cost>204.0</total_cost>
+            </purchase>
+
+    </clients>
+    <clients>
+        <id>2</id>
+        <name>client2</name>
+        <balance>200.0</balance>
+        <purchases>
+            <purchase>
+                <items/>
+                <total_cost>10.0</total_cost>
+            </purchase>
+        </purchases>
+    </clients>
+    <clients>
+        <id>3</id>
+        <name>client3</name>
+        <balance>123.0</balance>
+        <purchases/>
+    </clients>
+</clientsXML>

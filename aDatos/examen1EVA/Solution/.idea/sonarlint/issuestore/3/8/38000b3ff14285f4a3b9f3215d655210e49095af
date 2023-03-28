@@ -1,0 +1,7 @@
+
+f	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ä‡•
+f	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ä‡•
+^
+java:S18549"ARemove this useless assignment to local variable "clientsAllXML".(Ò»†‹8øÐÀ¥Ê0
+O
+java:S14819"2Remove this unused "clientsAllXML" local variable.(Ò»†‹8ýÐÀ¥Ê0
