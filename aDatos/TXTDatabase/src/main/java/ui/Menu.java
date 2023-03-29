@@ -4,14 +4,16 @@ import domain.model.Customer;
 import domain.model.MenuItem;
 import domain.model.Order;
 import io.vavr.control.Either;
-import services.Services;
+import services.ServicesCustomers;
+import services.ServicesMenuItems;
+import services.ServicesOrders;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
-    public void menu(Scanner sc, Services sv) {
+    public void menu(Scanner sc, ServicesCustomers sC, ServicesMenuItems sMI, ServicesOrders sO) {
         int option;
         do {
             System.out.println("\nWhat you want to do?" +
@@ -24,16 +26,16 @@ public class Menu {
             sc.nextLine();
             switch (option) {
                 case 1:
-                    getAllCustomers(sv);
+                    getAllCustomers(sC);
                     break;
                 case 2:
-                    getOrdersByCustomers(sc, sv);
+                    getOrdersByCustomers(sc, sO);
                     break;
                 case 3:
-                    addOrder(sc, sv);
+                    addOrder(sc, sC, sMI, sO);
                     break;
                 case 4:
-                    deleteCustomer(sc, sv);
+                    deleteCustomer(sc, sC, sO);
                     break;
                 case 0:
                     System.out.println("Bye");
@@ -45,17 +47,17 @@ public class Menu {
         } while (option != 0);
     }
 
-    private static void addOrder(Scanner sc, Services sv) {
+    private static void addOrder(Scanner sc, ServicesCustomers sC, ServicesMenuItems sMI, ServicesOrders sO) {
         System.out.println("What is the first name of the customer?");
         String name = sc.nextLine().toLowerCase().trim();
-        Either<String, Customer> customer = sv.getCustomer(name);
+        Either<String, Customer> customer = sC.getCustomer(name);
         if (customer.isLeft()) {
             System.out.println(customer.getLeft());
         } else {
             System.out.println("Which is the table number?");
             int table = sc.nextInt();
             sc.nextLine();
-            Either<String, List<MenuItem>> items = sv.getAllMenuItems();
+            Either<String, List<MenuItem>> items = sMI.getAllMenuItems();
             if (items.isLeft()) {
                 System.out.println(items.getLeft());
             } else {
@@ -71,7 +73,7 @@ public class Menu {
                 System.out.println("How many of it do you want?");
                 int quantity2 = sc.nextInt();
                 sc.nextLine();
-                Either<String, Void> orderAdded = sv.addOrder(customer.get(), table, name1, quantity1, name2, quantity2);
+                Either<String, Void> orderAdded = sO.addOrder(customer.get(), table, name1, quantity1, name2, quantity2);
                 if (orderAdded.isLeft()) {
                     System.out.println(orderAdded.getLeft());
                 } else {
@@ -81,13 +83,13 @@ public class Menu {
         }
     }
 
-    private static void deleteCustomer(Scanner sc, Services sv) {
+    private static void deleteCustomer(Scanner sc, ServicesCustomers sC, ServicesOrders sO) {
         System.out.println("What is the first name of the customer you want to delete?");
         String name = sc.nextLine().toLowerCase().trim();
-        Either<String, List<Order>> customerOrders = sv.getOrdersByCustomer(name);
+        Either<String, List<Order>> customerOrders = sO.getOrdersByCustomer(name);
         if (customerOrders.isRight()) {
             if (customerOrders.get().isEmpty()) {
-                boolean deleted = sv.deleteCustomer(name);
+                boolean deleted = sC.deleteCustomer(name);
                 if (deleted) {
                     System.out.println("Customer deleted");
                 } else {
@@ -102,8 +104,8 @@ public class Menu {
                     answer = sc.nextLine().toLowerCase().trim();
                     switch (answer) {
                         case "y" -> {
-                            sv.deleteOrders(customerOrders.get());
-                            boolean deleted = sv.deleteCustomer(name);
+                            sO.deleteOrders(customerOrders.get());
+                            boolean deleted = sC.deleteCustomer(name);
                             if (deleted) {
                                 System.out.println("Customer deleted");
                             } else {
@@ -120,10 +122,10 @@ public class Menu {
         }
     }
 
-    private static void getOrdersByCustomers(Scanner sc, Services sv) {
+    private static void getOrdersByCustomers(Scanner sc, ServicesOrders sO) {
         System.out.println("Introduce his first name of the customer");
         String name = sc.nextLine().toLowerCase().trim();
-        Either<String, List<Order>> result = sv.getOrdersByCustomer(name);
+        Either<String, List<Order>> result = sO.getOrdersByCustomer(name);
         if (result.isLeft()) {
             System.out.println(result.getLeft());
         } else {
@@ -132,8 +134,8 @@ public class Menu {
         }
     }
 
-    private static void getAllCustomers(Services sv) {
-        Either<String, List<Customer>> result = sv.getAllCustomers();
+    private static void getAllCustomers(ServicesCustomers sC) {
+        Either<String, List<Customer>> result = sC.getAllCustomers();
         if (result.isLeft()) {
             System.out.println(result.getLeft());
         } else {

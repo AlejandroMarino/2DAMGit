@@ -1,9 +1,12 @@
 package ui;
 
-import services.Services;
-import services.ServicesLogin;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+import services.ServicesCustomers;
+import services.ServicesLogin;
+import services.ServicesMenuItems;
+import services.ServicesOrders;
+
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +14,10 @@ public class Main {
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
         final SeContainer container = initializer.initialize();
         ServicesLogin svl = container.select(ServicesLogin.class).get();
-        Services sv = container.select(Services.class).get();
+        ServicesCustomers sC = container.select(ServicesCustomers.class).get();
+        ServicesMenuItems sMI = container.select(ServicesMenuItems.class).get();
+        ServicesOrders sO = container.select(ServicesOrders.class).get();
+
 
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -30,7 +36,7 @@ public class Main {
                     if (svl.login(user, password)) {
                         System.out.println("Welcome " + user);
                         Menu menu = new Menu();
-                        menu.menu(sc, sv);
+                        menu.menu(sc, sC, sMI, sO);
                     } else {
                         System.out.println("Wrong credentials");
                     }

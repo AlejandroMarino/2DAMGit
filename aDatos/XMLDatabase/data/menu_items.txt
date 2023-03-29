@@ -1,0 +1,4 @@
+1;Steak;A juicy 8oz sirloin;18.99
+2;Salmon;Grilled salmon with a lemon butter sauce;16.99
+3;Burger;1/3 pound Angus beef burger with fries;11.99
+4;Caesar Salad;Crisp romaine lettuce with parmesan cheese and croutons;8.99
