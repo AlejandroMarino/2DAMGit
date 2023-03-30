@@ -1,7 +1,7 @@
 package domain.servicios;
 
 import data.DaoShop;
-import domain.modelo.Reader;
+import domain.models.Shop;
 import jakarta.inject.Inject;
 
 import java.util.List;
@@ -15,23 +15,23 @@ public class ServicesShop {
         this.daoShop = daoShop;
     }
 
-    public List<Reader> getAll() {
+    public List<Shop> getAll() {
         return daoShop.getAll();
     }
 
-    public Reader get(int id) {
+    public Shop get(int id) {
         return daoShop.get(id);
     }
 
-    public Reader add(Reader reader) {
-        return daoShop.add(reader);
+    public Shop add(Shop shop) {
+        return daoShop.add(shop);
     }
 
     public void delete(int id) {
         daoShop.delete(id);
     }
 
-    public Reader update(Reader reader) {
-        return daoShop.update(reader);
+    public Shop update(Shop shop) {
+        return daoShop.update(shop);
     }
 }

@@ -14,4 +14,5 @@ public class Game {
     private String name;
     private String description;
     private LocalDate releaseDate;
+    private int shopId;
 }

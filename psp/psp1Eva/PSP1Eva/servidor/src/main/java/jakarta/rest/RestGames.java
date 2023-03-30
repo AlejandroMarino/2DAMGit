@@ -1,7 +1,7 @@
 package jakarta.rest;
 
-import domain.error.ApiError;
-import domain.modelo.Newspaper;
+import domain.errors.ApiError;
+import domain.models.Game;
 import domain.servicios.ServicesGame;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -20,25 +20,24 @@ public class RestGames {
 
     @Inject
     public RestGames(ServicesGame sG) {
-        this.sG = RestGames.this.sG;
-    }
+        this.sG = sG;}
 
     @GET
-    public List<Newspaper> getAll() {
+    public List<Game> getAll() {
         return sG.getAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Newspaper get(@PathParam("id") int id) {
+    public Game get(@PathParam("id") int id) {
         return sG.get(id);
     }
 
     @POST
-    public Response add(Newspaper newspaper) {
-        if (sG.add(newspaper)) {
-            return Response.status(Response.Status.CREATED).entity(newspaper).build();
+    public Response add(Game game) {
+        if (sG.add(game)) {
+            return Response.status(Response.Status.CREATED).entity(game).build();
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiError.builder()
@@ -56,8 +55,8 @@ public class RestGames {
     }
 
     @PUT
-    public Response update(Newspaper newspaper) {
-        Newspaper news = sG.update(newspaper);
-        return Response.status(Response.Status.OK).entity(news).build();
+    public Response update(Game game) {
+        Game g = sG.update(game);
+        return Response.status(Response.Status.OK).entity(g).build();
     }
 }

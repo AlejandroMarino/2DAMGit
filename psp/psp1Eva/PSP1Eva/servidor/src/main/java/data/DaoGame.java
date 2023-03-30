@@ -2,80 +2,85 @@ package data;
 
 import config.DBConnectionPool;
 import domain.modelo.BaseDatosCaidaException;
-import domain.modelo.Newspaper;
 import domain.modelo.NotFoundException;
+import domain.models.Game;
 import jakarta.inject.Inject;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DaoGame {
-    private DBConnectionPool dbConnectionPool;
+    private DBConnectionPool db;
 
     @Inject
-    public DaoGame(DBConnectionPool dbConnectionPool) {
-        this.dbConnectionPool = dbConnectionPool;
+    public DaoGame(DBConnectionPool db) {
+        this.db = db;
     }
 
     public List<Game> getAll() {
         try {
-            JdbcTemplate jtm = new JdbcTemplate(dbConnectionPool.getDataSource());
-            return jtm.query("SELECT * FROM newspaper", BeanPropertyRowMapper.newInstance(Newspaper.class));
+            JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
+            return jtm.query("SELECT * FROM game", BeanPropertyRowMapper.newInstance(Game.class));
         } catch (Exception e) {
-            throw new BaseDatosCaidaException("Error en la base de datos");
+            throw new BaseDatosCaidaException("Database error");
         }
     }
 
-    public Newspaper get(int id) {
+    public Game get(int id) {
         try {
-            JdbcTemplate jtm = new JdbcTemplate(dbConnectionPool.getDataSource());
-            return jtm.queryForObject("SELECT * FROM newspaper WHERE id = ?", BeanPropertyRowMapper.newInstance(Newspaper.class), id);
+            JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
+            return jtm.queryForObject("SELECT * FROM game WHERE id = ?", BeanPropertyRowMapper.newInstance(Game.class), id);
         } catch (Exception e) {
-            throw new BaseDatosCaidaException("Error en la base de datos");
+            throw new BaseDatosCaidaException("Database error");
         }
 
     }
 
-    public int add(Newspaper newspaper) {
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(dbConnectionPool.getDataSource()).withTableName("newspaper");
+    public int add(Game game) {
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(db.getDataSource()).withTableName("game");
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("name_newspaper", newspaper.getName());
-        parameters.put("release_date", newspaper.getReleaseDate());
+        parameters.put("name", game.getName());
+        parameters.put("description", game.getDescription());
+        parameters.put("release_date", game.getReleaseDate());
+        parameters.put("shop_id", game.getShopId());
         return jdbcInsert.execute(parameters);
     }
 
     public void delete(int id) {
-        TransactionDefinition def = new DefaultTransactionDefinition();
-        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dbConnectionPool.getDataSource());
-        TransactionStatus status = transactionManager.getTransaction(def);
-
-        try {
-            JdbcTemplate jtm = new JdbcTemplate(transactionManager.getDataSource());
-            jtm.update("DELETE FROM readarticle WHERE id_article IN (SELECT id FROM article WHERE id_newspaper = ?)", id);
-            jtm.update("DELETE FROM article WHERE id_newspaper = ?", id);
-            jtm.update("DELETE FROM subscribe WHERE id_newspaper = ?", id);
-            jtm.update("DELETE FROM newspaper WHERE id = ?", id);
-            transactionManager.commit(status);
-        } catch (Exception e) {
-            transactionManager.rollback(status);
-            throw new BaseDatosCaidaException("Base de datos caida");
+        try (Connection con = db.getConnection()) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM shop WHERE id = ?")) {
+                con.setAutoCommit(false);
+                preparedStatement.setInt(1, id);
+                preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                try {
+                    con.rollback();
+                    throw new NotFoundException("Game not found");
+                } catch (SQLException ex1) {
+                    throw new BaseDatosCaidaException("Database error");
+                }
+            }
+        } catch (SQLException sqle) {
+            Logger.getLogger(DaoShop.class.getName()).log(Level.SEVERE, null, sqle);
+            throw new BaseDatosCaidaException("Database error");
         }
     }
 
-    public Newspaper update(Newspaper newspaper) {
-        JdbcTemplate jtm = new JdbcTemplate(dbConnectionPool.getDataSource());
-        int r = jtm.update("UPDATE newspaper SET name_newspaper = ?, release_date = ? WHERE id = ?",
-                newspaper.getName(), newspaper.getReleaseDate(), newspaper.getId());
+    public Game update(Game game) {
+        JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
+        int r = jtm.update("UPDATE game SET name = ?, description = ?, release_date = ?, shop_id = ? WHERE id = ?",
+                game.getName(), game.getDescription(), game.getReleaseDate(), game.getShopId(), game.getId());
         if (r < 1)
-            throw new NotFoundException("No se ha podido actualizar el periódico");
-        return newspaper;
+            throw new NotFoundException("Error updating game");
+        return game;
     }
 }

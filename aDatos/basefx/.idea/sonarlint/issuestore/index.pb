@@ -77,16 +77,18 @@ e
 5src/main/java/ui/pantallas/login/LoginController.java,0\0\00a168197ce395305c37a33f896012577da7634b
 W
 'src/main/java/config/Configuracion.java,3\d\3d4ba9367885ebadd3d09e63c531b540ce2bf984
-A
-data/articles.txt,e\b\eba3ccb9beb9883b0df9fcda7ca192f5623a5ea4
-Q
-!src/main/java/modelo/Article.java,0\3\030018f3151ae9e92dd349f431e488017e08390d
 N
 src/main/java/modelo/Type.java,5\3\53ea93239638072c0b563d4c6bec4a3a7c0b8caa
 S
 #src/main/java/modelo/Newspaper.java,e\0\e02926b97eeb0b4c444dd2b1d778f86d8835fe7b
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+Q
+!src/main/java/modelo/Article.java,0\3\030018f3151ae9e92dd349f431e488017e08390d
+A
+data/articles.txt,e\b\eba3ccb9beb9883b0df9fcda7ca192f5623a5ea4
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 R
 "src/main/java/data/DaoArticle.java,d\9\d9c3a55082a3a6032eb04187cd6dcf6752c59df0
 V
@@ -95,5 +97,3 @@ P
  src/main/java/data/DaoLogin.java,8\3\830fa4c9081ec34a30d6ef0d227f4eed0a3047cd
 T
 $src/main/java/data/DaoNewspaper.java,b\d\bdb0d02c7ddf20c68163b9cf7fee48a39017831b
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec

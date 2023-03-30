@@ -1,19 +1,3 @@
 
 ?
 cliente/pom.xml,3\9\39b7bb94550bae4f8daf8f661fec48c5523f693b
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
->
-domain/pom.xml,8\b\8b11330a6810846535e4b5ba2024ccfcee112862
-\
-,domain/src/main/java/domain/models/Game.java,d\9\d9c3be2ee309cf4af33a3ba56a6bddf18f030ca3
-\
-,domain/src/main/java/domain/models/Shop.java,2\2\2257a90df531839f4192645a55e8d3b123b0b50a
-U
-%domain/src/main/java/module-info.java,3\7\37c8d656d13a8ebd08e65756acf7618a2f0a3c35
-`
-0domain/src/main/java/domain/errors/ApiError.java,8\5\8519d0e57a34f42b729c62b8e6ca0a4cbd4afc0d
-V
-&cliente/src/main/java/module-info.java,d\b\db782433398db569b38df2fca72be7f90bfb511c
-@
-servidor/pom.xml,f\0\f0784b6bd8e433bbdb1fd1f40fb81f8a7afbdc18

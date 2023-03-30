@@ -4,11 +4,15 @@ package data;
 import config.DBConnectionPool;
 import domain.modelo.BaseDatosCaidaException;
 import domain.modelo.NotFoundException;
-import domain.modelo.Reader;
+import domain.models.Shop;
 import jakarta.inject.Inject;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,154 +28,104 @@ public class DaoShop {
         this.db = db;
     }
 
-    private List<Reader> readRS(ResultSet rs) {
-        List<Reader> readers = new ArrayList<>();
+    private List<Shop> readRS(ResultSet rs) {
+        List<Shop> shops = new ArrayList<>();
         try {
             while (rs.next()) {
-                int readerId = rs.getInt("id");
-                String readerName = rs.getString("name_reader");
-                LocalDate date = rs.getDate("birth_date").toLocalDate();
-                Reader r = new Reader(readerId, readerName, date);
-                readers.add(r);
+                int shopId = rs.getInt("id");
+                String name = rs.getString("name");
+                Shop s = new Shop(shopId, name);
+                shops.add(s);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return readers;
+        return shops;
     }
 
-    public List<Reader> getAll() {
+    public List<Shop> getAll() {
         try (Connection con = db.getConnection();
              Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                      ResultSet.CONCUR_READ_ONLY)) {
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM reader");
+            ResultSet rs = statement.executeQuery("SELECT * FROM shop");
             return readRS(rs);
 
         } catch (SQLException ex) {
             Logger.getLogger(DaoShop.class.getName()).log(Level.SEVERE, null, ex);
-            throw new BaseDatosCaidaException("Error en la base de datos");
+            throw new BaseDatosCaidaException("Database error");
         }
     }
 
-    public Reader get(int id) {
+    public Shop get(int id) {
         try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM reader WHERE id = ?")) {
+             PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM shop WHERE id = ?")) {
             preparedStatement.setInt(1, id);
 
             ResultSet rs = preparedStatement.executeQuery();
-            List<Reader> readers = readRS(rs);
-            if (readers.isEmpty()) {
-                throw new NotFoundException("No se ha encontrado el lector");
+            List<Shop> shops = readRS(rs);
+            if (shops.isEmpty()) {
+                throw new NotFoundException("Shop not found");
             } else {
-                return readers.get(0);
+                return shops.get(0);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(DaoShop.class.getName()).log(Level.SEVERE, null, ex);
-            throw new BaseDatosCaidaException("Error en la base de datos");
+            throw new BaseDatosCaidaException("Database error");
         }
     }
 
     public void delete(int id) {
+        TransactionDefinition def = new DefaultTransactionDefinition();
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(db.getDataSource());
+        TransactionStatus status = transactionManager.getTransaction(def);
+
+        try {
+            JdbcTemplate jtm = new JdbcTemplate(transactionManager.getDataSource());
+            jtm.update("DELETE FROM game WHERE id_shop = ?", id);
+            jtm.update("DELETE FROM shop WHERE id = ?", id);
+            transactionManager.commit(status);
+        } catch (Exception e) {
+            transactionManager.rollback(status);
+            throw new BaseDatosCaidaException("Database error");
+        }
+    }
+
+    public Shop add(Shop shop) {
+        List<Shop> shops;
+        try (Connection con = db.getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO shop (name) VALUES (?)",
+                     Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, shop.getName());
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            shops = readRS(rs);
+        } catch (Exception e) {
+            throw new BaseDatosCaidaException("Database error");
+        }
+        return shops.get(0);
+    }
+
+    public Shop update(Shop s) {
         try (Connection con = db.getConnection()) {
-            try (PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM reader WHERE id = ?")) {
+            try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE shop SET name=? WHERE id=?")) {
                 con.setAutoCommit(false);
-                preparedStatement.setInt(1, id);
+                preparedStatement.setString(1, s.getName());
+                con.commit();
                 preparedStatement.executeUpdate();
             } catch (SQLException ex) {
                 try {
                     con.rollback();
-                    throw new NotFoundException("No se ha encontrado el lector");
+                    throw new NotFoundException("Error while updating shop");
                 } catch (SQLException ex1) {
-                    throw new BaseDatosCaidaException("Error en la base de datos");
+                    throw new BaseDatosCaidaException("Database error");
                 }
             }
         } catch (SQLException sqle) {
             Logger.getLogger(DaoShop.class.getName()).log(Level.SEVERE, null, sqle);
-            throw new BaseDatosCaidaException("Error en la base de datos");
+            throw new BaseDatosCaidaException("Database error");
         }
-    }
-
-    public Reader add(Reader reader) {
-        List<Reader> readers;
-        try (Connection con = db.getConnection();
-             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO reader (name_reader, birth_date) VALUES (?,?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, reader.getName());
-            preparedStatement.setDate(2, Date.valueOf(reader.getBirthDate()));
-            preparedStatement.executeUpdate();
-            ResultSet rs = preparedStatement.getGeneratedKeys();
-            readers = readRS(rs);
-        } catch (Exception e) {
-            throw new BaseDatosCaidaException("Error al conectar con base de datos");
-        }
-        return readers.get(0);
-    }
-
-    public Reader update(Reader r) {
-        if (r.getBirthDate() == null) {
-            try (Connection con = db.getConnection()) {
-                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=? WHERE id=?")) {
-                    con.setAutoCommit(false);
-                    preparedStatement.setString(1, r.getName());
-                    preparedStatement.setInt(2, r.getId());
-                    con.commit();
-                    preparedStatement.executeUpdate();
-                } catch (SQLException ex) {
-                    try {
-                        con.rollback();
-                        throw new NotFoundException("No se ha podido actualizar el lector");
-                    } catch (SQLException ex1) {
-                        throw new BaseDatosCaidaException("Error en la base de datos");
-                    }
-                }
-            } catch (SQLException sqle) {
-                Logger.getLogger(DaoShop.class.getName()).log(Level.SEVERE, null, sqle);
-                throw new BaseDatosCaidaException("Error en la base de datos");
-            }
-        } else if (r.getName() == null || r.getName().isBlank()) {
-            try (Connection con = db.getConnection()) {
-                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET birth_date=? WHERE id=?")) {
-                    con.setAutoCommit(false);
-                    preparedStatement.setDate(1, Date.valueOf(r.getBirthDate()));
-                    preparedStatement.setInt(2, r.getId());
-                    con.commit();
-                    preparedStatement.executeUpdate();
-                } catch (SQLException ex) {
-                    try {
-                        con.rollback();
-                        throw new NotFoundException("No se ha podido actualizar el lector");
-                    } catch (SQLException ex1) {
-                        throw new BaseDatosCaidaException("Error en la base de datos");
-                    }
-                }
-            } catch (SQLException sqle) {
-                Logger.getLogger(DaoShop.class.getName()).log(Level.SEVERE, null, sqle);
-                throw new BaseDatosCaidaException("Error en la base de datos");
-            }
-        } else {
-            try (Connection con = db.getConnection()) {
-                try (PreparedStatement preparedStatement = con.prepareStatement("UPDATE reader SET name_reader=?, birth_date=? WHERE id=?")) {
-                    con.setAutoCommit(false);
-                    preparedStatement.setString(1, r.getName());
-                    preparedStatement.setDate(2, Date.valueOf(r.getBirthDate()));
-                    preparedStatement.setInt(3, r.getId());
-                    con.commit();
-                    preparedStatement.executeUpdate();
-                } catch (SQLException ex) {
-                    try {
-                        con.rollback();
-                        throw new NotFoundException("No se ha podido actualizar el lector");
-                    } catch (SQLException ex1) {
-                        throw new BaseDatosCaidaException("Error en la base de datos");
-                    }
-                }
-            } catch (SQLException sqle) {
-                Logger.getLogger(DaoShop.class.getName()).log(Level.SEVERE, null, sqle);
-                throw new BaseDatosCaidaException("Error en la base de datos");
-            }
-        }
-        return r;
+        return s;
     }
 }

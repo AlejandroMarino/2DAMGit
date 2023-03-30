@@ -1,6 +1,6 @@
 package jakarta.rest;
 
-import domain.modelo.Reader;
+import domain.models.Shop;
 import domain.servicios.ServicesShop;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -14,40 +14,40 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestShops {
 
-    private ServicesShop sR;
+    private ServicesShop sS;
 
     @Inject
-    public RestShops(ServicesShop sR) {
-        this.sR = sR;
+    public RestShops(ServicesShop sS) {
+        this.sS = sS;
     }
 
     @GET
-    public List<Reader> getAll() {
-        return sR.getAll();
+    public List<Shop> getAll() {
+        return sS.getAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Reader get(@PathParam("id") int id) {
-        return sR.get(id);
+    public Shop get(@PathParam("id") int id) {
+        return sS.get(id);
     }
 
     @POST
-    public Response add(Reader reader) {
-        Reader r = sR.add(reader);
-        return Response.status(Response.Status.CREATED).entity(r).build();
+    public Response add(Shop shop) {
+        Shop s = sS.add(shop);
+        return Response.status(Response.Status.CREATED).entity(s).build();
     }
 
     @DELETE
     public Response delete(@QueryParam("id") int id) {
-        sR.delete(id);
+        sS.delete(id);
         return Response.noContent().build();
     }
 
     @PUT
-    public Response update(Reader reader) {
-        Reader r = sR.update(reader);
-        return Response.status(Response.Status.OK).entity(r).build();
+    public Response update(Shop shop) {
+        Shop s = sS.update(shop);
+        return Response.status(Response.Status.OK).entity(s).build();
     }
 }
