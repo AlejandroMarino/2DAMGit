@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 public class Producers {
 
-
     @Singleton
     @Produces
     public Gson getGson() {

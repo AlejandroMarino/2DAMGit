@@ -10,36 +10,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f9bb434-caa3-487e-9701-b107bca58a69" name="Changes" comment="cosas">
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/cliente/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/domain/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/domain/src/main/java/domain/modelo/Equipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/domain/src/main/java/domain/modelo/Jugador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/config/ThymeLeafListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/data/DaoEquipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/domain/servicios/ServiciosEquipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/domain/servicios/ServiciosJugador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/jakarta/rest/JAXRSApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/jakarta/rest/RestEquipos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/jakarta/rest/RestJugadores.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/servlets/Servlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/java/servlets/ServletInicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/webApp/META-INF/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/webApp/WEB-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/webApp/WEB-INF/templates/colores.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/webApp/WEB-INF/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../aDatos/jdbcTest/examenAlejandroMarino/servidor/src/main/webApp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../clienteServidor/clienteServidor/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/common/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/config/Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/data/dao/DaoGenerics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/data/network/GamesApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/data/network/ProducesRetrofit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/common/BasePantallaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/common/Pantallas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/fx/DIJavafx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/fx/FXMLLoaderProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/fx/MainFX.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/fx/StartupScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/pantallas/games/GamesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/pantallas/games/GamesState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/pantallas/games/GamesViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/pantallas/principal/PrincipalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/pantallas/shops/ShopsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/pantallas/shops/ShopsState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/cliente/ui/pantallas/shops/ShopsViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/resources/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/resources/fxml/Games.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/resources/fxml/Principal.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/resources/fxml/Shops.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/resources/i18n/textos.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/cliente/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/domain/src/main/java/domain/models/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/domain/src/main/java/domain/models/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/config/DBConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/config/DBConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/data/DaoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/data/DaoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/domain/servicios/ServicesShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/domain/servicios/ServicesShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/jakarta/rest/RestGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/jakarta/rest/RestGames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/jakarta/rest/RestShops.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp1Eva/PSP1Eva/servidor/src/main/java/jakarta/rest/RestShops.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/server-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,20 +75,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/2dam/Documents/MarinoRepositorio/psp/server/server",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/2DAM/psp/server/server&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\2DAMGit\psp\server\server\src\main\webapp" />
@@ -293,6 +296,8 @@
       <workItem from="1668616884188" duration="5541000" />
       <workItem from="1668986452003" duration="19000" />
       <workItem from="1669016980801" duration="9750000" />
+      <workItem from="1680353798873" duration="49000" />
+      <workItem from="1680429645180" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="PSP">
       <created>1667184407502</created>

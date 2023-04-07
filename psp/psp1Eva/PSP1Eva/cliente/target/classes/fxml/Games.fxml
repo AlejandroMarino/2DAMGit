@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.ui.pantallas.games.GamesController">
+   <children>
+      <Label layoutX="462.0" layoutY="50.0" text="Games">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableGames" layoutX="290.0" layoutY="93.0" prefHeight="245.0" prefWidth="421.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="145.0" text="Name" />
+            <TableColumn fx:id="colDate" prefWidth="113.0" text="Release date" />
+          <TableColumn fx:id="colDescription" prefWidth="162.0" text="Description" />
+        </columns>
+      </TableView>
+      <Label layoutX="290.0" layoutY="382.0" text="Name:" />
+      <Label layoutX="290.0" layoutY="444.0" text="Release date:" />
+      <Label layoutX="290.0" layoutY="509.0" text="Description:" />
+      <TextField fx:id="textName" layoutX="290.0" layoutY="410.0" prefHeight="25.0" prefWidth="222.0" />
+      <DatePicker fx:id="datePicker" layoutX="290.0" layoutY="471.0" />
+      <TextArea fx:id="textDescription" layoutX="290.0" layoutY="539.0" prefHeight="83.0" prefWidth="421.0" />
+      <ComboBox fx:id="choiceShops" layoutX="732.0" layoutY="203.0" prefWidth="150.0" />
+      <Button layoutX="334.0" layoutY="637.0" mnemonicParsing="false" onAction="#add" text="Add" />
+      <Button layoutX="474.0" layoutY="357.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <Button layoutX="591.0" layoutY="637.0" mnemonicParsing="false" onAction="#update" text="Update" />
+      <Label layoutX="732.0" layoutY="172.0" text="Shop:" />
+      <TextField fx:id="textSearch" layoutX="46.0" layoutY="203.0" prefHeight="25.0" prefWidth="188.0" />
+      <Label layoutX="46.0" layoutY="172.0" text="Search:" />
+      <Button layoutX="243.0" layoutY="203.0" mnemonicParsing="false" onAction="#searchByName" />
+      <Button layoutX="891.0" layoutY="203.0" mnemonicParsing="false" onAction="#filterByShop" text="Filter" />
+      <Button layoutX="102.0" layoutY="247.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear filters" />
+   </children>
+</AnchorPane>

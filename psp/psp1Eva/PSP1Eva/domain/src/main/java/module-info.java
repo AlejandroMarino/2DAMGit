@@ -4,5 +4,6 @@ module domain {
     exports domain.models;
     exports domain.errors;
 
-    opens domain;
+    opens domain.errors;
+    opens domain.models;
 }

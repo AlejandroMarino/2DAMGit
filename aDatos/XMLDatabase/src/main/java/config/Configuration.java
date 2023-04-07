@@ -15,16 +15,18 @@ public class Configuration {
     public Configuration() {
         try {
             properties = new Properties();
-            properties.load(Configuration.class.getClassLoader().getResourceAsStream("configFiles/properties.txt"));
+            properties.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("configFiles/properties.xml"));
             this.customers = properties.getProperty("customers");
             this.menuItems = properties.getProperty("menuItems");
             this.orderItems = properties.getProperty("orderItems");
             this.orders = properties.getProperty("orders");
+            this.restaurant = properties.getProperty("restaurant");
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
     }
     private Properties properties;
+    public String restaurant;
     public String customers;
     public String menuItems;
     public String orderItems;

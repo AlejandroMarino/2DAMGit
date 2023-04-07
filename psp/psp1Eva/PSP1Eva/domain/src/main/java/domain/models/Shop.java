@@ -10,4 +10,13 @@ import lombok.NoArgsConstructor;
 public class Shop {
     private int id;
     private String name;
+
+    public Shop(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + name;
+    }
 }

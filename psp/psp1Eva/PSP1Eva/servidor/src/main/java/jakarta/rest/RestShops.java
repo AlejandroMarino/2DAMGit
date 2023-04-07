@@ -14,7 +14,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestShops {
 
-    private ServicesShop sS;
+    private final ServicesShop sS;
 
     @Inject
     public RestShops(ServicesShop sS) {
@@ -31,6 +31,12 @@ public class RestShops {
     @Produces(MediaType.APPLICATION_JSON)
     public Shop get(@PathParam("id") int id) {
         return sS.get(id);
+    }
+
+    @GET
+    @Path("/filter")
+    public List<Shop> filterByName(@QueryParam("name") String name) {
+        return sS.filterByName(name);
     }
 
     @POST

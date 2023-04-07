@@ -7,13 +7,14 @@ import io.vavr.control.Either;
 import services.ServicesCustomers;
 import services.ServicesMenuItems;
 import services.ServicesOrders;
+import services.servicesImpl.ServicesXmlImpl;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
-    public void menu(Scanner sc, ServicesCustomers sC, ServicesMenuItems sMI, ServicesOrders sO) {
+    public void menu(Scanner sc, ServicesCustomers sC, ServicesMenuItems sMI, ServicesOrders sO, ServicesXmlImpl sX) {
         int option;
         do {
             System.out.println("\nWhat you want to do?" +
@@ -21,6 +22,7 @@ public class Menu {
                     "\n\t2- Show orders by customers" +
                     "\n\t3- append a new order with two items" +
                     "\n\t4- delete a customer" +
+                    "\n\t5- generate xml" +
                     "\n\t0- Exit");
             option = sc.nextInt();
             sc.nextLine();
@@ -36,6 +38,14 @@ public class Menu {
                     break;
                 case 4:
                     deleteCustomer(sc, sC, sO);
+                    break;
+                case 5:
+                    Either<String, Void> response = sX.add();
+                    if (response.isLeft()) {
+                        System.out.println(response.getLeft());
+                    } else {
+                        System.out.println("XML generated");
+                    }
                     break;
                 case 0:
                     System.out.println("Bye");

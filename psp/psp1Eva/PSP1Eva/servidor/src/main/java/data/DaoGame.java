@@ -19,7 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DaoGame {
-    private DBConnectionPool db;
+    private final DBConnectionPool db;
 
     @Inject
     public DaoGame(DBConnectionPool db) {
@@ -30,6 +30,15 @@ public class DaoGame {
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
             return jtm.query("SELECT * FROM game", BeanPropertyRowMapper.newInstance(Game.class));
+        } catch (Exception e) {
+            throw new BaseDatosCaidaException("Database error");
+        }
+    }
+
+    public List<Game> getAllOfShop(int shopId) {
+        try {
+            JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
+            return jtm.query("SELECT * FROM game WHERE shop_id = ?", BeanPropertyRowMapper.newInstance(Game.class), shopId);
         } catch (Exception e) {
             throw new BaseDatosCaidaException("Database error");
         }

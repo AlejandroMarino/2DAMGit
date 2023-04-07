@@ -16,7 +16,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestGames {
 
-    private ServicesGame sG;
+    private final ServicesGame sG;
 
     @Inject
     public RestGames(ServicesGame sG) {
@@ -32,6 +32,18 @@ public class RestGames {
     @Produces(MediaType.APPLICATION_JSON)
     public Game get(@PathParam("id") int id) {
         return sG.get(id);
+    }
+
+    @GET
+    @Path("/filter_name")
+    public List<Game> filterByName(@QueryParam("name") String name) {
+        return sG.filterByName(name);
+    }
+
+    @GET
+    @Path("/filter_shop")
+    public List<Game> getAllOfShop(@QueryParam("shop") int shopId) {
+        return sG.getAllOfShop(shopId);
     }
 
     @POST

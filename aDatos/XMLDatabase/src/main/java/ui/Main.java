@@ -6,6 +6,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import services.ServicesMenuItems;
 import services.ServicesOrders;
+import services.servicesImpl.ServicesXmlImpl;
 
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class Main {
         ServicesCustomers sC = container.select(ServicesCustomers.class).get();
         ServicesMenuItems sMI = container.select(ServicesMenuItems.class).get();
         ServicesOrders sO = container.select(ServicesOrders.class).get();
+        ServicesXmlImpl sX = container.select(ServicesXmlImpl.class).get();
 
 
         Scanner sc = new Scanner(System.in);
@@ -36,7 +38,7 @@ public class Main {
                     if (svl.login(user, password)) {
                         System.out.println("Welcome " + user);
                         Menu menu = new Menu();
-                        menu.menu(sc, sC, sMI, sO);
+                        menu.menu(sc, sC, sMI, sO, sX);
                     } else {
                         System.out.println("Wrong credentials");
                     }

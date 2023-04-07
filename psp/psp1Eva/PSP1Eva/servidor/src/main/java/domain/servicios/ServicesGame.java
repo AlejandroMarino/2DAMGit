@@ -18,6 +18,10 @@ public class ServicesGame {
         return daoGame.getAll();
     }
 
+    public List<Game> getAllOfShop(int shopId) {
+        return daoGame.getAllOfShop(shopId);
+    }
+
     public Game get(int id) {
         return daoGame.get(id);
     }
@@ -32,5 +36,10 @@ public class ServicesGame {
 
     public Game update(Game g) {
         return daoGame.update(g);
+    }
+
+    public List<Game> filterByName(String name) {
+        List<Game> games = daoGame.getAll();
+        return games.stream().filter(game -> game.getName().contains(name)).toList();
     }
 }

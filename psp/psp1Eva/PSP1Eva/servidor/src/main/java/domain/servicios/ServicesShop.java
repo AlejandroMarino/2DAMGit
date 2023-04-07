@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ServicesShop {
 
-    private DaoShop daoShop;
+    private final DaoShop daoShop;
 
     @Inject
     public ServicesShop(DaoShop daoShop) {
@@ -33,5 +33,10 @@ public class ServicesShop {
 
     public Shop update(Shop shop) {
         return daoShop.update(shop);
+    }
+
+    public List<Shop> filterByName(String name) {
+        List<Shop> shops = daoShop.getAll();
+        return shops.stream().filter(shop -> shop.getName().contains(name)).toList();
     }
 }

@@ -15,4 +15,11 @@ public class Game {
     private String description;
     private LocalDate releaseDate;
     private int shopId;
+
+    public Game(String name, String description, LocalDate releaseDate, int shopId) {
+        this.name = name;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        this.shopId = shopId;
+    }
 }
