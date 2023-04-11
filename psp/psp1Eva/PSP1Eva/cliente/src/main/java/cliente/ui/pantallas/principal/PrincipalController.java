@@ -29,7 +29,7 @@ public class PrincipalController implements Initializable {
     @FXML
     private Menu goTo;
     @FXML
-    private BorderPane root;
+    public BorderPane root;
     Instance<Object> instance;
     private final Alert alert;
 

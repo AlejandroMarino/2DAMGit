@@ -5,7 +5,6 @@ module cliente {
     requires retrofit2;
     requires domain;
     requires org.apache.logging.log4j;
-    requires com.squareup.moshi;
     requires retrofit2.adapter.rxjava3;
     requires lombok;
     requires javafx.graphics;
@@ -14,7 +13,7 @@ module cliente {
     requires jakarta.cdi;
     requires jakarta.inject;
     requires com.google.gson;
-    requires retrofit2.converter.moshi;
+    requires retrofit2.converter.gson;
 
     exports cliente.ui.fx;
     exports cliente.ui.pantallas.principal;

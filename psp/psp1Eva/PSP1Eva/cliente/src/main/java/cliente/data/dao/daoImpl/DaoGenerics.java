@@ -41,7 +41,6 @@ abstract class DaoGenerics {
         return resultado;
     }
 
-
     public <T> Single<Either<String, T>> safeSingleApicall(Single<T> call) {
         return call.map(t -> Either.right(t).mapLeft(Object::toString))
                 .subscribeOn(Schedulers.io())
@@ -53,9 +52,6 @@ abstract class DaoGenerics {
                         if (Objects.equals(((HttpException) throwable).response().errorBody().contentType(), MediaType.get("application/json"))) {
                             ApiError api = gson.fromJson(((HttpException) throwable).response().errorBody().charStream(), ApiError.class);
                             error = Either.left(code + api.getMessage());
-
-
-                            //error = Either.right(T);
                         } else {
                             error = Either.left(((HttpException) throwable).response().message());
                         }

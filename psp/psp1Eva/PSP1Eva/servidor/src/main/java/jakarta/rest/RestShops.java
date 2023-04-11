@@ -1,5 +1,6 @@
 package jakarta.rest;
 
+import domain.errors.ApiError;
 import domain.models.Shop;
 import domain.servicios.ServicesShop;
 import jakarta.inject.Inject;
@@ -7,6 +8,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Path("/shops")
@@ -41,8 +43,16 @@ public class RestShops {
 
     @POST
     public Response add(Shop shop) {
-        Shop s = sS.add(shop);
-        return Response.status(Response.Status.CREATED).entity(s).build();
+        if (sS.add(shop)) {
+            return Response.status(Response.Status.CREATED).entity(shop).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(ApiError.builder()
+                            .message("newspaper no añadido")
+                            .fecha(LocalDateTime.now())
+                            .build())
+                    .build();
+        }
     }
 
     @DELETE

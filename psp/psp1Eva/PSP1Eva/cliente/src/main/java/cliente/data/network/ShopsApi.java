@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface ShopsApi {
 
+
     @GET("shops")
     Single<List<Shop>> getAllShops();
 
@@ -19,11 +20,11 @@ public interface ShopsApi {
     Single<Shop> getShop(@Path("id") int id);
 
     @POST("shops")
-    Single<Shop> addShop(Shop shop);
+    Single<Shop> addShop(@Body Shop shop);
 
     @DELETE("shops")
     Single<Response<Void>> deleteShop(@Query("id") int id);
 
     @PUT("shops")
-    Single<Shop> updateShop(Shop shop);
+    Single<Shop> updateShop(@Body Shop shop);
 }

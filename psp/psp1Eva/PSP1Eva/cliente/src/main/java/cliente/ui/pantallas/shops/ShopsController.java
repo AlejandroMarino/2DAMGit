@@ -3,7 +3,9 @@ package cliente.ui.pantallas.shops;
 import cliente.ui.common.BasePantallaController;
 import domain.models.Shop;
 import jakarta.inject.Inject;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -23,7 +25,7 @@ public class ShopsController extends BasePantallaController {
     }
 
     public void initialize() {
-        shopsViewModel.getState().addListener((observable, oldValue, newValue) -> {
+        shopsViewModel.getState().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             if (newValue.getShops() != null) {
                 listShops.getItems().clear();
                 listShops.getItems().setAll(newValue.getShops());
@@ -31,16 +33,18 @@ public class ShopsController extends BasePantallaController {
             if (newValue.getError() != null) {
                 getPrincipalController().error(newValue.getError());
             }
-        });
-        listShops.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            getPrincipalController().root.setCursor(Cursor.DEFAULT);
+        }));
+        listShops.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             if (newValue != null) {
                 textName.setText(newValue.getName());
             }
-        });
+        }));
     }
 
     @Override
     public void principalCargado() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         shopsViewModel.initialize();
     }
 
@@ -96,6 +100,7 @@ public class ShopsController extends BasePantallaController {
 
     @FXML
     private void crearFilters() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         shopsViewModel.getAllShops();
     }
 }

@@ -1,42 +1,19 @@
 package domain.servicios;
 
-import data.DaoShop;
 import domain.models.Shop;
-import jakarta.inject.Inject;
 
 import java.util.List;
 
-public class ServicesShop {
+public interface ServicesShop {
+    List<Shop> getAll();
 
-    private final DaoShop daoShop;
+    Shop get(int id);
 
-    @Inject
-    public ServicesShop(DaoShop daoShop) {
-        this.daoShop = daoShop;
-    }
+    boolean add(Shop shop);
 
-    public List<Shop> getAll() {
-        return daoShop.getAll();
-    }
+    void delete(int id);
 
-    public Shop get(int id) {
-        return daoShop.get(id);
-    }
+    Shop update(Shop shop);
 
-    public Shop add(Shop shop) {
-        return daoShop.add(shop);
-    }
-
-    public void delete(int id) {
-        daoShop.delete(id);
-    }
-
-    public Shop update(Shop shop) {
-        return daoShop.update(shop);
-    }
-
-    public List<Shop> filterByName(String name) {
-        List<Shop> shops = daoShop.getAll();
-        return shops.stream().filter(shop -> shop.getName().contains(name)).toList();
-    }
+    List<Shop> filterByName(String name);
 }

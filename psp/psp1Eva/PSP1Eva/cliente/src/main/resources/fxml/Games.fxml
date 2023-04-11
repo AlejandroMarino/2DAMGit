@@ -6,28 +6,28 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.ui.pantallas.games.GamesController">
    <children>
-      <Label layoutX="462.0" layoutY="50.0" text="Games">
+      <Label layoutX="462.0" layoutY="29.0" text="Games">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <TableView fx:id="tableGames" layoutX="290.0" layoutY="93.0" prefHeight="245.0" prefWidth="421.0">
+      <TableView fx:id="tableGames" layoutX="289.0" layoutY="81.0" prefHeight="245.0" prefWidth="421.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="145.0" text="Name" />
             <TableColumn fx:id="colDate" prefWidth="113.0" text="Release date" />
           <TableColumn fx:id="colDescription" prefWidth="162.0" text="Description" />
         </columns>
       </TableView>
-      <Label layoutX="290.0" layoutY="382.0" text="Name:" />
-      <Label layoutX="290.0" layoutY="444.0" text="Release date:" />
-      <Label layoutX="290.0" layoutY="509.0" text="Description:" />
-      <TextField fx:id="textName" layoutX="290.0" layoutY="410.0" prefHeight="25.0" prefWidth="222.0" />
-      <DatePicker fx:id="datePicker" layoutX="290.0" layoutY="471.0" />
-      <TextArea fx:id="textDescription" layoutX="290.0" layoutY="539.0" prefHeight="83.0" prefWidth="421.0" />
+      <Label layoutX="290.0" layoutY="370.0" text="Name:" />
+      <Label layoutX="290.0" layoutY="432.0" text="Release date:" />
+      <Label layoutX="289.0" layoutY="492.0" text="Description:" />
+      <TextField fx:id="textName" layoutX="289.0" layoutY="395.0" prefHeight="25.0" prefWidth="222.0" />
+      <DatePicker fx:id="datePicker" layoutX="290.0" layoutY="455.0" />
+      <TextArea fx:id="textDescription" layoutX="289.0" layoutY="516.0" prefHeight="83.0" prefWidth="421.0" />
       <ComboBox fx:id="choiceShops" layoutX="732.0" layoutY="203.0" prefWidth="150.0" />
-      <Button layoutX="334.0" layoutY="637.0" mnemonicParsing="false" onAction="#add" text="Add" />
-      <Button layoutX="474.0" layoutY="357.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
-      <Button layoutX="591.0" layoutY="637.0" mnemonicParsing="false" onAction="#update" text="Update" />
+      <Button layoutX="333.0" layoutY="625.0" mnemonicParsing="false" onAction="#add" text="Add" />
+      <Button layoutX="474.0" layoutY="338.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <Button layoutX="591.0" layoutY="625.0" mnemonicParsing="false" onAction="#update" text="Update" />
       <Label layoutX="732.0" layoutY="172.0" text="Shop:" />
       <TextField fx:id="textSearch" layoutX="46.0" layoutY="203.0" prefHeight="25.0" prefWidth="188.0" />
       <Label layoutX="46.0" layoutY="172.0" text="Search:" />

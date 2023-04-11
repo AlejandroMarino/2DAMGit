@@ -55,8 +55,13 @@
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-moshi</artifactId>
-            <version>${retrofit}</version>
+            <artifactId>converter-gson</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -77,6 +82,11 @@
             <groupId>org.example</groupId>
             <artifactId>domain</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.dagger</groupId>
+            <artifactId>dagger</artifactId>
+            <version>2.45</version>
         </dependency>
     </dependencies>
 

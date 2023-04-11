@@ -3,12 +3,15 @@ package ui;
 import domain.model.txt.Customer;
 import domain.model.txt.MenuItem;
 import domain.model.txt.Order;
+import domain.model.xml.Item;
 import io.vavr.control.Either;
-import services.ServicesCustomers;
-import services.ServicesMenuItems;
-import services.ServicesOrders;
-import services.servicesImpl.ServicesXmlImpl;
+import services.servicestxt.ServicesCustomers;
+import services.servicestxt.ServicesMenuItems;
+import services.servicestxt.ServicesOrders;
+import services.servicesxml.ServicesXml;
+import services.servicesxml.servicesImpl.ServicesXmlImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,6 +26,9 @@ public class Menu {
                     "\n\t3- append a new order with two items" +
                     "\n\t4- delete a customer" +
                     "\n\t5- generate xml" +
+                    "\n\t6- get customers that have ordered an item" +
+                    "\n\t7- append a new order xml" +
+                    "\n\t8- delete a customer xml" +
                     "\n\t0- Exit");
             option = sc.nextInt();
             sc.nextLine();
@@ -31,7 +37,7 @@ public class Menu {
                     getAllCustomers(sC);
                     break;
                 case 2:
-                    getOrdersByCustomers(sc, sO);
+                    getOrdersByCustomers(sc, sX);
                     break;
                 case 3:
                     addOrder(sc, sC, sMI, sO);
@@ -40,12 +46,16 @@ public class Menu {
                     deleteCustomer(sc, sC, sO);
                     break;
                 case 5:
-                    Either<String, Void> response = sX.add();
-                    if (response.isLeft()) {
-                        System.out.println(response.getLeft());
-                    } else {
-                        System.out.println("XML generated");
-                    }
+                    generateXml(sX);
+                    break;
+                case 6:
+                    getCustomersByItem(sc, sX);
+                    break;
+                case 7:
+                    addOrderXml(sc, sX);
+                    break;
+                case 8:
+                    deleteCustomerXml(sc, sX);
                     break;
                 case 0:
                     System.out.println("Bye");
@@ -55,6 +65,64 @@ public class Menu {
                     break;
             }
         } while (option != 0);
+    }
+
+    private static void deleteCustomerXml(Scanner sc, ServicesXmlImpl sX) {
+        System.out.println("Which is the first name of the customer you want to delete?");
+        String firstName = sc.nextLine().toLowerCase().trim();
+        Either<String, Void> result = sX.deleteCustomer(firstName);
+        if (result.isLeft()) {
+            System.out.println(result.getLeft());
+        } else {
+            System.out.println("Customer deleted");
+        }
+    }
+
+    private static void addOrderXml(Scanner sc, ServicesXmlImpl sX) {
+        System.out.println("What is the first name of the customer?");
+        String firstName = sc.nextLine().toLowerCase().trim();
+        System.out.println("How many different items do you want to order?");
+        int n = sc.nextInt();
+        sc.nextLine();
+        List<Item> items = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            System.out.println("What is the name of the item?");
+            String name = sc.nextLine().toLowerCase().trim();
+            System.out.println("What is the price of the item?");
+            double price = sc.nextDouble();
+            sc.nextLine();
+            System.out.println("What is the quantity?");
+            int quantity = sc.nextInt();
+            sc.nextLine();
+            items.add(new Item(name, price * quantity, quantity));
+        }
+        Either<String, Void> response = sX.addOrder(items, firstName);
+        if (response.isLeft()) {
+            System.out.println(response.getLeft());
+        } else {
+            System.out.println("Order added");
+        }
+    }
+
+    private static void getCustomersByItem(Scanner sc, ServicesXmlImpl sX) {
+        System.out.println("What is the name of the item?");
+        String name = sc.nextLine().toLowerCase().trim();
+        Either<String, List<domain.model.xml.Customer>> customers = sX.getCustomersByItem(name);
+        if (customers.isLeft()) {
+            System.out.println(customers.getLeft());
+        } else {
+            System.out.println("The customers that have ordered the item are:");
+            customers.get().forEach(System.out::println);
+        }
+    }
+
+    private static void generateXml(ServicesXmlImpl sX) {
+        Either<String, Void> response = sX.generateXml();
+        if (response.isLeft()) {
+            System.out.println(response.getLeft());
+        } else {
+            System.out.println("XML generated");
+        }
     }
 
     private static void addOrder(Scanner sc, ServicesCustomers sC, ServicesMenuItems sMI, ServicesOrders sO) {
@@ -132,10 +200,10 @@ public class Menu {
         }
     }
 
-    private static void getOrdersByCustomers(Scanner sc, ServicesOrders sO) {
+    private static void getOrdersByCustomers(Scanner sc, ServicesXml sX) {
         System.out.println("Introduce his first name of the customer");
         String name = sc.nextLine().toLowerCase().trim();
-        Either<String, List<Order>> result = sO.getOrdersByCustomer(name);
+        Either<String, List<domain.model.xml.Order>> result = sX.getOrdersOfCustomer(name);
         if (result.isLeft()) {
             System.out.println(result.getLeft());
         } else {

@@ -1,12 +1,12 @@
 package ui;
 
-import services.ServicesCustomers;
-import services.ServicesLogin;
+import services.servicestxt.ServicesCustomers;
+import services.servicestxt.ServicesLogin;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
-import services.ServicesMenuItems;
-import services.ServicesOrders;
-import services.servicesImpl.ServicesXmlImpl;
+import services.servicestxt.ServicesMenuItems;
+import services.servicestxt.ServicesOrders;
+import services.servicesxml.servicesImpl.ServicesXmlImpl;
 
 import java.util.Scanner;
 

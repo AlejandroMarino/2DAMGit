@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface GamesApi {
 
+
     @GET("games")
     Single<List<Game>> getAllGames();
 
@@ -19,11 +20,11 @@ public interface GamesApi {
     Single<List<Game>> getAllOfShop(@Query("shop") int shopId);
 
     @POST("games")
-    Single<Game> addGame(Game game);
+    Single<Game> addGame(@Body Game game);
 
     @DELETE("games")
     Single<Response<Void>> deleteGame(@Query("id") int id);
 
     @PUT("games")
-    Single<Game> updateGame(Game game);
+    Single<Game> updateGame(@Body Game game);
 }

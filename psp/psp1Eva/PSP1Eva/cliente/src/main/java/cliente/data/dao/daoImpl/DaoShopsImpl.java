@@ -16,7 +16,7 @@ public class DaoShopsImpl extends DaoGenerics implements DaoShops {
     private final ShopsApi shopsApi;
 
     @Inject
-    public DaoShopsImpl(ShopsApi shopsApi, Gson gson) {
+    public DaoShopsImpl(Gson gson, ShopsApi shopsApi) {
         super(gson);
         this.shopsApi = shopsApi;
     }
