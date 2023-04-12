@@ -1,5 +1,7 @@
 package data.daoImpl;
 
+import common.Constants;
+import common.Queries;
 import config.DBConnectionPool;
 import data.DaoGame;
 import domain.modelo.BaseDatosCaidaException;
@@ -27,44 +29,44 @@ public class DaoGameImpl implements DaoGame {
     @Override public List<Game> getAll() {
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            return jtm.query("SELECT * FROM game", BeanPropertyRowMapper.newInstance(Game.class));
+            return jtm.query(Queries.GET_ALL_GAMES, BeanPropertyRowMapper.newInstance(Game.class));
         } catch (Exception e) {
-            throw new BaseDatosCaidaException("Database error");
+            throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         }
     }
 
     @Override public List<Game> getAllOfShop(int shopId) {
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            return jtm.query("SELECT * FROM game WHERE shop_id = ?", BeanPropertyRowMapper.newInstance(Game.class), shopId);
+            return jtm.query(Queries.FILTER_GAMES_BY_SHOP, BeanPropertyRowMapper.newInstance(Game.class), shopId);
         } catch (Exception e) {
-            throw new BaseDatosCaidaException("Database error");
+            throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         }
     }
 
     @Override public Game get(int id) {
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            return jtm.queryForObject("SELECT * FROM game WHERE id = ?", BeanPropertyRowMapper.newInstance(Game.class), id);
+            return jtm.queryForObject(Queries.GET_GAME, BeanPropertyRowMapper.newInstance(Game.class), id);
         } catch (Exception e) {
-            throw new BaseDatosCaidaException("Database error");
+            throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         }
 
     }
 
     @Override public int add(Game game) {
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(db.getDataSource()).withTableName("game");
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(db.getDataSource()).withTableName(Constants.GAME);
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("name", game.getName());
-        parameters.put("description", game.getDescription());
-        parameters.put("release_date", game.getReleaseDate());
-        parameters.put("shop_id", game.getShopId());
+        parameters.put(Constants.NAME, game.getName());
+        parameters.put(Constants.DESCRIPTION, game.getDescription());
+        parameters.put(Constants.RELEASE_DATE, game.getReleaseDate());
+        parameters.put(Constants.SHOP_ID, game.getShopId());
         return jdbcInsert.execute(parameters);
     }
 
     @Override public void delete(int id) {
         try (Connection con = db.getConnection();
-             PreparedStatement stmt = con.prepareStatement("DELETE FROM game WHERE id = ?")) {
+             PreparedStatement stmt = con.prepareStatement(Queries.DELETE_GAME)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (Exception e) {
@@ -74,10 +76,10 @@ public class DaoGameImpl implements DaoGame {
 
     @Override public Game update(Game game) {
         JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-        int r = jtm.update("UPDATE game SET name = ?, description = ?, release_date = ?, shop_id = ? WHERE id = ?",
+        int r = jtm.update(Queries.UPDATE_GAME,
                 game.getName(), game.getDescription(), game.getReleaseDate(), game.getShopId(), game.getId());
         if (r < 1)
-            throw new NotFoundException("Error updating game");
+            throw new NotFoundException(Constants.ERROR_UPDATING_GAME);
         return game;
     }
 }

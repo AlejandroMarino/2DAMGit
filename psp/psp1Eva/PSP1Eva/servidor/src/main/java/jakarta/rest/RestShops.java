@@ -1,5 +1,6 @@
 package jakarta.rest;
 
+import common.Constants;
 import domain.errors.ApiError;
 import domain.models.Shop;
 import domain.servicios.ServicesShop;
@@ -48,7 +49,7 @@ public class RestShops {
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiError.builder()
-                            .message("newspaper no añadido")
+                            .message(Constants.SHOP_NOT_ADDED)
                             .fecha(LocalDateTime.now())
                             .build())
                     .build();

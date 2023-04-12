@@ -17,6 +17,6 @@ public class Shop {
 
     @Override
     public String toString() {
-        return "name: " + name;
+        return name;
     }
 }

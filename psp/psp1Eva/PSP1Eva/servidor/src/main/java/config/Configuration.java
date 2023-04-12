@@ -1,6 +1,7 @@
 package config;
 
 
+import common.Constants;
 import jakarta.inject.Singleton;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -22,11 +23,11 @@ public class Configuration {
 
         try {
             properties = new Properties();
-            properties.load(Configuration.class.getClassLoader().getResourceAsStream("config.yaml"));
-            this.path = properties.getProperty("path") + properties.getProperty("database");
-            this.user_name = properties.getProperty("user_name");
-            this.dB_password = properties.getProperty("dB_password");
-            this.driver = properties.getProperty("driver");
+            properties.load(Configuration.class.getClassLoader().getResourceAsStream(Constants.CONFIG_YAML));
+            this.path = properties.getProperty(Constants.PATH) + properties.getProperty(Constants.DATABASE);
+            this.user_name = properties.getProperty(Constants.USER_NAME);
+            this.dB_password = properties.getProperty(Constants.D_B_PASSWORD);
+            this.driver = properties.getProperty(Constants.DRIVER);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }

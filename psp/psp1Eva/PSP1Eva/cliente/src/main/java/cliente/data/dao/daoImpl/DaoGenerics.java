@@ -1,5 +1,6 @@
 package cliente.data.dao.daoImpl;
 
+import cliente.common.Constants;
 import com.google.gson.Gson;
 import domain.errors.ApiError;
 import io.reactivex.rxjava3.core.Single;
@@ -34,7 +35,7 @@ abstract class DaoGenerics {
                 resultado = Either.left(response.errorBody().toString());
             }
         } catch (Exception e) {
-            resultado = Either.left("Communication error");
+            resultado = Either.left(Constants.COMMUNICATION_ERROR);
 
         }
 
@@ -45,11 +46,11 @@ abstract class DaoGenerics {
         return call.map(t -> Either.right(t).mapLeft(Object::toString))
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn(throwable -> {
-                    Either<String, T> error = Either.left("Communication error");
+                    Either<String, T> error = Either.left(Constants.COMMUNICATION_ERROR);
 
                     if (throwable instanceof HttpException) {
                         int code = ((HttpException) throwable).code();
-                        if (Objects.equals(((HttpException) throwable).response().errorBody().contentType(), MediaType.get("application/json"))) {
+                        if (Objects.equals(((HttpException) throwable).response().errorBody().contentType(), MediaType.get(Constants.APPLICATION_JSON))) {
                             ApiError api = gson.fromJson(((HttpException) throwable).response().errorBody().charStream(), ApiError.class);
                             error = Either.left(code + api.getMessage());
                         } else {
@@ -63,7 +64,7 @@ abstract class DaoGenerics {
 
     public Single<Either<String, String>> safeSingleVoidApicall(Single<Response<Void>> call) {
         return call.map(response -> {
-                    var retorno = Either.right("OK").mapLeft(Object::toString);
+                    var retorno = Either.right(Constants.OK).mapLeft(Object::toString);
                     if (!response.isSuccessful()) {
                         retorno = Either.left(response.message());
                     }

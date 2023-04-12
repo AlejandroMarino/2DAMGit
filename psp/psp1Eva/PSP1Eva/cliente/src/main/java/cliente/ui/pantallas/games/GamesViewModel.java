@@ -1,5 +1,6 @@
 package cliente.ui.pantallas.games;
 
+import cliente.common.Constants;
 import cliente.services.ServicesGames;
 import cliente.services.ServicesShops;
 import domain.models.Game;
@@ -90,7 +91,7 @@ public class GamesViewModel {
                             } else {
                                 List<Game> games = either.get();
                                 if (games.isEmpty()) {
-                                    state.setValue(new GamesState(null, null, null, "No game found with this name"));
+                                    state.setValue(new GamesState(null, null, null, Constants.NO_GAME_FOUND_WITH_THIS_NAME));
                                 } else {
                                     state.setValue(new GamesState(games, null, null, null));
                                 }
@@ -110,7 +111,7 @@ public class GamesViewModel {
                             } else {
                                 List<Game> games = either.get();
                                 if (games.isEmpty()) {
-                                    state.setValue(new GamesState(null, null, null, "No game found in this shop"));
+                                    state.setValue(new GamesState(null, null, null, Constants.NO_GAME_FOUND_IN_THIS_SHOP));
                                 } else {
                                     state.setValue(new GamesState(games, null, null, null));
                                 }

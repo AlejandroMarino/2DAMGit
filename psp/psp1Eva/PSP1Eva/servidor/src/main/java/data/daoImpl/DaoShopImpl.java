@@ -1,6 +1,8 @@
 package data.daoImpl;
 
 
+import common.Constants;
+import common.Queries;
 import config.DBConnectionPool;
 import data.DaoShop;
 import domain.modelo.BaseDatosCaidaException;
@@ -31,23 +33,23 @@ public class DaoShopImpl implements DaoShop {
     @Override public List<Shop> getAll() {
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            return jtm.query("SELECT * FROM shop", BeanPropertyRowMapper.newInstance(Shop.class));
+            return jtm.query(Queries.GET_ALL_SHOPS, BeanPropertyRowMapper.newInstance(Shop.class));
         } catch (Exception e) {
-            throw new BaseDatosCaidaException("Database error");
+            throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         }
     }
 
     @Override public Shop get(int id) {
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            Shop s = jtm.queryForObject("SELECT * FROM shop WHERE id = ?", BeanPropertyRowMapper.newInstance(Shop.class), id);
+            Shop s = jtm.queryForObject(Queries.GET_SHOP, BeanPropertyRowMapper.newInstance(Shop.class), id);
             if (s == null) {
-                throw new NotFoundException("Shop not found");
+                throw new NotFoundException(Constants.SHOP_NOT_FOUND);
             } else {
                 return s;
             }
         } catch (Exception e) {
-            throw new BaseDatosCaidaException("Database error");
+            throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         }
 
     }
@@ -57,11 +59,11 @@ public class DaoShopImpl implements DaoShop {
         try {
             con = db.getConnection();
             con.setAutoCommit(false);
-            PreparedStatement stmt1 = con.prepareStatement("DELETE FROM game WHERE shop_id = ?");
+            PreparedStatement stmt1 = con.prepareStatement(Queries.DELETE_GAME_BY_SHOP);
             stmt1.setInt(1, id);
             stmt1.executeUpdate();
 
-            PreparedStatement stmt2 = con.prepareStatement("DELETE FROM shop WHERE id = ?");
+            PreparedStatement stmt2 = con.prepareStatement(Queries.DELETE_SHOP);
             stmt2.setInt(1, id);
             stmt2.executeUpdate();
 
@@ -88,17 +90,17 @@ public class DaoShopImpl implements DaoShop {
     }
 
     @Override public int add(Shop shop) {
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(db.getDataSource()).withTableName("shop");
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(db.getDataSource()).withTableName(Constants.SHOP);
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("name", shop.getName());
+        parameters.put(Constants.NAME, shop.getName());
         return jdbcInsert.execute(parameters);
     }
 
     @Override public Shop update(Shop s) {
         JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-        int r = jtm.update("UPDATE shop SET name = ? WHERE id = ?", s.getName(), s.getId());
+        int r = jtm.update(Queries.UPDATE_SHOP, s.getName(), s.getId());
         if (r < 1)
-            throw new NotFoundException("Error updating game");
+            throw new NotFoundException(Constants.ERROR_UPDATING_GAME);
         return s;
     }
 }

@@ -1,5 +1,6 @@
 package cliente.data.network;
 
+import cliente.common.Constants;
 import domain.models.Game;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Response;
@@ -9,22 +10,21 @@ import java.util.List;
 
 public interface GamesApi {
 
-
-    @GET("games")
+    @GET(Constants.GAMES)
     Single<List<Game>> getAllGames();
 
-    @GET("games/filter_name")
-    Single<List<Game>> filterByName(@Query("name") String name);
+    @GET(Constants.GAMES_FILTER_NAME)
+    Single<List<Game>> filterByName(@Query(Constants.NAME) String name);
 
-    @GET("games/filter_shop")
-    Single<List<Game>> getAllOfShop(@Query("shop") int shopId);
+    @GET(Constants.GAMES_FILTER_SHOP)
+    Single<List<Game>> getAllOfShop(@Query(Constants.SHOP) int shopId);
 
-    @POST("games")
+    @POST(Constants.GAMES)
     Single<Game> addGame(@Body Game game);
 
-    @DELETE("games")
-    Single<Response<Void>> deleteGame(@Query("id") int id);
+    @DELETE(Constants.GAMES)
+    Single<Response<Void>> deleteGame(@Query(Constants.ID) int id);
 
-    @PUT("games")
+    @PUT(Constants.GAMES)
     Single<Game> updateGame(@Body Game game);
 }

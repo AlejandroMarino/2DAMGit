@@ -1,5 +1,6 @@
 package cliente.ui.pantallas.shops;
 
+import cliente.common.Constants;
 import cliente.services.ServicesShops;
 import domain.models.Shop;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -56,7 +57,7 @@ public class ShopsViewModel {
                             } else {
                                 List<Shop> shops = either.get();
                                 if (shops.isEmpty()) {
-                                    state.setValue(new ShopsState(null, "No shop found with this name"));
+                                    state.setValue(new ShopsState(null, Constants.NO_SHOP_FOUND_WITH_THIS_NAME));
                                 } else {
                                     state.setValue(new ShopsState(either.get(), null));
                                 }

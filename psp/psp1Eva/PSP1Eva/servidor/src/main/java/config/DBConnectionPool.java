@@ -2,6 +2,7 @@ package config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import common.Constants;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -38,9 +39,9 @@ public class DBConnectionPool {
         hikariConfig.setDriverClassName(config.getDriver());
         hikariConfig.setMaximumPoolSize(4);
 
-        hikariConfig.addDataSourceProperty("cachePrepStmts", true);
-        hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
-        hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
+        hikariConfig.addDataSourceProperty(Constants.CACHE_PREP_STMTS, true);
+        hikariConfig.addDataSourceProperty(Constants.PREP_STMT_CACHE_SIZE, 250);
+        hikariConfig.addDataSourceProperty(Constants.PREP_STMT_CACHE_SQL_LIMIT, 2048);
 
         return new HikariDataSource(hikariConfig);
     }

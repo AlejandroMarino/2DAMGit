@@ -1,5 +1,6 @@
 package cliente.ui.pantallas.shops;
 
+import cliente.common.Constants;
 import cliente.ui.common.BasePantallaController;
 import domain.models.Shop;
 import jakarta.inject.Inject;
@@ -54,7 +55,7 @@ public class ShopsController extends BasePantallaController {
         if (text != null && !text.isBlank()) {
             shopsViewModel.search(text);
         } else {
-            getPrincipalController().error("Write something to search");
+            getPrincipalController().error(Constants.WRITE_SOMETHING_TO_SEARCH);
         }
     }
 
@@ -64,7 +65,7 @@ public class ShopsController extends BasePantallaController {
         if (name != null && !name.isBlank()) {
             shopsViewModel.add(new Shop(name));
         } else {
-            getPrincipalController().error("Write a name");
+            getPrincipalController().error(Constants.WRITE_A_NAME);
         }
     }
 
@@ -78,13 +79,13 @@ public class ShopsController extends BasePantallaController {
                     shop.setName(name);
                     shopsViewModel.update(shop);
                 } else {
-                    getPrincipalController().error("write a different name");
+                    getPrincipalController().error(Constants.WRITE_A_DIFFERENT_NAME);
                 }
             } else {
-                getPrincipalController().error("Write a name");
+                getPrincipalController().error(Constants.WRITE_A_NAME);
             }
         } else {
-            getPrincipalController().error("Select a shop to update");
+            getPrincipalController().error(Constants.SELECT_A_SHOP_TO_UPDATE);
         }
     }
 
@@ -94,7 +95,7 @@ public class ShopsController extends BasePantallaController {
         if (shop != null) {
             shopsViewModel.delete(shop.getId());
         } else {
-            getPrincipalController().error("Select a shop to delete");
+            getPrincipalController().error(Constants.SELECT_A_SHOP_TO_DELETE);
         }
     }
 

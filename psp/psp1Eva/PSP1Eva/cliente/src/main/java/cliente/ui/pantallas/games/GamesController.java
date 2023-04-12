@@ -1,5 +1,6 @@
 package cliente.ui.pantallas.games;
 
+import cliente.common.Constants;
 import cliente.ui.common.BasePantallaController;
 import domain.models.Game;
 import domain.models.Shop;
@@ -83,10 +84,10 @@ public class GamesController extends BasePantallaController {
                 String description = textDescription.getText();
                 gamesViewModel.add(new Game(name, description, date, shop.getId()));
             } else {
-                getPrincipalController().error("Select a shop");
+                getPrincipalController().error(Constants.SELECT_A_SHOP);
             }
         } else {
-            getPrincipalController().error("Write a name");
+            getPrincipalController().error(Constants.WRITE_A_NAME);
         }
     }
 
@@ -96,7 +97,7 @@ public class GamesController extends BasePantallaController {
         if (game != null) {
             gamesViewModel.delete(game.getId());
         } else {
-            getPrincipalController().error("Select a game");
+            getPrincipalController().error(Constants.SELECT_A_GAME);
         }
     }
 
@@ -112,13 +113,13 @@ public class GamesController extends BasePantallaController {
                     String description = textDescription.getText();
                     gamesViewModel.update(new Game(game.getId(), name, description, date, shop.getId()));
                 } else {
-                    getPrincipalController().error("Select a shop for the game");
+                    getPrincipalController().error(Constants.SELECT_A_SHOP_FOR_THE_GAME);
                 }
             } else {
-                getPrincipalController().error("Write a name");
+                getPrincipalController().error(Constants.WRITE_A_NAME);
             }
         } else {
-            getPrincipalController().error("Select a game to update");
+            getPrincipalController().error(Constants.SELECT_A_GAME_TO_UPDATE);
         }
     }
 
@@ -128,7 +129,7 @@ public class GamesController extends BasePantallaController {
         if (text != null && !text.isBlank()) {
             gamesViewModel.search(text);
         } else {
-            getPrincipalController().error("Write something to search");
+            getPrincipalController().error(Constants.WRITE_SOMETHING_TO_SEARCH);
         }
     }
 
@@ -138,7 +139,7 @@ public class GamesController extends BasePantallaController {
         if (shop != null) {
             gamesViewModel.filterByShop(shop.getId());
         } else {
-            getPrincipalController().error("Select a shop");
+            getPrincipalController().error(Constants.SELECT_A_SHOP);
         }
     }
 

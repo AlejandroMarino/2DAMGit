@@ -1,5 +1,6 @@
 package jakarta.rest;
 
+import common.Constants;
 import domain.errors.ApiError;
 import domain.models.Game;
 import domain.servicios.ServicesGame;
@@ -53,7 +54,7 @@ public class RestGames {
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(ApiError.builder()
-                            .message("newspaper no añadido")
+                            .message(Constants.GAME_NOT_ADDED)
                             .fecha(LocalDateTime.now())
                             .build())
                     .build();
