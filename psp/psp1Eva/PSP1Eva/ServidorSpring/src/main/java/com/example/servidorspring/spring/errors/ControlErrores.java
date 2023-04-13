@@ -4,9 +4,6 @@ package com.example.servidorspring.spring.errors;
 import com.example.servidorspring.domain.exceptions.BaseDatosCaidaException;
 import com.example.servidorspring.domain.exceptions.NotFoundException;
 import domain.errors.ApiError;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +13,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.io.IOException;
-import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 
 @ControllerAdvice

@@ -21,7 +21,7 @@ public class ServicesShop {
         this.shopMapper = shopMapper;
     }
 
-    public List<Shop> getAllShops() {
+    public List<Shop> getAll() {
         return shopR.findAll()
                 .stream()
                 .map(shopMapper::toShop)

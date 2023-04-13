@@ -13,10 +13,14 @@
         <module name="domain" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ServidorSpringi" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ServidorSpring" options="-parameters" />
+      <module name="ServidorSpringi" options="-parameters" />
     </option>
   </component>
 </project>

@@ -28,7 +28,7 @@ public class ServicesGame {
         this.gameMapper = gameMapper;
     }
 
-    public List<Game> getAllGames() {
+    public List<Game> getAll() {
         return gameR.findAll()
                 .stream()
                 .map(gameMapper::toGame)
@@ -56,6 +56,13 @@ public class ServicesGame {
                 .stream()
                 .map(gameMapper::toGame)
                 .filter(game -> game.getName().trim().toLowerCase().contains(name.trim().toLowerCase()))
+                .toList();
+    }
+
+    public List<Game> getAllOfShop(int shopId) {
+        return gameR.getAllOfShop(shopId)
+                .stream()
+                .map(gameMapper::toGame)
                 .toList();
     }
 }
