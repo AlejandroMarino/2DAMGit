@@ -9,6 +9,8 @@ public interface DaoOrderItem {
 
     Either<Integer, List<OrderItem>> getAll();
 
+    Either<Integer, List<OrderItem>> getAll(int orderId);
+
     Either<Integer, OrderItem> get(int id);
 
     Either<Integer, Void> save(OrderItem orderItem);

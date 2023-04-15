@@ -1,5 +1,6 @@
 package com.example.servidorspring.domain.services;
 
+import com.example.servidorspring.data.GameEntityRepository;
 import com.example.servidorspring.data.ShopEntityRepository;
 import com.example.servidorspring.data.models.mappers.ShopMapper;
 import domain.models.Shop;
@@ -14,10 +15,13 @@ public class ServicesShop {
 
     private final ShopEntityRepository shopR;
 
+    private final GameEntityRepository gameR;
+
     private final ShopMapper shopMapper;
 
-    public ServicesShop(ShopEntityRepository shopR, ShopMapper shopMapper) {
+    public ServicesShop(ShopEntityRepository shopR, GameEntityRepository gameR, ShopMapper shopMapper) {
         this.shopR = shopR;
+        this.gameR = gameR;
         this.shopMapper = shopMapper;
     }
 
@@ -41,6 +45,7 @@ public class ServicesShop {
     }
 
     public void delete(int id) {
+        gameR.deleteFromShop(id);
         shopR.deleteById(id);
     }
 

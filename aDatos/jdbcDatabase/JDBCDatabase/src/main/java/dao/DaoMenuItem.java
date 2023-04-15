@@ -11,6 +11,8 @@ public interface DaoMenuItem {
 
     Either<Integer, MenuItem> get(int id);
 
+    Either<Integer, MenuItem> get(String name);
+
     Either<Integer, Void> save(MenuItem menuItem);
 
     Either<Integer, Void> update(MenuItem menuItem);

@@ -14,4 +14,10 @@ public class Order {
     private int tableId;
     private int customerId;
     private LocalDate orderDate;
+
+    public Order(int tableId, int customerId, LocalDate orderDate) {
+        this.tableId = tableId;
+        this.customerId = customerId;
+        this.orderDate = orderDate;
+    }
 }
