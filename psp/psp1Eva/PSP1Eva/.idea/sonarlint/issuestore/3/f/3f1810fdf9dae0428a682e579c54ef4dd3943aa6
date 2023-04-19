@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(›‘‚Úüÿÿÿÿ
+b
+java:S2095>"GUse try-with-resources or close this "!Unknown!" in a "finally" clause.(õÝÂÃüÿÿÿÿ
+\
+java:S2095B"GUse try-with-resources or close this "!Unknown!" in a "finally" clause.(œû²R
+Q
+java:S1874-"6Remove this use of "queryForObject"; it is deprecated.(ß¥™Áÿÿÿÿÿ

@@ -25,6 +25,7 @@ public class Configuration {
             log.error(e.getMessage(), e);
         }
     }
+
     private Properties properties;
     public String restaurant;
     public String customers;

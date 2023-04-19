@@ -1,8 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( №Ќґьяяяя
-b
-java:S2095e"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(…ТЪЛ
-b
-java:S2095O"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(Оьќо
-b
-java:S2095z"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(…ТЪЛ
