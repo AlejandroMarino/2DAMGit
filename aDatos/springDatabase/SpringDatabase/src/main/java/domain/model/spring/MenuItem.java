@@ -12,4 +12,13 @@ public class MenuItem {
     private String name;
     private String description;
     private double price;
+
+    public MenuItem(String name) {
+        this.name = name;
+    }
+
+    public MenuItem(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
 }

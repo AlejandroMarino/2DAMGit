@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/warehouse/games")
 public class RestGamesController {
 
-    private ServicesGame sG;
+    private final ServicesGame sG;
 
     public RestGamesController(ServicesGame sG) {
         this.sG = sG;

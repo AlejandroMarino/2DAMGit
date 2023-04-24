@@ -8,6 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Login {
-    private int customerId;
+    private String username;
     private String password;
+    private String role;
+
+    public Login(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

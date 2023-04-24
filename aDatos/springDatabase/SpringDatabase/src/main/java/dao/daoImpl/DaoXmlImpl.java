@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 public class DaoXmlImpl implements DaoXml {
 
-    private Configuration config;
+    private final Configuration config;
 
     @Inject
     public DaoXmlImpl(Configuration config) {
@@ -26,6 +26,11 @@ public class DaoXmlImpl implements DaoXml {
     public Either<Integer, Void> saveXml(Orders orders) {
         JAXBContext context;
         Marshaller marshaller;
+        Either<Integer, Orders> o = getAll();
+        if (o.isRight()) {
+            Orders oldOrders = o.get();
+            oldOrders.getOrders().forEach(orders.getOrders()::add);
+        }
         try {
             context = JAXBContext.newInstance(Orders.class);
             marshaller = context.createMarshaller();
@@ -53,7 +58,6 @@ public class DaoXmlImpl implements DaoXml {
             Orders orders = (Orders) unmarshaller.unmarshal(Files.newInputStream(restaurant));
             return Either.right(orders);
         } catch (Exception e) {
-            e.printStackTrace();
             return Either.left(-2);
         }
     }

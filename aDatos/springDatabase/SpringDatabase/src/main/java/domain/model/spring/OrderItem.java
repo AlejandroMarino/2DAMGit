@@ -18,4 +18,8 @@ public class OrderItem {
         this.menuItemId = menuItemId;
         this.quantity = quantity;
     }
+
+    public OrderItem(int quantity) {
+        this.quantity = quantity;
+    }
 }

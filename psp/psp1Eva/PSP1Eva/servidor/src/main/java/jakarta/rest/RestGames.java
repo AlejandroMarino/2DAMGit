@@ -68,8 +68,7 @@ public class RestGames {
     }
 
     @PUT
-    public Response update(Game game) {
-        Game g = sG.update(game);
-        return Response.status(Response.Status.OK).entity(g).build();
+    public Game update(Game game) {
+        return sG.update(game);
     }
 }

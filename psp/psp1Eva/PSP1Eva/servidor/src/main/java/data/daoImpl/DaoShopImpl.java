@@ -30,7 +30,8 @@ public class DaoShopImpl implements DaoShop {
         this.db = db;
     }
 
-    @Override public List<Shop> getAll() {
+    @Override
+    public List<Shop> getAll() {
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
             return jtm.query(Queries.GET_ALL_SHOPS, BeanPropertyRowMapper.newInstance(Shop.class));

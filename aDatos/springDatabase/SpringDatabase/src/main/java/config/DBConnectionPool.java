@@ -14,25 +14,23 @@ import java.sql.SQLException;
 @Singleton
 public class DBConnectionPool {
 
-    private Configuration config;
-    private DataSource hikariDataSource;
-    private BasicDataSource basicDataSource;
+    private final Configuration config;
+    private DataSource hikariDataSource = null;
 
     @Inject
     public DBConnectionPool(Configuration config) {
         this.config = config;
-        hikariDataSource = getHikariPool();
-        basicDataSource = getBasicPool();
+        hikariDataSource = getDataSourceHikari();
 
     }
 
-    private DataSource getHikariPool() {
+    private DataSource getDataSourceHikari() {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl(config.getPath());
         hikariConfig.setUsername(config.getUser_name());
         hikariConfig.setPassword(config.getDB_password());
         hikariConfig.setDriverClassName(config.getDriver());
-        hikariConfig.setMaximumPoolSize(4);
+        hikariConfig.setMaximumPoolSize(1);
 
         hikariConfig.addDataSourceProperty("cachePrepStmts", true);
         hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
@@ -41,25 +39,10 @@ public class DBConnectionPool {
         return new HikariDataSource(hikariConfig);
     }
 
-    private BasicDataSource getBasicPool() {
-        BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUsername(config.getUser_name());
-        basicDataSource.setPassword(config.getDB_password());
-        basicDataSource.setUrl(config.getPath());
-
-        return basicDataSource;
+    public DataSource getDataSource() {
+        return hikariDataSource;
     }
 
-    public Connection getConnection() {
-        Connection con=null;
-        try {
-            con = hikariDataSource.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return con;
-    }
 
     public void closeConnection(Connection con) {
         try {

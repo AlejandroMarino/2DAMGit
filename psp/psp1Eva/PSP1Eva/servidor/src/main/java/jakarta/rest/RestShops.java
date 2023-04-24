@@ -29,9 +29,9 @@ public class RestShops {
         return sS.getAll();
     }
 
+
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Shop get(@PathParam("id") int id) {
         return sS.get(id);
     }
@@ -63,8 +63,7 @@ public class RestShops {
     }
 
     @PUT
-    public Response update(Shop shop) {
-        Shop s = sS.update(shop);
-        return Response.status(Response.Status.OK).entity(s).build();
+    public Shop update(Shop shop) {
+        return sS.update(shop);
     }
 }

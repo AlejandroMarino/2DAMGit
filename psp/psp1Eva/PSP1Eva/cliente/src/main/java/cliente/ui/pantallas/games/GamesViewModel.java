@@ -38,8 +38,8 @@ public class GamesViewModel {
     public void getAllGames() {
         state.setValue(new GamesState(null, null, null, null));
         svG.getAllGames()
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
@@ -53,8 +53,8 @@ public class GamesViewModel {
     public void getAllShops() {
         state.setValue(new GamesState(null, null, null, null));
         svS.getAllShops()
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
@@ -68,8 +68,8 @@ public class GamesViewModel {
     public void getShop(int id) {
         state.setValue(new GamesState(null, null, null, null));
         svS.getShop(id)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
@@ -83,8 +83,8 @@ public class GamesViewModel {
     public void search(String name) {
         state.setValue(new GamesState(null, null, null, null));
         svG.filterByName(name)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
@@ -103,8 +103,8 @@ public class GamesViewModel {
     public void filterByShop(int id) {
         state.setValue(new GamesState(null, null, null, null));
         svG.getAllOfShop(id)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
@@ -123,8 +123,8 @@ public class GamesViewModel {
     public void add(Game game) {
         state.setValue(new GamesState(null, null, null, null));
         svG.addGame(game)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
@@ -138,8 +138,8 @@ public class GamesViewModel {
     public void delete(int id) {
         state.setValue(new GamesState(null, null, null, null));
         svG.deleteGame(id)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
@@ -153,8 +153,8 @@ public class GamesViewModel {
     public void update(Game game) {
         state.setValue(new GamesState(null, null, null, null));
         svG.updateGame(game)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new GamesState(null, null, null, either.getLeft()));
