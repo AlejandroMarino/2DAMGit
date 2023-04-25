@@ -23,7 +23,6 @@ public class DBConnectionPool {
         this.config = config;
         hikariDataSource = getHikariPool();
         basicDataSource = getBasicPool();
-
     }
 
     private DataSource getHikariPool() {

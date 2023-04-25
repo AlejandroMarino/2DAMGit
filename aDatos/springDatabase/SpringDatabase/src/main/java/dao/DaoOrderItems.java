@@ -11,5 +11,5 @@ public interface DaoOrderItems {
 
     List<OrderItem> getAll(Order order);
 
-    Either<Integer, Void> save(OrderItem orderItem);
+    Either<Integer, OrderItem> save(OrderItem orderItem);
 }

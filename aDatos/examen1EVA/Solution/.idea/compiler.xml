@@ -12,7 +12,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ExamenTipo" />
         <module name="Exam" />
-        <module name="Solution" />
       </profile>
     </annotationProcessing>
   </component>

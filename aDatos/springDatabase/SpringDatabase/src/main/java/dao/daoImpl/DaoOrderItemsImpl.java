@@ -9,7 +9,10 @@ import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +36,8 @@ public class DaoOrderItemsImpl implements DaoOrderItems {
     }
 
     @Override
-    public Either<Integer, Void> save(OrderItem orderItem) {
-        try{
+    public Either<Integer, OrderItem> save(OrderItem orderItem) {
+        try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
             NamedParameterJdbcTemplate namedTemplate = new NamedParameterJdbcTemplate(jtm.getDataSource());
 
@@ -43,9 +46,13 @@ public class DaoOrderItemsImpl implements DaoOrderItems {
             parameters.put("menu_item_id", orderItem.getMenuItemId());
             parameters.put("quantity", orderItem.getQuantity());
 
-           namedTemplate.update(Queries.ADD_ORDER_ITEM, parameters);
-           return Either.right(null);
-        } catch (Exception e){
+            KeyHolder keyHolder = new GeneratedKeyHolder();
+            namedTemplate.update(Queries.ADD_ORDER_ITEM, new MapSqlParameterSource(parameters), keyHolder, new String[]{"id"});
+
+            int id = keyHolder.getKey().intValue();
+            orderItem.setId(id);
+            return Either.right(orderItem);
+        } catch (Exception e) {
             e.printStackTrace();
             return Either.left(-1);
         }

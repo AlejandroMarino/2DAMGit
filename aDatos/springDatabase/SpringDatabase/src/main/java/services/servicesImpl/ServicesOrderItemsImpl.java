@@ -36,7 +36,7 @@ public class ServicesOrderItemsImpl implements ServicesOrderItems {
                 return Either.left("Order not found");
             } else {
                 orderItem.setOrderId(order.get().getId());
-                Either<Integer, Void> r = dOI.save(orderItem);
+                Either<Integer, OrderItem> r = dOI.save(orderItem);
                 if (r.isLeft()) {
                     return Either.left("Error saving order item");
                 }else {
