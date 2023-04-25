@@ -1,0 +1,16 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬µê»üÿÿÿÿ
+q
+java:S2095x"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(÷‘ıùÿÿÿÿ8È‘ù0
+q
+java:S2095t"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‡ÈóÂıÿÿÿÿ8È‘ù0
+l
+java:S2095|"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÎŒÒ¢8È‘ù0
+Q
+java:S2695d"/This "PreparedStatement" only has 3 parameters.(„ŠŒÖùÿÿÿÿ8æ‘ù0
+N
+java:S1128"1Remove this unused import 'config.Configuration'.(ü·±ï8ó‘ù0
+N
+java:S1128",Remove this unused import 'dao.DaoCustomer'.(ËÖ…¨ÿÿÿÿÿ8ô‘ù0
+U
+java:S1128"3Remove this unused import 'domain.model.OrderItem'.(­ÀŒĞøÿÿÿÿ8ô‘ù0

@@ -1,0 +1,23 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÌÅùËùÿÿÿÿ
+M
+java:S6126"2Replace this String concatenation with Text block.(ÌÅùËùÿÿÿÿ
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(¿ÅÙ•
+S	java:S1062"9Replace this use of System.out or System.err by a logger.(¯¬ğåşÿÿÿÿ
+N	java:S106;"9Replace this use of System.out or System.err by a logger.(ç¸«ö
+S	java:S106="9Replace this use of System.out or System.err by a logger.(ôß”¬ıÿÿÿÿ
+M	java:S106D"9Replace this use of System.out or System.err by a logger.(…âÎj
+S	java:S106F"9Replace this use of System.out or System.err by a logger.(äüÑüÿÿÿÿ
+S	java:S106M"9Replace this use of System.out or System.err by a logger.(ú¥Éşÿÿÿÿ
+N	java:S106O"9Replace this use of System.out or System.err by a logger.(¸µƒ
+N	java:S106T"9Replace this use of System.out or System.err by a logger.(ÏÚ®Õ
+S	java:S106V"9Replace this use of System.out or System.err by a logger.(½¶¥·úÿÿÿÿ
+S	java:S106["9Replace this use of System.out or System.err by a logger.(ÿ›ˆ‹ÿÿÿÿÿ
+N	java:S106]"9Replace this use of System.out or System.err by a logger.(‘âË
+N	java:S106b"9Replace this use of System.out or System.err by a logger.(¹­×
+S	java:S106e"9Replace this use of System.out or System.err by a logger.(­Ÿüñşÿÿÿÿ
+S	java:S106g"9Replace this use of System.out or System.err by a logger.(Îª¿¡ûÿÿÿÿ
+N	java:S106o"9Replace this use of System.out or System.err by a logger.(Õòõ‘
+N	java:S106q"9Replace this use of System.out or System.err by a logger.(«÷ßÛ
+S	java:S106x"9Replace this use of System.out or System.err by a logger.(ô´´Ùûÿÿÿÿ
+N	java:S106z"9Replace this use of System.out or System.err by a logger.(ÀÛ«

@@ -1,0 +1,6 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬µê»üÿÿÿÿ
+_
+java:S2259H"IA "NullPointerException" could be thrown; "getMessage()" can return null.(øäýí
+Ÿ
+java:S4449B"ˆAnnotate the parameter with @javax.annotation.Nullable in constructor declaration, or make sure that null can not be passed as argument.(öÂÙš

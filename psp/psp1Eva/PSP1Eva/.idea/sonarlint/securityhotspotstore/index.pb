@@ -1,8 +1,6 @@
 
 b
 2servidor/src/main/java/jakarta/rest/RestShops.java,a\7\a71b90e0ca6145d8d4932689543c221f52918c84
-i
-9servidor/src/main/java/jakarta/rest/JAXRSApplication.java,3\3\33b4673cb3194aeaebe3abfdb2523215d97970b0
 `
 0servidor/src/main/java/jakarta/di/Producers.java,e\7\e7d34b50465acb12220763c5b6f6ceda9d0607c7
 i
@@ -83,3 +81,11 @@ y
 Iservidor/src/main/java/jakarta/errores/BaseDatosCaidaExceptionMapper.java,7\d\7d368a4f4977a3f9f12b0e4e93bc82fb15811dff
 †
 VServidorSpring/src/main/java/com/example/servidorspring/ServidorSpringApplication.java,d\e\de8cfd57438a853df8e4784f6e1368bcc38b3801
+i
+9servidor/src/main/java/jakarta/rest/JAXRSApplication.java,3\3\33b4673cb3194aeaebe3abfdb2523215d97970b0
+z
+Jcliente/src/main/java/cliente/services/servicesImpl/ServicesGamesImpl.java,2\c\2c014ef66e399b98f90c5ed64ca7bb64898fc0a4
+z
+Jcliente/src/main/java/cliente/services/servicesImpl/ServicesShopsImpl.java,7\9\79e17bc89f4a7563905bd84796dab2e08395ae09
+t
+Dcliente/src/main/java/cliente/ui/pantallas/games/GamesViewModel.java,f\9\f9f43a2345e05a561849869a4f43a9362b6483f7

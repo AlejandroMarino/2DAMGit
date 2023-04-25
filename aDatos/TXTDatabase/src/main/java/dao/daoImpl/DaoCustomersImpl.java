@@ -76,6 +76,7 @@ public class DaoCustomersImpl implements DaoCustomers {
             return Either.left(-1);
         } else {
             try {
+                //si queres sobreescribir es StandardOpenOption.TRUNCATE_EXISTING
                 writer = Files.newBufferedWriter(p, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
                 writer.write(customer.toString());
                 writer.newLine();

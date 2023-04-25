@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <orders>
     <order>
+        <id>13</id>
+        <table>
+            <id>1</id>
+            <table_number>1</table_number>
+            <number_of_seats>4</number_of_seats>
+        </table>
+        <customer>
+            <id>3</id>
+            <firstName>Bob</firstName>
+            <lastName>Johnson</lastName>
+            <email>bobjohnson@example.com</email>
+            <phone>555-4321</phone>
+        </customer>
+        <order_date>2022-04-20</order_date>
+        <order_item>
+            <id>23</id>
+            <quantity>2</quantity>
+            <menu_item>
+                <id>4</id>
+                <name>Caesar Salad</name>
+                <description>Crisp romaine lettuce with parmesan cheese and croutons</description>
+                <price>8.99</price>
+            </menu_item>
+        </order_item>
+    </order>
+    <order>
         <id>12</id>
         <table>
             <id>1</id>
