@@ -17,7 +17,7 @@ public class Configuration {
     private String path;
     private String user_name;
     private String dB_password;
-    private String paidOrders;
+    private String users;
 
     public Configuration() {
 
@@ -28,7 +28,7 @@ public class Configuration {
             this.user_name = properties.getProperty("user_name");
             this.dB_password = properties.getProperty("dB_password");
             this.driver = properties.getProperty("driver");
-            this.paidOrders = properties.getProperty("paidOrders");
+            this.users = properties.getProperty("users");
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
