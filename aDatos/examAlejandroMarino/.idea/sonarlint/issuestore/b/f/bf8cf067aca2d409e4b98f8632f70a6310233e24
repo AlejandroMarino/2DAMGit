@@ -1,0 +1,4 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(излј8ѓаѓмы0
+r
+java:S1128"PRemove this unused import 'org.springframework.jdbc.core.BeanPropertyRowMapper'.(я©≈і€€€€€8’Ѕ∞мы0

@@ -1,0 +1,6 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(½ÀÄÍ8ı±¦çû0
+e
+java:S1117."CRename "basicDataSource" which hides the field declared at line 20.(åÚ¹Èÿÿÿÿÿ8 ²¦çû0
+P
+java:S1068"3Remove this unused "basicDataSource" private field.(õú’8¬²¦çû0
