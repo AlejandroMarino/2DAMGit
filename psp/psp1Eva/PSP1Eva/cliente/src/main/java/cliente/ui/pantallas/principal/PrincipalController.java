@@ -4,7 +4,6 @@ import cliente.ui.common.BasePantallaController;
 import cliente.ui.common.Pantallas;
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,7 +58,7 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        goShops();
+        goLogin();
     }
 
     private void cambioPantalla(Pane pantallaNueva) {
@@ -72,6 +71,17 @@ public class PrincipalController implements Initializable {
 
     public void goShops() {
         cargarPantalla(Pantallas.SHOPS);
+        goTo.setVisible(true);
+    }
+
+    public void goLogin() {
+        cargarPantalla(Pantallas.LOGIN);
+        goTo.setVisible(false);
+    }
+
+    public void goRegister() {
+        cargarPantalla(Pantallas.REGISTER);
+        goTo.setVisible(false);
     }
 
     public void goGames() {
@@ -80,6 +90,12 @@ public class PrincipalController implements Initializable {
 
     public void error(String mensaje) {
         alert.setAlertType(Alert.AlertType.ERROR);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    public void message(String mensaje) {
+        alert.setAlertType(Alert.AlertType.INFORMATION);
         alert.setContentText(mensaje);
         alert.showAndWait();
     }

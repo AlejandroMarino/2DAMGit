@@ -48,4 +48,9 @@ public class ProducesRetrofit {
         return retrofit.create(ShopsApi.class);
     }
 
+    @Produces
+    public LoginApi getLoginApi(Retrofit retrofit) {
+        return retrofit.create(LoginApi.class);
+    }
+
 }

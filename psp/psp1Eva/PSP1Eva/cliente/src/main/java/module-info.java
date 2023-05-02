@@ -26,10 +26,15 @@ module cliente {
     exports cliente.ui.common;
     exports cliente.common;
     exports cliente.data.dao.daoImpl;
+    exports cliente.ui.pantallas.register;
+    exports cliente.ui.pantallas.login;
+    exports cliente.data;
 
     opens cliente.ui.fx;
     opens cliente.ui.pantallas.principal;
     opens cliente.ui.pantallas.games;
     opens cliente.ui.pantallas.shops;
     opens cliente.data.dao;
+    opens cliente.ui.pantallas.login;
+    opens cliente.ui.pantallas.register;
 }

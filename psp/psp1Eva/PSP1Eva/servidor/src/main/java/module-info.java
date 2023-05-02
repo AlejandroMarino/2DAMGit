@@ -8,4 +8,6 @@ module servidor {
     requires com.google.gson;
     requires domain;
     requires org.apache.logging.log4j;
+    requires jakarta.mail;
+    requires jjwt.api;
 }

@@ -54,7 +54,8 @@ public class DaoGameImpl implements DaoGame {
 
     }
 
-    @Override public int add(Game game) {
+    @Override
+    public int add(Game game) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(db.getDataSource()).withTableName(Constants.GAME);
         Map<String, Object> parameters = new HashMap<>();
         parameters.put(Constants.NAME, game.getName());

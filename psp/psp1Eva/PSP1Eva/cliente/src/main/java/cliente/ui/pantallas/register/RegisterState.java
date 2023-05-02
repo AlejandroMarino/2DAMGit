@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class RegisterState {
-    private String message;
+    private final String message;
+    private final boolean registered;
 }

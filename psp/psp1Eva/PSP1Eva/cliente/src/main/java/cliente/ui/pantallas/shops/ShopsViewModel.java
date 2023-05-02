@@ -34,8 +34,8 @@ public class ShopsViewModel {
     public void getAllShops() {
         state.setValue(new ShopsState(null, null));
         svS.getAllShops()
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new ShopsState(null, either.getLeft()));
@@ -49,8 +49,8 @@ public class ShopsViewModel {
     public void search(String name) {
         state.setValue(new ShopsState(null, null));
         svS.filterByName(name)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new ShopsState(null, either.getLeft()));
@@ -69,8 +69,8 @@ public class ShopsViewModel {
     public void add(Shop shop) {
         state.setValue(new ShopsState(null, null));
         svS.addShop(shop)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new ShopsState(null, either.getLeft()));
@@ -84,8 +84,8 @@ public class ShopsViewModel {
     public void delete(int id) {
         state.setValue(new ShopsState(null, null));
         svS.deleteShop(id)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new ShopsState(null, either.getLeft()));
@@ -99,8 +99,8 @@ public class ShopsViewModel {
     public void update(Shop shop) {
         state.setValue(new ShopsState(null, null));
         svS.updateShop(shop)
-                .subscribeOn(Schedulers.io())
-                .blockingSubscribe(
+                .observeOn(Schedulers.single())
+                .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new ShopsState(null, either.getLeft()));

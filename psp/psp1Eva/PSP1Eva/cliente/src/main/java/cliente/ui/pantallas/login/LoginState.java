@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class LoginState {
-    private String message;
+    private final String message;
+    private final boolean logged;
 }
