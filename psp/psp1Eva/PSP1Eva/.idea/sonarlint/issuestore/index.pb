@@ -121,3 +121,11 @@ v
 Fcliente/src/main/java/cliente/ui/pantallas/register/RegisterState.java,b\f\bf5b7a7ff8ad6ef627ce0d88116fdecd03d49176
 z
 Jcliente/src/main/java/cliente/ui/pantallas/register/RegisterViewModel.java,c\0\c0f0f30d9355e398e1a22ecd3c4462bbf43ae407
+t
+Dcliente/src/main/java/cliente/ui/pantallas/games/GamesViewModel.java,f\9\f9f43a2345e05a561849869a4f43a9362b6483f7
+X
+(servidor/src/main/java/common/Roles.java,4\7\47389e8fd689104a8d3cc737f4e9ea67ade2c1f3
+i
+9servidor/src/main/java/jakarta/rest/JAXRSApplication.java,3\3\33b4673cb3194aeaebe3abfdb2523215d97970b0
+b
+2servidor/src/main/java/jakarta/rest/RestGames.java,9\6\963883576f6ab470a28a2767d0b01cde4cc895c6

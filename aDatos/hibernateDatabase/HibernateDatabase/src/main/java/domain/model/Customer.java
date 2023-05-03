@@ -12,7 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-@Table(name="customers")
+@Table(name = "customers")
+
+@NamedQueries({@NamedQuery(name = "HQL_GET_ALL_CUSTOMERS", query = "from Customer c")})
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

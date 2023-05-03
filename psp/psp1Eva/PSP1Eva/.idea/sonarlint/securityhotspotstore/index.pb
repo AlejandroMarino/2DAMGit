@@ -99,3 +99,11 @@ Jcliente/src/main/java/cliente/ui/pantallas/register/RegisterViewModel.java,c\0
 Kcliente/src/main/java/cliente/ui/pantallas/register/RegisterController.java,4\6\4684eb1b819560dec8429bf56e9d5c67f6ee0061
 v
 Fcliente/src/main/java/cliente/ui/pantallas/register/RegisterState.java,b\f\bf5b7a7ff8ad6ef627ce0d88116fdecd03d49176
+t
+Dcliente/src/main/java/cliente/ui/pantallas/games/GamesViewModel.java,f\9\f9f43a2345e05a561849869a4f43a9362b6483f7
+X
+(servidor/src/main/java/common/Roles.java,4\7\47389e8fd689104a8d3cc737f4e9ea67ade2c1f3
+b
+2servidor/src/main/java/jakarta/rest/RestGames.java,9\6\963883576f6ab470a28a2767d0b01cde4cc895c6
+i
+9servidor/src/main/java/jakarta/rest/JAXRSApplication.java,3\3\33b4673cb3194aeaebe3abfdb2523215d97970b0
