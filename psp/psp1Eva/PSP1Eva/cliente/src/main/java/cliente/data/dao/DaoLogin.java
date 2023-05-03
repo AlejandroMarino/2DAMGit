@@ -8,5 +8,5 @@ public interface DaoLogin {
 
     Single<Either<String, User>> register(User user);
 
-    Single<Either<String, String>> getLogin(String headerBasic);
+    Single<Either<String, String>> login(User user);
 }

@@ -1,7 +1,9 @@
 package cliente.ui.pantallas.login;
 
 import cliente.ui.common.BasePantallaController;
+import domain.models.User;
 import jakarta.inject.Inject;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -19,17 +21,26 @@ public class LoginController extends BasePantallaController {
         this.loginViewModel = loginViewModel;
     }
 
-    private void initialize() {
+    public void initialize() {
         loginViewModel.getState().addListener((observable, oldValue, newValue) -> {
-            if (newValue.getMessage() != null) {
-                getPrincipalController().error(newValue.getMessage());
-            }
+            Platform.runLater(() -> {
+                if (newValue.getMessage() != null) {
+                    getPrincipalController().message(newValue.getMessage());
+                }
+                if (newValue.isLogged()) {
+                    getPrincipalController().goShops();
+                }
+            });
         });
     }
 
     @FXML
-    private void login(ActionEvent actionEvent) {
-
+    private void login() {
+        if (textUser.getText().isEmpty() || textPassword.getText().isEmpty()) {
+            getPrincipalController().error("Please fill all the fields");
+        } else {
+            loginViewModel.login(new User(textUser.getText(), textPassword.getText()));
+        }
     }
 
     @FXML

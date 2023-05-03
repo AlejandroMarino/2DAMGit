@@ -28,7 +28,6 @@ module cliente {
     exports cliente.data.dao.daoImpl;
     exports cliente.ui.pantallas.register;
     exports cliente.ui.pantallas.login;
-    exports cliente.data;
 
     opens cliente.ui.fx;
     opens cliente.ui.pantallas.principal;

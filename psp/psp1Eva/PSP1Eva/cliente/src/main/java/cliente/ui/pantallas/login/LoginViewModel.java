@@ -2,6 +2,7 @@ package cliente.ui.pantallas.login;
 
 import cliente.services.ServicesLogin;
 import domain.models.User;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
@@ -9,7 +10,7 @@ import javafx.beans.property.SimpleObjectProperty;
 
 public class LoginViewModel {
 
-    private ServicesLogin servicesLogin;
+    private final ServicesLogin servicesLogin;
 
     private final ObjectProperty<LoginState> state;
 
@@ -23,5 +24,18 @@ public class LoginViewModel {
         state = new SimpleObjectProperty<>(new LoginState(null, false));
     }
 
-
+    public void login(User user) {
+        state.setValue(new LoginState(null, false));
+        servicesLogin.login(user)
+                .observeOn(Schedulers.single())
+                .subscribe(
+                        either -> {
+                            if (either.isLeft()) {
+                                state.setValue(new LoginState(either.getLeft(), false));
+                            } else {
+                                state.setValue(new LoginState("Login successful", true));
+                            }
+                        }
+                );
+    }
 }

@@ -13,4 +13,8 @@ public interface ServicesLogin {
     Set<String> getRoles(String username);
 
     boolean validate(String code);
+
+    boolean activated(String username);
+
+    String generateJWS(User user);
 }
