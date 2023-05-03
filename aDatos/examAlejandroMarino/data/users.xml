@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<usuarios>
+    <usuario>
+        <id>1</id>
+        <nombre>Moina Cryer</nombre>
+        <fecha_de_nacimiento>1974-07-16</fecha_de_nacimiento>
+        <objeto>
+            <id>1</id>
+        </objeto>
+    </usuario>
+    <usuario>
+        <id>2</id>
+        <nombre>Melba Petru</nombre>
+        <fecha_de_nacimiento>1983-11-26</fecha_de_nacimiento>
+    </usuario>
+    <usuario>
+        <id>3</id>
+        <nombre>Dennison Ankrett</nombre>
+        <fecha_de_nacimiento>1991-02-24</fecha_de_nacimiento>
+        <objeto>
+            <id>1</id>
+            <permiso>
+                <id>1</id>
+                <Descripcion>lectura</Descripcion>
+            </permiso>
+        </objeto>
+    </usuario>
+    <usuario>
+        <id>4</id>
+        <nombre>Aila Bleaden</nombre>
+        <fecha_de_nacimiento>1995-05-21</fecha_de_nacimiento>
+    </usuario>
+</usuarios>
