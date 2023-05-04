@@ -4,6 +4,7 @@ import common.Constants;
 import domain.errors.ApiError;
 import domain.models.Shop;
 import domain.servicios.ServicesShop;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -25,6 +26,7 @@ public class RestShops {
     }
 
     @GET
+    @RolesAllowed({"admin"})
     public List<Shop> getAll() {
         return sS.getAll();
     }

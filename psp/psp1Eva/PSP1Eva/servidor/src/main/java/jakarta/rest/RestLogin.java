@@ -6,16 +6,12 @@ import domain.servicios.MandarMail;
 import domain.servicios.ServicesLogin;
 import jakarta.inject.Inject;
 import jakarta.mail.MessagingException;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.SecurityContext;
-
-import java.io.IOException;
 
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
@@ -23,13 +19,7 @@ import java.io.IOException;
 public class RestLogin {
 
     @Context
-    private HttpServletRequest request;
-
-    @Context
     private HttpServletResponse response;
-
-    @Context
-    private SecurityContext securityContext;
 
     private final MandarMail mandarMail;
 
@@ -59,14 +49,22 @@ public class RestLogin {
     }
 
     @GET
-    public Response getLogin() {
-        try {
-            request.authenticate(response);
-            securityContext.isUserInRole("admin");
-            request.getSession().setAttribute("LOGIN", true);
-            return Response.status(Response.Status.NO_CONTENT).build();
-        } catch (IOException | ServletException e) {
-            throw new RuntimeException(e);
+    public Response login(@QueryParam("username") String username, @QueryParam("password") String password) {
+        if (username == null || password == null) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } else {
+            User user = sL.validationUser(username, password.toCharArray());
+            if (user == null) {
+                return Response.status(Response.Status.BAD_REQUEST).build();
+            } else {
+                if (sL.activated(user.getUsername())) {
+                    String jwt = sL.generateJWS(user);
+                    response.setHeader(HttpHeaders.AUTHORIZATION, jwt);
+                    return Response.status(Response.Status.OK).build();
+                } else {
+                    return Response.status(Response.Status.UNAUTHORIZED).build();
+                }
+            }
         }
     }
 

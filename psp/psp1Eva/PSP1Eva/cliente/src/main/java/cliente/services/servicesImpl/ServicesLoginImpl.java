@@ -20,4 +20,11 @@ public class ServicesLoginImpl implements ServicesLogin {
     public Single<Either<String, User>> register(User user) {
         return daoLogin.register(user);
     }
+
+    @Override
+    public Single<Either<String, String>> login(User user) {
+        return daoLogin.login(user);
+    }
+
+
 }

@@ -7,4 +7,6 @@ import io.vavr.control.Either;
 public interface ServicesLogin {
 
     Single<Either<String, User>> register(User user);
+
+    Single<Either<String, String>> login(User user);
 }

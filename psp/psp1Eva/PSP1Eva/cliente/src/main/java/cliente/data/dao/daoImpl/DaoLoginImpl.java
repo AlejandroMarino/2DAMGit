@@ -26,8 +26,8 @@ public class DaoLoginImpl extends DaoGenerics implements DaoLogin {
     }
 
     @Override
-    public Single<Either<String, String>> getLogin(String headerBasic ){
-        return safeSingleVoidApicall(loginApi.getLogin(headerBasic))
+    public Single<Either<String, String>> login(User user) {
+        return safeSingleVoidApicall(loginApi.login(user.getUsername(), user.getPassword()))
                 .subscribeOn(Schedulers.io());
     }
 }

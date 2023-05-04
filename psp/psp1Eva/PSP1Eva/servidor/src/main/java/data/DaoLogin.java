@@ -13,4 +13,5 @@ public interface DaoLogin {
     List<String> getRoles(String username);
 
     boolean validate(String code);
+
 }
