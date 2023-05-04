@@ -1,6 +1,8 @@
 package cliente.data.dao.daoImpl;
 
+import cliente.common.Constants;
 import cliente.data.dao.DaoLogin;
+import cliente.data.network.CacheAuthorization;
 import cliente.data.network.LoginApi;
 import com.google.gson.Gson;
 import domain.models.User;
@@ -8,14 +10,19 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
+import retrofit2.Response;
+
 
 public class DaoLoginImpl extends DaoGenerics implements DaoLogin {
+
+    private final CacheAuthorization cacheAuthorization;
 
     private final LoginApi loginApi;
 
     @Inject
-    public DaoLoginImpl(Gson gson, LoginApi loginApi) {
+    public DaoLoginImpl(Gson gson, CacheAuthorization cacheAuthorization, LoginApi loginApi) {
         super(gson);
+        this.cacheAuthorization = cacheAuthorization;
         this.loginApi = loginApi;
     }
 
@@ -27,7 +34,16 @@ public class DaoLoginImpl extends DaoGenerics implements DaoLogin {
 
     @Override
     public Single<Either<String, String>> login(User user) {
-        return safeSingleVoidApicall(loginApi.login(user.getUsername(), user.getPassword()))
-                .subscribeOn(Schedulers.io());
+        Single<Response<Void>> call = loginApi.login(user.getUsername(), user.getPassword());
+        return call.map(response -> {
+            var retorno = Either.right(Constants.OK).mapLeft(Object::toString);
+            if (response.isSuccessful()) {
+                String jwt = response.headers().get("Authorization");
+                cacheAuthorization.setJwt(jwt);
+            } else {
+                retorno = Either.left(response.errorBody().toString());
+            }
+            return retorno;
+        }).subscribeOn(Schedulers.io());
     }
 }

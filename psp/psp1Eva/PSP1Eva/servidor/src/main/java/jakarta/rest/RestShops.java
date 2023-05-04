@@ -26,7 +26,7 @@ public class RestShops {
     }
 
     @GET
-    @RolesAllowed({"admin"})
+    @RolesAllowed({"admin", "user"})
     public List<Shop> getAll() {
         return sS.getAll();
     }

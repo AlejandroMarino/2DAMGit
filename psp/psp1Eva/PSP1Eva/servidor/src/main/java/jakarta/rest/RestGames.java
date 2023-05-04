@@ -4,6 +4,7 @@ import common.Constants;
 import domain.errors.ApiError;
 import domain.models.Game;
 import domain.servicios.ServicesGame;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -24,6 +25,7 @@ public class RestGames {
         this.sG = sG;}
 
     @GET
+    @RolesAllowed({"admin"})
     public List<Game> getAll() {
         return sG.getAll();
     }

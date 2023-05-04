@@ -27,14 +27,16 @@ public class ShopsController extends BasePantallaController {
 
     public void initialize() {
         shopsViewModel.getState().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
-            if (newValue.getShops() != null) {
-                listShops.getItems().clear();
-                listShops.getItems().setAll(newValue.getShops());
-            }
-            if (newValue.getError() != null) {
-                getPrincipalController().error(newValue.getError());
-            }
-            getPrincipalController().root.setCursor(Cursor.DEFAULT);
+            Platform.runLater(() -> {
+                if (newValue.getShops() != null) {
+                    listShops.getItems().clear();
+                    listShops.getItems().setAll(newValue.getShops());
+                }
+                if (newValue.getError() != null) {
+                    getPrincipalController().error(newValue.getError());
+                }
+                getPrincipalController().root.setCursor(Cursor.DEFAULT);
+            });
         }));
         listShops.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             if (newValue != null) {
@@ -51,26 +53,29 @@ public class ShopsController extends BasePantallaController {
 
     @FXML
     private void search() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         String text = textSearch.getText();
         if (text != null && !text.isBlank()) {
             shopsViewModel.search(text);
         } else {
-            getPrincipalController().error(Constants.WRITE_SOMETHING_TO_SEARCH);
+            showError(Constants.WRITE_SOMETHING_TO_SEARCH);
         }
     }
 
     @FXML
     private void add() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         String name = textName.getText();
         if (name != null && !name.isBlank()) {
             shopsViewModel.add(new Shop(name));
         } else {
-            getPrincipalController().error(Constants.WRITE_A_NAME);
+            showError(Constants.WRITE_A_NAME);
         }
     }
 
     @FXML
     private void update() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         Shop shop = listShops.getSelectionModel().getSelectedItem();
         if (shop != null) {
             String name = textName.getText();
@@ -79,23 +84,24 @@ public class ShopsController extends BasePantallaController {
                     shop.setName(name);
                     shopsViewModel.update(shop);
                 } else {
-                    getPrincipalController().error(Constants.WRITE_A_DIFFERENT_NAME);
+                    showError(Constants.WRITE_A_DIFFERENT_NAME);
                 }
             } else {
-                getPrincipalController().error(Constants.WRITE_A_NAME);
+                showError(Constants.WRITE_A_NAME);
             }
         } else {
-            getPrincipalController().error(Constants.SELECT_A_SHOP_TO_UPDATE);
+            showError(Constants.SELECT_A_SHOP_TO_UPDATE);
         }
     }
 
     @FXML
     private void delete() {
         Shop shop = listShops.getSelectionModel().getSelectedItem();
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         if (shop != null) {
             shopsViewModel.delete(shop.getId());
         } else {
-            getPrincipalController().error(Constants.SELECT_A_SHOP_TO_DELETE);
+            showError(Constants.SELECT_A_SHOP_TO_DELETE);
         }
     }
 
@@ -103,5 +109,10 @@ public class ShopsController extends BasePantallaController {
     private void crearFilters() {
         getPrincipalController().root.setCursor(Cursor.WAIT);
         shopsViewModel.getAllShops();
+    }
+
+    private void showError(String message) {
+        getPrincipalController().error(message);
+        getPrincipalController().root.setCursor(Cursor.DEFAULT);
     }
 }

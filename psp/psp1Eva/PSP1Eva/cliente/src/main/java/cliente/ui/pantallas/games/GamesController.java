@@ -5,7 +5,9 @@ import cliente.ui.common.BasePantallaController;
 import domain.models.Game;
 import domain.models.Shop;
 import jakarta.inject.Inject;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -44,20 +46,23 @@ public class GamesController extends BasePantallaController {
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         gamesViewModel.getState().addListener((observable, oldValue, newValue) -> {
-            if (newValue.getGames() != null) {
-                tableGames.getItems().clear();
-                tableGames.getItems().setAll(newValue.getGames());
-            }
-            if (newValue.getError() != null) {
-                getPrincipalController().error(newValue.getError());
-            }
-            if (newValue.getShops() != null) {
-                choiceShops.getItems().clear();
-                choiceShops.getItems().setAll(newValue.getShops());
-            }
-            if (newValue.getShop() != null) {
-                choiceShops.setValue(newValue.getShop());
-            }
+            Platform.runLater(() -> {
+                if (newValue.getGames() != null) {
+                    tableGames.getItems().clear();
+                    tableGames.getItems().setAll(newValue.getGames());
+                }
+                if (newValue.getError() != null) {
+                    getPrincipalController().error(newValue.getError());
+                }
+                if (newValue.getShops() != null) {
+                    choiceShops.getItems().clear();
+                    choiceShops.getItems().setAll(newValue.getShops());
+                }
+                if (newValue.getShop() != null) {
+                    choiceShops.setValue(newValue.getShop());
+                }
+                getPrincipalController().root.setCursor(Cursor.DEFAULT);
+            });
         });
         tableGames.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -76,6 +81,7 @@ public class GamesController extends BasePantallaController {
 
     @FXML
     private void add() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         String name = textName.getText();
         if (name != null && !name.isBlank()) {
             Shop shop = choiceShops.getValue();
@@ -84,25 +90,27 @@ public class GamesController extends BasePantallaController {
                 String description = textDescription.getText();
                 gamesViewModel.add(new Game(name, description, date, shop.getId()));
             } else {
-                getPrincipalController().error(Constants.SELECT_A_SHOP);
+                mostrarError(Constants.SELECT_A_SHOP);
             }
         } else {
-            getPrincipalController().error(Constants.WRITE_A_NAME);
+            mostrarError(Constants.WRITE_A_NAME);
         }
     }
 
     @FXML
     private void delete() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         Game game = tableGames.getSelectionModel().getSelectedItem();
         if (game != null) {
             gamesViewModel.delete(game.getId());
         } else {
-            getPrincipalController().error(Constants.SELECT_A_GAME);
+            mostrarError(Constants.SELECT_A_GAME);
         }
     }
 
     @FXML
     private void update() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         Game game = tableGames.getSelectionModel().getSelectedItem();
         if (game != null) {
             String name = textName.getText();
@@ -113,38 +121,46 @@ public class GamesController extends BasePantallaController {
                     String description = textDescription.getText();
                     gamesViewModel.update(new Game(game.getId(), name, description, date, shop.getId()));
                 } else {
-                    getPrincipalController().error(Constants.SELECT_A_SHOP_FOR_THE_GAME);
+                    mostrarError(Constants.SELECT_A_SHOP_FOR_THE_GAME);
                 }
             } else {
-                getPrincipalController().error(Constants.WRITE_A_NAME);
+                mostrarError(Constants.WRITE_A_NAME);
             }
         } else {
-            getPrincipalController().error(Constants.SELECT_A_GAME_TO_UPDATE);
+            mostrarError(Constants.SELECT_A_GAME_TO_UPDATE);
         }
     }
 
     @FXML
     private void searchByName() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         String text = textSearch.getText();
         if (text != null && !text.isBlank()) {
             gamesViewModel.search(text);
         } else {
-            getPrincipalController().error(Constants.WRITE_SOMETHING_TO_SEARCH);
+            mostrarError(Constants.WRITE_SOMETHING_TO_SEARCH);
         }
     }
 
     @FXML
     private void filterByShop() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         Shop shop = choiceShops.getValue();
         if (shop != null) {
             gamesViewModel.filterByShop(shop.getId());
         } else {
-            getPrincipalController().error(Constants.SELECT_A_SHOP);
+            mostrarError(Constants.SELECT_A_SHOP);
         }
     }
 
     @FXML
     private void clearFilters() {
+        getPrincipalController().root.setCursor(Cursor.WAIT);
         gamesViewModel.getAllGames();
+    }
+
+    private void mostrarError(String error) {
+        getPrincipalController().error(error);
+        getPrincipalController().root.setCursor(Cursor.DEFAULT);
     }
 }

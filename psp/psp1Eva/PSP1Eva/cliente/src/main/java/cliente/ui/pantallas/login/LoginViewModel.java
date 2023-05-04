@@ -33,7 +33,7 @@ public class LoginViewModel {
                             if (either.isLeft()) {
                                 state.setValue(new LoginState(either.getLeft(), false));
                             } else {
-                                state.setValue(new LoginState("Login successful", true));
+                                state.setValue(new LoginState(null, true));
                             }
                         }
                 );

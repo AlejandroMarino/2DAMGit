@@ -5,20 +5,23 @@ import domain.modelo.NotFoundException;
 import domain.models.User;
 import domain.servicios.ServicesLogin;
 import io.jsonwebtoken.Jwts;
-import jakarta.di.KeyProvider;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
+import java.security.Key;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ServicesLoginImpl implements ServicesLogin {
 
+    private final Key key;
     private final DaoLogin daoLogin;
     private final Pbkdf2PasswordHash passwordHash;
 
     @Inject
-    public ServicesLoginImpl(DaoLogin daoLogin, Pbkdf2PasswordHash passwordHash) {
+    public ServicesLoginImpl(@Named("JWT") Key key, DaoLogin daoLogin, Pbkdf2PasswordHash passwordHash) {
+        this.key = key;
         this.daoLogin = daoLogin;
         this.passwordHash = passwordHash;
     }
@@ -64,7 +67,7 @@ public class ServicesLoginImpl implements ServicesLogin {
 
     @Override
     public String generateJWS(User user) {
-        KeyProvider k = new KeyProvider();
+
         try {
             Set<String> roles = getRoles(user.getUsername());
             return Jwts.builder()
@@ -72,7 +75,7 @@ public class ServicesLoginImpl implements ServicesLogin {
                     .setIssuer("Server")
                     .claim("username", user.getUsername())
                     .claim("roles", roles)
-                    .signWith(k.key()).compact();
+                    .signWith(key).compact();
         } catch (Exception e) {
             throw new NotFoundException("Error while generating JWS");
         }

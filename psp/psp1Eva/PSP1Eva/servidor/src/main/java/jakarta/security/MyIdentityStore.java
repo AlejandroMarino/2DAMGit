@@ -7,11 +7,13 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import jakarta.di.KeyProvider;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.security.enterprise.credential.Credential;
 import jakarta.security.enterprise.credential.RememberMeCredential;
 import jakarta.security.enterprise.identitystore.CredentialValidationResult;
 import jakarta.security.enterprise.identitystore.IdentityStore;
 
+import java.security.Key;
 import java.util.Set;
 
 import static jakarta.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
@@ -19,15 +21,21 @@ import static jakarta.security.enterprise.identitystore.CredentialValidationResu
 
 public class MyIdentityStore implements IdentityStore {
 
+    private final Key key;
+
+    @Inject
+    public MyIdentityStore(@Named("JWT") Key key) {
+        this.key = key;
+    }
+
     @Override
     public CredentialValidationResult validate(Credential credential) {
-        KeyProvider k = new KeyProvider();
         CredentialValidationResult credentialValidationResult = INVALID_RESULT;
         if (credential instanceof RememberMeCredential jwt) {
             try {
                 String jwtString = jwt.getToken();
                 Jws<Claims> jws = Jwts.parserBuilder()
-                        .setSigningKey(k.key())
+                        .setSigningKey(key)
                         .build()
                         .parseClaimsJws(jwtString);
                 String username = (String) jws.getBody().get("username");
