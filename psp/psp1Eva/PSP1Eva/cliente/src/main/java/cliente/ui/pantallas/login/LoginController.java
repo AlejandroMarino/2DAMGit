@@ -1,5 +1,6 @@
 package cliente.ui.pantallas.login;
 
+import cliente.common.Constants;
 import cliente.ui.common.BasePantallaController;
 import domain.models.User;
 import jakarta.inject.Inject;
@@ -37,14 +38,14 @@ public class LoginController extends BasePantallaController {
     @FXML
     private void login() {
         if (textUser.getText().isEmpty() || textPassword.getText().isEmpty()) {
-            getPrincipalController().error("Please fill all the fields");
+            getPrincipalController().error(Constants.PLEASE_FILL_ALL_THE_FIELDS);
         } else {
             loginViewModel.login(new User(textUser.getText(), textPassword.getText()));
         }
     }
 
     @FXML
-    private void register(ActionEvent actionEvent) {
+    private void register() {
         getPrincipalController().goRegister();
     }
 }

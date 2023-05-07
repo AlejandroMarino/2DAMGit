@@ -1,5 +1,6 @@
 package jakarta.security;
 
+import common.Constants;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -25,20 +26,20 @@ public class JWTAuth implements HttpAuthenticationMechanism {
         CredentialValidationResult result = CredentialValidationResult.INVALID_RESULT;
         String header = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (header != null) {
-            String[] parts = header.split(" ");
+            String[] parts = header.split(Constants.SPACE);
 
-            if (parts[0].equalsIgnoreCase("Bearer")) {
+            if (parts[0].equalsIgnoreCase(Constants.BEARER)) {
                 try {
                     result = identityStore.validate(new RememberMeCredential(parts[1]));
                 } catch (ExpiredJwtException e) {
                     try {
-                        response.sendError(498);
+                        response.sendError(Constants.INVALID_TOKEN);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
                 } catch (Exception e) {
                     try {
-                        response.sendError(401);
+                        response.sendError(Constants.UNAUTHORIZED);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -47,7 +48,7 @@ public class JWTAuth implements HttpAuthenticationMechanism {
 
         }
         if (!result.getStatus().equals(CredentialValidationResult.Status.VALID)) {
-            request.setAttribute("status", result.getStatus());
+            request.setAttribute(Constants.STATUS, result.getStatus());
             return httpMessageContext.doNothing();
         }
 

@@ -38,7 +38,7 @@ public class DaoLoginImpl extends DaoGenerics implements DaoLogin {
         return call.map(response -> {
             var retorno = Either.right(Constants.OK).mapLeft(Object::toString);
             if (response.isSuccessful()) {
-                String jwt = response.headers().get("Authorization");
+                String jwt = response.headers().get(Constants.AUTHORIZATION);
                 cacheAuthorization.setJwt(jwt);
             } else {
                 retorno = Either.left(response.errorBody().toString());

@@ -1,10 +1,10 @@
 package cliente.ui.pantallas.register;
 
+import cliente.common.Constants;
 import cliente.ui.common.BasePantallaController;
 import domain.models.User;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -39,7 +39,7 @@ public class RegisterController extends BasePantallaController {
     @FXML
     private void register() {
         if (textEmail.getText().isEmpty() || textPassword.getText().isEmpty() || textUsername.getText().isEmpty()) {
-            getPrincipalController().error("Please fill all the fields");
+            getPrincipalController().error(Constants.PLEASE_FILL_ALL_THE_FIELDS);
         } else {
             registerViewModel.register(new User(textUsername.getText(), textPassword.getText(), textEmail.getText()));
         }

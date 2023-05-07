@@ -28,4 +28,10 @@ public class Constants {
     public static final String SELECT_A_SHOP_TO_UPDATE = "Select a shop to update";
     public static final String SELECT_A_SHOP_TO_DELETE = "Select a shop to delete";
     public static final String NO_SHOP_FOUND_WITH_THIS_NAME = "No shop found with this name";
+    public static final String VERIFY_YOUR_ACCOUNT_WITH_THE_EMAIL_WE_HAVE_SENT_YOU = "Verify your account with the email we have sent you";
+    public static final String PLEASE_FILL_ALL_THE_FIELDS = "Please fill all the fields";
+    public static final String RELEASE_DATE = "releaseDate";
+    public static final String DESCRIPTION = "description";
+    public static final String AUTHORIZATION = "Authorization";
+    public static final String BEARER = "Bearer ";
 }

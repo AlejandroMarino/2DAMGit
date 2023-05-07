@@ -1,6 +1,8 @@
 package jakarta.di;
 
 import java.security.Key;
+
+import common.Constants;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.enterprise.inject.Produces;
@@ -11,7 +13,7 @@ public class KeyProvider {
 
     @Produces
     @Singleton
-    @Named("JWT")
+    @Named(Constants.JWT)
     public Key key()
     {
         return Keys.secretKeyFor(SignatureAlgorithm.HS512);

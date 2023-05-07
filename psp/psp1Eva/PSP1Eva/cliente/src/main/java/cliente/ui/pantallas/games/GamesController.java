@@ -41,9 +41,9 @@ public class GamesController extends BasePantallaController {
     }
 
     public void initialize() {
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("releaseDate"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colName.setCellValueFactory(new PropertyValueFactory<>(Constants.NAME));
+        colDate.setCellValueFactory(new PropertyValueFactory<>(Constants.RELEASE_DATE));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>(Constants.DESCRIPTION));
 
         gamesViewModel.getState().addListener((observable, oldValue, newValue) -> {
             Platform.runLater(() -> {

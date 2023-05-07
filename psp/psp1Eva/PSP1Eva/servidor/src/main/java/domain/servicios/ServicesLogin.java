@@ -2,7 +2,7 @@ package domain.servicios;
 
 import domain.models.User;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ServicesLogin {
 
@@ -10,7 +10,7 @@ public interface ServicesLogin {
 
     User validationUser(String username, char[] password);
 
-    Set<String> getRoles(String username);
+    List<String> getRoles(String username);
 
     boolean validate(String code);
 

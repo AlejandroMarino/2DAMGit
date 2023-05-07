@@ -1,5 +1,7 @@
 package data.daoImpl;
 
+import common.Constants;
+import common.Queries;
 import config.DBConnectionPool;
 import data.DaoLogin;
 import domain.models.User;
@@ -7,9 +9,12 @@ import jakarta.inject.Inject;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import static java.util.Collections.emptyList;
@@ -29,7 +34,7 @@ public class DaoLoginImpl implements DaoLogin {
     @Override
     public User register(User user) {
         try (Connection con = db.getDataSource().getConnection();
-             PreparedStatement statement = con.prepareStatement("INSERT INTO user (username, password, activated, email, activation_code) VALUES (?, ?, ?, ?, ?)")) {
+             PreparedStatement statement = con.prepareStatement(Queries.ADD_USER)) {
             statement.setString(1, user.getUsername());
             statement.setString(2, passwordHash.generate(user.getPassword().toCharArray()));
             statement.setBoolean(3, user.isActivated());
@@ -46,13 +51,18 @@ public class DaoLoginImpl implements DaoLogin {
     @Override
     public User getUser(String username) {
         JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-        return jtm.queryForObject("SELECT * FROM user WHERE username = ?", BeanPropertyRowMapper.newInstance(User.class), username);
+        return jtm.queryForObject(Queries.GET_USER, BeanPropertyRowMapper.newInstance(User.class), username);
     }
 
     @Override
     public List<String> getRoles(String username) {
         JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-        List<String> roles = jtm.query("SELECT name FROM role r INNER JOIN userRole uR on r.id = uR.role_id WHERE uR.username = ?", BeanPropertyRowMapper.newInstance(String.class), username);
+        List<String> roles = jtm.query(Queries.GET_ROLES_OF_USER, new RowMapper<String>() {
+            @Override
+            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getString(Constants.NAME);
+            }
+        }, username);
         if (roles.isEmpty()) {
             return emptyList();
         } else {
@@ -65,7 +75,7 @@ public class DaoLoginImpl implements DaoLogin {
         int rows = 0;
         try {
             JdbcTemplate jtm = new JdbcTemplate(db.getDataSource());
-            rows = jtm.update("UPDATE user SET activated = true WHERE activation_code = ?", code);
+            rows = jtm.update(Queries.ACTIVATE_USER, code);
         } catch (Exception e) {
             e.printStackTrace();
         }

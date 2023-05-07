@@ -49,7 +49,7 @@ public class RestLogin {
     }
 
     @GET
-    public Response login(@QueryParam("username") String username, @QueryParam("password") String password) {
+    public Response login(@QueryParam(Constants.USERNAME) String username, @QueryParam(Constants.PASSWORD) String password) {
         if (username == null || password == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         } else {
@@ -70,7 +70,7 @@ public class RestLogin {
 
     @GET
     @Path("/activation")
-    public Response validate(@QueryParam("code") String code) {
+    public Response validate(@QueryParam(Constants.CODE) String code) {
         if (code == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         } else {

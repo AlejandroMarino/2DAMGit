@@ -3,6 +3,7 @@ package cliente.data.network;
 import cliente.config.Configuration;
 import com.google.gson.*;
 import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -13,11 +14,17 @@ import java.time.LocalDate;
 
 public class ProducesRetrofit {
 
+    private final CacheAuthorization CacheAuthorization;
+
+    @Inject
+    public ProducesRetrofit(cliente.data.network.CacheAuthorization cacheAuthorization) {
+        CacheAuthorization = cacheAuthorization;
+    }
+
     @Produces
     @Singleton
-    public Gson getGson()
-    {
-        return  new GsonBuilder()
+    public Gson getGson() {
+        return new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>) (json, type, jsonDeserializationContext) -> LocalDate.parse(json.getAsJsonPrimitive().getAsString()))
                 .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>) (localDate, type, jsonSerializationContext) -> new JsonPrimitive(localDate.toString())
                 ).create();
@@ -29,6 +36,7 @@ public class ProducesRetrofit {
 
         OkHttpClient clientOK = new OkHttpClient.Builder()
                 .connectionPool(new okhttp3.ConnectionPool(1, 1, java.util.concurrent.TimeUnit.SECONDS))
+                .addInterceptor(new AuthorizationInterceptor(CacheAuthorization))
                 .build();
 
         return new Retrofit.Builder()
@@ -38,6 +46,7 @@ public class ProducesRetrofit {
                 .client(clientOK)
                 .build();
     }
+
     @Produces
     public GamesApi getGamesApi(Retrofit retrofit) {
         return retrofit.create(GamesApi.class);

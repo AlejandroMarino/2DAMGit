@@ -1,11 +1,10 @@
 package jakarta.security;
 
+import common.Constants;
 import domain.modelo.NotFoundException;
-import domain.servicios.ServicesLogin;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import jakarta.di.KeyProvider;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.security.enterprise.credential.Credential;
@@ -14,7 +13,8 @@ import jakarta.security.enterprise.identitystore.CredentialValidationResult;
 import jakarta.security.enterprise.identitystore.IdentityStore;
 
 import java.security.Key;
-import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
 
 import static jakarta.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
 import static jakarta.security.enterprise.identitystore.CredentialValidationResult.NOT_VALIDATED_RESULT;
@@ -24,7 +24,7 @@ public class MyIdentityStore implements IdentityStore {
     private final Key key;
 
     @Inject
-    public MyIdentityStore(@Named("JWT") Key key) {
+    public MyIdentityStore(@Named(Constants.JWT) Key key) {
         this.key = key;
     }
 
@@ -38,10 +38,10 @@ public class MyIdentityStore implements IdentityStore {
                         .setSigningKey(key)
                         .build()
                         .parseClaimsJws(jwtString);
-                String username = (String) jws.getBody().get("username");
-                Set<String> roles = (Set<String>) jws.getBody().get("roles");
+                String username = (String) jws.getBody().get(Constants.USERNAME);
+                List<String> roles = (List<String>) jws.getBody().get(Constants.ROLES);
                 if (username != null && roles != null) {
-                    credentialValidationResult = new CredentialValidationResult(username, roles);
+                    credentialValidationResult = new CredentialValidationResult(username, new HashSet<>(roles));
                 } else {
                     credentialValidationResult = INVALID_RESULT;
                 }

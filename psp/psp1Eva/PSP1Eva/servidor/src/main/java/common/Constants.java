@@ -29,4 +29,18 @@ public class Constants {
     public static final String GAME_NOT_ADDED = "Game not added";
     public static final String WELCOME_TO_THE_GAMES_API = "Welcome to the games api";
 
+    public static final String BEARER = "Bearer";
+    public static final String STATUS = "status";
+    public static final String SPACE = " ";
+    public static final String ROLES = "roles";
+    public static final String JWT = "JWT";
+    public static final String ADMIN = "admin";
+    public static final int INVALID_TOKEN = 498;
+    public static final int UNAUTHORIZED = 401;
+    public static final String ID = "id";
+
+    public static final String CODE = "code";
+    public static final String ERROR_WHILE_GENERATING_JWS = "Error while generating JWS";
+    public static final String SERVER = "Server";
+    public static final String CLIENT = "Client";
 }

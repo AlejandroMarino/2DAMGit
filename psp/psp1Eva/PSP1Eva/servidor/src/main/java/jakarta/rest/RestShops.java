@@ -26,21 +26,20 @@ public class RestShops {
     }
 
     @GET
-    @RolesAllowed({"admin", "user"})
+    @RolesAllowed({Constants.ADMIN, Constants.USER})
     public List<Shop> getAll() {
         return sS.getAll();
     }
 
-
     @GET
     @Path("/{id}")
-    public Shop get(@PathParam("id") int id) {
+    public Shop get(@PathParam(Constants.ID) int id) {
         return sS.get(id);
     }
 
     @GET
     @Path("/filter")
-    public List<Shop> filterByName(@QueryParam("name") String name) {
+    public List<Shop> filterByName(@QueryParam(Constants.NAME) String name) {
         return sS.filterByName(name);
     }
 
@@ -59,7 +58,7 @@ public class RestShops {
     }
 
     @DELETE
-    public Response delete(@QueryParam("id") int id) {
+    public Response delete(@QueryParam(Constants.ID) int id) {
         sS.delete(id);
         return Response.noContent().build();
     }

@@ -1,7 +1,7 @@
 package cliente.ui.pantallas.register;
 
+import cliente.common.Constants;
 import cliente.services.ServicesLogin;
-import cliente.ui.pantallas.login.LoginState;
 import domain.models.User;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import jakarta.inject.Inject;
@@ -34,7 +34,7 @@ public class RegisterViewModel {
                             if (either.isLeft()) {
                                 state.setValue(new RegisterState(either.getLeft(),false));
                             } else {
-                                state.setValue(new RegisterState("Verify your account with the email we have sent you",true));
+                                state.setValue(new RegisterState(Constants.VERIFY_YOUR_ACCOUNT_WITH_THE_EMAIL_WE_HAVE_SENT_YOU,true));
                             }
                         }
                 );

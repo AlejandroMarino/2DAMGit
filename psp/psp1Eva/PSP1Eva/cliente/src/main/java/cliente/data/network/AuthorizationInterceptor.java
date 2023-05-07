@@ -1,5 +1,6 @@
 package cliente.data.network;
 
+import cliente.common.Constants;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -22,28 +23,12 @@ public class AuthorizationInterceptor implements Interceptor {
         Request request = original ;
 
         if (ca.getJwt() != null) {
-//            request = original.newBuilder()
-//                    .header("Authorization", Credentials.basic(ca.getUser(), ca.getPass())).build();
             request = original.newBuilder()
-                    .header("JWT", "Bearer "+ca.getJwt()).build();
-
+                    .header(Constants.AUTHORIZATION, Constants.BEARER +ca.getJwt()).build();
         }
 
         Response response = chain.proceed(request);
-//        if (response.header("Authorization") !=null)
-//            ca.setJwt(response.header("Authorization"));
 
-
-//        if (!response.isSuccessful())
-//        {
-//            //reintentar
-//            response.close();
-//            request = original.newBuilder()
-//                    .header("Authorization", Credentials.basic(ca.getUser(), ca.getPass())).build();
-//            response = chain.proceed(request);
-//            if (response.header("Authorization") !=null)
-//                ca.setJwt(response.header("Authorization"));
-//        }
 
         return response;
     }

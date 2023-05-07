@@ -25,7 +25,7 @@ public class RestGames {
         this.sG = sG;}
 
     @GET
-    @RolesAllowed({"admin"})
+    @RolesAllowed({Constants.ADMIN})
     public List<Game> getAll() {
         return sG.getAll();
     }
@@ -33,19 +33,19 @@ public class RestGames {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Game get(@PathParam("id") int id) {
+    public Game get(@PathParam(Constants.ID) int id) {
         return sG.get(id);
     }
 
     @GET
     @Path("/filter_name")
-    public List<Game> filterByName(@QueryParam("name") String name) {
+    public List<Game> filterByName(@QueryParam(Constants.NAME) String name) {
         return sG.filterByName(name);
     }
 
     @GET
     @Path("/filter_shop")
-    public List<Game> getAllOfShop(@QueryParam("shop") int shopId) {
+    public List<Game> getAllOfShop(@QueryParam(Constants.SHOP) int shopId) {
         return sG.getAllOfShop(shopId);
     }
 
@@ -64,7 +64,7 @@ public class RestGames {
     }
 
     @DELETE
-    public Response delete(@QueryParam("id") int id) {
+    public Response delete(@QueryParam(Constants.ID) int id) {
         sG.delete(id);
         return Response.noContent().build();
     }

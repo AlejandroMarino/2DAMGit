@@ -15,26 +15,7 @@ import java.util.Properties;
 public class MandarMail {
 
 
-//    public void mandarMail(String to, String msg, String subject) {
-//        try {
-//            Email email = new SimpleEmail();
-//
-//            email.setHostName("smtp.gmail.com");
-//            email.setSmtpPort(Integer.parseInt("587"));
-//            email.setAuthentication("alumnosdamquevedo@gmail.com", "quevedo2020");
-//            //email.setSSLOnConnect(true);
-//            email.setStartTLSEnabled(true);
-//            email.setFrom("alumnosDamQuevedo@gmail.com");
-//            email.setSubject(subject);
-//            email.setContent(msg,"text/html");
-//            email.addTo(to);
-//
-//            email.send();
-//        } catch (EmailException ex) {
-//
-//            Logger.getLogger(domain.servicios.MandarMail.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+
 
 
     public void generateAndSendEmail(String to, String msg, String subject) throws MessagingException {
@@ -42,16 +23,13 @@ public class MandarMail {
         Session getMailSession;
         MimeMessage generateMailMessage;
 
-        // Step1
 
         mailServerProperties = System.getProperties();
         mailServerProperties.put("mail.smtp.port", Integer.parseInt("587"));
         mailServerProperties.put("mail.smtp.auth", "true");
         mailServerProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-//        mailServerProperties.put("mail.smtp.ssl.trust", "smtp01.educa.madrid.org");
         mailServerProperties.put("mail.smtp.starttls.enable", "true");
 
-        // Step2
 
         getMailSession = Session.getDefaultInstance(mailServerProperties, null);
         generateMailMessage = new MimeMessage(getMailSession);
@@ -61,12 +39,8 @@ public class MandarMail {
         generateMailMessage.setContent(emailBody, "text/html");
 
 
-        // Step3
-
         Transport transport = getMailSession.getTransport("smtp");
 
-        // Enter your correct gmail UserID and Password
-        // if you have 2FA enabled then provide App Specific Password
         transport.connect("smtp.gmail.com",
                 "alumnosdamquevedo@gmail.com",
                 "uyhqfbbfmszvuykt");

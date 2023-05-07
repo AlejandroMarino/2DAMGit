@@ -17,5 +17,6 @@
       <TextField fx:id="textPassword" layoutX="424.0" layoutY="314.0" />
       <Button layoutX="476.0" layoutY="367.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <Button layoutX="469.0" layoutY="418.0" mnemonicParsing="false" onAction="#register" text="Register" />
+      <Label layoutX="388.0" layoutY="140.0" text="Usuario: alex, Contraseña: root ,&quot;es admin&quot;" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package domain.servicios.serviciosImpl;
 
+import common.Constants;
 import data.DaoLogin;
 import domain.modelo.NotFoundException;
 import domain.models.User;
@@ -10,8 +11,7 @@ import jakarta.inject.Named;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 import java.security.Key;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class ServicesLoginImpl implements ServicesLogin {
 
@@ -20,7 +20,7 @@ public class ServicesLoginImpl implements ServicesLogin {
     private final Pbkdf2PasswordHash passwordHash;
 
     @Inject
-    public ServicesLoginImpl(@Named("JWT") Key key, DaoLogin daoLogin, Pbkdf2PasswordHash passwordHash) {
+    public ServicesLoginImpl(@Named(Constants.JWT) Key key, DaoLogin daoLogin, Pbkdf2PasswordHash passwordHash) {
         this.key = key;
         this.daoLogin = daoLogin;
         this.passwordHash = passwordHash;
@@ -46,8 +46,8 @@ public class ServicesLoginImpl implements ServicesLogin {
     }
 
     @Override
-    public Set<String> getRoles(String username) {
-        return new HashSet<>(daoLogin.getRoles(username));
+    public List<String> getRoles(String username) {
+        return daoLogin.getRoles(username);
     }
 
     @Override
@@ -69,15 +69,15 @@ public class ServicesLoginImpl implements ServicesLogin {
     public String generateJWS(User user) {
 
         try {
-            Set<String> roles = getRoles(user.getUsername());
+            List<String> roles = getRoles(user.getUsername());
             return Jwts.builder()
-                    .setSubject("Client")
-                    .setIssuer("Server")
-                    .claim("username", user.getUsername())
-                    .claim("roles", roles)
+                    .setSubject(Constants.CLIENT)
+                    .setIssuer(Constants.SERVER)
+                    .claim(Constants.USERNAME, user.getUsername())
+                    .claim(Constants.ROLES, roles)
                     .signWith(key).compact();
         } catch (Exception e) {
-            throw new NotFoundException("Error while generating JWS");
+            throw new NotFoundException(Constants.ERROR_WHILE_GENERATING_JWS);
         }
     }
 }
