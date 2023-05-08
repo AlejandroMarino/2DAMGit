@@ -14,7 +14,12 @@ import lombok.Setter;
 @Entity
 @Table(name = "customers")
 
-@NamedQueries({@NamedQuery(name = "HQL_GET_ALL_CUSTOMERS", query = "from Customer c")})
+@NamedQueries(
+        {
+                @NamedQuery(name = "HQL_GET_ALL_CUSTOMERS", query = "from Customer c"),
+                @NamedQuery(name = "HQL_GET_CUSTOMER", query = "from Customer c where c.id = :id")
+        }
+)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
