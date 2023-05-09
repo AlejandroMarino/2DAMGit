@@ -1,10 +1,13 @@
 package domain.model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,7 +27,6 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "first_name")
     private String firstname;
     @Column(name = "last_name")
@@ -33,4 +35,7 @@ public class Customer {
     private String email;
     @Column
     private String phone;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    private List<Order> orders;
+
 }
