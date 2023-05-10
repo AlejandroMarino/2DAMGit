@@ -11,6 +11,9 @@ import jakarta.inject.Named;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 import java.security.Key;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class ServicesLoginImpl implements ServicesLogin {
@@ -67,7 +70,6 @@ public class ServicesLoginImpl implements ServicesLogin {
 
     @Override
     public String generateJWS(User user) {
-
         try {
             List<String> roles = getRoles(user.getUsername());
             return Jwts.builder()
@@ -75,6 +77,7 @@ public class ServicesLoginImpl implements ServicesLogin {
                     .setIssuer(Constants.SERVER)
                     .claim(Constants.USERNAME, user.getUsername())
                     .claim(Constants.ROLES, roles)
+                    .setExpiration(Date.from(LocalDateTime.now().plusSeconds(1).atZone(ZoneId.systemDefault()).toInstant()))
                     .signWith(key).compact();
         } catch (Exception e) {
             throw new NotFoundException(Constants.ERROR_WHILE_GENERATING_JWS);

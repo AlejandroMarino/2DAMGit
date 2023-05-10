@@ -40,6 +40,8 @@ public class DaoLoginImpl extends DaoGenerics implements DaoLogin {
             if (response.isSuccessful()) {
                 String jwt = response.headers().get(Constants.AUTHORIZATION);
                 cacheAuthorization.setJwt(jwt);
+                cacheAuthorization.setUser(user.getUsername());
+                cacheAuthorization.setPass(user.getPassword());
             } else {
                 retorno = Either.left(response.errorBody().toString());
             }

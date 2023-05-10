@@ -43,4 +43,5 @@ public class Constants {
     public static final String ERROR_WHILE_GENERATING_JWS = "Error while generating JWS";
     public static final String SERVER = "Server";
     public static final String CLIENT = "Client";
+    public static final String BASIC = "Basic";
 }
