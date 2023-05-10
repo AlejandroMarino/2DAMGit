@@ -35,4 +35,7 @@ public class Order {
     @Column
     private boolean paid;
 
+    public Order(int id) {
+        this.id = id;
+    }
 }

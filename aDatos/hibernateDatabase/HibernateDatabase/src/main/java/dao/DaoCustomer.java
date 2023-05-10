@@ -15,5 +15,5 @@ public interface DaoCustomer {
 
     Either<Integer, Void> update(Customer customer);
 
-    Either<Integer, Void> delete(int id);
+    Either<Integer, Void> delete(Customer customer);
 }

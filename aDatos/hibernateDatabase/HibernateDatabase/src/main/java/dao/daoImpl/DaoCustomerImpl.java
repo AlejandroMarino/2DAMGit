@@ -81,11 +81,11 @@ public class DaoCustomerImpl implements DaoCustomer {
     }
 
     @Override
-    public Either<Integer, Void> delete(int id) {
+    public Either<Integer, Void> delete(Customer customer) {
         em = jpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();
-            em.remove(em.find(Customer.class, id));
+            em.remove(em.merge(Customer.class));
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();

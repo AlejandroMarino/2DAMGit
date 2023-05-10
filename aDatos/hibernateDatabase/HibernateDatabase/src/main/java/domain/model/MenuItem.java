@@ -14,6 +14,9 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "menu_items")
+@NamedQueries({
+        @NamedQuery(name = "HQL_GET_NAME_OF_ITEMS_ORDERED_BY_CUSTOMER", query = "select oi.menuItem.name from OrderItem oi where oi.order.customer.id = :id")
+})
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)

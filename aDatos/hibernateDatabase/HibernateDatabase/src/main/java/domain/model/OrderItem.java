@@ -14,6 +14,11 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "order_items")
+@NamedQueries({
+        @NamedQuery(name = "HQL_GET_ALL_ORDER_ITEMS", query = "from OrderItem oi"),
+        @NamedQuery(name = "HQL_GET_ALL_ORDER_ITEMS_Of_ORDER", query = "from OrderItem oi WHERE oi.order.id = :id"),
+        @NamedQuery(name = "HQL_GET_ORDER_ITEM", query = "from OrderItem oi where oi.id = :id")
+})
 public class OrderItem {
 
     @Id
