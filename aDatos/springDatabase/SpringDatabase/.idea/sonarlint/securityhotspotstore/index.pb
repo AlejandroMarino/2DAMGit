@@ -67,6 +67,8 @@ _
 ,src/main/java/dao/daoImpl/DaoTablesImpl.java,d\6\d60427eab95460d15ed7914e0c8281ce7c70a723
 Y
 )src/main/java/dao/daoImpl/DaoXmlImpl.java,b\b\bb5d9a3d6bcd7601babd79ff97afd80adeb24bb7
+]
+-src/main/java/dao/daoImpl/DaoQueriesImpl.java,6\2\62d00b096d788bcdd1e3998d1b75ed928af01d15
 C
 data/paidOrders.xml,c\a\ca4c2da9b83602472ac2731cd836af206bc49fd8
 Q
@@ -75,7 +77,5 @@ Q
 .src/main/java/dao/daoImpl/DaoMenuItemImpl.java,d\6\d69551450a210b527941a59c54b864217b2b36d7
 J
 src/main/java/ui/Main.java,f\5\f5f833a11c774bc6d9fec08fc87be62b89228540
-]
--src/main/java/dao/daoImpl/DaoQueriesImpl.java,6\2\62d00b096d788bcdd1e3998d1b75ed928af01d15
 O
 src/main/java/ui/MenuAdmin.java,e\c\ec2629c7d4aeb5ec409e282cf83f2a2f134dfa08
