@@ -6,7 +6,7 @@ import io.vavr.control.Either;
 
 import java.util.List;
 
-public interface ServicesOrderItems {
+public interface ServicesOrderItem {
 
     Either<String, List<OrderItem>> getAll(Order order);
 }

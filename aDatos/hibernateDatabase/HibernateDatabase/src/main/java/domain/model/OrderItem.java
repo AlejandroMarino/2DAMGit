@@ -1,5 +1,6 @@
 package domain.model;
 
+import common.Constants;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,9 +16,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "order_items")
 @NamedQueries({
-        @NamedQuery(name = "HQL_GET_ALL_ORDER_ITEMS", query = "from OrderItem oi"),
-        @NamedQuery(name = "HQL_GET_ALL_ORDER_ITEMS_Of_ORDER", query = "from OrderItem oi WHERE oi.order.id = :id"),
-        @NamedQuery(name = "HQL_GET_ORDER_ITEM", query = "from OrderItem oi where oi.id = :id")
+        @NamedQuery(name = Constants.HQL_GET_ALL_ORDER_ITEMS, query = "from OrderItem oi"),
+        @NamedQuery(name = Constants.HQL_GET_ALL_ORDER_ITEMS_OF_ORDER, query = "from OrderItem oi WHERE oi.order.id = :id"),
+        @NamedQuery(name = Constants.HQL_GET_ORDER_ITEM, query = "from OrderItem oi where oi.id = :id")
 })
 public class OrderItem {
 
@@ -35,4 +36,18 @@ public class OrderItem {
 
     @Column
     private int quantity;
+
+    public OrderItem(MenuItem menuItem, int quantity) {
+        this.menuItem = menuItem;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", menuItem=" + menuItem +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

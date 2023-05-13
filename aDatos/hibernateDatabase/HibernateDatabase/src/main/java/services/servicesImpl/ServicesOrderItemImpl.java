@@ -5,16 +5,16 @@ import domain.model.Order;
 import domain.model.OrderItem;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
-import services.ServicesOrderItems;
+import services.ServicesOrderItem;
 
 import java.util.List;
 
-public class ServicesOrderItemsImpl implements ServicesOrderItems {
+public class ServicesOrderItemImpl implements ServicesOrderItem {
 
     private DaoOrderItems dOI;
 
     @Inject
-    public ServicesOrderItemsImpl(DaoOrderItems dOI) {
+    public ServicesOrderItemImpl(DaoOrderItems dOI) {
         this.dOI = dOI;
     }
 

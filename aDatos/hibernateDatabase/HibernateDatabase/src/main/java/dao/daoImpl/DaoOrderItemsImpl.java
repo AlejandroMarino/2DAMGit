@@ -1,5 +1,6 @@
 package dao.daoImpl;
 
+import common.Constants;
 import config.JPAUtil;
 import dao.DaoOrderItems;
 import domain.model.Order;
@@ -26,7 +27,10 @@ public class DaoOrderItemsImpl implements DaoOrderItems {
         List<OrderItem> l;
         em = jpaUtil.getEntityManager();
         try{
-            l = em.createNamedQuery("HQL_GET_ALL_ORDER_ITEMS_Of_ORDER", OrderItem.class).setParameter("id", order.getId()).getResultList();
+            l = em.createNamedQuery(Constants.HQL_GET_ALL_ORDER_ITEMS_OF_ORDER, OrderItem.class).setParameter("id", order.getId()).getResultList();
+            for (OrderItem oi : l) {
+                oi.getMenuItem().toString();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return Either.left(-1);

@@ -4,11 +4,15 @@
              version="2.0">
 
     <persistence-unit name="unit3.hibernate">
-        <class></class>
+        <class>domain.model.Customer</class>
+        <class>domain.model.MenuItem</class>
+        <class>domain.model.Order</class>
+        <class>domain.model.OrderItem</class>
+        <class>domain.model.Table</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://dam2.mysql.iesquevedo.es:3335/Luciasanmiguel_CoffeecompanyHibdb"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://dam2.mysql.iesquevedo.es:3335/AlejandroMarino_Restaurant"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="quevedo2dam"/>

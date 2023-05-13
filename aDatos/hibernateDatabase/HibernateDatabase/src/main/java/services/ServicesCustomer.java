@@ -7,13 +7,15 @@ import java.util.List;
 
 public interface ServicesCustomer {
 
-    Either<String, List<Customer>> getAll();
+    Either<String, List<Customer>> getAll(boolean withOrders);
 
     Either<String, Customer> get(int id);
 
-    Either<String, Customer> add(Customer customer);
+    Either<String, Void> add(Customer customer);
 
-    Either<String, Customer> update(Customer customer);
+    Either<String, Void> update(Customer customer);
 
-    Either<String, Customer> delete(int id);
+    Either<String, Void> delete(int id, boolean withOrders);
+
+    String getCustomerSpentMost();
 }

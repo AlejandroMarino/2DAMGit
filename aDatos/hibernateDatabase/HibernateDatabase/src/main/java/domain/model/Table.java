@@ -27,4 +27,17 @@ public class Table {
 
     @Column(name = "number_of_seats")
     private int numberOfSeats;
+
+    public Table(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "id=" + id +
+                ", number=" + number +
+                ", numberOfSeats=" + numberOfSeats +
+                '}';
+    }
 }
