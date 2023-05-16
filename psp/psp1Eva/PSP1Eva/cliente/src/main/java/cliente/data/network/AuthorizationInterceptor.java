@@ -1,6 +1,7 @@
 package cliente.data.network;
 
 import cliente.common.Constants;
+import jakarta.inject.Inject;
 import okhttp3.Credentials;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -12,6 +13,7 @@ public class AuthorizationInterceptor implements Interceptor {
 
     private final CacheAuthorization ca ;
 
+    @Inject
     public AuthorizationInterceptor(CacheAuthorization ca) {
         this.ca = ca;
     }
@@ -28,7 +30,7 @@ public class AuthorizationInterceptor implements Interceptor {
 
         Response response = chain.proceed(request);
 
-        if (response.code() == 498)
+        if (response.code() == Constants.INVALID_TOKEN)
         {
             response.close();
             request = original.newBuilder()

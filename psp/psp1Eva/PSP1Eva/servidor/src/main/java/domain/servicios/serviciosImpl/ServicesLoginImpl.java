@@ -1,30 +1,23 @@
 package domain.servicios.serviciosImpl;
 
-import common.Constants;
 import data.DaoLogin;
-import domain.modelo.NotFoundException;
 import domain.models.User;
 import domain.servicios.ServicesLogin;
-import io.jsonwebtoken.Jwts;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import jakarta.security.GenerateToken;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
-import java.security.Key;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 public class ServicesLoginImpl implements ServicesLogin {
 
-    private final Key key;
+    private final GenerateToken gT;
     private final DaoLogin daoLogin;
     private final Pbkdf2PasswordHash passwordHash;
 
     @Inject
-    public ServicesLoginImpl(@Named(Constants.JWT) Key key, DaoLogin daoLogin, Pbkdf2PasswordHash passwordHash) {
-        this.key = key;
+    public ServicesLoginImpl(GenerateToken gT, DaoLogin daoLogin, Pbkdf2PasswordHash passwordHash) {
+        this.gT = gT;
         this.daoLogin = daoLogin;
         this.passwordHash = passwordHash;
     }
@@ -70,17 +63,7 @@ public class ServicesLoginImpl implements ServicesLogin {
 
     @Override
     public String generateJWS(User user) {
-        try {
-            List<String> roles = getRoles(user.getUsername());
-            return Jwts.builder()
-                    .setSubject(Constants.CLIENT)
-                    .setIssuer(Constants.SERVER)
-                    .claim(Constants.USERNAME, user.getUsername())
-                    .claim(Constants.ROLES, roles)
-                    .setExpiration(Date.from(LocalDateTime.now().plusSeconds(1).atZone(ZoneId.systemDefault()).toInstant()))
-                    .signWith(key).compact();
-        } catch (Exception e) {
-            throw new NotFoundException(Constants.ERROR_WHILE_GENERATING_JWS);
-        }
+        List<String> roles = getRoles(user.getUsername());
+        return gT.generateToken(user.getUsername(), roles);
     }
 }

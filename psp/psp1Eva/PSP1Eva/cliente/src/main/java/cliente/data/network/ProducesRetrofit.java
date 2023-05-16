@@ -14,13 +14,6 @@ import java.time.LocalDate;
 
 public class ProducesRetrofit {
 
-    private final CacheAuthorization CacheAuthorization;
-
-    @Inject
-    public ProducesRetrofit(cliente.data.network.CacheAuthorization cacheAuthorization) {
-        CacheAuthorization = cacheAuthorization;
-    }
-
     @Produces
     @Singleton
     public Gson getGson() {
@@ -33,6 +26,7 @@ public class ProducesRetrofit {
     @Produces
     @Singleton
     public Retrofit retrofit(Gson gson, Configuration config) {
+        CacheAuthorization CacheAuthorization = new CacheAuthorization();
 
         OkHttpClient clientOK = new OkHttpClient.Builder()
                 .connectionPool(new okhttp3.ConnectionPool(1, 1, java.util.concurrent.TimeUnit.SECONDS))

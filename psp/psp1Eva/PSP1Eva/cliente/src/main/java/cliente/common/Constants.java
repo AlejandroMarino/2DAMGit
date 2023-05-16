@@ -34,4 +34,5 @@ public class Constants {
     public static final String DESCRIPTION = "description";
     public static final String AUTHORIZATION = "Authorization";
     public static final String BEARER = "Bearer ";
+    public static final int INVALID_TOKEN = 498;
 }
