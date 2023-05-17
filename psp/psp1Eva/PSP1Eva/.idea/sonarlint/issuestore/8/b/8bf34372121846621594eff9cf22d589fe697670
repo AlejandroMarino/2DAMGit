@@ -1,0 +1,5 @@
+
+g	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8דהÿÿ0
+g	java:S112C"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8דהÿÿ0
+t
+java:S3776("RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(הכ׳ױשÿÿÿÿ8שהÿÿ0
