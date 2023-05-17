@@ -1,0 +1,33 @@
+type Game {
+    id: Int!
+    name: String!
+    description: String!
+    releaseDate: String!
+    shop: Shop!
+}
+
+type Shop {
+    id: Int!
+    name: String!
+    address: String!
+    games: [Game]!
+}
+
+type Query {
+    getAllGames: [Game]!
+    gamesFilterByName(name: String!): [Game]!
+    gamesFilterByShop(shopId: Int!): [Game]!
+    getGame(id: Int!): Game
+    getAllShops: [Shop]!
+    shopsFilterByName(name: String!): [Shop]!
+    getShop(id: Int!): Shop
+}
+
+type Mutation {
+    addGame(name: String!, description: String, releaseDate: String, shopId: Int!): Game!
+    updateGame(id: Int!, name: String, description: String, releaseDate: String, shopId: Int): Game!
+    deleteGame(id: Int!): Boolean!
+    addShop(name: String!): Shop!
+    updateShop(id: Int!, name: String!): Shop!
+    deleteShop(id: Int!): Boolean!
+}

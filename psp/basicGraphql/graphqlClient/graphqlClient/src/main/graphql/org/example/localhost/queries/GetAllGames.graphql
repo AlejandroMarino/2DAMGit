@@ -1,0 +1,10 @@
+query GetAllGames {
+    getAllGames {
+        name
+        description
+        releaseDate
+        shop {
+            name
+        }
+    }
+}
