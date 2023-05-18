@@ -1,4 +1,4 @@
-query GetAllGames {
+query GetAllGamesQuery {
     getAllGames {
         name
         description
