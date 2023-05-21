@@ -3,7 +3,6 @@ package org.example.ui.controllers
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Alert
-import javafx.scene.control.ButtonType
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Pane
 import javafx.stage.Stage
@@ -64,29 +63,9 @@ class PrincipalController {
         primaryStage = stage
         primaryStage!!.addEventFilter(
             WindowEvent.WINDOW_CLOSE_REQUEST
-        ) { event: WindowEvent ->
-            closeWindowEvent(
-                event
-            )
-        }
-    }
-
-    private fun closeWindowEvent(event: WindowEvent) {
-        val alerta = Alert(Alert.AlertType.INFORMATION)
-        alerta.buttonTypes.remove(ButtonType.OK)
-        alerta.buttonTypes.add(ButtonType.CANCEL)
-        alerta.buttonTypes.add(ButtonType.YES)
-        alerta.title = "Quit application?"
-        alerta.contentText = "Close without saving?"
-        alerta.initOwner(primaryStage!!.owner)
-        val res = alerta.showAndWait()
-        res.ifPresent { buttonType: ButtonType ->
-            if (buttonType == ButtonType.CANCEL) {
-                event.consume()
-            } else{
-                primaryStage!!.close()
-                exitProcess(0)
-            }
+        ) {
+            primaryStage!!.close()
+            exitProcess(0)
         }
     }
 
