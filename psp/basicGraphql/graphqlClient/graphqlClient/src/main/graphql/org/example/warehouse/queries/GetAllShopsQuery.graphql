@@ -1,0 +1,6 @@
+query GetAllShopsQuery{
+    getAllShops {
+        id
+        name
+    }
+}

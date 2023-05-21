@@ -1,0 +1,5 @@
+mutation AddGameMutation($name: String!, $description: String, $releaseDate: String, $shopId: Int!){
+    addGame(name: $name, description: $description, releaseDate: $releaseDate, shopId: $shopId){
+        id
+    }
+}

@@ -1,0 +1,6 @@
+query ShopsFilterByNameQuery($name: String!) {
+    shopsFilterByName(name: $name){
+        id
+        name
+    }
+}

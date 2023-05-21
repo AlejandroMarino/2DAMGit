@@ -1,0 +1,12 @@
+query GamesFilterByNameQuery($name: String!) {
+    gamesFilterByName(name: $name) {
+        id
+        name
+        description
+        releaseDate
+        shop {
+            id
+            name
+        }
+    }
+}

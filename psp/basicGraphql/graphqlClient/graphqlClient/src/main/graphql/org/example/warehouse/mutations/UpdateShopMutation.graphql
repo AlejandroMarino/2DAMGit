@@ -1,0 +1,6 @@
+mutation UpdateShopMutation($id: Int!, $name: String!){
+    updateShop(id: $id, name: $name){
+        id
+        name
+    }
+}

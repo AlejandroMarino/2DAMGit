@@ -1,0 +1,3 @@
+mutation DeleteGameMutation($id: Int!) {
+    deleteGame(id: $id)
+}

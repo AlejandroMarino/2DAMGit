@@ -1,0 +1,3 @@
+mutation DeleteShopMutation($id: Int!) {
+    deleteShop(id: $id)
+}

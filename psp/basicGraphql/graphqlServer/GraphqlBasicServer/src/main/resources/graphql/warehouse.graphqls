@@ -1,22 +1,20 @@
 type Game {
     id: Int!
     name: String!
-    description: String!
-    releaseDate: String!
+    description: String
+    releaseDate: String
     shop: Shop!
 }
 
 type Shop {
     id: Int!
     name: String!
-    address: String!
-    games: [Game]!
+    games: [Game]
 }
 
 type Query {
     getAllGames: [Game]!
     gamesFilterByName(name: String!): [Game]!
-    gamesFilterByShop(shopId: Int!): [Game]!
     getGame(id: Int!): Game
     getAllShops: [Shop]!
     shopsFilterByName(name: String!): [Shop]!

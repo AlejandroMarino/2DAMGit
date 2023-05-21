@@ -1,0 +1,12 @@
+query GetGameQuery($id: Int!){
+    getGame(id: $id){
+        id
+        name
+        description
+        releaseDate
+        shop {
+            id
+            name
+        }
+    }
+}

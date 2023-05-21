@@ -1,9 +1,11 @@
 query GetAllGamesQuery {
     getAllGames {
+        id
         name
         description
         releaseDate
         shop {
+            id
             name
         }
     }

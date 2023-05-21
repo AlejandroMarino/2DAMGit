@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.controllers.ShopController">
+   <children>
+      <Label layoutX="466.0" layoutY="33.0" text="Shops" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listShops" layoutX="400.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="64.0" layoutY="87.0" text="Search: " />
+      <TextField fx:id="textSearch" layoutX="64.0" layoutY="116.0" />
+      <Button layoutX="226.0" layoutY="116.0" mnemonicParsing="false" onAction="#search" />
+      <Label layoutX="400.0" layoutY="342.0" text="Name: " />
+      <TextField fx:id="textName" layoutX="400.0" layoutY="372.0" prefHeight="25.0" prefWidth="200.0" />
+      <Button layoutX="447.0" layoutY="418.0" mnemonicParsing="false" onAction="#add" text="Add" />
+      <Button layoutX="507.0" layoutY="418.0" mnemonicParsing="false" onAction="#update" text="Update" />
+      <Button layoutX="475.0" layoutY="306.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <Button layoutX="101.0" layoutY="162.0" mnemonicParsing="false" onAction="#clearFilters" text="Clear filters" />
+   </children>
+</AnchorPane>

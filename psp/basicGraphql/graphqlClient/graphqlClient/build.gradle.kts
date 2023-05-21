@@ -12,7 +12,7 @@ version = "1.0-SNAPSHOT"
 
 application {
     mainModule.set("graphqlClient")
-    mainClass.set("org.example.ui.Main")
+    mainClass.set("org.example.ui.MainFx")
 }
 
 repositories {
@@ -24,12 +24,15 @@ dependencies {
 
     implementation("com.apollographql.apollo3:apollo-runtime:3.7.3")
     implementation("com.apollographql.apollo3:apollo-normalized-cache-sqlite:3.7.3")
+    implementation("com.apollographql.apollo3:apollo-api:3.7.3")
+
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.6.4")
 
     implementation("org.openjfx:javafx-base:17")
     implementation("org.openjfx:javafx-fxml:17")
 
-    implementation("com.apollographql.apollo3:apollo-api:3.7.3")
+
+    implementation("org.projectlombok:lombok:1.18.22")
 }
 
 tasks.test {
@@ -46,19 +49,18 @@ kotlin {
 
 javafx {
     version = "17.0.1"
-
     modules = listOf("javafx.controls","javafx.fxml")
 }
 
 apollo {
-    service("localhost") {
-        sourceFolder.set("org/example/localhost")
-        packageName.set("org.example.localhost")
+    service("warehouse") {
+        sourceFolder.set("org/example/warehouse")
+        packageName.set("org.example.warehouse")
     }
     // instruct the compiler to generate Kotlin models
     generateKotlinModels.set(true)
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("MainFx")
 }
