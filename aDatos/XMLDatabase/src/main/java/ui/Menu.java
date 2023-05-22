@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public void menu(Scanner sc, ServicesCustomers sC, ServicesMenuItems sMI, ServicesOrders sO, ServicesXmlImpl sX) {
+    public void menu(Scanner sc, ServicesCustomers sC, ServicesMenuItems sMI, ServicesOrders sO, ServicesXml sX) {
         int option;
         do {
             System.out.println("\nWhat you want to do?" +
@@ -67,7 +67,7 @@ public class Menu {
         } while (option != 0);
     }
 
-    private static void deleteCustomerXml(Scanner sc, ServicesXmlImpl sX) {
+    private static void deleteCustomerXml(Scanner sc, ServicesXml sX) {
         System.out.println("Which is the first name of the customer you want to delete?");
         String firstName = sc.nextLine().toLowerCase().trim();
         Either<String, Void> result = sX.deleteCustomer(firstName);
@@ -78,7 +78,7 @@ public class Menu {
         }
     }
 
-    private static void addOrderXml(Scanner sc, ServicesXmlImpl sX) {
+    private static void addOrderXml(Scanner sc, ServicesXml sX) {
         System.out.println("What is the first name of the customer?");
         String firstName = sc.nextLine().toLowerCase().trim();
         System.out.println("How many different items do you want to order?");
@@ -104,7 +104,7 @@ public class Menu {
         }
     }
 
-    private static void getCustomersByItem(Scanner sc, ServicesXmlImpl sX) {
+    private static void getCustomersByItem(Scanner sc, ServicesXml sX) {
         System.out.println("What is the name of the item?");
         String name = sc.nextLine().toLowerCase().trim();
         Either<String, List<domain.model.xml.Customer>> customers = sX.getCustomersByItem(name);
@@ -116,7 +116,7 @@ public class Menu {
         }
     }
 
-    private static void generateXml(ServicesXmlImpl sX) {
+    private static void generateXml(ServicesXml sX) {
         Either<String, Void> response = sX.generateXml();
         if (response.isLeft()) {
             System.out.println(response.getLeft());

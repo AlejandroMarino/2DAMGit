@@ -17,4 +17,8 @@ public class Customer {
     @Singular
     private List<Order> orders;
 
+    public Customer(String name, List<Order> orders) {
+        this.name = name;
+        this.orders = orders;
+    }
 }

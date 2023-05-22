@@ -4,11 +4,11 @@
              version="2.0">
 
     <persistence-unit name="unit3.hibernate">
-        <class>domain.model.Customer</class>
-        <class>domain.model.MenuItem</class>
-        <class>domain.model.Order</class>
-        <class>domain.model.OrderItem</class>
-        <class>domain.model.Table</class>
+        <class>domain.model.modelHibernate.Customer</class>
+        <class>domain.model.modelHibernate.MenuItem</class>
+        <class>domain.model.modelHibernate.Order</class>
+        <class>domain.model.modelHibernate.OrderItem</class>
+        <class>domain.model.modelHibernate.Table</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

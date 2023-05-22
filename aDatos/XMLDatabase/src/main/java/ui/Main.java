@@ -6,6 +6,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import services.servicestxt.ServicesMenuItems;
 import services.servicestxt.ServicesOrders;
+import services.servicesxml.ServicesXml;
 import services.servicesxml.servicesImpl.ServicesXmlImpl;
 
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class Main {
         ServicesCustomers sC = container.select(ServicesCustomers.class).get();
         ServicesMenuItems sMI = container.select(ServicesMenuItems.class).get();
         ServicesOrders sO = container.select(ServicesOrders.class).get();
-        ServicesXmlImpl sX = container.select(ServicesXmlImpl.class).get();
+        ServicesXml sX = container.select(ServicesXml.class).get();
 
 
         Scanner sc = new Scanner(System.in);

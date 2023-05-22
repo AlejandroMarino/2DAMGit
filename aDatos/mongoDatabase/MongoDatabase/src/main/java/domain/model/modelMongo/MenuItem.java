@@ -11,4 +11,7 @@ import lombok.*;
 public class MenuItem {
 
     private int _id;
+    private String name;
+    private String description;
+    private double price;
 }

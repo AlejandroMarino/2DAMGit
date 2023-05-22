@@ -16,6 +16,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "menu_items")
 @NamedQueries({
+        @NamedQuery(name = Constants.HQL_GET_ALL_MENU_ITEMS, query = "from MenuItem mi"),
         @NamedQuery(name = Constants.HQL_GET_NAME_OF_ITEMS_ORDERED_BY_CUSTOMER, query = "select DISTINCT oi.menuItem.name from OrderItem oi where oi.order.customer.id = :id"),
         @NamedQuery(name = Constants.HQL_GET_MENU_ITEM_BY_NAME, query = "from MenuItem mi where lower(mi.name) = :name"),
 })
