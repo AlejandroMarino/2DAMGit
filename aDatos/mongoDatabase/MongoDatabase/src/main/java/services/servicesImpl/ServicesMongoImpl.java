@@ -34,7 +34,7 @@ public class ServicesMongoImpl implements ServicesMongo {
         if (customers.isLeft() || menuItems.isLeft()) {
             return Either.left("Error converting customers or menuItems");
         } else {
-            daoMongo.saveMongo(customers.get(), menuItems.get());
+            daoMongo.save(customers.get(), menuItems.get());
             return Either.right(null);
         }
     }
