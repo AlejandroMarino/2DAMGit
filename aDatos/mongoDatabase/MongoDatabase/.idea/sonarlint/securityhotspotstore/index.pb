@@ -1,8 +1,4 @@
 
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-]
--.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 w
 G.idea/sonarlint/issuestore/b/8/b86a96b6c800ababf8987261ed99503e6dcef381,2\3\2348f3d2468ead4a3c64f661ba6aec55a3e76923
 d
@@ -47,8 +43,6 @@ n
 Q.idea/sonarlint/securityhotspotstore/2/8/282fddc6a8f40c69854fc96c6ba48bb77bb16a6a,6\e\6e6c748b8b4645a9ff15f35b55f2f32c6f7f94eb
 R
 "src/main/java/dao/DaoCustomer.java,f\2\f216e783b06b790810271ae548894858bc39c6f8
-m
-=src/main/java/services/servicesImpl/ServicesMenuItemImpl.java,2\0\2086caf4c2c4b1d772c8dd941b316ef126caeba5
 \
 ,src/main/java/services/ServicesCustomer.java,8\f\8fb744ab70f5f3a729f55bcd6bb11f4e9f70ef78
 `

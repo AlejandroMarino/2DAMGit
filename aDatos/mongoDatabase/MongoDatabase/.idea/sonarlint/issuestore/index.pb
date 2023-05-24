@@ -1,8 +1,4 @@
 
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-]
--.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 w
 G.idea/sonarlint/issuestore/b/8/b86a96b6c800ababf8987261ed99503e6dcef381,2\3\2348f3d2468ead4a3c64f661ba6aec55a3e76923
 Å
@@ -41,8 +37,6 @@ m
 =src/main/java/services/servicesImpl/ServicesCustomerImpl.java,a\5\a5be9b0d1c17d1e648ee2cfe96af05e2c2fb5220
 \
 ,src/main/java/services/ServicesMenuItem.java,f\1\f1a2139ed881a3ec625e7b79501a5a3d5a8aa6f1
-m
-=src/main/java/services/servicesImpl/ServicesMenuItemImpl.java,2\0\2086caf4c2c4b1d772c8dd941b316ef126caeba5
 Y
 )src/main/java/services/ServicesOrder.java,f\f\ff4bc71cad5c0d9e063915766eef04be109a65aa
 j

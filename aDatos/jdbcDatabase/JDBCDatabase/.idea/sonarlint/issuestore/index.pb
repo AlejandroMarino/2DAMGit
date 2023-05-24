@@ -35,23 +35,3 @@ Z
 +src/main/java/dao/daoImpl/DaoLoginImpl.java,7\d\7d5b36224ebf3aa20c3d11439d863e4b3f001ecf
 [
 +src/main/java/dao/daoImpl/DaoTableImpl.java,4\0\40b47b24ae653f9552eca785cde62b01a6279ff7
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-J
-src/main/java/ui/Main.java,f\5\f5f833a11c774bc6d9fec08fc87be62b89228540
-O
-src/main/java/ui/MenuAdmin.java,e\c\ec2629c7d4aeb5ec409e282cf83f2a2f134dfa08
-S
-#src/main/java/dao/DaoOrderItem.java,9\e\9e3b0320b1687e5e97aef358b3a9ac3c1406e419
-[
-+src/main/java/dao/daoImpl/DaoOrderImpl.java,2\5\253251d83a4a14e8bfafeb8cbe727d9e0eeaefa4
-_
-/src/main/java/dao/daoImpl/DaoOrderItemImpl.java,8\0\8096b1a04ab6839b75979f44f7430bd466f99595
-^
-.src/main/java/dao/daoImpl/DaoMenuItemImpl.java,d\6\d69551450a210b527941a59c54b864217b2b36d7
-]
--src/main/java/dao/daoImpl/DaoQueriesImpl.java,6\2\62d00b096d788bcdd1e3998d1b75ed928af01d15
-X
-(src/main/java/domain/model/Customer.java,d\f\df13058cb8f61c4e6472ef683e0e85e172df734d
-^
-.src/main/java/dao/daoImpl/DaoCustomerImpl.java,d\1\d17cbf58f35584038c7737cc63451cc27125fe8e

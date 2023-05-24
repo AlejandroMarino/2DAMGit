@@ -64,7 +64,7 @@ public class Main {
                     deleteMenuItem(svmi, sc);
                     break;
                 case 9:
-
+                    aggregations(sc);
                     break;
                 case 0:
                     System.out.println("Bye");
@@ -74,6 +74,63 @@ public class Main {
                     break;
             }
         } while (option != 0);
+    }
+
+    private static void aggregations(Scanner sc) {
+        char opt;
+        do {
+            System.out.println("""
+                        What you want to do?
+                    a. Get the description of the most expensive item
+                    b. Get the orders of a given customer, showing the name of the customer and the
+                        number of seats
+                    c. Get the number of items of each order
+                    d. Get the name of the customers who have ordered steak
+                    e. Get the average number of items per order
+                    f. Get the item most requested
+                    g. Show a list with the number of items of each type requested by a selected customer
+                    h. Get the most requested table
+                    i. Get the most requested table per customer
+                    j. Get the items that have never been requested more than once in an order
+                    k. Price paid for each order (Use $lookup)
+                    l. Get the name of the customer that has spent more money in the restaurant
+                    m. Total not paid amount
+                    x. Exit""");
+            opt = sc.nextLine().charAt(0);
+            switch (opt) {
+                case 'a':
+                    break;
+                case 'b':
+                    break;
+                case 'c':
+                    break;
+                case 'd':
+                    break;
+                case 'e':
+                    break;
+                case 'f':
+                    break;
+                case 'g':
+                    break;
+                case 'h':
+                    break;
+                case 'i':
+                    break;
+                case 'j':
+                    break;
+                case 'k':
+                    break;
+                case 'l':
+                    break;
+                case 'm':
+                    break;
+                case 'x':
+                    break;
+                default:
+                    System.out.println("Introduce a valid option");
+                    break;
+            }
+        } while (opt != 'x');
     }
 
     private static void deleteMenuItem(ServicesMenuItem svmi, Scanner sc) {
