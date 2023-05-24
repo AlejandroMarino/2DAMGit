@@ -18,27 +18,29 @@ public class DaoMongoImpl implements DaoMongo {
 
     private final Configuration config;
 
+    private final Gson gson;
+
     @Inject
-    public DaoMongoImpl(Configuration config) {
+    public DaoMongoImpl(Configuration config, Gson gson) {
         this.config = config;
+        this.gson = gson;
     }
 
     @Override
-    public void saveMongo(List<Customer> customers, List<MenuItem> menuItems) {
+    public void save(List<Customer> customers, List<MenuItem> menuItems) {
         List<Document> customersDoc = new ArrayList<>(emptyList());
         customers.forEach(c -> {
-            Document doc = Document.parse(new Gson().toJson(c));
+            Document doc = Document.parse(gson.toJson(c));
             customersDoc.add(doc);
         });
         List<Document> menuItemsDoc = new ArrayList<>(emptyList());
         menuItems.forEach(mi -> {
-            Document doc = Document.parse(new Gson().toJson(mi));
+            Document doc = Document.parse(gson.toJson(mi));
             menuItemsDoc.add(doc);
         });
         MongoCollection<Document> restaurantColl = config.getDb().getCollection("restaurant");
         MongoCollection<Document> menuItemColl = config.getDb().getCollection("menuItem");
         restaurantColl.insertMany(customersDoc);
         menuItemColl.insertMany(menuItemsDoc);
-
     }
 }

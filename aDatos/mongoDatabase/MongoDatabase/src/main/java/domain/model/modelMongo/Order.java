@@ -18,4 +18,15 @@ public class Order {
 
     @Singular
     private List<OrderItem> orderItems;
+
+    public Order(String date, Double total, boolean paid) {
+        this.date = date;
+        this.total = total;
+        this.paid = paid;
+    }
+
+    public Order(Table table, List<OrderItem> orderItems) {
+        this.table = table;
+        this.orderItems = orderItems;
+    }
 }
