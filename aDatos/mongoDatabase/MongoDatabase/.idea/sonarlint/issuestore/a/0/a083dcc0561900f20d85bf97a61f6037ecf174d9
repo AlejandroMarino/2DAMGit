@@ -1,4 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬µê»üÿÿÿÿ
-l
-java:S1450"QRemove the "em" field and declare it as a local variable in the relevant methods.(‘æ¿Úúÿÿÿÿ
