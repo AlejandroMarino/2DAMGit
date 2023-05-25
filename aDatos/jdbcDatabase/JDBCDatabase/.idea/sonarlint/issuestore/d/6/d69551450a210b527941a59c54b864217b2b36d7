@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬µê»üÿÿÿÿ
+N
+java:S1128"1Remove this unused import 'config.Configuration'.(ü·±ï8´şù0
+N
+java:S1128",Remove this unused import 'dao.DaoCustomer'.(ËÖ…¨ÿÿÿÿÿ8´şù0
+O
+java:S1128"2Remove this unused import 'domain.model.Customer'.(£ĞŞ•8´şù0

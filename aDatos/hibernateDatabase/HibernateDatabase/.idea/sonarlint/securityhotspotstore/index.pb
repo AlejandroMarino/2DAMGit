@@ -1,6 +1,4 @@
 
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 Q
 !src/main/java/config/JPAUtil.java,9\2\9205e36615a0eda5d97570a781c2d6570bd34de1
 U
@@ -17,3 +15,29 @@ m
 ,src/main/java/services/ServicesCustomer.java,8\f\8fb744ab70f5f3a729f55bcd6bb11f4e9f70ef78
 R
 "src/main/java/dao/DaoCustomer.java,f\2\f216e783b06b790810271ae548894858bc39c6f8
+[
++src/main/java/dao/daoImpl/DaoOrderImpl.java,2\5\253251d83a4a14e8bfafeb8cbe727d9e0eeaefa4
+U
+%src/main/java/domain/model/Order.java,b\a\bae67f535a4d8a5688fa88f5718a4ed7c5f53a24
+Y
+)src/main/java/domain/model/OrderItem.java,2\8\282fddc6a8f40c69854fc96c6ba48bb77bb16a6a
+^
+.src/main/java/dao/daoImpl/DaoCustomerImpl.java,d\1\d17cbf58f35584038c7737cc63451cc27125fe8e
+^
+.src/main/java/dao/daoImpl/DaoMenuItemImpl.java,d\6\d69551450a210b527941a59c54b864217b2b36d7
+R
+"src/main/java/dao/DaoMenuItem.java,7\5\75eb0aa2720992e0093da3d316135709d0acdbcd
+`
+0src/main/java/dao/daoImpl/DaoOrderItemsImpl.java,a\0\a083dcc0561900f20d85bf97a61f6037ecf174d9
+n
+>src/main/java/services/servicesImpl/ServicesOrderItemImpl.java,f\4\f4287bbdd3e8c798dbee18086d48ba231abe9103
+]
+-src/main/java/dao/daoImpl/DaoQueriesImpl.java,6\2\62d00b096d788bcdd1e3998d1b75ed928af01d15
+Q
+!src/main/java/dao/DaoQueries.java,1\7\178aa84cca1718a74b7123e748695ae7a735ba9c
+S
+#src/main/java/common/Constants.java,6\e\6ebd50c2038f1fef9135e3562ebde17286486774
+X
+(src/main/java/domain/model/Customer.java,d\f\df13058cb8f61c4e6472ef683e0e85e172df734d
+X
+(src/main/java/domain/model/MenuItem.java,6\e\6e5358e49ff0c1d99432d2e36a50c84f8c6d7ee8

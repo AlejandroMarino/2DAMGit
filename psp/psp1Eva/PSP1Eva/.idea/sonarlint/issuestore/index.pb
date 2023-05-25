@@ -1,10 +1,4 @@
 
-?
-cliente/pom.xml,3\9\39b7bb94550bae4f8daf8f661fec48c5523f693b
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
->
-domain/pom.xml,8\b\8b11330a6810846535e4b5ba2024ccfcee112862
 V
 &cliente/src/main/java/module-info.java,d\b\db782433398db569b38df2fca72be7f90bfb511c
 a
@@ -15,8 +9,6 @@ a
 0servidor/src/main/java/config/Configuration.java,6\7\677b66e9c2905a1d0c197e6227adef32f7259a25
 c
 3servidor/src/main/java/config/DBConnectionPool.java,9\8\986d38f28511e25cc0c808dad1cfec0278e77e7c
-\
-,domain/src/main/java/domain/models/Game.java,d\9\d9c3be2ee309cf4af33a3ba56a6bddf18f030ca3
 U
 %domain/src/main/java/module-info.java,3\7\37c8d656d13a8ebd08e65756acf7618a2f0a3c35
 W
@@ -27,8 +19,6 @@ i
 9servidor/src/main/java/domain/servicios/ServicesGame.java,5\2\52f7471c04a2205e9b14df0b18a9de167bbd27f6
 F
 ServidorSpring/HELP.md,2\b\2b0cc5fd69810ac83677ee8001ac0c390d7a861d
-@
-servidor/pom.xml,f\0\f0784b6bd8e433bbdb1fd1f40fb81f8a7afbdc18
 `
 0servidor/src/main/java/jakarta/di/Producers.java,e\7\e7d34b50465acb12220763c5b6f6ceda9d0607c7
 \
@@ -137,21 +127,3 @@ Dcliente/src/main/java/cliente/ui/pantallas/login/LoginViewModel.java,d\d\ddbf8
 Lservidor/src/main/java/domain/servicios/serviciosImpl/ServicesLoginImpl.java,6\b\6bff43e2069175b92c6925248e099cc2949d6425
 u
 Ecliente/src/main/java/cliente/ui/pantallas/shops/ShopsController.java,e\6\e614eb46c18c023477a92db76ede215f3d71ed3a
-b
-2servidor/src/main/java/jakarta/rest/RestGames.java,9\6\963883576f6ab470a28a2767d0b01cde4cc895c6
-x
-Hcliente/src/main/java/cliente/data/network/AuthorizationInterceptor.java,7\1\7128d7a3c22471a9ae0858689d82dcd06ea79c59
-b
-2servidor/src/main/java/jakarta/rest/RestLogin.java,d\7\d72e5f9e8df521501d4c4503d61d17da91db4c40
-u
-Ecliente/src/main/java/cliente/ui/pantallas/games/GamesController.java,1\c\1ce017e90993f0a01ff6e3dca6c9b02ebeb285fa
-l
-<servidor/src/main/java/jakarta/security/MyIdentityStore.java,d\c\dc426d33bb59b8ed7c248e1a59f6b41e5e5a5b01
-r
-Bcliente/src/main/java/cliente/data/network/CacheAuthorization.java,7\7\776cb8e32b685a489f6ead31b61637cdb98ba9f7
-b
-2servidor/src/main/java/jakarta/rest/RestShops.java,a\7\a71b90e0ca6145d8d4932689543c221f52918c84
-d
-4servidor/src/main/java/jakarta/security/JWTAuth.java,8\b\8bf34372121846621594eff9cf22d589fe697670
-F
-ServidorSpring/pom.xml,a\3\a3777eaa398b95266b62cfef347c28b3f09a547c
