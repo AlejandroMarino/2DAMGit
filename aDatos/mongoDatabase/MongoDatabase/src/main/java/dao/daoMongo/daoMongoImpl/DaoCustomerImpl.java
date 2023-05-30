@@ -16,8 +16,8 @@ import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mongodb.client.model.Filters.*;
-import static com.mongodb.client.model.Projections.*;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Projections.include;
 import static com.mongodb.client.model.Updates.set;
 
 public class DaoCustomerImpl implements DaoCustomer {
@@ -36,7 +36,7 @@ public class DaoCustomerImpl implements DaoCustomer {
         try {
             MongoCollection<Document> restaurantColl = config.getDb().getCollection("restaurant");
             List<Document> documents;
-            if (withOrders){
+            if (withOrders) {
                 documents = restaurantColl.find().into(new ArrayList<>());
             } else {
                 documents = restaurantColl.find().projection(include("_id", "name")).into(new ArrayList<>());
@@ -55,10 +55,10 @@ public class DaoCustomerImpl implements DaoCustomer {
     }
 
     @Override
-    public Either<Integer, Customer> getCustomerById(String id) {
+    public Either<Integer, Customer> get(String id) {
         try {
             MongoCollection<Document> restaurantColl = config.getDb().getCollection("restaurant");
-            Document document = restaurantColl.find(new Document("_id", new ObjectId(id))).first();
+            Document document = restaurantColl.find(eq("_id", new ObjectId(id))).first();
             if (document == null) {
                 return Either.left(-2);
             } else {
@@ -86,16 +86,16 @@ public class DaoCustomerImpl implements DaoCustomer {
 
     @Override
     public Either<Integer, Void> update(Customer customer) {
-        try{
-            Bson filter = eq("_id",customer.get_id());
+        try {
+            Bson filter = eq("_id", customer.get_id());
             Bson update = Updates.combine(set("name", customer.getName()));
             long l = config.getDb().getCollection("restaurant").updateOne(filter, update).getModifiedCount();
-            if (l >= 1){
+            if (l >= 1) {
                 return Either.right(null);
             } else {
                 return Either.left(-2);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             return Either.left(-1);
         }
     }

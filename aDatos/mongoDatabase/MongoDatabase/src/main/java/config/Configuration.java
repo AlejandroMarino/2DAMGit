@@ -3,7 +3,6 @@ package config;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
 @Singleton

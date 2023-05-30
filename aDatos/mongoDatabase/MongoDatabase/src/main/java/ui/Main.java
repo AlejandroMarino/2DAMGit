@@ -5,6 +5,7 @@ import domain.model.modelMongo.*;
 import io.vavr.control.Either;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+import org.bson.Document;
 import org.bson.types.ObjectId;
 import services.*;
 
@@ -21,6 +22,7 @@ public class Main {
         ServicesMenuItem svmi = container.select(ServicesMenuItem.class).get();
         ServicesOrderItem svoi = container.select(ServicesOrderItem.class).get();
         ServicesOrder svo = container.select(ServicesOrder.class).get();
+        ServicesAggregations sva = container.select(ServicesAggregations.class).get();
 
         Scanner sc = new Scanner(System.in);
         int option;
@@ -64,7 +66,7 @@ public class Main {
                     deleteMenuItem(svmi, sc);
                     break;
                 case 9:
-                    aggregations(sc);
+                    aggregations(sva,sc);
                     break;
                 case 0:
                     System.out.println("Bye");
@@ -76,11 +78,11 @@ public class Main {
         } while (option != 0);
     }
 
-    private static void aggregations(Scanner sc) {
+    private static void aggregations(ServicesAggregations sva, Scanner sc) {
         char opt;
         do {
             System.out.println("""
-                        What you want to do?
+                        \nWhat you want to do?
                     a. Get the description of the most expensive item
                     b. Get the orders of a given customer, showing the name of the customer and the
                         number of seats
@@ -99,30 +101,52 @@ public class Main {
             opt = sc.nextLine().charAt(0);
             switch (opt) {
                 case 'a':
+                    System.out.println(sva.getMostExpensiveItemDescription());
                     break;
                 case 'b':
+                    System.out.println("Introduce the id of the customer");
+                    String id = sc.nextLine();
+                    System.out.println(sva.getOrdersOfCustomer(id));
                     break;
                 case 'c':
+                    System.out.println(sva.getNumberOfItemsOfOrders());
                     break;
                 case 'd':
+                    System.out.println(sva.getNameOfCustomerWithSteak());
                     break;
                 case 'e':
+                    System.out.println(sva.getAverageNumberOfItemsPerOrder());
                     break;
                 case 'f':
+                    System.out.println(sva.getMostRequestedItem());
                     break;
                 case 'g':
+                    System.out.println("Introduce the id of the customer");
+                    String id2 = sc.nextLine();
+                    System.out.println(sva.getNumberOfEachItemOrderedByCustomer(id2));
                     break;
                 case 'h':
+                    System.out.println(sva.getMostRequestedTable());
                     break;
                 case 'i':
+                    System.out.println(sva.getMostRequestedTablePerCustomer());
                     break;
                 case 'j':
+                    System.out.println(sva.getItemsNotRequestedMoreThan1());
                     break;
                 case 'k':
+                    Either<String, List<Document>> r = sva.getPricePaidForEachOrder();
+                    if (r.isLeft()) {
+                        System.out.println(r.getLeft());
+                    } else {
+                        r.get().forEach(System.out::println);
+                    }
                     break;
                 case 'l':
+                    System.out.println(sva.getCustomerSpentMost());
                     break;
                 case 'm':
+                    System.out.println(sva.getTotalNotPaid());
                     break;
                 case 'x':
                     break;

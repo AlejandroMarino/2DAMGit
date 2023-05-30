@@ -9,7 +9,7 @@ public interface DaoCustomer {
 
     Either<Integer, List<Customer>> getAll(boolean withOrders);
 
-    Either<Integer, Customer> getCustomerById(String id);
+    Either<Integer, Customer> get(String id);
 
     Either<Integer, Void> save(Customer customer);
 

@@ -13,4 +13,16 @@ public class Usuario {
     private Tipo tipo;
     private String password;
     private int habilidad;
+
+    public Usuario(String nombre, Tipo tipo, String password, int habilidad) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.password = password;
+        this.habilidad = habilidad;
+    }
+
+    public Usuario(String nombre, String password) {
+        this.nombre = nombre;
+        this.password = password;
+    }
 }

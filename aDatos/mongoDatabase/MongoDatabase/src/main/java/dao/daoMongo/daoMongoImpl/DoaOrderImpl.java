@@ -16,14 +16,13 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Projections.include;
 import static com.mongodb.client.model.Updates.push;
-import static com.mongodb.client.model.Updates.*;
 
 
 public class DoaOrderImpl implements DaoOrder {
 
     private final Configuration config;
 
-    private Gson gson;
+    private final Gson gson;
 
     @Inject
     public DoaOrderImpl(Configuration config, Gson gson) {
@@ -59,7 +58,7 @@ public class DoaOrderImpl implements DaoOrder {
             Bson filter = eq("_id", customer.get_id());
             Bson updateOp = push("orders", document);
             long r = restaurantColl.updateOne(filter, updateOp).getModifiedCount();
-            if (r >= 1){
+            if (r >= 1) {
                 return Either.right(null);
             } else {
                 return Either.left(-2);

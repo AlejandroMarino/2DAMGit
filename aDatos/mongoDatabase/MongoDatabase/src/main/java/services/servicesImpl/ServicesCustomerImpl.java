@@ -35,7 +35,7 @@ public class ServicesCustomerImpl implements ServicesCustomer {
 
     @Override
     public Either<String, Customer> get(String id) {
-        Either<Integer, Customer> r = dC.getCustomerById(id);
+        Either<Integer, Customer> r = dC.get(id);
         if (r.isLeft()) {
             if (r.getLeft() == -2) {
                 return Either.left("Customer not found");

@@ -10,7 +10,6 @@ import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.RollbackException;
-import jakarta.validation.ConstraintViolationException;
 
 import java.util.List;
 

@@ -17,9 +17,9 @@ import java.util.Objects;
 
 public class DaoOrderItemImpl implements DaoOrderItem {
 
-    private Configuration config;
+    private final Configuration config;
 
-    private Gson gson;
+    private final Gson gson;
 
     @Inject
     public DaoOrderItemImpl(Configuration config, Gson gson) {

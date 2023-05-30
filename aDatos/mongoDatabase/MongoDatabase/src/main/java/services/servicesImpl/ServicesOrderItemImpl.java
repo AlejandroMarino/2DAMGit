@@ -1,7 +1,6 @@
 package services.servicesImpl;
 
 import dao.daoMongo.DaoOrderItem;
-import domain.model.modelMongo.MenuItem;
 import domain.model.modelMongo.Order;
 import domain.model.modelMongo.OrderItem;
 import io.vavr.control.Either;
