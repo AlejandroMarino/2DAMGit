@@ -1,4 +1,4 @@
-package org.example.ui;
+package org.example.ui.mongo;
 
 
 import jakarta.enterprise.inject.se.SeContainer;
