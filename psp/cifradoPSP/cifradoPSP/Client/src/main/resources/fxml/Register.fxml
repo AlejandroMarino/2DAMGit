@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.register.RegisterController">
+   <children>
+      <Label layoutX="437.0" layoutY="50.0" text="Register">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="425.0" layoutY="137.0" text="Username :" />
+      <TextField fx:id="textUsername" layoutX="427.0" layoutY="167.0" />
+      <Label layoutX="427.0" layoutY="217.0" text="Password :" />
+      <TextField fx:id="textPassword" layoutX="427.0" layoutY="243.0" />
+      <Button layoutX="470.0" layoutY="449.0" mnemonicParsing="false" onAction="#register" text="Register" />
+      <Button layoutX="474.0" layoutY="511.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Label layoutX="427.0" layoutY="293.0" text="Tipo:" />
+      <ComboBox fx:id="comboTipo" layoutX="427.0" layoutY="325.0" onAction="#checkTipe" prefWidth="150.0" />
+      <Label fx:id="habilidad" layoutX="426.0" layoutY="367.0" text="Habilidad:" />
+      <TextField fx:id="textHabilidad" layoutX="427.0" layoutY="398.0" />
+   </children>
+</AnchorPane>

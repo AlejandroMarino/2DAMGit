@@ -22,8 +22,8 @@ import static com.mongodb.client.model.Updates.pull;
 
 public class DaoMenuItemsImpl implements DaoMenuItems {
 
-    private Configuration config;
-    private Gson gson;
+    private final Configuration config;
+    private final Gson gson;
 
     @Inject
     public DaoMenuItemsImpl(Configuration config, Gson gson) {
@@ -31,13 +31,12 @@ public class DaoMenuItemsImpl implements DaoMenuItems {
         this.gson = gson;
     }
 
-
     @Override
     public Either<Integer, List<MenuItem>> getAll(Customer customer) {
         try {
             MongoCollection<Document> restaurantColl = config.getDb().getCollection("restaurant");
             Set<MenuItem> menuItems = new HashSet<>();
-            Document document = restaurantColl.find(new Document("_id", customer.get_id()))
+            Document document = restaurantColl.find(eq("_id", customer.get_id()))
                     .projection(new Document("_id", 0).append("orders.orderItems.name", 1)).first();
             if (document == null) {
                 return Either.left(-2);
@@ -97,7 +96,7 @@ public class DaoMenuItemsImpl implements DaoMenuItems {
             MongoCollection<Document> mIColl = config.getDb().getCollection("menuItem");
             mIColl.deleteOne(new Document("_id", id));
             return Either.right(null);
-        }catch (Exception e){
+        } catch (Exception e) {
             return Either.left(-1);
         }
     }
