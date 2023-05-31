@@ -24,15 +24,9 @@ n
 \
 ,src/main/java/services/ServicesCustomer.java,8\f\8fb744ab70f5f3a729f55bcd6bb11f4e9f70ef78
 Å
-Q.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,2\c\2cabb939da04d3de3a200bf2b575690e1a16316d
-Å
 Q.idea/sonarlint/securityhotspotstore/3/c/3c371c7d7a4e052288a98e9fa985aa480caa5bff,d\5\d55bf5dd25f9b5b882210c1d9f3a7c336c4351ab
 Å
 Q.idea/sonarlint/securityhotspotstore/0/8/08d49d0ee026fdae85a6b8139d0766d5c07a7b1d,6\0\603f09d686247ef43e52db409847b1167467d82d
-w
-G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\863e0292fd7e9b3e74dafd6cc01f73ba76346482
-c
-3src/main/java/domain/model/modelMongo/Customer.java,0\e\0ee1a26c25b4c5c2d075fe1dc8004120df9179f6
 d
 4src/main/java/domain/model/modelMongo/OrderItem.java,3\3\3323d7f5e82bd460f2c7d0a68d021ba6358b66d5
 \
@@ -45,12 +39,8 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 m
 =src/main/java/dao/daoMongo/daoMongoImpl/DaoMenuItemsImpl.java,f\2\f2b8a94f490153a98686f295e338521e639510a5
-m
-=src/main/java/services/servicesImpl/ServicesMenuItemImpl.java,2\0\2086caf4c2c4b1d772c8dd941b316ef126caeba5
 c
 3src/main/java/domain/model/modelMongo/MenuItem.java,4\9\4958afdcc98b46354ad3096fce911143d8dc59a2
-J
-src/main/java/ui/Main.java,f\5\f5f833a11c774bc6d9fec08fc87be62b89228540
 `
 0src/main/java/domain/model/modelMongo/Order.java,a\a\aad85249ef67aa343111daa466f42478f9e8622d
 j
@@ -59,5 +49,3 @@ j
 0src/main/java/domain/model/modelMongo/Table.java,7\5\754b48c0f0abd5eca57129571b71de2f6541781c
 l
 <src/main/java/dao/daoMongo/daoMongoImpl/DaoCustomerImpl.java,8\c\8c4e5076afd556f725430d93340fa9346763fef4
-i
-9src/main/java/dao/daoMongo/daoMongoImpl/DaoMongoImpl.java,8\8\883ec2fddb790a07416be69c88201ab1373d6a8f
