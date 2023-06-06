@@ -1,4 +1,4 @@
-package domain.models;
+package domain.model;
 
 public class Detalle {
     private String titulo;

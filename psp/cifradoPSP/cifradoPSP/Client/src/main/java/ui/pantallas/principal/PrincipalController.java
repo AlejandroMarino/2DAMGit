@@ -20,13 +20,6 @@ import java.util.ResourceBundle;
 
 @Log4j2
 public class PrincipalController implements Initializable {
-
-    @FXML
-    private MenuItem itemGames;
-    @FXML
-    private MenuItem itemShops;
-    @FXML
-    private Menu goTo;
     @FXML
     public BorderPane root;
     Instance<Object> instance;
@@ -72,12 +65,26 @@ public class PrincipalController implements Initializable {
 
     public void goLogin() {
         cargarPantalla(Pantallas.LOGIN);
-        goTo.setVisible(false);
     }
 
     public void goRegister() {
         cargarPantalla(Pantallas.REGISTER);
-        goTo.setVisible(false);
+    }
+
+    public void goContratista() {
+        cargarPantalla(Pantallas.CONTRATISTA);
+    }
+
+    public void goCrearContrato() {
+        cargarPantalla(Pantallas.CREARCONTRATO);
+    }
+
+    public void goElegirSicarios() {
+        cargarPantalla(Pantallas.ELEGIRSICARIOS);
+    }
+
+    public void goSicario() {
+        cargarPantalla(Pantallas.SICARIO);
     }
 
 

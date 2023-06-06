@@ -1,7 +1,7 @@
 package jakarta.errores;
 
 import domain.errors.ApiError;
-import domain.modelo.NotFoundException;
+import domain.model.errores.NotFoundException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;

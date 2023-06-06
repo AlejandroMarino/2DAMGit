@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.crearContrato.CrearContratoController">
+   <children>
+      <Label layoutX="54.0" layoutY="54.0" text="Título:" />
+      <Label layoutX="240.0" layoutY="54.0" text="Objetivo:" />
+      <Label layoutX="594.0" layoutY="54.0" text="Precio:" />
+      <Label layoutX="793.0" layoutY="54.0" text="Habilidad:" />
+      <TextField fx:id="textTitulo" layoutX="54.0" layoutY="80.0" />
+      <TextArea fx:id="textObjetivo" layoutX="240.0" layoutY="80.0" prefHeight="120.0" prefWidth="317.0" />
+      <TextField fx:id="textPrecio" layoutX="594.0" layoutY="80.0" />
+      <TextField fx:id="textHabilidad" layoutX="793.0" layoutY="80.0" />
+      <Button layoutX="456.0" layoutY="317.0" mnemonicParsing="false" onAction="#elegirSicarios" text="Elegir Sicarios" />
+   </children>
+</AnchorPane>

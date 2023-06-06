@@ -1,7 +1,7 @@
 package jakarta.errores;
 
 import domain.errors.ApiError;
-import domain.modelo.BaseDatosCaidaException;
+import domain.model.errores.BaseDatosCaidaException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;

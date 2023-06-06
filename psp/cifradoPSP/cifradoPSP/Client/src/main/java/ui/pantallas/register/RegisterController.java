@@ -36,6 +36,16 @@ public class RegisterController extends BasePantallaController {
                 textHabilidad.setText(oldValue);
             }
         });
+        comboTipo.getItems().addAll(Tipo.values());
+        comboTipo.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.equals(Tipo.CONTRATISTA)) {
+                textHabilidad.setVisible(false);
+                habilidad.setVisible(false);
+            } else if (newValue.equals(Tipo.SICARIO)) {
+                textHabilidad.setVisible(true);
+                habilidad.setVisible(true);
+            }
+        });
         registerViewModel.getState().addListener((observable, oldValue, newValue) -> {
             Platform.runLater(() -> {
                 if (newValue.getMessage() != null) {
