@@ -17,8 +17,8 @@ import lombok.Setter;
 @Table(name = Constants.TABLE_NAME_CONTRATOS)
 @NamedQueries(
         {
-                @NamedQuery(name = HQLQueries.HQL_GET_CONTRATO_BY_ID, query = "from ContratoEntity where id = :idContrato"),
-                @NamedQuery(name = HQLQueries.HQL_GET_CONTRATOS_OF_USUARIO, query= "from ContratoEntity where usuario.id = :idUsuario"),
+                @NamedQuery(name = HQLQueries.HQL_GET_CONTRATO_BY_ID, query = "from ContratoEntity  c where c.id = :idContrato"),
+                @NamedQuery(name = HQLQueries.HQL_GET_CONTRATOS_OF_USUARIO, query= "from ContratoEntity c where c.usuario.id = :idUsuario"),
                 @NamedQuery(name = HQLQueries.HQL_GET_CONTRATOS_OF_SICARIO, query = "select sc.contrato from SicariosContratosEntity sC where sC.sicario.id = :idSicario"),
                 @NamedQuery(name = HQLQueries.HQL_GET_CONTRATOS_OF_SICARIO_FILTER_ESTADO, query = "select sC.contrato from SicariosContratosEntity sC where sC.sicario.id = :idSicario and sC.estado = :estado"),
         }

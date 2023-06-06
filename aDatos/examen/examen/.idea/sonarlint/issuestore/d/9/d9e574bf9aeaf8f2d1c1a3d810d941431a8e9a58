@@ -1,0 +1,10 @@
+
+T
+java:S1854"7Remove this useless assignment to local variable "svl".(Åí8ÊÉš‡1
+E
+java:S1481"(Remove this unused "svl" local variable.(Åí8ËÉš‡1
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Îñë8ÍÉš‡1
+E
+java:S5665"(Remove this unnecessary escape sequence.(£¸Š8ÍÉš‡1
+U	java:S106"9Replace this use of System.out or System.err by a logger.(¿ÅÙ•8ÎÉš‡1
+Z	java:S106 "9Replace this use of System.out or System.err by a logger.(¯¬ğåşÿÿÿÿ8ÎÉš‡1

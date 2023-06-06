@@ -23,15 +23,13 @@ import lombok.Setter;
         }
 )
 public class SicariosContratosEntity {
-    @EmbeddedId
-    private SicariosContratosId id;
 
+    @Id
     @ManyToOne
-    @MapsId("idUsuario")
     @JoinColumn(name = Constants.ID_USUARIO_COLUMN, insertable = false, updatable = false)
     private UsuarioEntity sicario;
+    @Id
     @ManyToOne
-    @MapsId("idComtrato")
     @JoinColumn(name = Constants.ID_CONTRATO_COLUMN, insertable = false, updatable = false)
     private ContratoEntity contrato;
     @Column
@@ -39,10 +37,4 @@ public class SicariosContratosEntity {
     @Column
     private String clave;
 
-    public SicariosContratosEntity(UsuarioEntity sicario, ContratoEntity contrato, Estado estado, String clave) {
-        this.sicario = sicario;
-        this.contrato = contrato;
-        this.estado = estado;
-        this.clave = clave;
-    }
 }
