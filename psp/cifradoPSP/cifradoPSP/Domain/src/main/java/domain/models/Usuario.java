@@ -16,10 +16,17 @@ public class Usuario {
     private Tipo tipo;
     private String password;
     private int habilidad;
+    private String clave;
     private List<Contrato> contratos;
 
     public Usuario(int id) {
         this.id = id;
+    }
+
+    public Usuario(String nombre, Tipo tipo, String password) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.password = password;
     }
 
     public Usuario(String nombre, Tipo tipo, String password, int habilidad) {
@@ -32,6 +39,10 @@ public class Usuario {
     public Usuario(String nombre, String password) {
         this.nombre = nombre;
         this.password = password;
+    }
+
+    public Usuario(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override

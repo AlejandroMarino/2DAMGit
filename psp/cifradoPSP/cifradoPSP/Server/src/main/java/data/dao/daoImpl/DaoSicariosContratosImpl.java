@@ -4,10 +4,9 @@ import common.Constants;
 import common.HQLQueries;
 import config.JPAUtil;
 import data.dao.DaoSicariosContratos;
+import data.model.SicarioContratoEntity;
 import domain.model.errores.BaseDatosCaidaException;
 import domain.model.errores.NotFoundException;
-import domain.models.SicarioContrato;
-import domain.models.Estado;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
@@ -22,26 +21,26 @@ public class DaoSicariosContratosImpl implements DaoSicariosContratos {
     }
 
     @Override
-    public Estado getEstado(SicarioContrato sicarioContrato) {
-        Estado e;
+    public SicarioContratoEntity get(SicarioContratoEntity sicarioContrato) {
+        SicarioContratoEntity sC;
         em = jpaUtil.getEntityManager();
         try {
-            e = em.createNamedQuery(HQLQueries.HQL_GET_ESTADO_SICARIO_CONTRATO, Estado.class)
-                    .setParameter("idSicario", sicarioContrato.getUsuario().getId())
+            sC = em.createNamedQuery(HQLQueries.HQL_GET_SICARIO_CONTRATO, SicarioContratoEntity.class)
+                    .setParameter("idSicario", sicarioContrato.getSicario().getId())
                     .setParameter("idContrato", sicarioContrato.getContrato().getId()).getSingleResult();
-            if (e == null) {
-                throw new NotFoundException("Estado no encontrado");
-            }
-            return e;
         } catch (Exception ex) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (sC == null) {
+            throw new NotFoundException("SicarioContrato no encontrado");
+        }
+        return sC;
     }
 
     @Override
-    public SicarioContrato add(SicarioContrato sicarioContrato) {
+    public SicarioContratoEntity add(SicarioContratoEntity sicarioContrato) {
         em = jpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();
@@ -57,7 +56,7 @@ public class DaoSicariosContratosImpl implements DaoSicariosContratos {
     }
 
     @Override
-    public SicarioContrato update(SicarioContrato sicarioContrato) {
+    public SicarioContratoEntity update(SicarioContratoEntity sicarioContrato) {
         em = jpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();

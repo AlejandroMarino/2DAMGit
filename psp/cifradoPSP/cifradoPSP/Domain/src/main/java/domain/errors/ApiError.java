@@ -14,5 +14,4 @@ import java.time.LocalDateTime;
 public class ApiError {
 
     private String message;
-    private LocalDateTime fecha;
 }

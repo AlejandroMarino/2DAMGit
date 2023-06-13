@@ -1,0 +1,23 @@
+
+b
+java:S1192"GDefine a constant instead of duplicating this literal "nivel2" 3 times.(£¢˜íÿÿÿÿÿ
+c
+java:S1192"HDefine a constant instead of duplicating this literal "informe" 3 times.(—¿ğ³üÿÿÿÿ
+b
+java:S1192"GDefine a constant instead of duplicating this literal "nivel1" 3 times.(—¿ğ³üÿÿÿÿ
+B
+java:S1481",Remove this unused "curioso" local variable.(¨üŒ
+B
+java:S1481",Remove this unused "biologo" local variable.(ö ƒó
+@
+java:S1481"*Remove this unused "espia" local variable.(«ùÂÈ
+h
+java:S6204!"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(à‰ôß
+h
+java:S6204+"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(à‰ôß
+d
+java:S1128"IRemove this unused import 'jakarta.persistence.criteria.CriteriaBuilder'.(À¼ºñşÿÿÿÿ
+>
+java:S1128"(Remove this unused import 'model.Raton'.(’ÏÅ
+E
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ

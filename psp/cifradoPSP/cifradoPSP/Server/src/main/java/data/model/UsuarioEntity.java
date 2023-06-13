@@ -21,7 +21,7 @@ import lombok.Setter;
                 @NamedQuery(name = HQLQueries.HQL_GET_USUARIO_BY_ID, query = "from UsuarioEntity u where u.id = :id"),
                 @NamedQuery(name = HQLQueries.HQL_GET_USUARIO_BY_NAME, query = "from UsuarioEntity u where u.nombre = :nombre"),
                 @NamedQuery(name = HQLQueries.HQL_GET_SICARIOS_FILTER_HABILIDAD, query = "from UsuarioEntity u where u.tipo = :tipo and u.habilidad >= :habilidad"),
-                @NamedQuery(name = HQLQueries.HQL_GET_SICARIOS_OF_CONTRATO, query = "select sC.sicario from SicariosContratosEntity sC where sC.contrato.id = :idContrato"),
+                @NamedQuery(name = HQLQueries.HQL_GET_SICARIOS_OF_CONTRATO, query = "select sC.sicario from SicarioContratoEntity sC where sC.contrato.id = :idContrato"),
         }
 )
 public class UsuarioEntity {
@@ -31,10 +31,13 @@ public class UsuarioEntity {
     @Column
     private String nombre;
     @Column
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
     @Column
     private String password;
     @Column
     private int habilidad;
+    @Column
+    private String clave;
 
 }

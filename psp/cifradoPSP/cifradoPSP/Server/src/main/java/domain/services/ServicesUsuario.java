@@ -13,5 +13,5 @@ public interface ServicesUsuario {
 
     List<Usuario> getSicariosFilterHabilidad(int habilidad);
 
-    List<Usuario> getSicariosContrato(Contrato contrato);
+    List<Usuario> getSicariosContrato(int idContrato);
 }

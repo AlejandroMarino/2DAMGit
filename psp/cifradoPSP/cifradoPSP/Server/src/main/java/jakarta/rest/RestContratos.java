@@ -58,4 +58,10 @@ public class RestContratos {
     public List<Contrato> getContratosSicarioFilterEstado(@QueryParam("id")int id, @QueryParam("estado")String estado) {
         return sC.getAllOfSicarioFilterEstado(new Usuario(id), Estado.valueOf(estado));
     }
+
+    @GET
+    @Path("/{id}")
+    public Contrato get(@PathParam("id") int id) {
+        return sC.get(id);
+    }
 }

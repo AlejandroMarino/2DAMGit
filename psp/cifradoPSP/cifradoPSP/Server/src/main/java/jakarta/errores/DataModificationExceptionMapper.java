@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class DataModificationExceptionMapper implements ExceptionMapper<DataModificationException> {
 
     public Response toResponse(DataModificationException exception) {
-        ApiError apiError = new ApiError(exception.getMessage(), LocalDateTime.now());
+        ApiError apiError = new ApiError(exception.getMessage());
         return Response.status(Response.Status.NOT_MODIFIED).entity(apiError)
                 .type(MediaType.APPLICATION_JSON_TYPE).build();
     }

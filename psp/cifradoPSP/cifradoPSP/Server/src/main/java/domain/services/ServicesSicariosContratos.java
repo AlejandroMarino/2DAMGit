@@ -11,5 +11,5 @@ public interface ServicesSicariosContratos {
 
     SicarioContrato update(SicarioContrato sicarioContrato);
 
-    Estado getEstado(SicarioContrato sicarioContrato);
+    SicarioContrato get(SicarioContrato sicarioContrato);
 }

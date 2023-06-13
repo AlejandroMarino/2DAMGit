@@ -1,0 +1,20 @@
+
+M
+java:S1128"0Remove this unused import 'common.ConstantsURL'.(º»éÿ8ÀÃÄñç0
+I
+java:S1128",Remove this unused import 'dao.InformesDao'.(¥ÒÙš8ÁÃÄñç0
+g
+java:S1128"ERemove this unused import 'jakarta.annotation.security.RolesAllowed'.(ŠÌêÿÿÿÿÿ8ÁÃÄñç0
+`
+java:S1128"DRemove this unused import 'jakarta.servlet.http.HttpServletRequest'.(õ38‚…Åñç0
+Y
+java:S1128
+"7Remove this unused import 'jakarta.ws.rs.core.Context'.(îÊ†Íüÿÿÿÿ8ƒ…Åñç0
+Z
+java:S1128"8Remove this unused import 'jakarta.ws.rs.core.Response'.(À ¯¯øÿÿÿÿ8ÁÃÄñç0
+a
+java:S1128"?Remove this unused import 'jakarta.ws.rs.core.SecurityContext'.(ÌØ§µùÿÿÿÿ8ƒ…Åñç0
+G
+java:S1128"*Remove this unused import 'model.Informe'.(…æşÿ8ÁÃÄñç0
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÂÃÄñç0

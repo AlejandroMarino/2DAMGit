@@ -5,7 +5,6 @@ import domain.models.Tipo;
 import domain.models.Usuario;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -32,7 +31,7 @@ public class RegisterController extends BasePantallaController {
 
     public void initialize() {
         textHabilidad.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("[1-9]|10")) {
+            if (!newValue.isEmpty() && !newValue.matches("([1-9]|10)?")) {
                 textHabilidad.setText(oldValue);
             }
         });
@@ -60,10 +59,23 @@ public class RegisterController extends BasePantallaController {
 
     @FXML
     private void register() {
-        if (textHabilidad.getText().isEmpty() || textPassword.getText().isEmpty() || textUsername.getText().isEmpty()) {
-            getPrincipalController().error(Constants.PLEASE_FILL_ALL_THE_FIELDS);
+        Tipo t = comboTipo.getValue();
+        if (t == null) {
+            registerViewModel.mostrarMensaje("Seleccione un tipo de usuario");
         } else {
-            registerViewModel.register(new Usuario(textUsername.getText(), comboTipo.getValue(), textPassword.getText(), Integer.parseInt(textHabilidad.getText())));
+            if (comboTipo.getValue().equals(Tipo.SICARIO)) {
+                if (textHabilidad.getText().isEmpty() || textPassword.getText().isEmpty() || textUsername.getText().isEmpty()) {
+                    getPrincipalController().error(Constants.PLEASE_FILL_ALL_THE_FIELDS);
+                } else {
+                    registerViewModel.register(new Usuario(textUsername.getText(), comboTipo.getValue(), textPassword.getText(), Integer.parseInt(textHabilidad.getText())));
+                }
+            } else {
+                if (textPassword.getText().isEmpty() || textUsername.getText().isEmpty()) {
+                    getPrincipalController().error(Constants.PLEASE_FILL_ALL_THE_FIELDS);
+                } else {
+                    registerViewModel.register(new Usuario(textUsername.getText(), comboTipo.getValue(), textPassword.getText()));
+                }
+            }
         }
     }
 

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException> {
 
     public Response toResponse(NotFoundException exception) {
-        ApiError apiError = new ApiError(exception.getMessage(), LocalDateTime.now());
+        ApiError apiError = new ApiError(exception.getMessage());
         return Response.status(Response.Status.NOT_FOUND).entity(apiError)
                 .type(MediaType.APPLICATION_JSON_TYPE).build();
     }

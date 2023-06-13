@@ -18,4 +18,6 @@ public interface ServicesContratos {
 
     List<Contrato> getAllOfSicarioFilterEstado(Usuario usuario, Estado estado);
 
+    Contrato get(int id);
+
 }

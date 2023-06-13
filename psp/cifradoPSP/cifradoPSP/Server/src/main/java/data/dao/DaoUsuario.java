@@ -1,19 +1,19 @@
 package data.dao;
 
-import domain.models.Contrato;
-import domain.models.Usuario;
+import data.model.ContratoEntity;
+import data.model.UsuarioEntity;
 
 import java.util.List;
 
 public interface DaoUsuario {
 
-    Usuario get(String username);
+    UsuarioEntity get(String username);
 
-    Usuario get(int id);
+    UsuarioEntity get(int id);
 
-    List<Usuario> getSicarios(Contrato contrato);
+    List<UsuarioEntity> getSicarios(int idContrato);
 
-    List<Usuario> getSicariosFilterHabilidad(int habilidad);
+    List<UsuarioEntity> getSicariosFilterHabilidad(int habilidad);
 
-    Usuario add(Usuario usuario);
+    UsuarioEntity add(UsuarioEntity usuario);
 }

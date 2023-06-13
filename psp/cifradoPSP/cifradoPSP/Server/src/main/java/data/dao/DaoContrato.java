@@ -1,5 +1,7 @@
 package data.dao;
 
+import data.model.ContratoEntity;
+import data.model.UsuarioEntity;
 import domain.models.Contrato;
 import domain.models.Estado;
 import domain.models.Usuario;
@@ -8,17 +10,17 @@ import java.util.List;
 
 public interface DaoContrato {
 
-    List<Contrato> getAllOfContratista(Usuario usuario);
+    List<ContratoEntity> getAllOfContratista(UsuarioEntity usuario);
 
-    List<Contrato> getAllOfSicario(Usuario usuario);
+    List<ContratoEntity> getAllOfSicario(UsuarioEntity usuario);
 
-    List<Contrato> getAllOfSicarioFilterEstado(Usuario usuario, Estado estado);
+    List<ContratoEntity> getAllOfSicarioFilterEstado(UsuarioEntity usuario, Estado estado);
 
-    Contrato get(int id);
+    ContratoEntity get(int id);
 
-    Contrato add(Contrato contrato);
+    ContratoEntity add(ContratoEntity contrato);
 
-    boolean updateable(Contrato contrato);
+    boolean updateable(ContratoEntity contrato);
 
-    void update(Contrato contrato);
+    void update(ContratoEntity contrato);
 }

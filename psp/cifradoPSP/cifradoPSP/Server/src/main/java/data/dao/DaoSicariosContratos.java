@@ -1,13 +1,13 @@
 package data.dao;
 
-import domain.models.SicarioContrato;
+import data.model.SicarioContratoEntity;
 import domain.models.Estado;
 
 public interface DaoSicariosContratos {
 
-    Estado getEstado(SicarioContrato sicarioContrato);
+    SicarioContratoEntity get(SicarioContratoEntity sicarioContrato);
 
-    SicarioContrato add(SicarioContrato sicarioContrato);
+    SicarioContratoEntity add(SicarioContratoEntity sicarioContrato);
 
-    SicarioContrato update(SicarioContrato sicarioContrato);
+    SicarioContratoEntity update(SicarioContratoEntity sicarioContrato);
 }

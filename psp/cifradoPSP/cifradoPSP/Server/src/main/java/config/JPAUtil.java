@@ -9,7 +9,7 @@ import jakarta.persistence.Persistence;
 @Singleton
 public class JPAUtil {
 
-    private EntityManagerFactory emf;
+    private final EntityManagerFactory emf;
 
     public JPAUtil() {
         emf=getEmf();

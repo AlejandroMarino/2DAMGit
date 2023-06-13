@@ -1,13 +1,13 @@
 package ui.pantallas.principal;
 
+import domain.models.Contrato;
+import domain.models.Usuario;
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import lombok.extern.log4j.Log4j2;
@@ -24,6 +24,18 @@ public class PrincipalController implements Initializable {
     public BorderPane root;
     Instance<Object> instance;
     private final Alert alert;
+
+    private Usuario usuarioActual;
+
+    private Contrato contratoActual;
+
+    public Contrato getContratoActual() {
+        return contratoActual;
+    }
+
+    public Usuario getUsuarioActual() {
+        return usuarioActual;
+    }
 
     @Inject
     public PrincipalController(Instance<Object> instance) {
@@ -71,7 +83,12 @@ public class PrincipalController implements Initializable {
         cargarPantalla(Pantallas.REGISTER);
     }
 
-    public void goContratista() {
+    public void goContratista(Usuario usuario) {
+        usuarioActual = usuario;
+        cargarPantalla(Pantallas.CONTRATISTA);
+    }
+
+    public void volverContratista() {
         cargarPantalla(Pantallas.CONTRATISTA);
     }
 
@@ -79,11 +96,13 @@ public class PrincipalController implements Initializable {
         cargarPantalla(Pantallas.CREARCONTRATO);
     }
 
-    public void goElegirSicarios() {
+    public void goElegirSicarios(Contrato contrato) {
+        contratoActual = contrato;
         cargarPantalla(Pantallas.ELEGIRSICARIOS);
     }
 
-    public void goSicario() {
+    public void goSicario(Usuario usuario) {
+        usuarioActual = usuario;
         cargarPantalla(Pantallas.SICARIO);
     }
 

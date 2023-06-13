@@ -20,6 +20,11 @@ public class Contrato {
         this.id = id;
     }
 
+    public Contrato(Usuario usuario, int habilidad) {
+        this.usuario = usuario;
+        this.habilidad = habilidad;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

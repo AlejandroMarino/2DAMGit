@@ -10,7 +10,14 @@
         <module name="Domain" />
         <module name="Client" />
         <module name="Server" />
+        <module name="Seguridad" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Client" target="17" />
+      <module name="Domain" target="17" />
+      <module name="Seguridad" target="17" />
+      <module name="Server" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

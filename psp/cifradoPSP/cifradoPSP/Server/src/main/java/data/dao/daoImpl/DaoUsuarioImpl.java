@@ -4,12 +4,12 @@ import common.Constants;
 import common.HQLQueries;
 import config.JPAUtil;
 import data.dao.DaoUsuario;
+import data.model.ContratoEntity;
+import data.model.UsuarioEntity;
 import domain.model.errores.BaseDatosCaidaException;
 import domain.model.errores.DataModificationException;
 import domain.model.errores.NotFoundException;
-import domain.models.Contrato;
 import domain.models.Tipo;
-import domain.models.Usuario;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
@@ -26,87 +26,88 @@ public class DaoUsuarioImpl implements DaoUsuario {
     }
 
     @Override
-    public Usuario get(String username) {
-        Usuario u;
+    public UsuarioEntity get(String username) {
+        UsuarioEntity u;
         em = jpaUtil.getEntityManager();
         try {
-            u = em.createNamedQuery(HQLQueries.HQL_GET_USUARIO_BY_NAME, Usuario.class).setParameter("nombre", username).getSingleResult();
-            if (u == null) {
-                throw new NotFoundException("Usuario no encontrado");
-            }
-            return u;
+            u = em.createNamedQuery(HQLQueries.HQL_GET_USUARIO_BY_NAME, UsuarioEntity.class).setParameter("nombre", username).getSingleResult();
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (u == null) {
+            throw new NotFoundException("Usuario no encontrado");
+        }
+        return u;
     }
 
+    
     @Override
-    public Usuario get(int id) {
-        Usuario u;
+    public UsuarioEntity get(int id) {
+        UsuarioEntity u;
         em = jpaUtil.getEntityManager();
         try {
-            u = em.createNamedQuery(HQLQueries.HQL_GET_USUARIO_BY_ID, Usuario.class).setParameter("id", id).getSingleResult();
-            if (u == null) {
-                throw new NotFoundException("Usuario no encontrado");
-            }
-            return u;
+            u = em.createNamedQuery(HQLQueries.HQL_GET_USUARIO_BY_ID, UsuarioEntity.class).setParameter("id", id).getSingleResult();
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (u == null) {
+            throw new NotFoundException("Usuario no encontrado");
+        }
+        return u;
     }
 
     @Override
-    public List<Usuario> getSicarios(Contrato contrato) {
-        List<Usuario> l;
+    public List<UsuarioEntity> getSicarios(int idContrato) {
+        List<UsuarioEntity> l;
         em = jpaUtil.getEntityManager();
         try {
-            l = em.createNamedQuery(HQLQueries.HQL_GET_SICARIOS_OF_CONTRATO, Usuario.class).setParameter("idContrato", contrato.getId()).getResultList();
-            if (l == null || l.isEmpty()) {
-                throw new NotFoundException("Sicarios no encontrados");
-            }
-            return l;
+            l = em.createNamedQuery(HQLQueries.HQL_GET_SICARIOS_OF_CONTRATO, UsuarioEntity.class).setParameter("idContrato", idContrato).getResultList();
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (l == null || l.isEmpty()) {
+            throw new NotFoundException("Sicarios no encontrados");
+        }
+        return l;
     }
 
     @Override
-    public List<Usuario> getSicariosFilterHabilidad(int habilidad) {
-        List<Usuario> l;
+    public List<UsuarioEntity> getSicariosFilterHabilidad(int habilidad) {
+        List<UsuarioEntity> l;
         em = jpaUtil.getEntityManager();
         try {
-            l = em.createNamedQuery(HQLQueries.HQL_GET_SICARIOS_FILTER_HABILIDAD, Usuario.class)
+            l = em.createNamedQuery(HQLQueries.HQL_GET_SICARIOS_FILTER_HABILIDAD, UsuarioEntity.class)
                     .setParameter("tipo", Tipo.SICARIO).setParameter("habilidad", habilidad).getResultList();
-            if (l == null || l.isEmpty()) {
-                throw new NotFoundException("Sicarios no encontrados");
-            }
-            return l;
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (l == null || l.isEmpty()) {
+            throw new NotFoundException("Sicarios no encontrados");
+        }
+        return l;
     }
 
     @Override
-    public Usuario add(Usuario usuario) {
+    public UsuarioEntity add(UsuarioEntity usuario) {
         em = jpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(usuario);
             em.getTransaction().commit();
-            return usuario;
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new DataModificationException("Error al añadir usuario");
         } finally {
             em.close();
         }
+        return usuario;
     }
 }

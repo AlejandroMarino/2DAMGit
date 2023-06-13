@@ -35,17 +35,18 @@ public class RestUsuarios {
     @POST
     @Path("/login")
     public Response login(Usuario usuario) {
-        if (sU.login(usuario) != null) {
-            return Response.status(Response.Status.OK).entity(usuario).build();
+        Usuario u = sU.login(usuario);
+        if (u != null) {
+            return Response.status(Response.Status.OK).entity(u).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 
     @GET
-    @Path("/sicariosContrato")
+    @Path("/sicarioContrato")
     public List<Usuario> getSicariosContrato(@QueryParam("contrato")int idContrato) {
-        return sU.getSicariosContrato(new Contrato(idContrato));
+        return sU.getSicariosContrato(idContrato);
     }
 
     @GET

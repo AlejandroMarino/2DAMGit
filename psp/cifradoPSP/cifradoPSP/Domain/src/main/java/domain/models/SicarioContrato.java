@@ -20,6 +20,19 @@ public class SicarioContrato {
         this.contrato = contrato;
     }
 
+    public SicarioContrato(Usuario usuario, Contrato contrato, Estado estado) {
+        this.usuario = usuario;
+        this.contrato = contrato;
+        this.estado = estado;
+    }
+
+    public SicarioContrato(Usuario usuario, Contrato contrato, String clave) {
+        this.usuario = usuario;
+        this.contrato = contrato;
+        this.clave = clave;
+        this.estado = Estado.PENDIENTE;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

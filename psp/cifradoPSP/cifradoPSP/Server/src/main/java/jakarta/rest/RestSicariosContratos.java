@@ -40,8 +40,7 @@ public class RestSicariosContratos {
     }
 
     @GET
-    @Path("/estado")
-    public Estado getEstado(@QueryParam("sicario")int idSicario, @QueryParam("contrato")int idContrato) {
-        return sSC.getEstado(new SicarioContrato(new Usuario(idSicario), new Contrato(idContrato)));
+    public SicarioContrato get(@QueryParam("sicario")int idSicario, @QueryParam("contrato")int idContrato) {
+        return sSC.get(new SicarioContrato(new Usuario(idSicario), new Contrato(idContrato)));
     }
 }

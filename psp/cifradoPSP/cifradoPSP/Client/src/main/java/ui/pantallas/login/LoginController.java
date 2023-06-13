@@ -2,6 +2,7 @@ package ui.pantallas.login;
 
 
 import common.Constants;
+import domain.models.Tipo;
 import domain.models.Usuario;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
@@ -29,7 +30,11 @@ public class LoginController extends BasePantallaController {
                     getPrincipalController().message(newValue.getMessage());
                 }
                 if (newValue.isLogged()) {
-                    getPrincipalController().goShops();
+                    if (newValue.getUsuario().getTipo().equals(Tipo.CONTRATISTA)) {
+                        getPrincipalController().goContratista(newValue.getUsuario());
+                    } else {
+                        getPrincipalController().goSicario(newValue.getUsuario());
+                    }
                 }
             });
         });

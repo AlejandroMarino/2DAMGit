@@ -7,10 +7,11 @@ import jakarta.inject.Inject;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import services.ServicesUsuarios;
 
 public class RegisterViewModel {
 
-    private final ServicesLogin servicesLogin;
+    private final ServicesUsuarios sU;
 
     private final ObjectProperty<RegisterState> state;
 
@@ -19,23 +20,27 @@ public class RegisterViewModel {
     }
 
     @Inject
-    public RegisterViewModel(ServicesLogin servicesLogin) {
-        this.servicesLogin = servicesLogin;
+    public RegisterViewModel(ServicesUsuarios sU) {
+        this.sU = sU;
         state = new SimpleObjectProperty<>(new RegisterState(null, false));
     }
 
     public void register(Usuario user) {
         state.setValue(new RegisterState(null, false));
-        servicesLogin.register(user)
+        sU.register(user)
                 .observeOn(Schedulers.single())
                 .subscribe(
                         either -> {
                             if (either.isLeft()) {
                                 state.setValue(new RegisterState(either.getLeft(), false));
                             } else {
-                                state.setValue(new RegisterState(Constants.VERIFY_YOUR_ACCOUNT_WITH_THE_EMAIL_WE_HAVE_SENT_YOU, true));
+                                state.setValue(new RegisterState("registered", true));
                             }
                         }
                 );
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        state.setValue(new RegisterState(mensaje, false));
     }
 }

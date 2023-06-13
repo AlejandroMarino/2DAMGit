@@ -11,4 +11,5 @@ public class HQLQueries {
     public static final String HQL_GET_USUARIO_BY_NAME = "HQL_GET_USUARIO_BY_NAME";
     public static final String HQL_GET_SICARIOS_FILTER_HABILIDAD = "HQL_GET_SICARIOS_FILTER_HABILIDAD";
     public static final String HQL_GET_ESTADOS_CONTRATO = "HQL_GET_ESTADOS_CONTRATO";
+    public static final String HQL_GET_SICARIO_CONTRATO = "HQL_GET_SICARIO_CONTRATO";
 }

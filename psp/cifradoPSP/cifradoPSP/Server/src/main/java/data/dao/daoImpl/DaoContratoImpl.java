@@ -4,12 +4,12 @@ import common.Constants;
 import common.HQLQueries;
 import config.JPAUtil;
 import data.dao.DaoContrato;
+import data.model.ContratoEntity;
+import data.model.UsuarioEntity;
 import domain.model.errores.BaseDatosCaidaException;
 import domain.model.errores.DataModificationException;
 import domain.model.errores.NotFoundException;
-import domain.models.Contrato;
 import domain.models.Estado;
-import domain.models.Usuario;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
@@ -26,114 +26,113 @@ public class DaoContratoImpl implements DaoContrato {
     }
 
     @Override
-    public List<Contrato> getAllOfContratista(Usuario usuario) {
-        List<Contrato> l;
+    public List<ContratoEntity> getAllOfContratista(UsuarioEntity usuario) {
+        List<ContratoEntity> l;
         em = jpaUtil.getEntityManager();
         try {
-            l = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATOS_OF_USUARIO, Contrato.class)
+            l = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATOS_OF_USUARIO, ContratoEntity.class)
                     .setParameter("idUsuario", usuario.getId()).getResultList();
-            if (l == null || l.isEmpty()) {
-                throw new NotFoundException("Contratos no encontrados");
-            }
-            return l;
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (l == null || l.isEmpty()) {
+            throw new NotFoundException("Contratos no encontrados");
+        }
+        return l;
     }
 
     @Override
-    public List<Contrato> getAllOfSicario(Usuario usuario) {
-        List<Contrato> l;
+    public List<ContratoEntity> getAllOfSicario(UsuarioEntity usuario) {
+        List<ContratoEntity> l;
         em = jpaUtil.getEntityManager();
         try {
-            l = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATOS_OF_SICARIO, Contrato.class)
+            l = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATOS_OF_SICARIO, ContratoEntity.class)
                     .setParameter("idSicario", usuario.getId()).getResultList();
-            if (l == null || l.isEmpty()) {
-                throw new NotFoundException("Contratos no encontrados");
-            }
-            return l;
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (l == null || l.isEmpty()) {
+            throw new NotFoundException("Contratos no encontrados");
+        }
+        return l;
     }
 
     @Override
-    public List<Contrato> getAllOfSicarioFilterEstado(Usuario usuario, Estado estado) {
-        List<Contrato> l;
+    public List<ContratoEntity> getAllOfSicarioFilterEstado(UsuarioEntity usuario, Estado estado) {
+        List<ContratoEntity> l;
         em = jpaUtil.getEntityManager();
         try {
-            l = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATOS_OF_SICARIO_FILTER_ESTADO, Contrato.class)
+            l = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATOS_OF_SICARIO_FILTER_ESTADO, ContratoEntity.class)
                     .setParameter("idSicario", usuario.getId()).setParameter("estado", estado).getResultList();
-            if (l == null || l.isEmpty()) {
-                throw new NotFoundException("Contratos no encontrados");
-            }
-            return l;
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (l == null || l.isEmpty()) {
+            throw new NotFoundException("Contratos no encontrados");
+        }
+        return l;
     }
 
     @Override
-    public Contrato get(int id) {
-        Contrato c;
+    public ContratoEntity get(int id) {
+        ContratoEntity c;
         em = jpaUtil.getEntityManager();
         try {
-            c = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATO_BY_ID, Contrato.class).setParameter("id", id).getSingleResult();
-            if (c == null) {
-                throw new NotFoundException("Contrato no encontrado");
-            }
-            return c;
+            c = em.createNamedQuery(HQLQueries.HQL_GET_CONTRATO_BY_ID, ContratoEntity.class).setParameter("id", id).getSingleResult();
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (c == null) {
+            throw new NotFoundException("Contrato no encontrado");
+        }
+        return c;
     }
 
     @Override
-    public Contrato add(Contrato contrato) {
+    public ContratoEntity add(ContratoEntity contrato) {
         em = jpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(contrato);
             em.getTransaction().commit();
-            return contrato;
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new DataModificationException("Error al añadir contrato");
         } finally {
             em.close();
         }
+        return contrato;
     }
 
     @Override
-    public boolean updateable(Contrato contrato) {
+    public boolean updateable(ContratoEntity contrato) {
         List<Estado> l;
         em = jpaUtil.getEntityManager();
         try {
             l = em.createNamedQuery(HQLQueries.HQL_GET_ESTADOS_CONTRATO, Estado.class)
                     .setParameter("idContrato", contrato.getId()).getResultList();
-            if (l == null || l.isEmpty()) {
-                throw new NotFoundException("Contrato no encontrado");
-            } else {
-                return l.stream().allMatch(estado -> estado.equals(Estado.PENDIENTE));
-            }
-
         } catch (Exception e) {
             throw new BaseDatosCaidaException(Constants.DATABASE_ERROR);
         } finally {
             em.close();
         }
+        if (l == null || l.isEmpty()) {
+            throw new NotFoundException("Contrato no encontrado");
+        } else {
+            return l.stream().allMatch(estado -> estado.equals(Estado.PENDIENTE));
+        }
     }
 
     @Override
-    public void update(Contrato contrato) {
+    public void update(ContratoEntity contrato) {
         em = jpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();

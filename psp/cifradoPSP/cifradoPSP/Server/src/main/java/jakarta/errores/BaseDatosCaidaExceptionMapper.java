@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class BaseDatosCaidaExceptionMapper implements ExceptionMapper<BaseDatosCaidaException> {
 
     public Response toResponse(BaseDatosCaidaException exception) {
-        ApiError apiError = new ApiError(exception.getMessage(), LocalDateTime.now());
+        ApiError apiError = new ApiError(exception.getMessage());
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(apiError)
                 .type(MediaType.APPLICATION_JSON_TYPE).build();
     }
