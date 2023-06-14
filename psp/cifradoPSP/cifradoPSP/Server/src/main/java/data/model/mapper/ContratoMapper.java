@@ -8,10 +8,10 @@ public class ContratoMapper {
     private final UsuariosMapper uM = new UsuariosMapper();
 
     public Contrato toContrato(ContratoEntity contratoEntity) {
-        return new Contrato(contratoEntity.getId(), contratoEntity.getDetalle(), contratoEntity.getClave(), uM.toUsuario(contratoEntity.getUsuario()),contratoEntity.getHabilidad());
+        return new Contrato(contratoEntity.getId(), contratoEntity.getDetalle(), contratoEntity.getClave(), uM.toUsuario(contratoEntity.getUsuario()),contratoEntity.getHabilidad(), contratoEntity.getDetalleFirmado());
     }
 
     public ContratoEntity toContratoEntity(Contrato contrato) {
-        return new ContratoEntity(contrato.getId(), contrato.getDetalle(), contrato.getClave(), contrato.getHabilidad(), uM.toUsuarioEntity(contrato.getUsuario()));
+        return new ContratoEntity(contrato.getId(), contrato.getDetalle(), contrato.getClave(), contrato.getHabilidad(), contrato.getDetalleFirmado(), uM.toUsuarioEntity(contrato.getUsuario()));
     }
 }

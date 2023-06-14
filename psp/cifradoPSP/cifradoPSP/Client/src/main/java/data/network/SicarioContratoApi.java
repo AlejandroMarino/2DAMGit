@@ -1,6 +1,5 @@
 package data.network;
 
-import domain.models.Estado;
 import domain.models.SicarioContrato;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Response;
@@ -17,5 +16,5 @@ public interface SicarioContratoApi {
     Single<SicarioContrato> update(@Body SicarioContrato sicarioContrato);
 
     @GET("sicarios_contratos")
-    Single<SicarioContrato> get(@Query("sicario")int idSicario, @Query("contrato")int idContrato);
+    Single<SicarioContrato> get(@Query("sicario") int idSicario, @Query("contrato") int idContrato);
 }

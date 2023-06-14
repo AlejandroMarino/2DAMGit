@@ -3,7 +3,6 @@ package domain.services.servicesImpl;
 import data.dao.DaoSicariosContratos;
 import data.model.SicarioContratoEntity;
 import data.model.mapper.SicariosContratosMapper;
-import domain.models.Estado;
 import domain.models.SicarioContrato;
 import domain.services.ServicesSicariosContratos;
 import jakarta.inject.Inject;

@@ -34,6 +34,8 @@ public class ContratoEntity {
     private String clave;
     @Column
     private int habilidad;
+    @Column(name = "detalle_firmado")
+    private String detalleFirmado;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = Constants.ID_USUARIO_COLUMN, nullable = false)

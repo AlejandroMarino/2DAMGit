@@ -3,7 +3,6 @@ package data.dao.daoImpl;
 import com.google.gson.Gson;
 import data.dao.DaoSicarioContrato;
 import data.network.SicarioContratoApi;
-import domain.models.Estado;
 import domain.models.SicarioContrato;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;

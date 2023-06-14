@@ -1,6 +1,5 @@
 package jakarta.rest;
 
-import domain.models.Contrato;
 import domain.models.Usuario;
 import domain.services.ServicesUsuario;
 import jakarta.inject.Inject;
@@ -45,13 +44,13 @@ public class RestUsuarios {
 
     @GET
     @Path("/sicarioContrato")
-    public List<Usuario> getSicariosContrato(@QueryParam("contrato")int idContrato) {
+    public List<Usuario> getSicariosContrato(@QueryParam("contrato") int idContrato) {
         return sU.getSicariosContrato(idContrato);
     }
 
     @GET
     @Path("/sicariosFilterHabilidad")
-    public List<Usuario> getSicariosFilterHabilidad(@QueryParam("habilidad")int habilidad) {
+    public List<Usuario> getSicariosFilterHabilidad(@QueryParam("habilidad") int habilidad) {
         return sU.getSicariosFilterHabilidad(habilidad);
     }
 

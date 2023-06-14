@@ -1,7 +1,6 @@
 package jakarta.rest;
 
 import domain.models.Contrato;
-import domain.models.Estado;
 import domain.models.SicarioContrato;
 import domain.models.Usuario;
 import domain.services.ServicesSicariosContratos;
@@ -40,7 +39,7 @@ public class RestSicariosContratos {
     }
 
     @GET
-    public SicarioContrato get(@QueryParam("sicario")int idSicario, @QueryParam("contrato")int idContrato) {
+    public SicarioContrato get(@QueryParam("sicario") int idSicario, @QueryParam("contrato") int idContrato) {
         return sSC.get(new SicarioContrato(new Usuario(idSicario), new Contrato(idContrato)));
     }
 }

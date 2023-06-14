@@ -5,10 +5,7 @@ import asymmetric.CifrarTextoConClaves;
 import asymmetric.Firmar;
 import asymmetric.KeyStore;
 import domain.model.Detalle;
-import domain.models.Contrato;
-import domain.models.Estado;
-import domain.models.SicarioContrato;
-import domain.models.Usuario;
+import domain.models.*;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
@@ -69,8 +66,8 @@ public class SicarioViewModel {
                 );
     }
 
-    public void getDetalle(Contrato contrato, Usuario sicario) {
-        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(sicario, sicario.getPassword());
+    public void getDetalle(Contrato contrato, Usuario sicario, java.security.KeyStore ks) {
+        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(ks, sicario.getPassword());
         if (rGetPK.isLeft()) {
             state.setValue(new SicarioState(null, null, null, rGetPK.getLeft()));
         } else {
@@ -90,20 +87,18 @@ public class SicarioViewModel {
                                         if (rDecrypt == null) {
                                             state.setValue(new SicarioState(null, null, null, "Error al descifrar el contrato"));
                                         } else {
-
-                                            //coger la firma del contrato
-
                                             Either<String, PublicKey> rGetPubContratista = certificado.getPublicKeyFromCertificateEncoded(contrato.getUsuario().getClave());
                                             if (rGetPubContratista.isLeft()) {
                                                 state.setValue(new SicarioState(null, null, null, rGetPubContratista.getLeft()));
                                             } else {
-//                                                Either<String, String> rComprobarFirma = firmar.verificarFirma(, rGetPubContratista.get());
-//                                                if (rComprobarFirma.isLeft()) {
-//                                                    state.setValue(new SicarioState(null, null, null, rComprobarFirma.getLeft()));
-//                                                } else {
-//                                                    Detalle detalle = sC.getDetalleContrato(rDecrypt);
-//                                                    state.setValue(new SicarioState(null, detalle, null, null));
-//                                                }
+                                                Firma f = new Firma(rDecrypt, contrato.getDetalleFirmado());
+                                                Either<String, String> rComprobarFirma = firmar.verificarFirma(f, rGetPubContratista.get());
+                                                if (rComprobarFirma.isLeft()) {
+                                                    state.setValue(new SicarioState(null, null, null, rComprobarFirma.getLeft()));
+                                                } else {
+                                                    Detalle detalle = sC.getDetalleContratoSicario(rDecrypt);
+                                                    state.setValue(new SicarioState(null, detalle, null, null));
+                                                }
                                             }
                                         }
                                     }

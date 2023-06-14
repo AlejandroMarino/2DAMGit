@@ -1,7 +1,6 @@
 package services.servicesImpl;
 
 import data.dao.DaoSicarioContrato;
-import domain.models.Estado;
 import domain.models.SicarioContrato;
 import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;

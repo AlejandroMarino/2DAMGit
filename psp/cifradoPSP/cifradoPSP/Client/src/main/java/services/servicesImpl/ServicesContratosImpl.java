@@ -15,9 +15,11 @@ import io.reactivex.rxjava3.core.Single;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import services.ServicesContratos;
+import symmetric.Encryption;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.util.List;
 
 public class ServicesContratosImpl implements ServicesContratos {
@@ -32,27 +34,30 @@ public class ServicesContratosImpl implements ServicesContratos {
 
     private final Certificado certificado;
 
+    private final Encryption encryption;
+
     private final CifrarTextoConClaves cifrarTextoConClaves;
 
     @Inject
-    public ServicesContratosImpl(DaoContratos dC, Firmar firmar, Gson gson, KeyStore keyStore, Certificado certificado, CifrarTextoConClaves cifrarTextoConClaves) {
+    public ServicesContratosImpl(DaoContratos dC, Firmar firmar, Gson gson, KeyStore keyStore, Certificado certificado, Encryption encryption, CifrarTextoConClaves cifrarTextoConClaves) {
         this.dC = dC;
         this.firmar = firmar;
         this.gson = gson;
         this.keyStore = keyStore;
         this.certificado = certificado;
+        this.encryption = encryption;
         this.cifrarTextoConClaves = cifrarTextoConClaves;
     }
 
     @Override
-    public Single<Either<String, Contrato>> add(Contrato contrato, Detalle detalle) {
-        Contrato c = convertirDetalle(detalle, contrato.getUsuario());
+    public Single<Either<String, Contrato>> add(Contrato contrato, Detalle detalle, java.security.KeyStore ks) {
+        Contrato c = convertirDetalle(detalle, contrato.getUsuario(), ks);
         return dC.add(c);
     }
 
     @Override
-    public Single<Either<String, Contrato>> update(Contrato contrato, Detalle detalle) {
-        Contrato c = convertirDetalle(detalle, contrato.getUsuario());
+    public Single<Either<String, Contrato>> update(Contrato contrato, Detalle detalle, java.security.KeyStore ks) {
+        Contrato c = convertirDetalle(detalle, contrato.getUsuario(), ks);
         return dC.update(c);
     }
 
@@ -77,13 +82,29 @@ public class ServicesContratosImpl implements ServicesContratos {
     }
 
     @Override
-    public Detalle getDetalleContrato(String detalle) {
+    public Detalle getDetalleContratoContratista(Contrato contrato, java.security.KeyStore ks) {
+        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(ks, contrato.getUsuario().getPassword());
+        if (rGetPK.isLeft()) {
+            return null;
+        } else {
+            Either<String, String> rDescifrarClave = cifrarTextoConClaves.descifrarTextoConClavePrivada(rGetPK.get(), contrato.getClave());
+            if (rDescifrarClave.isLeft()) {
+                return null;
+            } else {
+                String detalle = encryption.decrypt(contrato.getDetalle(), rDescifrarClave.get());
+                return gson.fromJson(detalle, Detalle.class);
+            }
+        }
+    }
+
+    @Override
+    public Detalle getDetalleContratoSicario(String detalle) {
         return gson.fromJson(detalle, Detalle.class);
     }
 
-    private Contrato convertirDetalle(Detalle detalle, Usuario contratista) {
+    private Contrato convertirDetalle(Detalle detalle, Usuario contratista, java.security.KeyStore ks) {
         Contrato c = new Contrato();
-        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(contratista, contratista.getPassword());
+        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(ks, contratista.getPassword());
         if (rGetPK.isLeft()) {
             return null;
         } else {
@@ -94,22 +115,25 @@ public class ServicesContratosImpl implements ServicesContratos {
             } else {
                 Firma f = rFirmar.get();
 
-                // cifrar con clave aleatoria, añadir a contrato el detalle, coger la clave aleatoria y cifrarla con la clave publica del contratista y anñadirla a clave del contrato
+                c.setDetalleFirmado(f.getFirmaEnBase64());
+                SecureRandom sr = new SecureRandom();
+                byte[] bytes = new byte[16];
+                sr.nextBytes(bytes);
+                String claveAleatoria = new String(bytes);
 
-                // falta cifrar con clave aleatoria, cifrar la clave aleatoria con la clave publica del contratista y guardar en base de datos
+                String detalleEncriptado = encryption.encrypt(f.getTextoFirmado(), claveAleatoria);
+
+                c.setDetalle(detalleEncriptado);
 
                 Either<String, PublicKey> rGetPub = certificado.getPublicKeyFromCertificateEncoded(contratista.getClave());
                 if (rGetPub.isLeft()) {
                     return null;
                 } else {
-
-                    //cifrar comprovar
-
-                    Either<String, String> rCifrar = cifrarTextoConClaves.cifrarTextoConClavePublica(rGetPub.get(), f.getFirmaEnBase64());
+                    Either<String, String> rCifrar = cifrarTextoConClaves.cifrarTextoConClavePublica(rGetPub.get(), claveAleatoria);
                     if (rCifrar.isLeft()) {
                         return null;
                     } else {
-//                        return rCifrar.get();
+                        c.setClave(rCifrar.get());
                         return c;
                     }
                 }

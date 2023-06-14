@@ -15,6 +15,7 @@ public class Contrato {
     private String clave;
     private Usuario usuario;
     private int habilidad;
+    private String detalleFirmado;
 
     public Contrato(int id) {
         this.id = id;

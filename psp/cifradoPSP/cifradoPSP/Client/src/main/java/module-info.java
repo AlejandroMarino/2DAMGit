@@ -1,20 +1,23 @@
 module Client {
     requires Domain;
+    requires Seguridad;
+    requires jakarta.inject;
+    requires jakarta.cdi;
+    requires javafx.fxml;
+    requires lombok;
     requires javafx.graphics;
     requires javafx.controls;
-    requires javafx.fxml;
-    requires jakarta.cdi;
-    requires jakarta.inject;
-    requires lombok;
     requires org.apache.logging.log4j;
     requires io.reactivex.rxjava3;
     requires io.vavr;
-    requires retrofit2;
     requires com.google.gson;
-    requires retrofit2.converter.gson;
     requires okhttp3;
-    requires Seguridad;
+    requires retrofit2;
+    requires gson.javatime.serialisers;
     requires retrofit2.adapter.rxjava3;
+    requires retrofit2.converter.gson;
+    requires retrofit2.converter.scalars;
+    requires java.sql;
 
     exports ui.fx;
     exports data.network;
@@ -31,6 +34,8 @@ module Client {
     exports config;
     exports common;
     exports domain.model;
+    exports ui.generateKeyStoreServidor;
+    exports data.security;
 
     opens ui.fx;
     opens ui.pantallas.login;

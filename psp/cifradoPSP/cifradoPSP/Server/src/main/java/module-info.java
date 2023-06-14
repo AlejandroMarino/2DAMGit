@@ -8,6 +8,6 @@ module Server {
     requires io.vavr;
     requires jboss.classfilewriter;
     requires org.jboss.logging;
-    requires jakarta.jakartaee.web.api;
     requires lombok;
+    requires jakarta.jakartaee.web.api;
 }

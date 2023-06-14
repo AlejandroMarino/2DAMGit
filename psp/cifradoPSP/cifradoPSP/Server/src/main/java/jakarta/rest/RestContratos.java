@@ -43,19 +43,19 @@ public class RestContratos {
 
     @GET
     @Path("/contratista")
-    public List<Contrato> getContratosContratista(@QueryParam("id")int id) {
+    public List<Contrato> getContratosContratista(@QueryParam("id") int id) {
         return sC.getAllOfContratista(new Usuario(id));
     }
 
     @GET
     @Path("/sicario")
-    public List<Contrato> getContratosSicario(@QueryParam("id")int id) {
+    public List<Contrato> getContratosSicario(@QueryParam("id") int id) {
         return sC.getAllOfSicario(new Usuario(id));
     }
 
     @GET
     @Path("/sicarioFilterEstado")
-    public List<Contrato> getContratosSicarioFilterEstado(@QueryParam("id")int id, @QueryParam("estado")String estado) {
+    public List<Contrato> getContratosSicarioFilterEstado(@QueryParam("id") int id, @QueryParam("estado") String estado) {
         return sC.getAllOfSicarioFilterEstado(new Usuario(id), Estado.valueOf(estado));
     }
 

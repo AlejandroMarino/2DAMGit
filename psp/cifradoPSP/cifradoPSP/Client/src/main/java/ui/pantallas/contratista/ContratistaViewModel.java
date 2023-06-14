@@ -13,6 +13,8 @@ import services.ServicesContratos;
 import services.ServicesSicariosContratos;
 import services.ServicesUsuarios;
 
+import java.security.KeyStore;
+
 public class ContratistaViewModel {
 
     private final ServicesUsuarios sU;
@@ -78,8 +80,8 @@ public class ContratistaViewModel {
                 );
     }
 
-    public void getDetalle(Contrato contrato) {
-        Detalle d = sC.getDetalleContrato(contrato.getDetalle());
+    public void getDetalle(Contrato contrato, KeyStore ks) {
+        Detalle d = sC.getDetalleContratoContratista(contrato, ks);
         state.setValue(new ContratistaState(null, null, d, null, null));
     }
 

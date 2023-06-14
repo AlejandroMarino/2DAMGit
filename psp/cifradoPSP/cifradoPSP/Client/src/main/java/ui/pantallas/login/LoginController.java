@@ -31,9 +31,9 @@ public class LoginController extends BasePantallaController {
                 }
                 if (newValue.isLogged()) {
                     if (newValue.getUsuario().getTipo().equals(Tipo.CONTRATISTA)) {
-                        getPrincipalController().goContratista(newValue.getUsuario());
+                        getPrincipalController().goContratista(newValue.getUsuario(), newValue.getKeyStore());
                     } else {
-                        getPrincipalController().goSicario(newValue.getUsuario());
+                        getPrincipalController().goSicario(newValue.getUsuario(), newValue.getKeyStore());
                     }
                 }
             });

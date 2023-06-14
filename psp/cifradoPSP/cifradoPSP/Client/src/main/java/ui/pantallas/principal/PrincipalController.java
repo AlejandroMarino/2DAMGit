@@ -16,6 +16,7 @@ import ui.common.Pantallas;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.KeyStore;
 import java.util.ResourceBundle;
 
 @Log4j2
@@ -28,6 +29,12 @@ public class PrincipalController implements Initializable {
     private Usuario usuarioActual;
 
     private Contrato contratoActual;
+
+    private KeyStore keyStore;
+
+    public KeyStore getKeyStore() {
+        return keyStore;
+    }
 
     public Contrato getContratoActual() {
         return contratoActual;
@@ -83,8 +90,9 @@ public class PrincipalController implements Initializable {
         cargarPantalla(Pantallas.REGISTER);
     }
 
-    public void goContratista(Usuario usuario) {
+    public void goContratista(Usuario usuario, KeyStore ks) {
         usuarioActual = usuario;
+        keyStore = ks;
         cargarPantalla(Pantallas.CONTRATISTA);
     }
 
@@ -101,8 +109,9 @@ public class PrincipalController implements Initializable {
         cargarPantalla(Pantallas.ELEGIRSICARIOS);
     }
 
-    public void goSicario(Usuario usuario) {
+    public void goSicario(Usuario usuario, KeyStore ks) {
         usuarioActual = usuario;
+        keyStore = ks;
         cargarPantalla(Pantallas.SICARIO);
     }
 

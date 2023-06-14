@@ -61,7 +61,7 @@ public class ElegirSicariosController extends BasePantallaController {
             elegirSicariosViewModel.mostrarMensaje("Debe seleccionar al menos un sicario");
         } else {
             elegirSicariosViewModel.elegirSicarios(tableSicarios.getSelectionModel().getSelectedItems(),
-                    getPrincipalController().getContratoActual(), getPrincipalController().getUsuarioActual());
+                    getPrincipalController().getContratoActual(), getPrincipalController().getUsuarioActual(), getPrincipalController().getKeyStore());
         }
     }
 }

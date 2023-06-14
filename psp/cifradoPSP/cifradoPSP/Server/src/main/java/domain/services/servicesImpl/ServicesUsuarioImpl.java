@@ -2,9 +2,9 @@ package domain.services.servicesImpl;
 
 import asymmetric.Certificado;
 import asymmetric.KeyStore;
+import config.Credentials;
 import data.dao.DaoUsuario;
 import data.model.UsuarioEntity;
-import data.model.mapper.ContratoMapper;
 import data.model.mapper.UsuariosMapper;
 import domain.models.Usuario;
 import domain.services.ServicesUsuario;
@@ -23,38 +23,35 @@ public class ServicesUsuarioImpl implements ServicesUsuario {
 
     private final UsuariosMapper uM;
 
-    private final ContratoMapper cM;
-
     private final Pbkdf2PasswordHash passwordHash;
 
     private final KeyStore keyStore;
 
     private final Certificado certificado;
 
+    private final Credentials credentials;
+
     @Inject
-    public ServicesUsuarioImpl(DaoUsuario dU, UsuariosMapper uM, ContratoMapper cM, Pbkdf2PasswordHash passwordHash, KeyStore keyStore, Certificado certificado) {
+    public ServicesUsuarioImpl(DaoUsuario dU, UsuariosMapper uM, Pbkdf2PasswordHash passwordHash, KeyStore keyStore, Certificado certificado, Credentials credentials) {
         this.dU = dU;
         this.uM = uM;
-        this.cM = cM;
         this.passwordHash = passwordHash;
         this.keyStore = keyStore;
         this.certificado = certificado;
+        this.credentials = credentials;
     }
-
 
     @Override
     public Usuario register(Usuario usuario) {
-        String pass = usuario.getPassword();
-        usuario.setPassword(passwordHash.generate(pass.toCharArray()));
-        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(new Usuario("server"), "server");
-        if (rGetPK.isLeft()) {
-            return null;
-        } else {
+
+        try {
+            PrivateKey privateKey = credentials.getPrivateKey();
+
             Either<String, PublicKey> rGetPub = keyStore.convertBase64ToPublicKey(usuario.getClave());
             if (rGetPub.isLeft()) {
                 return null;
             } else {
-                Either<String, X509Certificate> rGetCertificado = certificado.certificatePublicKey(rGetPub.get().getEncoded(), rGetPK.get());
+                Either<String, X509Certificate> rGetCertificado = certificado.certificatePublicKey(rGetPub.get().getEncoded(), privateKey);
                 if (rGetCertificado.isLeft()) {
                     return null;
                 } else {
@@ -68,6 +65,9 @@ public class ServicesUsuarioImpl implements ServicesUsuario {
                     }
                 }
             }
+
+        } catch (Exception e) {
+            return null;
         }
     }
 

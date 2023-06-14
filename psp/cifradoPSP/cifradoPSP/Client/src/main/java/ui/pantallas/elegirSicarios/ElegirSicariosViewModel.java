@@ -61,8 +61,8 @@ public class ElegirSicariosViewModel {
                 );
     }
 
-    public void elegirSicarios(List<Usuario> usuarios, Contrato contrato, Usuario contratista) {
-        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(contratista, contratista.getPassword());
+    public void elegirSicarios(List<Usuario> usuarios, Contrato contrato, Usuario contratista, java.security.KeyStore ks) {
+        Either<String, PrivateKey> rGetPK = keyStore.getPrivateKeyFromKeyStore(ks, contratista.getPassword());
         if (rGetPK.isLeft()) {
             state.setValue(new ElegirSicariosState(null, rGetPK.getLeft(), false));
         } else {
@@ -71,17 +71,17 @@ public class ElegirSicariosViewModel {
                 state.setValue(new ElegirSicariosState(null, rDescifrar.getLeft(), false));
             } else {
                 List<SicarioContrato> l = usuarios.stream().map(usuario -> {
-                   Either<String, PublicKey> rConvertPub = keyStore.convertBase64ToPublicKey(usuario.getClave());
-                   if (rConvertPub.isLeft()) {
-                       return null;
-                   } else {
-                       Either<String, String> rCifrar = cifrarTextoConClaves.cifrarTextoConClavePublica(rConvertPub.get(), rDescifrar.get());
-                       if (rCifrar.isLeft()) {
-                           return null;
-                       } else {
-                           return new SicarioContrato(usuario, contrato, rCifrar.get());
-                       }
-                   }
+                    Either<String, PublicKey> rConvertPub = keyStore.convertBase64ToPublicKey(usuario.getClave());
+                    if (rConvertPub.isLeft()) {
+                        return null;
+                    } else {
+                        Either<String, String> rCifrar = cifrarTextoConClaves.cifrarTextoConClavePublica(rConvertPub.get(), rDescifrar.get());
+                        if (rCifrar.isLeft()) {
+                            return null;
+                        } else {
+                            return new SicarioContrato(usuario, contrato, rCifrar.get());
+                        }
+                    }
                 }).toList();
                 sSC.add(l)
                         .observeOn(Schedulers.single())

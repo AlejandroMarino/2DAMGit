@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface ServicesContratos {
 
-    Single<Either<String, Contrato>> add(Contrato contrato, Detalle detalle);
+    Single<Either<String, Contrato>> add(Contrato contrato, Detalle detalle, java.security.KeyStore ks);
 
-    Single<Either<String, Contrato>> update(Contrato contrato, Detalle detalle);
+    Single<Either<String, Contrato>> update(Contrato contrato, Detalle detalle, java.security.KeyStore ks);
 
     Single<Either<String, List<Contrato>>> getContratosContratista(int idContratista);
 
@@ -22,5 +22,7 @@ public interface ServicesContratos {
 
     Single<Either<String, Contrato>> getContrato(int id);
 
-    Detalle getDetalleContrato(String detalle);
+    Detalle getDetalleContratoContratista(Contrato contrato, java.security.KeyStore ks);
+
+    Detalle getDetalleContratoSicario(String detalle);
 }

@@ -57,7 +57,7 @@ public class CrearContratoController extends BasePantallaController {
             crearContratoViewModel.mostrarMensaje("Debe rellenar todos los campos");
         } else {
             Detalle detalle = new Detalle(textTitulo.getText(), textObjetivo.getText(), Double.parseDouble(textPrecio.getText()), Integer.parseInt(textHabilidad.getText()));
-            crearContratoViewModel.crearContrato(new Contrato(usuario, Integer.parseInt(textHabilidad.getText())), detalle);
+            crearContratoViewModel.crearContrato(new Contrato(usuario, Integer.parseInt(textHabilidad.getText())), detalle, getPrincipalController().getKeyStore());
         }
     }
 }

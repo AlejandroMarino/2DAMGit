@@ -67,7 +67,7 @@ public class SicarioController extends BasePantallaController {
         });
         tableContratos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                sicarioViewModel.getDetalle(newSelection, getPrincipalController().getUsuarioActual());
+                sicarioViewModel.getDetalle(newSelection, getPrincipalController().getUsuarioActual(), getPrincipalController().getKeyStore());
                 sicarioViewModel.getEstado(newSelection, getPrincipalController().getUsuarioActual());
             }
         });

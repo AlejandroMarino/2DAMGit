@@ -78,7 +78,7 @@ public class ContratistaController extends BasePantallaController {
         tableContratos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 contratistaViewModel.getSicariosOfContrato(newSelection);
-                contratistaViewModel.getDetalle(newSelection);
+                contratistaViewModel.getDetalle(newSelection, getPrincipalController().getKeyStore());
             }
         });
         tableSicarios.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {

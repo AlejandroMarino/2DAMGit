@@ -41,9 +41,9 @@ public class FirmarImpl implements Firmar {
             sign.update(firma.getTextoFirmado().getBytes());
             byte[] firmaDescifrada = Base64.getUrlDecoder().decode(firma.getFirmaEnBase64());
             if (sign.verify(firmaDescifrada)) {
-                result = Either.right("Login correct");
+                result = Either.right("sign verified");
             } else {
-                result = Either.left("Wrong user name or password");
+                result = Either.left("The text was modified");
             }
         } catch (InvalidKeyException | SignatureException | NoSuchAlgorithmException e) {
             log.error(e.getMessage(), e);

@@ -31,7 +31,7 @@ public class KeyStoreImpl implements asymmetric.KeyStore {
             char[] password = user.getPassword().toCharArray();
             ks.setKeyEntry("private", pk, password, new Certificate[]{cert});
 
-            Path path = Path.of("Server/src/main/resources/data" + user.getNombre() + ".pfx");
+            Path path = Path.of("Client/data/" + user.getNombre() + ".pfx");
             File keyStore = new File(path.toUri());
             if (keyStore.createNewFile()) {
                 OutputStream stream = new FileOutputStream(path.toFile());
@@ -49,40 +49,25 @@ public class KeyStoreImpl implements asymmetric.KeyStore {
     }
 
     @Override
-    public Either<String, PrivateKey> getPrivateKeyFromKeyStore(Usuario user, String passwordStr) {
-        Either<String, PrivateKey> result;
-
-        char[] password = passwordStr.toCharArray();
-        Path path = Paths.get("Client/data/" + user.getNombre() + ".pfx");
-        try (InputStream input = Files.newInputStream(path)) {
-            KeyStore ksLoad = KeyStore.getInstance("PKCS12");
-            ksLoad.load(input, password);
-            KeyStore.PasswordProtection pt = new KeyStore.PasswordProtection(password);
-            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) ksLoad.getEntry("private", pt);
-            result = Either.right(privateKeyEntry.getPrivateKey());
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            result = Either.left("Error getting private key");
+    public Either<String, PrivateKey> getPrivateKeyFromKeyStore(KeyStore keyStore, String password) {
+        try {
+            KeyStore.PasswordProtection pt = new KeyStore.PasswordProtection(password.toCharArray());
+            KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) keyStore.getEntry("private", pt);
+            return Either.right(privateKeyEntry.getPrivateKey());
+        } catch (UnrecoverableEntryException | KeyStoreException | NoSuchAlgorithmException e) {
+            log.error("error al encontrar la clave ", e);
+            return Either.left("error al encontrar la clave");
         }
-        return result;
     }
 
     @Override
-    public Either<String, X509Certificate> getCertificateFromKeyStore(Usuario user, String passwordStr) {
-        Either<String, X509Certificate> result;
-
-        char[] password = passwordStr.toCharArray();
-        Path path = Paths.get("Client/data/" + user.getNombre() + ".pfx");
-        try (InputStream input = Files.newInputStream(path)) {
-            KeyStore ksLoad = KeyStore.getInstance("PKCS12");
-            ksLoad.load(input, password);
-            X509Certificate loadedCert = (X509Certificate) ksLoad.getCertificate("public");
-            result = Either.right(loadedCert);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            result = Either.left("Error getting certificate");
+    public Either<String, X509Certificate> getCertificateFromKeyStore(KeyStore keyStore) {
+        try {
+            return Either.right((X509Certificate) keyStore.getCertificate("public"));
+        } catch (KeyStoreException e) {
+            log.error("error al obtener el certificado", e);
+            return Either.left("error al obtener el certificado");
         }
-        return result;
     }
 
     @Override
@@ -110,5 +95,19 @@ public class KeyStoreImpl implements asymmetric.KeyStore {
             result = Either.left("Error decoding public key");
         }
         return result;
+    }
+
+    @Override
+    public Either<String, KeyStore> getKeyStore(String pathKeyStore, String password) {
+        KeyStore keyStore;
+        try (FileInputStream fileInputStream = new FileInputStream(pathKeyStore)) {
+            keyStore = KeyStore.getInstance("PKCS12");
+            keyStore.load(fileInputStream, password.toCharArray());
+        } catch (KeyStoreException | IOException | NoSuchAlgorithmException | CertificateException e) {
+            log.error("error al encontrar el keystore", e);
+            log.info(Paths.get(pathKeyStore).toAbsolutePath().toString());
+            return Either.left("Error al encontrar el keystore");
+        }
+        return Either.right(keyStore);
     }
 }
