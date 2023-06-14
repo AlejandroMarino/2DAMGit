@@ -16,5 +16,4 @@ public interface LoginApi {
     @GET("login")
     Single<Response<Void>> login(@Query("username") String username, @Query("password") String password);
 
-
 }
