@@ -1,0 +1,42 @@
+
+d
+java:S1192¼"HDefine a constant instead of duplicating this literal "$unwind" 3 times.(´§ğüúÿÿÿÿ
+t
+java:S1192€"XDefine a constant instead of duplicating this literal "$orders.orderItems.name" 3 times.(È›€Òıÿÿÿÿ
+b
+java:S1192§"FDefine a constant instead of duplicating this literal "total" 3 times.(É”ÿŞıÿÿÿÿ
+d
+java:S1192¦"MDefine a constant instead of duplicating this literal "$orders.date" 3 times.(©›öÛ
+j
+java:S1192§"NDefine a constant instead of duplicating this literal "$orders.total" 5 times.(É”ÿŞıÿÿÿÿ
+x
+java:S1192©"\Define a constant instead of duplicating this literal "$orders.orderItems.quantity" 5 times.(‹íİûÿÿÿÿ
+o
+java:S1192£"SDefine a constant instead of duplicating this literal "$orders.orderItems" 7 times.(ÆàÄÈşÿÿÿÿ
+b
+java:S1192a"LDefine a constant instead of duplicating this literal "restaurant" 12 times.(ÛäÖ
+b
+java:S1192"FDefine a constant instead of duplicating this literal "count" 7 times.(ö„Í­ÿÿÿÿÿ
+^
+java:S1192³"GDefine a constant instead of duplicating this literal "$items" 3 times.(¥”ÿÚ
+e
+java:S1192¢"IDefine a constant instead of duplicating this literal "$orders" 11 times.(û§ÆÒıÿÿÿÿ
+i
+java:S1192¨"MDefine a constant instead of duplicating this literal "$orders.paid" 3 times.(†œÄÓÿÿÿÿÿ
+b
+java:S1192©"FDefine a constant instead of duplicating this literal "items" 4 times.(‹íİûÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ó§„İ
+V	java:S125""<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+V	java:S125K"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+V	java:S125t"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125¸"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125ì"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125Á"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125’"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125Ë"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125€"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125Ç"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125Œ"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125×"<This block of commented-out lines of code should be removed.(¡»¢üùÿÿÿÿ
+W	java:S125ø"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+W	java:S125¸"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
