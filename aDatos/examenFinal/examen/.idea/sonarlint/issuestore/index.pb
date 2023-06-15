@@ -1,0 +1,21 @@
+
+Q
+!src/main/java/config/JPAUtil.java,9\2\9205e36615a0eda5d97570a781c2d6570bd34de1
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+S
+#src/main/java/common/Constants.java,6\e\6ebd50c2038f1fef9135e3562ebde17286486774
+W
+'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+n
+>src/main/java/domain/services/servicesMongo/ServicesMongo.java,3\f\3f4b7f12157da8f7656884d4f1b3473cd4cd0b4c
+X
+(src/main/java/dao/daoMongo/DaoMongo.java,4\5\454a78ca0525611f06fc0dfb767cc6f35dddba98
+P
+ src/main/java/ui/mongo/Main.java,d\9\d9e574bf9aeaf8f2d1c1a3d810d941431a8e9a58
+]
+-src/main/java/ui/hibernate/MainHibernate.java,8\c\8c37e5c67c73f362726554844e86acec77ca6867

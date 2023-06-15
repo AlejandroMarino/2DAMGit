@@ -1,8 +1,4 @@
 
-f
-6src/main/java/dao/daoHibernate/DaoPermisosObjetos.java,4\0\40f529ee8193d99a4406bc2e820d0c84de940098
-h
-8src/main/java/dao/daoHibernate/DaoPermisosUbicacion.java,c\f\cf90c1450ab1805a622a2ad54fb446497822037d
 Q
 !src/main/java/config/JPAUtil.java,9\2\9205e36615a0eda5d97570a781c2d6570bd34de1
 a
@@ -15,8 +11,6 @@ O
 src/main/java/di/Producers.java,a\c\ace3a4e4bf50ad37b07b97858287a74c7c19d757
 n
 >src/main/java/domain/services/servicesMongo/ServicesMongo.java,3\f\3f4b7f12157da8f7656884d4f1b3473cd4cd0b4c
-u
-Esrc/main/java/domain/services/servicesHibernate/ServicesPermisos.java,b\2\b2ff1881ee8b57a9261ad26fdfd64062c7b71b27
 {
 Ksrc/main/java/domain/services/servicesHibernate/ServicesPermisosObjeto.java,4\e\4e3152259bb0e8a3f664541f20263d0365f02750
 d
@@ -29,8 +23,6 @@ X
 (src/main/java/dao/daoMongo/DaoMongo.java,4\5\454a78ca0525611f06fc0dfb767cc6f35dddba98
 W
 'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
-^
-.src/main/java/dao/daoHibernate/DaoObjetos.java,6\e\6e4a9bd3998a50e200456c1cc880c4327dee2aaf
 Å
 Q.idea/sonarlint/securityhotspotstore/0/6/0616931c1bf5cbb93b8724226515415f83a482f1,2\d\2d3a0aa808502073450446614a1eb8e64ae30c82
 Å
@@ -65,22 +57,5 @@ P
  src/main/java/ui/mongo/Main.java,d\9\d9e574bf9aeaf8f2d1c1a3d810d941431a8e9a58
 ]
 -src/main/java/ui/hibernate/MainHibernate.java,8\c\8c37e5c67c73f362726554844e86acec77ca6867
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-q
-Asrc/main/java/domain/model/modelHibernate/UbicacionHibernate.java,5\1\5175f5994bca8fc3c619b62654368ddedd5266ea
-o
-?src/main/java/domain/model/modelHibernate/UsuarioHibernate.java,0\d\0dbff40371a80ffca1513a88473f345e7867b560
-w
-Gsrc/main/java/domain/model/modelHibernate/PermisosObjetosHibernate.java,e\1\e1271b624cfcb976ad15ae5c4cf1204e9f88c8c5
-_
-/src/main/java/dao/daoHibernate/DaoPermisos.java,7\5\75ba6f2166fa3464f6e66a983d963f6387c5669c
 S
 #src/main/java/common/Constants.java,6\e\6ebd50c2038f1fef9135e3562ebde17286486774
-{
-Ksrc/main/java/domain/model/modelHibernate/PermisosUbicacionesHibernate.java,8\8\88a8a1c0cdd781482eb0992dcd48572986cfd1c4
-p
-@src/main/java/domain/model/modelHibernate/PermisosHibernate.java,6\4\642044881a04353ba75cb54cffcc8be7049ad505
-:
-
-examen.iml,d\7\d7a8b3c20882b1b0935d5e56363f7ad0476c5370
