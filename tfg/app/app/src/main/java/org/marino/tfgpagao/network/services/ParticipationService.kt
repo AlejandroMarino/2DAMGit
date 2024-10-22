@@ -1,6 +1,7 @@
 package org.marino.tfgpagao.network.services
 
 import org.marino.tfgpagao.domain.model.Participation
+import org.marino.tfgpagao.domain.model.Receipt
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -10,7 +11,7 @@ import retrofit2.http.Query
 interface ParticipationService {
 
     @GET("/participations/of_receipt")
-    suspend fun getParticipationsOfReceipt(): Response<List<Participation>>
+    suspend fun getParticipationsOfReceipt(@Query("receipt") receipt: Int): Response<List<Participation>>
 
     @GET("/participations")
     suspend fun getParticipation(

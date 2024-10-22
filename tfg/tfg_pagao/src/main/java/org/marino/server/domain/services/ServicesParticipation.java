@@ -10,6 +10,9 @@ import org.marino.server.data.models.mappers.MemberMapper;
 import org.marino.server.data.models.mappers.ParticipationMapper;
 import org.marino.server.data.models.mappers.ReceiptMapper;
 import org.marino.server.data.models.repositories.ParticipationEntityRepository;
+import org.marino.server.data.models.repositories.ReceiptEntityRepository;
+import org.marino.server.domain.exceptions.BadRequestException;
+import org.marino.server.domain.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,8 +36,9 @@ public class ServicesParticipation {
     private final ReceiptMapper receiptMapper;
 
     private final ServicesReceipt sReceipt;
+    private final ReceiptEntityRepository receiptR;
 
-    public ServicesParticipation(ParticipationEntityRepository participationR, ParticipationMapper participationMapper, MemberMapper memberMapper, ServicesMember sMember, GroupMapper groupMapper, ServicesGroup sGroup, ReceiptMapper receiptMapper, ServicesReceipt sReceipt) {
+    public ServicesParticipation(ParticipationEntityRepository participationR, ParticipationMapper participationMapper, MemberMapper memberMapper, ServicesMember sMember, GroupMapper groupMapper, ServicesGroup sGroup, ReceiptMapper receiptMapper, ServicesReceipt sReceipt, ReceiptEntityRepository receiptR) {
         this.participationR = participationR;
         this.participationMapper = participationMapper;
         this.memberMapper = memberMapper;
@@ -43,9 +47,13 @@ public class ServicesParticipation {
         this.sGroup = sGroup;
         this.receiptMapper = receiptMapper;
         this.sReceipt = sReceipt;
+        this.receiptR = receiptR;
     }
 
     public List<Participation> getAllOfReceipt(int receiptId) {
+        if (!receiptR.existsById(receiptId)) {
+            throw new NotFoundException("Receipt with id " + receiptId + " not found");
+        }
         return participationR.getAllOfReceipt(receiptId)
                 .stream()
                 .map(participationMapper::toParticipation)
@@ -53,8 +61,10 @@ public class ServicesParticipation {
     }
 
     public Participation get(int memberId, int receiptId) {
-        return participationR.findById(new ParticipationEntityId(memberId, receiptId))
-                .map(participationMapper::toParticipation).orElse(null);
+        ParticipationEntityId participationId = new ParticipationEntityId(memberId, receiptId);
+        return participationR.findById(participationId)
+                .map(participationMapper::toParticipation)
+                .orElseThrow(() -> new NotFoundException("Participation with member id " + memberId + ", and receipt id " + receiptId + " not found"));
     }
 
     public Participation add(Participation participation) {
@@ -69,7 +79,7 @@ public class ServicesParticipation {
                     )
             ));
         } else {
-            return null;
+            throw new BadRequestException("Impossible to add a participation of a member in a receipt of different group");
         }
     }
 }

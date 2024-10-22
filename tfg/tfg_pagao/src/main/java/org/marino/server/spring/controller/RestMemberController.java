@@ -27,6 +27,11 @@ public class RestMemberController {
         return sM.get(id);
     }
 
+    @GetMapping("/{id}/balance")
+    public Double getBalanceOfMember(@PathVariable int id) {
+        return sM.getBalanceOfMember(id);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Member add(@RequestBody Member member) {
