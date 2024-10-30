@@ -12,4 +12,7 @@ public interface ReceiptEntityRepository extends JpaRepository<ReceiptEntity, In
 
     @Query("FROM ReceiptEntity r WHERE r.group.id = :groupId")
     List<ReceiptEntity> getAllOfGroup(int groupId);
+
+    @Query("SELECT sum(p.pays) FROM ParticipationEntity p WHERE p.receipt.id = :receiptId")
+    double getTotalPaidOfReceipt(int receiptId);
 }

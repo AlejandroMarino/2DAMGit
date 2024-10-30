@@ -1,14 +1,11 @@
 package org.marino.tfgpagao.ui.screens.common
 
-import android.content.Intent
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import org.marino.tfgpagao.ui.screens.MainActivity
 import org.marino.tfgpagao.ui.screens.groupCreation.GroupCreationScreen
 import org.marino.tfgpagao.ui.screens.groups.GroupListScreen
 import org.marino.tfgpagao.ui.screens.receipts.ReceiptListScreen
@@ -16,7 +13,6 @@ import org.marino.tfgpagao.ui.screens.receipts.ReceiptListScreen
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    val context = LocalContext.current
     NavHost(
         navController = navController,
         startDestination = "groupList",
@@ -25,7 +21,7 @@ fun Navigation() {
             "groupList"
         ) {
             GroupListScreen(
-                goReceiptList = { id -> navController.navigate("receiptList/$id") },
+                goReceiptList = { id, groupName -> navController.navigate("receiptList/$id/${groupName}") },
                 goGroupCreation = { navController.navigate("groupCreation") }
             )
         }
@@ -35,27 +31,40 @@ fun Navigation() {
             GroupCreationScreen(
                 {
                     TopBar(goBack = {
-                        context.startActivity(
-                            Intent(
-                                context,
-                                MainActivity::class.java
-                            )
-                        )
+                        navController.popBackStack()
                     }, title = "Create a new group")
+                },
+                goGroupList = {
+                    navController.navigate("groupList") {
+                        popUpTo("groupList") {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
         composable(
-            "receiptList/{groupId}",
+            "receiptList/{groupId}/{groupName}",
             arguments = listOf(
                 navArgument("groupId") {
                     type = NavType.IntType
                     defaultValue = 0
+                },
+                navArgument("groupName") {
+                    type = NavType.StringType
                 }
             )
         ) {
             val groupId = it.arguments?.getInt("groupId") ?: 0
-            ReceiptListScreen(groupId = groupId)
+            val groupName = it.arguments?.getString("groupName") ?: ""
+            ReceiptListScreen(
+                groupId = groupId,
+                {
+                    TopBar(goBack = {
+                        navController.popBackStack()
+                    }, title = groupName)
+                }
+            )
         }
     }
 }

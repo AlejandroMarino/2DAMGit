@@ -4,6 +4,6 @@ data class Participation (
     val memberId: Int,
     val receiptId: Int,
     val description: String?,
-    val pays: Double?,
-    val debts: Double?,
+    val pays: Double,
+    val debts: Double,
 )

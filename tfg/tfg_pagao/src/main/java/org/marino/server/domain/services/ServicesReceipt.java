@@ -80,4 +80,11 @@ public class ServicesReceipt {
             throw new BadRequestException("Impossible to add a receipt of a non existing group");
         }
     }
+
+    public double getTotalPaidOfReceipt(int id) {
+        if (!receiptR.existsById(id)) {
+            throw new NotFoundException("Receipt with id " + id + " not found");
+        }
+        return receiptR.getTotalPaidOfReceipt(id);
+    }
 }

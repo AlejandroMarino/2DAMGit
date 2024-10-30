@@ -2,13 +2,16 @@ package org.marino.tfgpagao.ui.screens.receipts
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.marino.tfgpagao.domain.model.Receipt
 import org.marino.tfgpagao.domain.usecases.receipt.GetReceiptsOfGroup
+import org.marino.tfgpagao.domain.usecases.receipt.GetTotalPaidOfReceipt
 import org.marino.tfgpagao.utils.NetworkResult
 import org.marino.tfgpagao.utils.StringProvider
 import org.marino.tfgpagao.utils.Utils
@@ -17,6 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ReceiptListViewModel @Inject constructor(
     private val getReceiptsOfGroup: GetReceiptsOfGroup,
+    private val getTotalPaidOfReceipt: GetTotalPaidOfReceipt,
     private val stringProvider: StringProvider
 ) : ViewModel() {
 
@@ -56,10 +60,14 @@ class ReceiptListViewModel @Inject constructor(
                             }
                         }
                         is NetworkResult.Loading -> _state.update{it.copy(isLoading = true)}
-                        is NetworkResult.Success -> _state.update {
-                            it.copy(
-                                receipts = result.data ?: emptyList(), isLoading = false
-                            )
+                        is NetworkResult.Success -> {
+                            val receipts = result.data ?: emptyList()
+                            _state.update {
+                                it.copy(
+                                    receipts = receipts, isLoading = false
+                                )
+                            }
+                            receipts.forEach { receipt -> setTotalPaidToReceipt(receipt.id) }
                         }
                         is NetworkResult.SuccessNoData -> _state.update {
                             it.copy(isLoading = false)
@@ -76,6 +84,23 @@ class ReceiptListViewModel @Inject constructor(
                         else -> _state.update {
                             it.copy(receipts = result.data ?: emptyList(), isLoading = false)
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setTotalPaidToReceipt(receiptId: Int) {
+        viewModelScope.launch {
+            getTotalPaidOfReceipt.invoke(receiptId).collect { result ->
+                if (result is NetworkResult.Success) {
+                    val totalPaid = result.data as Double
+                    _state.update {
+                        val receipts = it.receipts.map { receipt ->
+                            if (receipt.id == receiptId) receipt.copy(totalPaid = totalPaid)
+                            else receipt
+                        }
+                        it.copy(receipts = receipts)
                     }
                 }
             }

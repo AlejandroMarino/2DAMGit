@@ -16,6 +16,10 @@ class ReceiptRemoteDataSource @Inject constructor(private val receiptService: Re
         return safeApiCall(apiCall = { receiptService.getReceipt(id) })
     }
 
+    suspend fun getTotalPaidOfReceipt(id: Int): NetworkResult<Double> {
+        return safeApiCall(apiCall = { receiptService.getReceiptTotalPaid(id)})
+    }
+
     suspend fun addReceipt(receipt: Receipt): NetworkResult<Void> {
         return safeApiCall(apiCall = { receiptService.add(receipt) })
     }

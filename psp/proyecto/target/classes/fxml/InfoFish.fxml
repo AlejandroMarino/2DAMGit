@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.pantallas.infoFish.InfoFishController">
+   <children>
+      <ImageView fx:id="iconFish" fitHeight="282.0" fitWidth="291.0" layoutX="55.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="422.0" layoutY="93.0" text="Name:" />
+      <Label fx:id="labelName" layoutX="473.0" layoutY="93.0" prefHeight="17.0" prefWidth="125.0" />
+      <Label layoutX="423.0" layoutY="121.0" text="Rarity;" />
+      <Label fx:id="labelRarity" layoutX="473.0" layoutY="121.0" prefHeight="17.0" prefWidth="119.0" />
+      <Label layoutX="408.0" layoutY="150.0" text="Location:" />
+      <Label fx:id="labelLocation" layoutX="473.0" layoutY="150.0" prefHeight="17.0" prefWidth="131.0" />
+      <Label layoutX="373.0" layoutY="176.0" text="Appears all day:" />
+      <Label fx:id="labelIsAllDay" layoutX="473.0" layoutY="176.0" />
+      <Label layoutX="372.0" layoutY="204.0" text="Appears all year:" />
+      <Label fx:id="labelIsAllYear" layoutX="473.0" layoutY="204.0" />
+      <Label layoutX="432.0" layoutY="231.0" text="Price:" />
+      <Label fx:id="labelPrice" layoutX="473.0" layoutY="231.0" />
+      <Label layoutX="418.0" layoutY="259.0" text="Price CJ:" />
+      <Label fx:id="labelPriceCJ" layoutX="473.0" layoutY="259.0" />
+      <Label layoutX="437.0" layoutY="415.0" text="Catch phrase:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCatchPhrase" layoutX="118.0" layoutY="471.0" prefHeight="17.0" prefWidth="758.0" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="471.0" layoutY="350.0" mnemonicParsing="false" onAction="#seeImage" text="Fish Image" />
+   </children>
+</AnchorPane>

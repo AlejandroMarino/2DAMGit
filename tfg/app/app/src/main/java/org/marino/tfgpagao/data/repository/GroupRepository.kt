@@ -4,7 +4,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import okhttp3.Dispatcher
 import org.marino.tfgpagao.data.remote.GroupRemoteDataSource
 import org.marino.tfgpagao.domain.model.Group
 import org.marino.tfgpagao.utils.NetworkResult

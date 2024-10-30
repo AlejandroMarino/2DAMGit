@@ -9,12 +9,12 @@ import retrofit2.http.Path
 
 interface GroupService {
 
-    @GET("/groups")
+    @GET("groups")
     suspend fun getGroups(): Response<List<Group>>
 
-    @GET("/groups/{id}")
+    @GET("groups/{id}")
     suspend fun getGroup(@Path("id") id: Int): Response<Group>
 
-    @POST("/groups")
+    @POST("groups")
     suspend fun add(@Body group: Group): Response<Void>
 }

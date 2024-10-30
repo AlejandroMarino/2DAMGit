@@ -39,7 +39,6 @@ public class DaoGamesImpl extends DaoGenerics implements DaoGames {
                 .subscribeOn(Schedulers.io());
     }
 
-
     @Override
     public Single<Either<String, Game>> addGame(Game game) {
         return safeSingleApicall(gamesApi.addGame(game))

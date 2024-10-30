@@ -27,6 +27,11 @@ public class RestReceiptController {
         return sR.get(id);
     }
 
+    @GetMapping("/{id}/total_paid")
+    public Double getTotalPaidOfReceipt(@PathVariable int id) {
+        return sR.getTotalPaidOfReceipt(id);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Receipt add(@RequestBody Receipt receipt) {

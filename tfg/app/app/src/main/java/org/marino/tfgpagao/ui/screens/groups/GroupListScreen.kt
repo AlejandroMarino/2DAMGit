@@ -38,7 +38,7 @@ import org.marino.tfgpagao.domain.model.Group
 
 @Composable
 fun GroupListScreen(
-    goReceiptList: (Int) -> Unit,
+    goReceiptList: (Int, String) -> Unit,
     goGroupCreation: () -> Unit,
     viewModel: GroupListViewModel = hiltViewModel(),
 ) {
@@ -51,35 +51,37 @@ fun GroupListScreen(
     ) {
         Scaffold(
             content = {
-                if (state.value.isLoading) {
-                    Box(modifier = Modifier.fillMaxSize()) {
-                        CircularProgressIndicator(
+                Column(
+                    modifier = Modifier
+                        .padding(it)
+                        .padding(16.dp)
+                        .fillMaxSize()
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 22.dp)
+                    ) {
+                        Text(
                             modifier = Modifier
-                                .padding(16.dp)
-                                .align(Alignment.Center)
+                                .padding(6.dp)
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            textDecoration = TextDecoration.Underline,
+                            fontFamily = FontFamily.Serif,
+                            fontSize = 50.sp,
+                            text = "Pagao"
                         )
                     }
-                } else {
-                    Column(
-                        modifier = Modifier
-                            .padding(it)
-                            .padding(16.dp)
-                            .fillMaxSize()
-                    ) {
-                        Box(modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 22.dp)) {
-                            Text(
+                    if (state.value.isLoading) {
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            CircularProgressIndicator(
                                 modifier = Modifier
-                                    .padding(6.dp)
-                                    .fillMaxWidth(),
-                                textAlign = TextAlign.Center,
-                                textDecoration = TextDecoration.Underline,
-                                fontFamily = FontFamily.Serif,
-                                fontSize = 50.sp,
-                                text = "Pagao"
+                                    .padding(16.dp)
+                                    .align(Alignment.Center)
                             )
                         }
+                    } else {
                         ListGroups(
                             Modifier.weight(2f),
                             groups = state.value.groups,
@@ -87,13 +89,18 @@ fun GroupListScreen(
                         )
                     }
                 }
+
                 state.value.error?.let { it1 ->
                     Error(
                         it1
                     ) { viewModel.handleEvent(GroupListEvent.ErrorCatch) }
                 }
             },
-            floatingActionButton = { ButtonCreateGroup(goGroupCreation = goGroupCreation, modifier = Modifier.padding(10.dp)) }
+            floatingActionButton = {
+                ButtonCreateGroup(
+                    goGroupCreation = goGroupCreation,
+                )
+            }
 
         )
     }
@@ -113,7 +120,7 @@ fun Error(error: String, errorCaught: () -> Unit) {
 fun ListGroups(
     modifier: Modifier,
     groups: List<Group>,
-    goReceiptList: (Int) -> Unit
+    goReceiptList: (Int, String) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
         items(items = groups, itemContent = { group ->
@@ -132,18 +139,20 @@ fun ListGroups(
 fun ItemsGroup(
     group: Group,
     modifier: Modifier,
-    goReceiptList: (Int) -> Unit
+    goReceiptList: (Int, String) -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(corner = CornerSize(8.dp)),
         modifier = modifier
             .fillMaxWidth()
             .padding(5.dp)
-            .clickable { goReceiptList(group.id) }
+            .clickable { goReceiptList(group.id, group.name) }
     ) {
-        Row(modifier = Modifier
-            .padding(10.dp)
-            .padding(start = 6.dp)) {
+        Row(
+            modifier = Modifier
+                .padding(10.dp)
+                .padding(start = 6.dp)
+        ) {
             Text(
                 text = group.name,
                 fontSize = 25.sp
@@ -155,7 +164,6 @@ fun ItemsGroup(
 
 @Composable
 fun ButtonCreateGroup(
-    modifier: Modifier,
     goGroupCreation: () -> Unit
 ) {
     FloatingActionButton(onClick = { goGroupCreation() }) {

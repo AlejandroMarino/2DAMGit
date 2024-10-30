@@ -1,8 +1,10 @@
 package org.marino.tfgpagao.ui.screens.receipts
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,8 +15,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +36,7 @@ import org.marino.tfgpagao.domain.model.Receipt
 @Composable
 fun ReceiptListScreen(
     groupId: Int,
+    topBar: @Composable () -> Unit,
     viewModel: ReceiptListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.collectAsStateWithLifecycle()
@@ -40,6 +47,7 @@ fun ReceiptListScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         Scaffold(
+            topBar = topBar,
             content = {
                 if (state.value.isLoading) {
                     Box(modifier = Modifier.fillMaxSize()) {
@@ -67,7 +75,10 @@ fun ReceiptListScreen(
                         it1
                     ) { viewModel.handleEvent(ReceiptListEvent.ErrorCatch) }
                 }
-            }
+            },
+            floatingActionButton = {
+                ButtonCreateReceipt()
+            },
         )
     }
 }
@@ -99,6 +110,7 @@ fun ListReceipts(
     }
 }
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun ItemsReceipt(
     receipt: Receipt,
@@ -110,11 +122,35 @@ fun ItemsReceipt(
             .fillMaxWidth()
             .padding(8.dp)
     ) {
-        Row(modifier = Modifier.padding(8.dp)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp, horizontal = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Text(
                 text = receipt.name,
             )
+            val formattedTotal = if (receipt.totalPaid % 1 == 0.0) {
+                String.format("%.0f", receipt.totalPaid)
+            } else {
+                String.format("%.2f", receipt.totalPaid)
+            }
+            Text(
+                text = "$formattedTotal €",
+            )
+
         }
 
+    }
+}
+
+@Composable
+fun ButtonCreateReceipt(
+//    goReceiptCreation: () -> Unit
+) {
+    FloatingActionButton(onClick = { }) {
+        Icon(Icons.Default.Create, contentDescription = "Create new receipt")
     }
 }

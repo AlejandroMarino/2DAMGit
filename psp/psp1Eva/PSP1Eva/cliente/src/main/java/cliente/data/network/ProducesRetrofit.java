@@ -13,6 +13,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.time.LocalDate;
 
 public class ProducesRetrofit {
+    CacheAuthorization CacheAuthorization;
+
+    @Inject
+    public ProducesRetrofit(cliente.data.network.CacheAuthorization cacheAuthorization) {
+        CacheAuthorization = cacheAuthorization;
+    }
 
     @Produces
     @Singleton
@@ -26,7 +32,6 @@ public class ProducesRetrofit {
     @Produces
     @Singleton
     public Retrofit retrofit(Gson gson, Configuration config) {
-        CacheAuthorization CacheAuthorization = new CacheAuthorization();
 
         OkHttpClient clientOK = new OkHttpClient.Builder()
                 .connectionPool(new okhttp3.ConnectionPool(1, 1, java.util.concurrent.TimeUnit.SECONDS))

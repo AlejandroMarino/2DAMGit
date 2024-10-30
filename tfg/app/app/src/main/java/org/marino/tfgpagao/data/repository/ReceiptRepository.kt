@@ -27,6 +27,14 @@ class ReceiptRepository @Inject constructor(private val receiptRemoteDataSource:
         }.flowOn(Dispatchers.IO)
     }
 
+    fun fetchTotalPaidOfReceipt(id: Int): Flow<NetworkResult<Double>> {
+        return flow {
+            emit(NetworkResult.Loading())
+            val result = receiptRemoteDataSource.getTotalPaidOfReceipt(id)
+            emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
+
     fun addReceipt(receipt: Receipt): Flow<NetworkResult<Void>> {
         return flow {
             emit(NetworkResult.Loading())
