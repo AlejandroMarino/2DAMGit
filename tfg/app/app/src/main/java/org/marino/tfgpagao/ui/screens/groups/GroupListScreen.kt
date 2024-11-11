@@ -10,12 +10,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
@@ -27,6 +26,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -34,11 +34,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.marino.tfgpagao.R
 import org.marino.tfgpagao.domain.model.Group
 
 @Composable
 fun GroupListScreen(
-    goReceiptList: (Int, String) -> Unit,
+    goGroupInfo: (Int, String) -> Unit,
     goGroupCreation: () -> Unit,
     viewModel: GroupListViewModel = hiltViewModel(),
 ) {
@@ -85,7 +86,7 @@ fun GroupListScreen(
                         ListGroups(
                             Modifier.weight(2f),
                             groups = state.value.groups,
-                            goReceiptList
+                            goGroupInfo
                         )
                     }
                 }
@@ -129,7 +130,7 @@ fun ListGroups(
                 modifier = Modifier.animateItemPlacement(
                     animationSpec = tween(1000)
                 ),
-                goReceiptList = goReceiptList
+                goGroupInfo = goReceiptList
             )
         })
     }
@@ -139,14 +140,14 @@ fun ListGroups(
 fun ItemsGroup(
     group: Group,
     modifier: Modifier,
-    goReceiptList: (Int, String) -> Unit
+    goGroupInfo: (Int, String) -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(corner = CornerSize(8.dp)),
         modifier = modifier
             .fillMaxWidth()
             .padding(5.dp)
-            .clickable { goReceiptList(group.id, group.name) }
+            .clickable { goGroupInfo(group.id, group.name) }
     ) {
         Row(
             modifier = Modifier
@@ -167,6 +168,10 @@ fun ButtonCreateGroup(
     goGroupCreation: () -> Unit
 ) {
     FloatingActionButton(onClick = { goGroupCreation() }) {
-        Icon(Icons.Default.Add, contentDescription = "Create new group")
+        Icon(
+            painter = painterResource(R.drawable.ic_add_group_png),
+            modifier = Modifier.size(30.dp),
+            contentDescription = "Create new group"
+        )
     }
 }

@@ -1,4 +1,4 @@
-package org.marino.tfgpagao.ui.screens.receipts
+package org.marino.tfgpagao.ui.screens.insideGroup.receipts
 
 import android.annotation.SuppressLint
 import android.widget.Toast
@@ -11,12 +11,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
@@ -28,15 +27,17 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.marino.tfgpagao.R
 import org.marino.tfgpagao.domain.model.Receipt
 
 @Composable
 fun ReceiptListScreen(
     groupId: Int,
-    topBar: @Composable () -> Unit,
+    goReceiptCreation: (Int) -> Unit,
     viewModel: ReceiptListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.collectAsStateWithLifecycle()
@@ -47,7 +48,6 @@ fun ReceiptListScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         Scaffold(
-            topBar = topBar,
             content = {
                 if (state.value.isLoading) {
                     Box(modifier = Modifier.fillMaxSize()) {
@@ -77,7 +77,7 @@ fun ReceiptListScreen(
                 }
             },
             floatingActionButton = {
-                ButtonCreateReceipt()
+                ButtonCreateReceipt(goReceiptCreation, groupId)
             },
         )
     }
@@ -132,7 +132,7 @@ fun ItemsReceipt(
             Text(
                 text = receipt.name,
             )
-            val formattedTotal = if (receipt.totalPaid % 1 == 0.0) {
+            val formattedTotal = if (receipt.totalPaid != null && receipt.totalPaid % 1 == 0.0) {
                 String.format("%.0f", receipt.totalPaid)
             } else {
                 String.format("%.2f", receipt.totalPaid)
@@ -148,9 +148,13 @@ fun ItemsReceipt(
 
 @Composable
 fun ButtonCreateReceipt(
-//    goReceiptCreation: () -> Unit
+    goReceiptCreation: (Int) -> Unit, groupId: Int
 ) {
-    FloatingActionButton(onClick = { }) {
-        Icon(Icons.Default.Create, contentDescription = "Create new receipt")
+    FloatingActionButton(onClick = { goReceiptCreation(groupId) }) {
+        Icon(
+            painter = painterResource(R.drawable.ic_add_receipt_png),
+            modifier = Modifier.size(30.dp),
+            contentDescription = "Create new receipt"
+        )
     }
 }

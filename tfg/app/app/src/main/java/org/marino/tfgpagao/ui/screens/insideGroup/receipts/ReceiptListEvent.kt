@@ -1,4 +1,4 @@
-package org.marino.tfgpagao.ui.screens.receipts
+package org.marino.tfgpagao.ui.screens.insideGroup.receipts
 
 sealed class ReceiptListEvent {
     object ErrorCatch: ReceiptListEvent()

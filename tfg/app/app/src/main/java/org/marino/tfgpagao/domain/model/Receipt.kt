@@ -4,6 +4,7 @@ data class Receipt (
     val id: Int,
     val name: String,
     val description: String?,
+    val groupId: Int?,
     val participations: List<Participation>?,
-    val totalPaid: Double,
+    val totalPaid: Double?,
 )

@@ -1,15 +1,13 @@
-package org.marino.tfgpagao.ui.screens.receipts
+package org.marino.tfgpagao.ui.screens.insideGroup.receipts
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.marino.tfgpagao.domain.model.Receipt
 import org.marino.tfgpagao.domain.usecases.receipt.GetReceiptsOfGroup
 import org.marino.tfgpagao.domain.usecases.receipt.GetTotalPaidOfReceipt
 import org.marino.tfgpagao.utils.NetworkResult
@@ -32,6 +30,7 @@ class ReceiptListViewModel @Inject constructor(
             ReceiptListEvent.ErrorCatch -> {
                 errorCatch()
             }
+
             is ReceiptListEvent.GetReceipts -> {
                 getReceipts(event.idGroup)
             }
@@ -59,7 +58,8 @@ class ReceiptListViewModel @Inject constructor(
                                 )
                             }
                         }
-                        is NetworkResult.Loading -> _state.update{it.copy(isLoading = true)}
+
+                        is NetworkResult.Loading -> _state.update { it.copy(isLoading = true) }
                         is NetworkResult.Success -> {
                             val receipts = result.data ?: emptyList()
                             _state.update {
@@ -69,6 +69,7 @@ class ReceiptListViewModel @Inject constructor(
                             }
                             receipts.forEach { receipt -> setTotalPaidToReceipt(receipt.id) }
                         }
+
                         is NetworkResult.SuccessNoData -> _state.update {
                             it.copy(isLoading = false)
                         }

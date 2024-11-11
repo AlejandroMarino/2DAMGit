@@ -150,17 +150,7 @@ class GroupCreationViewModel @Inject constructor(
                         }
                     }
                 } else {
-                    addGroup.invoke(group).collect { result ->
-                        when (result) {
-                            is NetworkResult.Error -> _state.update {
-                                it.copy(isLoading = false)
-                            }
-
-                            else -> _state.update {
-                                it.copy(isLoading = false)
-                            }
-                        }
-                    }
+                    _state.update { it.copy(error = "Internet connection needed") }
                 }
             } else {
                 if (!nameIsValid) {

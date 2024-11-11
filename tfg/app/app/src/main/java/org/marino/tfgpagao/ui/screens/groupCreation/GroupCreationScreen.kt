@@ -8,18 +8,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -97,6 +99,7 @@ fun GroupCreationScreen(
                         modifier = Modifier
                             .padding(it)
                             .fillMaxSize()
+                            .verticalScroll(rememberScrollState())
                     ) {
                         NameIntroduction(focusManager, state.value.name) { newName ->
                             viewModel.handleEvent(
@@ -137,10 +140,10 @@ fun GroupCreationScreen(
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = { viewModel.handleEvent(GroupCreationEvent.AddGroup) },
-                    modifier = Modifier
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Create,
+                        painter = painterResource(R.drawable.ic_save_group_png),
+                        modifier = Modifier.size(30.dp),
                         contentDescription = "Create group"
                     )
                 }
@@ -265,6 +268,7 @@ fun MembersIntroduction(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
+                    .heightIn(max = 300.dp)
             ) {
                 itemsIndexed(members) { index, member ->
                     Row(
