@@ -8,5 +8,4 @@ data class GroupCreationState(
     val members: List<MemberVO> = listOf(MemberVO("", false)),
     val error: String? = null,
     val isLoading: Boolean = false,
-    val created: Boolean = false
 )

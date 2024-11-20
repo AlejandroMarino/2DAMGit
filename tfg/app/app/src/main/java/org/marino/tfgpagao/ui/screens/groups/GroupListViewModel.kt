@@ -45,8 +45,8 @@ class GroupListViewModel @Inject constructor(
 
     private fun getGroups() {
         viewModelScope.launch {
-            if (Utils.hasInternetConnection(stringProvider.context)) {
-                getGroups.invoke().collect { result ->
+            getGroups.invoke().collect { result ->
+                if (Utils.hasInternetConnection(stringProvider.context)) {
                     when (result) {
                         is NetworkResult.Error -> {
                             _state.update {
@@ -68,12 +68,10 @@ class GroupListViewModel @Inject constructor(
                             it.copy(isLoading = false)
                         }
                     }
-                }
-            } else {
-                getGroups.invoke().collect { result ->
+                } else {
                     when (result) {
                         is NetworkResult.Error -> _state.update {
-                            it.copy(isLoading = false)
+                            it.copy(isLoading = false, error = "No internet connection")
                         }
 
                         else -> _state.update {

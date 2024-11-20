@@ -5,7 +5,13 @@ import org.marino.tfgpagao.ui.model.MemberReceiptVO
 
 sealed class ReceiptCreationEvent {
     object ErrorCatch : ReceiptCreationEvent()
-    class LoadMembersOfGroup(val groupId: Int) : ReceiptCreationEvent()
+    class LoadMembersOfGroup(
+        val groupId: Int,
+        val payerId: Int,
+        val receiverId: Int,
+        val amount: Double
+    ) : ReceiptCreationEvent()
+
     class ShowOrHidePayerDescription(val index: Int, val descriptionShowed: Boolean) :
         ReceiptCreationEvent()
 
@@ -24,6 +30,5 @@ sealed class ReceiptCreationEvent {
     class DeleteDebtor(val index: Int) : ReceiptCreationEvent()
     class ChangeReceiptName(val name: String) : ReceiptCreationEvent()
     class ChangeReceiptDescription(val description: String) : ReceiptCreationEvent()
-    object AddReceipt : ReceiptCreationEvent()
-    object Navigated : ReceiptCreationEvent()
+    class AddReceipt(val goGroupInfo: () -> Unit) : ReceiptCreationEvent()
 }

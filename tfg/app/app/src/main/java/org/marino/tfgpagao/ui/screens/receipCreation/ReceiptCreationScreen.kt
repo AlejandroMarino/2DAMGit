@@ -77,22 +77,24 @@ import org.marino.tfgpagao.ui.screens.groupCreation.Error
 fun ReceiptCreationScreen(
     topBar: @Composable () -> Unit,
     groupId: Int,
-    groupName: String,
-    goGroupInfo: (Int, String) -> Unit,
+    payerId: Int,
+    receiverId: Int,
+    amount: Double,
+    goGroupInfo: () -> Unit,
     viewModel: ReceiptCreationViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
 
-    var hasNavigated by remember { mutableStateOf(false) }
-    if (state.value.created && !hasNavigated) {
-        hasNavigated = true
-        viewModel.handleEvent(ReceiptCreationEvent.Navigated)
-        goGroupInfo(groupId, groupName)
-    }
-
     LaunchedEffect(key1 = true) {
-        viewModel.handleEvent(ReceiptCreationEvent.LoadMembersOfGroup(groupId))
+        viewModel.handleEvent(
+            ReceiptCreationEvent.LoadMembersOfGroup(
+                groupId,
+                payerId,
+                receiverId,
+                amount
+            )
+        )
     }
 
     Box(
@@ -117,6 +119,7 @@ fun ReceiptCreationScreen(
                     Column(
                         modifier = Modifier
                             .padding(it)
+                            .padding(bottom = 80.dp)
                             .fillMaxSize()
                             .verticalScroll(rememberScrollState())
                     ) {
@@ -217,7 +220,7 @@ fun ReceiptCreationScreen(
             },
             floatingActionButton = {
                 FloatingActionButton(
-                    onClick = { viewModel.handleEvent(ReceiptCreationEvent.AddReceipt) },
+                    onClick = { viewModel.handleEvent(ReceiptCreationEvent.AddReceipt(goGroupInfo)) },
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_save_payment_png),
@@ -350,6 +353,7 @@ fun Payers(
         }
         MembersList(
             focusManager = focusManager,
+            isPayer = true,
             selectedMembers = selectedPayers,
             availableMembers = availablePayers,
             showOrHideDescription = showOrHideDescription,
@@ -388,6 +392,7 @@ fun Debtors(
         }
         MembersList(
             focusManager = focusManager,
+            isPayer = false,
             selectedMembers = selectedDebtors,
             availableMembers = availableDebtors,
             showOrHideDescription = showOrHideDescription,
@@ -446,6 +451,7 @@ fun GroupBalance(balance: Double) {
 @Composable
 fun MembersList(
     focusManager: FocusManager,
+    isPayer: Boolean,
     selectedMembers: List<MemberReceiptVO>,
     availableMembers: List<MemberReceiptVO>,
     addMember: () -> Unit,
@@ -464,6 +470,7 @@ fun MembersList(
             .sizeIn(maxHeight = 300.dp)
     ) {
         itemsIndexed(selectedMembers, key = { _, member -> member.name }) { index, member ->
+
             Column(
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -530,10 +537,11 @@ fun MembersList(
                     }
                 }
             }
+
         }
         if (availableMembers.isNotEmpty()) {
             item {
-                ContainerButtonAdd(addMember)
+                ContainerButtonAdd(isPayer, addMember)
             }
         }
     }
@@ -768,7 +776,7 @@ fun DescriptionBox(
 }
 
 @Composable
-fun ContainerButtonAdd(action: () -> Unit) {
+fun ContainerButtonAdd(isPayer: Boolean, action: () -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Box(
             modifier = Modifier
@@ -786,7 +794,11 @@ fun ContainerButtonAdd(action: () -> Unit) {
                 .fillMaxWidth()
                 .offset(y = (-4).dp)
         ) {
-            ButtonAdd(action, "Add Payer")
+            if (isPayer) {
+                ButtonAdd(action, "Add Payer")
+            } else {
+                ButtonAdd(action, "Add Debtor")
+            }
         }
     }
 }

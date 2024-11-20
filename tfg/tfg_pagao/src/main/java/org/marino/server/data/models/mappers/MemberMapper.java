@@ -1,6 +1,5 @@
 package org.marino.server.data.models.mappers;
 
-import org.marino.server.data.models.Group;
 import org.marino.server.data.models.Member;
 import org.marino.server.data.models.entities.GroupEntity;
 import org.marino.server.data.models.entities.MemberEntity;

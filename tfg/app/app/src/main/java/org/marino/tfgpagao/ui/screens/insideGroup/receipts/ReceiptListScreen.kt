@@ -7,6 +7,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.marino.tfgpagao.R
@@ -38,6 +40,7 @@ import org.marino.tfgpagao.domain.model.Receipt
 fun ReceiptListScreen(
     groupId: Int,
     goReceiptCreation: (Int) -> Unit,
+    goReceiptInfo: (Int) -> Unit,
     viewModel: ReceiptListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.collectAsStateWithLifecycle()
@@ -65,8 +68,9 @@ fun ReceiptListScreen(
                             .fillMaxSize()
                     ) {
                         ListReceipts(
-                            Modifier.weight(2f),
-                            receipts = state.value.receipts
+                            Modifier,
+                            receipts = state.value.receipts,
+                            goReceiptInfo
                         )
                     }
                 }
@@ -97,11 +101,13 @@ fun Error(error: String, errorCaught: () -> Unit) {
 fun ListReceipts(
     modifier: Modifier,
     receipts: List<Receipt>,
+    goReceiptInfo: (Int) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
         items(items = receipts, itemContent = { receipt ->
             ItemsReceipt(
                 receipt = receipt,
+                goReceiptInfo = goReceiptInfo,
                 modifier = Modifier.animateItemPlacement(
                     animationSpec = tween(1000)
                 )
@@ -110,17 +116,18 @@ fun ListReceipts(
     }
 }
 
-@SuppressLint("DefaultLocale")
 @Composable
 fun ItemsReceipt(
     receipt: Receipt,
+    goReceiptInfo: (Int) -> Unit,
     modifier: Modifier
 ) {
     Card(
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(horizontal = 5.dp, vertical = 2.dp),
+        onClick = { goReceiptInfo(receipt.id) }
     ) {
         Row(
             modifier = Modifier
@@ -130,7 +137,7 @@ fun ItemsReceipt(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = receipt.name,
+                text = receipt.name, fontSize = 18.sp
             )
             val formattedTotal = if (receipt.totalPaid != null && receipt.totalPaid % 1 == 0.0) {
                 String.format("%.0f", receipt.totalPaid)
@@ -140,9 +147,7 @@ fun ItemsReceipt(
             Text(
                 text = "$formattedTotal €",
             )
-
         }
-
     }
 }
 

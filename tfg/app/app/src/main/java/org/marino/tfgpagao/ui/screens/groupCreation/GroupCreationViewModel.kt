@@ -28,8 +28,8 @@ class GroupCreationViewModel @Inject constructor(
 
     fun handleEvent(event: GroupCreationEvent) {
         when (event) {
-            GroupCreationEvent.AddGroup -> {
-                addGroup()
+            is GroupCreationEvent.AddGroup -> {
+                addGroup(event.goGroupList)
             }
 
             GroupCreationEvent.ErrorCatch -> {
@@ -55,16 +55,6 @@ class GroupCreationViewModel @Inject constructor(
             is GroupCreationEvent.MemberDeleted -> {
                 memberDeleted(event.index)
             }
-
-            GroupCreationEvent.Navigated -> {
-                navigated()
-            }
-        }
-    }
-
-    private fun navigated() {
-        _state.update {
-            it.copy(created = false)
         }
     }
 
@@ -116,7 +106,7 @@ class GroupCreationViewModel @Inject constructor(
         }
     }
 
-    private fun addGroup() {
+    private fun addGroup(goGroupList: () -> Unit) {
         viewModelScope.launch {
             val validList = _state.value.members.filter { it.name.isNotBlank() }.distinct()
             val nameIsValid = _state.value.name.isNotEmpty()
@@ -141,11 +131,14 @@ class GroupCreationViewModel @Inject constructor(
                                     )
                                 }
                             }
-
                             is NetworkResult.Loading -> _state.update { it.copy(isLoading = true) }
-                            is NetworkResult.Success -> _state.update { it.copy(created = true) }
-                            is NetworkResult.SuccessNoData -> _state.update {
-                                it.copy(isLoading = false, created = true)
+                            is NetworkResult.Success -> {
+                                _state.update { it.copy(isLoading = false) }
+                                goGroupList()
+                            }
+                            is NetworkResult.SuccessNoData ->  {
+                                _state.update { it.copy(isLoading = false) }
+                                goGroupList()
                             }
                         }
                     }

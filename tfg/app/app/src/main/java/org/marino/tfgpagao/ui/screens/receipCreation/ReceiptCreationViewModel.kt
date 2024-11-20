@@ -35,7 +35,7 @@ class ReceiptCreationViewModel @Inject constructor(
             }
 
             is ReceiptCreationEvent.LoadMembersOfGroup -> {
-                loadMembersOfGroup(event.groupId)
+                loadMembersOfGroup(event.groupId, event.payerId, event.receiverId, event.amount)
             }
 
             is ReceiptCreationEvent.ShowOrHidePayerDescription -> {
@@ -46,8 +46,8 @@ class ReceiptCreationViewModel @Inject constructor(
                 changePayerSelected(event.index, event.member)
             }
 
-            ReceiptCreationEvent.AddReceipt -> {
-                createReceipt()
+            is ReceiptCreationEvent.AddReceipt -> {
+                createReceipt(event.goGroupInfo)
             }
 
             is ReceiptCreationEvent.ChangePayerDescription -> {
@@ -97,16 +97,6 @@ class ReceiptCreationViewModel @Inject constructor(
             is ReceiptCreationEvent.ChangeReceiptName -> {
                 changeReceiptName(event.name)
             }
-
-            ReceiptCreationEvent.Navigated -> {
-                navigated()
-            }
-        }
-    }
-
-    private fun navigated() {
-        _state.update {
-            it.copy(created = false)
         }
     }
 
@@ -118,10 +108,10 @@ class ReceiptCreationViewModel @Inject constructor(
         }
     }
 
-    private fun loadMembersOfGroup(groupId: Int) {
+    private fun loadMembersOfGroup(groupId: Int, payerId: Int, receiverId: Int, amount: Double) {
         viewModelScope.launch {
-            if (Utils.hasInternetConnection(stringProvider.context)) {
-                getMembersOfGroup.invoke(groupId).collect { result ->
+            getMembersOfGroup.invoke(groupId).collect { result ->
+                if (Utils.hasInternetConnection(stringProvider.context)) {
                     when (result) {
                         is NetworkResult.Error -> {
                             _state.update {
@@ -144,18 +134,19 @@ class ReceiptCreationViewModel @Inject constructor(
                             }
                             setUpPayers()
                             setUpDebtors()
+                            if (payerId > 0 && receiverId > 0 && amount > 0) {
+                                setupPredefined(payerId, receiverId, amount)
+                            }
                         }
 
                         is NetworkResult.SuccessNoData -> _state.update {
                             it.copy(isLoading = false)
                         }
                     }
-                }
-            } else {
-                getMembersOfGroup.invoke(groupId).collect { result ->
+                } else {
                     when (result) {
                         is NetworkResult.Error -> _state.update {
-                            it.copy(isLoading = false)
+                            it.copy(isLoading = false, error = "No internet connection")
                         }
 
                         else -> _state.update {
@@ -194,6 +185,21 @@ class ReceiptCreationViewModel @Inject constructor(
         _state.update { it.copy(availableDebtors = availableDebtors) }
         if (_state.value.selectedDebtors.isEmpty()) {
             addDebtor()
+        }
+    }
+
+    private fun setupPredefined(payerId: Int, receiverId: Int, amount: Double) {
+        val members = _state.value.members
+        val payer = members.filter { it.id == payerId }[0]
+        val receiver = members.filter { it.id == receiverId }[0]
+        if (payer.id == payerId && receiver.id == receiverId) {
+            _state.update {
+                it.copy(
+                    receipt = it.receipt.copy(name = "Debt settlement"),
+                    selectedPayers = listOf(MemberReceiptVO(name = payer.name, amount = amount)),
+                    selectedDebtors = listOf(MemberReceiptVO(name = receiver.name, amount = amount))
+                )
+            }
         }
     }
 
@@ -393,7 +399,7 @@ class ReceiptCreationViewModel @Inject constructor(
         }
     }
 
-    private fun createReceipt() {
+    private fun createReceipt(goGroupInfo: () -> Unit) {
         val receipt = _state.value.receipt
         val balance = receipt.totalPaid ?: 0.0
         val amountPaid = _state.value.selectedDebtors.sumOf { it.amount }
@@ -468,12 +474,13 @@ class ReceiptCreationViewModel @Inject constructor(
                 receipt = receipt.copy(
                     participations = participations,
                     totalPaid = 0.0
-                )
+                ),
+                goGroupInfo
             )
         }
     }
 
-    private fun addCreatedReceipt(receipt: Receipt) {
+    private fun addCreatedReceipt(receipt: Receipt, goGroupInfo: () -> Unit) {
         viewModelScope.launch {
             if (Utils.hasInternetConnection(stringProvider.context)) {
                 addReceipt.invoke(receipt).collect { result ->
@@ -488,9 +495,14 @@ class ReceiptCreationViewModel @Inject constructor(
                         }
 
                         is NetworkResult.Loading -> _state.update { it.copy(isLoading = true) }
-                        is NetworkResult.Success -> _state.update { it.copy(created = true) }
-                        is NetworkResult.SuccessNoData -> _state.update {
-                            it.copy(isLoading = false, created = true)
+                        is NetworkResult.Success -> {
+                            _state.update { it.copy(isLoading = false) }
+                            goGroupInfo()
+                        }
+
+                        is NetworkResult.SuccessNoData -> {
+                            _state.update { it.copy(isLoading = false) }
+                            goGroupInfo()
                         }
                     }
                 }

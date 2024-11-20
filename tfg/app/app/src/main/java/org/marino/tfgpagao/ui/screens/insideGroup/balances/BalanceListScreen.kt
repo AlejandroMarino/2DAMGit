@@ -1,6 +1,5 @@
 package org.marino.tfgpagao.ui.screens.insideGroup.balances
 
-import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -42,7 +41,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -54,6 +52,7 @@ import org.marino.tfgpagao.ui.screens.insideGroup.receipts.Error
 @Composable
 fun BalanceListScreen(
     groupId: Int,
+    goReceiptCreationPredefined: (Int, Int, Int, Float) -> Unit,
     viewModel: BalanceListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.collectAsStateWithLifecycle()
@@ -85,7 +84,7 @@ fun BalanceListScreen(
                             .fillMaxSize()
                     ) {
                         ListBalances(
-                            Modifier.weight(2f),
+                            Modifier,
                             members = state.value.members
                         )
                     }
@@ -97,7 +96,7 @@ fun BalanceListScreen(
                 }
             },
             floatingActionButton = {
-                if (!isBottomSheetVisible) {
+                if (state.value.transactions.isNotEmpty() && !isBottomSheetVisible) {
                     FloatingActionButton(
                         onClick = { isBottomSheetVisible = true },
                     ) {
@@ -114,7 +113,9 @@ fun BalanceListScreen(
                 onDismissRequest = { isBottomSheetVisible = false },
                 content = {
                     DebtsSettlement(
+                        groupId,
                         transactions = state.value.transactions,
+                        goReceiptCreationPredefined
                     )
                 }
             )
@@ -149,7 +150,6 @@ fun ListBalances(
     }
 }
 
-@SuppressLint("DefaultLocale")
 @Composable
 fun ItemsBalance(
     member: Member,
@@ -159,7 +159,7 @@ fun ItemsBalance(
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(horizontal = 5.dp, vertical = 6.dp)
     ) {
         Row(
             modifier = Modifier
@@ -197,7 +197,11 @@ fun ItemsBalance(
 }
 
 @Composable
-fun DebtsSettlement(transactions: List<Pair<Member, Member>>) {
+fun DebtsSettlement(
+    groupId: Int,
+    transactions: List<Pair<Member, Member>>,
+    goReceiptCreationPredefined: (Int, Int, Int, Float) -> Unit
+) {
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -211,7 +215,7 @@ fun DebtsSettlement(transactions: List<Pair<Member, Member>>) {
         )
         LazyColumn(modifier = Modifier.padding(top = 20.dp)) {
             items(items = transactions, itemContent = { transaction ->
-                TransactionItem(transaction)
+                TransactionItem(groupId, transaction, goReceiptCreationPredefined)
                 Spacer(modifier = Modifier.height(8.dp))
             })
         }
@@ -220,7 +224,9 @@ fun DebtsSettlement(transactions: List<Pair<Member, Member>>) {
 
 @Composable
 fun TransactionItem(
-    transaction: Pair<Member, Member>
+    groupId: Int,
+    transaction: Pair<Member, Member>,
+    goReceiptCreationPredefined: (Int, Int, Int, Float) -> Unit
 ) {
     val payer = transaction.first
     val receiver = transaction.second
@@ -236,7 +242,14 @@ fun TransactionItem(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { TODO() }
+            .clickable {
+                goReceiptCreationPredefined(
+                    groupId,
+                    payer.id,
+                    receiver.id,
+                    formattedAmount.toFloat()
+                )
+            }
     ) {
         Text(
             text = payer.name,
@@ -273,18 +286,4 @@ fun TransactionItem(
 
     HorizontalDivider(modifier = Modifier.padding(horizontal = 30.dp))
 
-}
-
-@Preview
-@Composable
-fun preview() {
-    val members = listOf(
-        Pair(
-            Member(0, "Paco", 3.0), Member(0, "Pepe", -3.0)
-        ),
-        Pair(
-            Member(0, "Pedro", 20.0), Member(0, "Alfredo", -20.0)
-        )
-    )
-    DebtsSettlement(members)
 }

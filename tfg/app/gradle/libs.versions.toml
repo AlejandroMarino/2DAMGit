@@ -1,4 +1,6 @@
 [versions]
+accompanistNavigationAnimation = "0.32.0"
+accompanistSwipetodismiss = "0.30.0"
 agp = "8.6.0"
 converterGson = "2.9.0"
 hiltAndroid = "2.50"
@@ -15,6 +17,8 @@ loggingInterceptorVersion = "4.9.1"
 roomRuntime = "2.5.2"
 
 [libraries]
+accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanistNavigationAnimation" }
+accompanist-swipetodismiss = { module = "com.google.accompanist:accompanist-swipetodismiss", version.ref = "accompanistSwipetodismiss" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltNavigationCompose" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }

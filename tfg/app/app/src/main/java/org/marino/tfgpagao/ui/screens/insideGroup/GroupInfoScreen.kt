@@ -22,6 +22,8 @@ import org.marino.tfgpagao.ui.screens.insideGroup.receipts.ReceiptListScreen
 fun GroupInfoScreen(
     groupId: Int,
     goReceiptCreation: (Int) -> Unit,
+    goReceiptCreationPredefined: (Int, Int, Int, Float) -> Unit,
+    goReceiptInfo: (Int) -> Unit,
     topBar: @Composable () -> Unit,
 ) {
     Box(
@@ -52,8 +54,8 @@ fun GroupInfoScreen(
                     }
 
                     when (selectedTabIndex) {
-                        0 -> ReceiptListScreen(groupId = groupId, goReceiptCreation)
-                        1 -> BalanceListScreen(groupId = groupId)
+                        0 -> ReceiptListScreen(groupId = groupId, goReceiptCreation, goReceiptInfo)
+                        1 -> BalanceListScreen(groupId = groupId, goReceiptCreationPredefined)
                     }
 
                 }

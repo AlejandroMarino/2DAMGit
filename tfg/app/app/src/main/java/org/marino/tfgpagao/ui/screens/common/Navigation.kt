@@ -10,6 +10,7 @@ import org.marino.tfgpagao.ui.screens.groupCreation.GroupCreationScreen
 import org.marino.tfgpagao.ui.screens.groups.GroupListScreen
 import org.marino.tfgpagao.ui.screens.insideGroup.GroupInfoScreen
 import org.marino.tfgpagao.ui.screens.receipCreation.ReceiptCreationScreen
+import org.marino.tfgpagao.ui.screens.receiptInfo.ReceiptInfoScreen
 
 @Composable
 fun Navigation() {
@@ -61,7 +62,13 @@ fun Navigation() {
             GroupInfoScreen(
                 groupId = groupId,
                 goReceiptCreation = { id ->
-                    navController.navigate("receiptCreation/$id/$groupName")
+                    navController.navigate("receiptCreation/$id")
+                },
+                goReceiptCreationPredefined = { id, idPayer, idReceiver, amount ->
+                    navController.navigate("receiptCreation/$id?payerId=$idPayer&receiverId=$idReceiver&amount=$amount")
+                },
+                goReceiptInfo = {id ->
+                    navController.navigate("receiptInfo/$id")
                 }
             ) {
                 TopBar(goBack = {
@@ -87,34 +94,62 @@ fun Navigation() {
 //            )
 //        }
         composable(
-            "receiptCreation/{groupId}/{groupName}",
+            "receiptCreation/{groupId}?payerId={payerId}&receiverId={receiverId}&amount={amount}",
             arguments = listOf(
                 navArgument("groupId") {
                     type = NavType.IntType
                     defaultValue = 0
                 },
-                navArgument("groupName") {
-                    type = NavType.StringType
+                navArgument("payerId") {
+                    type = NavType.IntType
+                    defaultValue = -1
+                },
+                navArgument("receiverId") {
+                    type = NavType.IntType
+                    defaultValue = -1
+                },
+                navArgument("amount") {
+                    type = NavType.FloatType
+                    defaultValue = -1
                 }
             )
         ) {
             val groupId = it.arguments?.getInt("groupId") ?: 0
-            val groupName = it.arguments?.getString("groupName") ?: ""
+            val payerId = it.arguments?.getInt("payerId") ?: -1
+            val receiverId = it.arguments?.getInt("receiverId") ?: -1
+            val amount = it.arguments?.getFloat("amount") ?: -1
             ReceiptCreationScreen(
                 {
                     TopBar(goBack = {
                         navController.popBackStack()
                     }, title = "Create a new receipt")
                 },
-                goGroupInfo = { id, nameOfGroup ->
-                    navController.navigate("groupInfo/$id/$nameOfGroup") {
-                        popUpTo("groupList") {
-                            inclusive = true
-                        }
-                    }
+                goGroupInfo = {
+                    navController.popBackStack()
                 },
                 groupId = groupId,
-                groupName = groupName
+                payerId = payerId,
+                receiverId = receiverId,
+                amount = amount.toDouble()
+            )
+        }
+        composable(
+            "receiptInfo/{receiptId}",
+            arguments = listOf(
+                navArgument("receiptId") {
+                    type = NavType.IntType
+                    defaultValue = 0
+                }
+            )
+        ) {
+            val receiptId = it.arguments?.getInt("receiptId") ?: 0
+            ReceiptInfoScreen(
+                receiptId = receiptId,
+                {
+                    TopBar(goBack = {
+                        navController.popBackStack()
+                    }, title = "")
+                }
             )
         }
     }

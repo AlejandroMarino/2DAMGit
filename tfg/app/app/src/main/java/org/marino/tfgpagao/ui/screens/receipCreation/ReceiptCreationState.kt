@@ -18,7 +18,6 @@ data class ReceiptCreationState(
         groupId = 0,
         participations = emptyList()
     ),
-    val created: Boolean = false,
     val error: String? = null,
     val isLoading: Boolean = false
 )

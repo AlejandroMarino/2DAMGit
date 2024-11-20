@@ -43,6 +43,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
@@ -68,13 +69,6 @@ fun GroupCreationScreen(
 ) {
     val state = viewModel.state.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
-
-    var hasNavigated by remember { mutableStateOf(false) }
-    if (state.value.created && !hasNavigated) {
-        hasNavigated = true
-        viewModel.handleEvent(GroupCreationEvent.Navigated)
-        goGroupList()
-    }
 
     Box(
         modifier = Modifier
@@ -139,7 +133,7 @@ fun GroupCreationScreen(
             },
             floatingActionButton = {
                 FloatingActionButton(
-                    onClick = { viewModel.handleEvent(GroupCreationEvent.AddGroup) },
+                    onClick = { viewModel.handleEvent(GroupCreationEvent.AddGroup(goGroupList)) },
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_save_group_png),
@@ -264,11 +258,13 @@ fun MembersIntroduction(
                 .fillMaxWidth()
         ) {
             TextTitleOfFields("Members", Modifier.align(Alignment.CenterHorizontally))
+
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
                     .heightIn(max = 300.dp)
+                    .clip(RoundedCornerShape(16.dp))
             ) {
                 itemsIndexed(members) { index, member ->
                     Row(
@@ -277,7 +273,6 @@ fun MembersIntroduction(
                             .background(color = Color.Gray)
                             .padding(start = 8.dp)
                     ) {
-//                        val isValid = member.name.isNotBlank() && (members.count { it.name == member.name } == 1)
                         val dotColor = when {
                             member.valid -> Color(0xFF60CE61)
                             else -> Color(0xFFF36B6B)
@@ -285,9 +280,7 @@ fun MembersIntroduction(
                         Box(
                             modifier = Modifier
                                 .size(30.dp)
-//                                .background(color = dotColor, shape = CircleShape)
                                 .align(Alignment.CenterVertically)
-//                                .padding(horizontal = 10.dp)
                         ) {
                             if (member.valid) {
                                 Icon(
@@ -363,6 +356,7 @@ fun MembersIntroduction(
                             thickness = 2.dp,
                             modifier = Modifier.fillMaxWidth()
                         )
+
                     }
                 }
                 item {

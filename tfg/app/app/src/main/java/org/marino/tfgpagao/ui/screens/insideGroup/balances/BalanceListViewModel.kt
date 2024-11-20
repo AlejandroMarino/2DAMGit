@@ -48,8 +48,8 @@ class BalanceListViewModel @Inject constructor(
 
     private fun getMembers(idGroup: Int) {
         viewModelScope.launch {
-            if (Utils.hasInternetConnection(stringProvider.context)) {
-                getMembersOfGroup.invoke(idGroup).collect { result ->
+            getMembersOfGroup.invoke(idGroup).collect { result ->
+                if (Utils.hasInternetConnection(stringProvider.context)) {
                     when (result) {
                         is NetworkResult.Error -> {
                             _state.update {
@@ -82,12 +82,10 @@ class BalanceListViewModel @Inject constructor(
                             it.copy(isLoading = false)
                         }
                     }
-                }
-            } else {
-                getMembersOfGroup.invoke(idGroup).collect { result ->
+                } else {
                     when (result) {
                         is NetworkResult.Error -> _state.update {
-                            it.copy(isLoading = false)
+                            it.copy(isLoading = false, error = "No internet connection")
                         }
 
                         else -> _state.update {
