@@ -2,6 +2,7 @@ package org.marino.server.spring.errors;
 
 
 import org.marino.server.data.errors.ApiError;
+import org.marino.server.domain.exceptions.BadRequestException;
 import org.marino.server.domain.exceptions.DownDataBaseException;
 import org.marino.server.domain.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class ErrorsControl extends ResponseEntityExceptionHandler  {
                 .body(new ApiError(e.getMessage(), LocalDateTime.now()));
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ApiError> handleBadRequestException(BadRequestException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ApiError(e.getMessage(), LocalDateTime.now()));
+    }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(DownDataBaseException.class)
