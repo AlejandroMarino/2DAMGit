@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -155,7 +156,7 @@ fun ItemsReceipt(
 fun ButtonCreateReceipt(
     goReceiptCreation: (Int) -> Unit, groupId: Int
 ) {
-    FloatingActionButton(onClick = { goReceiptCreation(groupId) }) {
+    FloatingActionButton(onClick = { goReceiptCreation(groupId) }, containerColor = Color(0xFFA06E1D), contentColor = Color.Black) {
         Icon(
             painter = painterResource(R.drawable.ic_add_receipt_png),
             modifier = Modifier.size(30.dp),

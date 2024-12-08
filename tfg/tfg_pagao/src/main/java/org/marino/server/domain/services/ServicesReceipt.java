@@ -6,13 +6,11 @@ import org.marino.server.data.models.Member;
 import org.marino.server.data.models.Participation;
 import org.marino.server.data.models.Receipt;
 import org.marino.server.data.models.entities.ReceiptEntity;
+import org.marino.server.data.models.entities.UserEntity;
 import org.marino.server.data.models.mappers.MemberMapper;
 import org.marino.server.data.models.mappers.ParticipationMapper;
 import org.marino.server.data.models.mappers.ReceiptMapper;
-import org.marino.server.data.models.repositories.GroupEntityRepository;
-import org.marino.server.data.models.repositories.MemberEntityRepository;
-import org.marino.server.data.models.repositories.ParticipationEntityRepository;
-import org.marino.server.data.models.repositories.ReceiptEntityRepository;
+import org.marino.server.data.models.repositories.*;
 import org.marino.server.domain.exceptions.BadRequestException;
 import org.marino.server.domain.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -39,7 +37,9 @@ public class ServicesReceipt {
 
     private final MemberEntityRepository memberR;
 
-    public ServicesReceipt(ReceiptEntityRepository receiptR, ReceiptMapper receiptMapper, MemberMapper memberMapper, ParticipationMapper participationMapper, GroupEntityRepository groupR, ParticipationEntityRepository participationR, MemberEntityRepository memberR) {
+    private final UserEntityRepository userR;
+
+    public ServicesReceipt(ReceiptEntityRepository receiptR, ReceiptMapper receiptMapper, MemberMapper memberMapper, ParticipationMapper participationMapper, GroupEntityRepository groupR, ParticipationEntityRepository participationR, MemberEntityRepository memberR, UserEntityRepository userR) {
         this.receiptR = receiptR;
         this.receiptMapper = receiptMapper;
         this.memberMapper = memberMapper;
@@ -47,6 +47,7 @@ public class ServicesReceipt {
         this.groupR = groupR;
         this.participationR = participationR;
         this.memberR = memberR;
+        this.userR = userR;
     }
 
     public List<Receipt> getAllOfGroup(int groupId) {
@@ -92,7 +93,11 @@ public class ServicesReceipt {
                         participationR.save(participationMapper
                                 .toParticipationEntity(
                                         participation,
-                                        memberMapper.toMemberEntity(member, groupR.findById(member.getGroupId()).orElseThrow()),
+                                        memberMapper.toMemberEntity(
+                                                member,
+                                                groupR.findById(member.getGroupId()).orElseThrow(),
+                                                getUser(member.getUserId())
+                                        ),
                                         savedReceipt
                                 )
                         );
@@ -102,6 +107,14 @@ public class ServicesReceipt {
             }
         } else {
             throw new BadRequestException("Impossible to add a receipt of a non existing group");
+        }
+    }
+
+    private UserEntity getUser(int id) {
+        if (id < 1) {
+            return null;
+        } else {
+            return userR.findById(id).orElseThrow(() -> new NotFoundException("Invalid user"));
         }
     }
 

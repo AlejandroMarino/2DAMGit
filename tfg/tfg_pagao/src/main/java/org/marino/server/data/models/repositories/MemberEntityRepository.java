@@ -1,7 +1,9 @@
 package org.marino.server.data.models.repositories;
 
 import org.marino.server.data.models.entities.MemberEntity;
+import org.marino.server.data.models.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -17,4 +19,11 @@ public interface MemberEntityRepository extends JpaRepository<MemberEntity, Inte
             "FROM ParticipationEntity p " +
             "WHERE p.member.id = :memberId")
     double getBalanceOfMember(int memberId);
+
+    @Query("SELECT COUNT(m) > 0 FROM MemberEntity m WHERE m.group.id = :groupId AND m.user.id = :userId")
+    Boolean userAlreadyInGroup(int userId, int groupId);
+
+    @Modifying
+    @Query("UPDATE MemberEntity m SET m.user = :user WHERE m.id = :memberId")
+    int setUser(int memberId, UserEntity user);
 }

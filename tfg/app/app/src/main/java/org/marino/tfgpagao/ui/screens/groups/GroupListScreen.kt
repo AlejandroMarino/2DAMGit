@@ -3,6 +3,7 @@ package org.marino.tfgpagao.ui.screens.groups
 import android.widget.Toast
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -167,7 +169,7 @@ fun ItemsGroup(
 fun ButtonCreateGroup(
     goGroupCreation: () -> Unit
 ) {
-    FloatingActionButton(onClick = { goGroupCreation() }) {
+    FloatingActionButton(onClick = { goGroupCreation() }, containerColor = Color(0xFFA06E1D), contentColor = Color.Black) {
         Icon(
             painter = painterResource(R.drawable.ic_add_group_png),
             modifier = Modifier.size(30.dp),

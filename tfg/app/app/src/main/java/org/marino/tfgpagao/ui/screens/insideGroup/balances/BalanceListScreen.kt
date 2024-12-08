@@ -99,6 +99,8 @@ fun BalanceListScreen(
                 if (state.value.transactions.isNotEmpty() && !isBottomSheetVisible) {
                     FloatingActionButton(
                         onClick = { isBottomSheetVisible = true },
+                        containerColor = Color(0xFFA06E1D),
+                        contentColor = Color.Black
                     ) {
                         Icon(
                             painter = painterResource(R.drawable.ic_deal_png),

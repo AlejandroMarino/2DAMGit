@@ -134,6 +134,8 @@ fun GroupCreationScreen(
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = { viewModel.handleEvent(GroupCreationEvent.AddGroup(goGroupList)) },
+                    containerColor = Color(0xFFA06E1D),
+                    contentColor = Color.Black
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_save_group_png),

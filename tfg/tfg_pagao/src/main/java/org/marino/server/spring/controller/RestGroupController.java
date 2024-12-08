@@ -1,5 +1,7 @@
 package org.marino.server.spring.controller;
 
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
 import org.marino.server.data.models.Group;
 import org.marino.server.domain.services.ServicesGroup;
 import org.springframework.http.HttpStatus;
@@ -18,9 +20,15 @@ public class RestGroupController {
     }
 
     @GetMapping()
-    public List<Group> getAll() {
-        return sG.getAll();
+    public List<Group> getAll(HttpServletRequest request) {
+        String email = (String) request.getAttribute("email");
+        return sG.getAllOfUser(email);
     }
+
+//    @GetMapping()
+//    public List<Group> getAll() {
+//        return sG.getAll();
+//    }
 
     @GetMapping("/{id}")
     public Group get(@PathVariable int id) {

@@ -37,4 +37,10 @@ public class RestMemberController {
     public Member add(@RequestBody Member member) {
         return sM.add(member);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/{id}/set_user")
+    public void setUserToMember(@PathVariable int id, @RequestParam int user) {
+        sM.setUserToMember(id, user);
+    }
 }

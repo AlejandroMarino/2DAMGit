@@ -27,8 +27,8 @@ public class ErrorsControl extends ResponseEntityExceptionHandler  {
                 .body(new ApiError(e.getMessage(), LocalDateTime.now()));
     }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ApiError> handleBadRequestException(BadRequestException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(new ApiError(e.getMessage(), LocalDateTime.now()));

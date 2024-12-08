@@ -26,4 +26,8 @@ public class MemberEntity {
     @ManyToOne
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     private GroupEntity group;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
 }

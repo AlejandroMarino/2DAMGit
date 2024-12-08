@@ -5,10 +5,7 @@ import org.marino.server.data.models.Member;
 import org.marino.server.data.models.Participation;
 import org.marino.server.data.models.Receipt;
 import org.marino.server.data.models.entities.ParticipationEntityId;
-import org.marino.server.data.models.mappers.GroupMapper;
-import org.marino.server.data.models.mappers.MemberMapper;
-import org.marino.server.data.models.mappers.ParticipationMapper;
-import org.marino.server.data.models.mappers.ReceiptMapper;
+import org.marino.server.data.models.mappers.*;
 import org.marino.server.data.models.repositories.ParticipationEntityRepository;
 import org.marino.server.data.models.repositories.ReceiptEntityRepository;
 import org.marino.server.domain.exceptions.BadRequestException;
@@ -33,18 +30,24 @@ public class ServicesParticipation {
 
     private final ServicesGroup sGroup;
 
+    private final ServicesUser sUser;
+
+    private final UserMapper userMapper;
+
     private final ReceiptMapper receiptMapper;
 
     private final ServicesReceipt sReceipt;
     private final ReceiptEntityRepository receiptR;
 
-    public ServicesParticipation(ParticipationEntityRepository participationR, ParticipationMapper participationMapper, MemberMapper memberMapper, ServicesMember sMember, GroupMapper groupMapper, ServicesGroup sGroup, ReceiptMapper receiptMapper, ServicesReceipt sReceipt, ReceiptEntityRepository receiptR) {
+    public ServicesParticipation(ParticipationEntityRepository participationR, ParticipationMapper participationMapper, MemberMapper memberMapper, ServicesMember sMember, GroupMapper groupMapper, ServicesGroup sGroup, ServicesUser sUser, UserMapper userMapper, ReceiptMapper receiptMapper, ServicesReceipt sReceipt, ReceiptEntityRepository receiptR) {
         this.participationR = participationR;
         this.participationMapper = participationMapper;
         this.memberMapper = memberMapper;
         this.sMember = sMember;
         this.groupMapper = groupMapper;
         this.sGroup = sGroup;
+        this.sUser = sUser;
+        this.userMapper = userMapper;
         this.receiptMapper = receiptMapper;
         this.sReceipt = sReceipt;
         this.receiptR = receiptR;
@@ -74,7 +77,11 @@ public class ServicesParticipation {
             return participationMapper.toParticipation(participationR.save(participationMapper
                     .toParticipationEntity(
                             participation,
-                            memberMapper.toMemberEntity(member, groupMapper.toGroupEntity(sGroup.get(member.getGroupId()))),
+                            memberMapper.toMemberEntity(
+                                    member,
+                                    groupMapper.toGroupEntity(sGroup.get(member.getGroupId())),
+                                    userMapper.toUserEntity(sUser.get(member.getUserId()))
+                            ),
                             receiptMapper.toReceiptEntity(receipt, groupMapper.toGroupEntity(sGroup.get(receipt.getGroupId())))
                     )
             ));

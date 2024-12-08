@@ -14,10 +14,6 @@ import java.util.Properties;
 @Log4j2
 public class MandarMail {
 
-
-
-
-
     public void generateAndSendEmail(String to, String msg, String subject) throws MessagingException {
         Properties mailServerProperties;
         Session getMailSession;

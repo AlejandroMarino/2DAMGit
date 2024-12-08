@@ -221,6 +221,8 @@ fun ReceiptCreationScreen(
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = { viewModel.handleEvent(ReceiptCreationEvent.AddReceipt(goGroupInfo)) },
+                    containerColor = Color(0xFFA06E1D),
+                    contentColor = Color.Black
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_save_payment_png),

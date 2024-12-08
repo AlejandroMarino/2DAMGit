@@ -41,6 +41,25 @@ abstract class BaseApiResponse {
         }
     }
 
+    suspend fun <T> safeApiCallWithToken(apiCall: suspend () -> Response<T>): NetworkResult<ResponseWithToken<T>> {
+        return try {
+            val response = apiCall()
+            if (response.isSuccessful) {
+                val body = response.body()
+                val authorizationHeader = response.headers()["Authorization"]
+
+                return if (body != null) {
+                    NetworkResult.Success(ResponseWithToken(body, authorizationHeader))
+                } else {
+                    NetworkResult.SuccessNoData()
+                }
+            }
+            return error("${response.code()} ${response.message()}")
+        } catch (e: Exception) {
+            error(e.message ?: e.toString())
+        }
+    }
+
     private fun <T> error(errorMessage: String): NetworkResult<T> =
         NetworkResult.Error("Api call failed $errorMessage")
 
