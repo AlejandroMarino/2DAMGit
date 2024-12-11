@@ -53,7 +53,7 @@ public class ServicesUser {
     }
 
     public User login(User u) {
-        UserEntity userE = userR.findByEmail(u.getEmail());
+        UserEntity userE = userR.findByEmail(u.getEmail().toLowerCase());
         if (userE != null) {
             if (!passwordEncoder.matches(u.getPassword(), userE.getPassword())) {
                 throw new BadRequestException("Bad combination of email and password");
@@ -70,7 +70,7 @@ public class ServicesUser {
     }
 
     public Boolean isEmailValid(String email) {
-        UserEntity user = userR.findByEmail(email);
+        UserEntity user = userR.findByEmail(email.toLowerCase());
         return user != null && user.isVerified();
     }
 

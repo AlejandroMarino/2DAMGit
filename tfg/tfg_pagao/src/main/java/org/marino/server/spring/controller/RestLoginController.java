@@ -1,13 +1,12 @@
 package org.marino.server.spring.controller;
 
-import jakarta.mail.MessagingException;
 import lombok.extern.log4j.Log4j2;
 import org.marino.server.data.models.User;
 import org.marino.server.domain.exceptions.BadRequestException;
 import org.marino.server.domain.services.ServicesEmail;
-import org.marino.server.spring.security.ServicesJwt;
 import org.marino.server.domain.services.ServicesUser;
 import org.marino.server.domain.services.Utils;
+import org.marino.server.spring.security.ServicesJwt;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,6 @@ public class RestLoginController {
     private final ServicesEmail sE;
     private final Utils utils;
 
-
     public RestLoginController(ServicesUser sU, ServicesJwt sJ, ServicesEmail sE, Utils utils) {
         this.sU = sU;
         this.sJ = sJ;
@@ -31,11 +29,10 @@ public class RestLoginController {
         this.utils = utils;
     }
 
-
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public void register(@RequestParam String email, @RequestParam String password) {
-        User user = new User(email, password);
+        User user = new User(email.toLowerCase(), password);
         String bytes = utils.randomBytes();
         user.setVerificationCode(bytes);
         sU.register(user);
@@ -60,7 +57,6 @@ public class RestLoginController {
                     .body(user);
         }
     }
-
 
     @GetMapping("/activation")
     @ResponseStatus(HttpStatus.OK)
