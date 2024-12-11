@@ -43,4 +43,6 @@ public class Constants {
     public static final String SERVER = "Server";
     public static final String CLIENT = "Client";
     public static final String BASIC = "Basic";
+
+    //test
 }

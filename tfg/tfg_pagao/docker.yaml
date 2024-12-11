@@ -1,0 +1,65 @@
+name: Server CI workflow
+
+on:
+  push:
+    branches: [ main ]
+env:
+  VERSION: 1.0
+
+jobs:
+  # unit-tests:
+  #   runs-on: self-hosted
+  #   defaults:
+  #     run:
+  #       working-directory: ./server
+  #   strategy:
+  #     matrix:
+  #       node-version: [16.x]
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js ${{ matrix.node-version }}
+  #     uses: actions/setup-node@v2
+  #     with:
+  #       node-version: ${{ matrix.node-version }}
+  #       cache: 'npm'
+  #       cache-dependency-path: server/package-lock.json
+  #   - run: npm ci
+  #   - run: npm run unit
+  deploy:
+    # needs: unit-tests 
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout 
+        uses: actions/checkout@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - 
+        name: Login to private registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          #tags: ${{ steps.meta.outputs.tags }} 
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: | 
+             ${{ secrets.REGISTRY_USERNAME }}/pagao:latest
+             ${{ secrets.REGISTRY_USERNAME }}/pagao:${{ env.VERSION }}
+          build-args: |
+            DB_USERNAME=${{ secrets.DB_USERNAME }}
+            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
+            MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
+            MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
+            DATASOURCE_URL=${{ secrets.DATASOURCE_URL }}
