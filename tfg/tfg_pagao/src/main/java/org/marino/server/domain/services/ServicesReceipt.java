@@ -110,8 +110,8 @@ public class ServicesReceipt {
         }
     }
 
-    private UserEntity getUser(int id) {
-        if (id < 1) {
+    private UserEntity getUser(Integer id) {
+        if (id == null || id < 1) {
             return null;
         } else {
             return userR.findById(id).orElseThrow(() -> new NotFoundException("Invalid user"));

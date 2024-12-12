@@ -36,13 +36,6 @@ public class ServicesGroup {
         this.memberMapper = memberMapper;
     }
 
-    public List<Group> getAll() {
-        return groupR.findAll()
-                .stream()
-                .map(groupMapper::toGroup)
-                .toList();
-    }
-
     public List<Group> getAllOfUser(String email) {
         try {
             UserEntity user = userR.findByEmail(email);

@@ -26,8 +26,8 @@ public class ServicesUser {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User get(int id) {
-        if (id < 1) {
+    public User get(Integer id) {
+        if (id == null || id < 1) {
             return null;
         }
         return userR.findById(id).map(userMapper::toUser)

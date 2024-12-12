@@ -29,7 +29,7 @@ public class ServicesJwt {
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
-                .setExpiration(Date.from(LocalDateTime.now().plusSeconds(/*3600*/ 60).atZone(ZoneId.systemDefault()).toInstant()))
+                .setExpiration(Date.from(LocalDateTime.now().plusSeconds(/*3600*/ 6000).atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(key)
                 .compact();
     }
