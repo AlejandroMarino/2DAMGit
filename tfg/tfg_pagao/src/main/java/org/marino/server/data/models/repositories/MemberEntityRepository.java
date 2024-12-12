@@ -20,8 +20,8 @@ public interface MemberEntityRepository extends JpaRepository<MemberEntity, Inte
             "WHERE p.member.id = :memberId")
     double getBalanceOfMember(int memberId);
 
-    @Query("SELECT COUNT(m) > 0 FROM MemberEntity m WHERE m.group.id = :groupId AND m.user.id = :userId")
-    Boolean userAlreadyInGroup(int userId, int groupId);
+    @Query("SELECT COUNT(m) > 0 FROM MemberEntity m WHERE m.group.id = :groupId AND m.user.email = :userEmail")
+    Boolean userAlreadyInGroup(String userEmail, int groupId);
 
     @Modifying
     @Query("UPDATE MemberEntity m SET m.user = :user WHERE m.id = :memberId")

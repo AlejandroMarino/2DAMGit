@@ -34,6 +34,17 @@ public class ServicesUser {
                 .orElseThrow(() -> new NotFoundException("User with id " + id + " not found"));
     }
 
+    public User findByEmail(String email) {
+        if (email == null || email.isBlank()) {
+            return null;
+        }
+        try {
+            return userMapper.toUser(userR.findByEmail(email));
+        } catch (Exception e) {
+            throw new NotFoundException("User not found");
+        }
+    }
+
     public void register(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

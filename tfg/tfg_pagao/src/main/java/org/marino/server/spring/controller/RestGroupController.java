@@ -31,7 +31,8 @@ public class RestGroupController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Group add(@RequestBody Group group) {
-        return sG.add(group);
+    public Group add(@RequestBody Group group, HttpServletRequest request) {
+        String email = (String) request.getAttribute("email");
+        return sG.add(group, email);
     }
 }

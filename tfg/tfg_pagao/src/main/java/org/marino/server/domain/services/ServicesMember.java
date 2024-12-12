@@ -73,12 +73,12 @@ public class ServicesMember {
     }
 
     @Transactional
-    public void setUserToMember(int memberId, int userId) {
+    public void setUserToMember(int memberId, String userEmail) {
         Member member = get(memberId);
-        if (memberR.userAlreadyInGroup(userId, member.getGroupId())) {
+        if (memberR.userAlreadyInGroup(userEmail, member.getGroupId())) {
             throw new BadRequestException("User can only be assigned to one member per group");
         } else {
-            User user = sUser.get(userId);
+            User user = sUser.findByEmail(userEmail);
             int updatedRows = memberR.setUser(memberId, userMapper.toUserEntity(user));
             if (updatedRows <= 0) {
                 throw new BadRequestException("User couldn't be set");

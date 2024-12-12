@@ -41,7 +41,10 @@ public class JWTAuth extends OncePerRequestFilter {
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(email, null, new ArrayList<>());
                     SecurityContextHolder.getContext().setAuthentication(authentication);
-                    if (path.equals("/pagao/groups") && request.getMethod().equalsIgnoreCase("GET")) {
+                    if (
+                            path.equals("/pagao/groups") ||
+                                    (path.startsWith("/pagao/members") && "PUT".equalsIgnoreCase(request.getMethod()))
+                    ) {
                         request.setAttribute("email", email);
                     }
                 }

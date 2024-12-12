@@ -1,5 +1,6 @@
 package org.marino.server.spring.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.marino.server.data.models.Member;
 import org.marino.server.domain.services.ServicesMember;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,8 @@ public class RestMemberController {
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}/set_user")
-    public void setUserToMember(@PathVariable int id, @RequestParam int user) {
-        sM.setUserToMember(id, user);
+    public void setUserToMember(@PathVariable int id, HttpServletRequest request) {
+        String email = (String) request.getAttribute("email");
+        sM.setUserToMember(id, email);
     }
 }
