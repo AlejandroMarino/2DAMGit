@@ -15,6 +15,9 @@ public interface MemberEntityRepository extends JpaRepository<MemberEntity, Inte
     @Query("FROM MemberEntity m WHERE m.group.id = :groupId")
     List<MemberEntity> getAllOfGroup(int groupId);
 
+    @Query("FROM MemberEntity m WHERE m.group.id = :groupId AND m.user IS null")
+    List<MemberEntity> getAllAvailableOfGroup(int groupId);
+
     @Query("SELECT COALESCE(SUM(p.pays), 0.0) - COALESCE(SUM(p.debts), 0.0) " +
             "FROM ParticipationEntity p " +
             "WHERE p.member.id = :memberId")

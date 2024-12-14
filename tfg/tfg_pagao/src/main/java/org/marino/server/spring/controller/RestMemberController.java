@@ -23,6 +23,11 @@ public class RestMemberController {
         return sM.getAllOfGroup(group);
     }
 
+    @GetMapping("/available_of_group")
+    public List<Member> getAllAvailableOfGroup(@RequestParam int group) {
+        return sM.getAllAvailableOfGroup(group);
+    }
+
     @GetMapping("/{id}")
     public Member get(@PathVariable int id) {
         return sM.get(id);

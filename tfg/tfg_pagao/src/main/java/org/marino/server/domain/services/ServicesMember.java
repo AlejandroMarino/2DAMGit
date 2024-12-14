@@ -50,6 +50,16 @@ public class ServicesMember {
                 .toList();
     }
 
+    public List<Member> getAllAvailableOfGroup(int groupId) {
+        if (!groupR.existsById(groupId)) {
+            throw new NotFoundException("Group with id " + groupId + " not found");
+        }
+        return memberR.getAllAvailableOfGroup(groupId)
+                .stream()
+                .map(memberMapper::toMember)
+                .toList();
+    }
+
     public Member get(int id) {
         return memberR.findById(id).map(memberMapper::toMember)
                 .orElseThrow(() -> new NotFoundException("Member with id " + id + " not found"));
